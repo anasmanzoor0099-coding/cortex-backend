@@ -1,3 +1,5 @@
+console.log("CHECKING ENV VAR: ", process.env.MONGO_URI ? "FOUND!" : "UNDEFINED!");
+console.log("VALUE LENGTH: ", process.env.MONGO_URI?.length);
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
