@@ -1,25 +1,274 @@
 export const pythonCourseData = {
-  title: 'Advanced Python Mastery',
-  description: 'Level up from beginner to pro. Master Decorators, Generators, Asyncio, Concurrency, Memory Management, and Advanced OOP.',
+  title: 'The Complete Python Masterclass: A to Z',
+  description: 'From absolute beginner to professional developer. Master basics, OOP, decorators, async programming, and memory management.',
   thumbnail: 'python',
-  totalDuration: '18h 45m',
+  totalDuration: '32h 45m',
   modules: [
+    // --- LEVEL 1: A TO Z BASICS ---
     {
-      title: 'Decorators & Closures',
-      duration: '2h 00m',
-      notes: `### The Power of Functions
-In Python, functions are first-class objects. This means they can be passed around as arguments, returned from other functions, and assigned to variables.
+      title: 'Basics: Variables, Data Types & Operators',
+      duration: '3h 00m',
+      notes: `### Welcome to Python
+Python is a high-level, interpreted programming language known for its clean syntax that reads almost like English. It is the most popular language for Data Science, AI, Web Development, and Automation.
 
-A **Closure** is a function object that remembers values in enclosing scopes even if they are not present in memory. 
+### Variables and Memory
+In Python, you don't need to explicitly declare the type of a variable. It is dynamically typed. When you write \`x = 5\`, Python creates an integer object in memory and binds the name \`x\` to it.
 
-A **Decorator** is a function that takes another function and extends its behavior without explicitly modifying it. 
+\`\`\`python
+name = "Anas"       # String
+age = 21            # Integer
+height = 5.9        # Float
+is_developer = True # Boolean
+\`\`\`
+
+### Core Data Types Deep Dive
+1.  **Strings**: Immutable sequences of characters. You can use single quotes, double quotes, or triple quotes for multi-line strings.
+2.  **Numbers**: Python supports Integers (unlimited size), Floating-point numbers (decimals), and Complex numbers.
+3.  **Booleans**: Represent truth values (\`True\` or \`False\`). They are subclasses of integers (True is 1, False is 0).
+4.  **NoneType**: Represents the absence of a value. It is a singleton object in Python (only one instance exists).
+
+### Operators
+*   **Arithmetic**: \`+\`, \`-\`, \`*\`, \`/\`, \`//\` (floor division), \`%\` (modulo), \`**\` (exponent).
+*   **Comparison**: \`==\`, \`!=\`, \`>\`, \`<\`, \`>=\`, \`<=\`.
+*   **Logical**: \`and\`, \`or\`, \`not\`.
+*   **Assignment**: \`=\`, \`+=\`, \`-=\`, \`*=\`.
+
+### Type Casting
+Sometimes you need to convert one type to another.
+\`\`\`python
+num_str = "100"
+num_int = int(num_str) # Converts string to integer
+print(num_int + 50) # Output: 150
+\`\`\``,
+      codeExample: 'name = "Anas"\nage = 21\nprint(f"My name is {name} and I am {age} years old.")\n\n# Checking types\nprint(type(name)) # <class \'str\'>\nprint(type(age))  # <class \'int\'>',
+      quiz: [{ question: 'Which data type represents a decimal number?', options: ['int', 'str', 'float', 'bool'], correctAnswer: 2 }]
+    },
+    {
+      title: 'Basics: Control Flow & Loops',
+      duration: '3h 30m',
+      notes: `### Making Decisions (If / Elif / Else)
+Control flow allows your program to make decisions based on conditions. In Python, we use indentation (spaces) instead of curly braces \`{}\` to define blocks of code.
+
+\`\`\`python
+score = 85
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+else:
+    print("Grade: C or below")
+\`\`\`
+
+### Loops: For and While
+1.  **For Loop**: Used to iterate over a sequence (like a list, string, or range). It is a "for-each" loop.
+\`\`\`python
+for i in range(5): # Runs from 0 to 4
+    print(i)
+\`\`\`
+2.  **While Loop**: Repeats as long as a condition is True. Be careful, as it can cause an infinite loop if the condition never becomes False.
+\`\`\`python
+count = 0
+while count < 3:
+    print("Hello")
+    count += 1
+\`\`\`
+
+### Loop Control Statements
+*   **\`break\`**: Exits the loop entirely.
+*   **\`continue\`**: Skips the rest of the current iteration and jumps to the next one.
+*   **\`else\` block in loops**: Executes only if the loop finished without hitting a \`break\`.`,
+      codeExample: '# Printing even numbers\nfor i in range(1, 11):\n    if i % 2 != 0:\n        continue # Skip odd numbers\n    print(i)',
+      quiz: [{ question: 'Which keyword is used to exit a loop immediately?', options: ['continue', 'pass', 'break', 'exit'], correctAnswer: 2 }]
+    },
+    {
+      title: 'Basics: Data Structures & Functions',
+      duration: '4h 00m',
+      notes: `### Collections in Python
+Python provides four built-in data structures:
+1.  **List \`[]\`**: Ordered, mutable (changeable), allows duplicates.
+2.  **Tuple \`()\`**: Ordered, immutable (unchangeable), allows duplicates.
+3.  **Set \`{}\`**: Unordered, mutable, NO duplicates allowed.
+4.  **Dictionary \`{key: value}\`**: Unordered, mutable, key-value pairs.
+
+\`\`\`python
+# Dictionary example
+student = {"name": "Anas", "age": 21}
+print(student["name"])
+\`\`\`
+
+### Functions
+Functions are reusable blocks of code. They help you follow the **DRY** (Don't Repeat Yourself) principle.
+
+\`\`\`python
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Anas")) # Hello, Anas!
+print(greet("Anas", "Hi")) # Hi, Anas!
+\`\`\`
+
+### *args and **kwargs
+*   **\`*args\`**: Allows a function to accept any number of positional arguments as a tuple.
+*   **\`**kwargs\`**: Allows a function to accept any number of keyword arguments as a dictionary.
+\`\`\`python
+def my_func(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+my_func(1, 2, 3, name="Anas") 
+# Output: (1, 2, 3) \n {'name': 'Anas'}
+\`\`\``,
+      codeExample: 'def calculate_total(*prices):\n    return sum(prices)\n\nprint(calculate_total(10.5, 20.0, 5.99))\n\n# Dictionary comprehension\nsquares = {x: x*x for x in range(5)}\nprint(squares) # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}',
+      quiz: [{ question: 'Which data structure does NOT allow duplicate values?', options: ['List', 'Tuple', 'Set', 'Dictionary'], correctAnswer: 2 }]
+    },
+
+    // --- LEVEL 2: INTERMEDIATE ---
+    {
+      title: 'Intermediate: Object-Oriented Programming (OOP)',
+      duration: '3h 45m',
+      notes: `### Classes and Objects
+OOP is a programming paradigm based on the concept of "objects", which can contain data (attributes) and code (methods). 
+A **Class** is a blueprint. An **Object** is an instance of that blueprint.
+
+\`\`\`python
+class Dog:
+    # Class attribute (shared by all instances)
+    species = "Canis familiaris"
+    
+    # __init__ is the constructor
+    def __init__(self, name, age):
+        # Instance attributes (unique to each instance)
+        self.name = name
+        self.age = age
+        
+    def bark(self):
+        return f"{self.name} says Woof!"
+
+my_dog = Dog("Tommy", 3)
+print(my_dog.bark())
+\`\`\`
+
+### The 4 Pillars of OOP
+1.  **Encapsulation**: Bundling data and methods within a single unit (class).
+2.  **Abstraction**: Hiding complex implementation details and showing only essential features.
+3.  **Inheritance**: A child class inherits properties from a parent class.
+\`\`\`python
+class Animal:
+    def eat(self):
+        print("Eating...")
+
+class Cat(Animal): # Inherits from Animal
+    def meow(self):
+        print("Meow!")
+\`\`\`
+4.  **Polymorphism**: The ability of different classes to respond to the same method call in their own way.`,
+      codeExample: 'class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n        print(f"Deposited {amount}. New balance: {self.balance}")\n\naccount = BankAccount("Anas", 500)\naccount.deposit(250)',
+      quiz: [{ question: 'Which pillar of OOP allows a child class to acquire properties of a parent class?', options: ['Encapsulation', 'Abstraction', 'Inheritance', 'Polymorphism'], correctAnswer: 2 }]
+    },
+    {
+      title: 'Intermediate: Error Handling & File I/O',
+      duration: '3h 00m',
+      notes: `### Error Handling (Try / Except)
+In real-world apps, things go wrong: a file is missing, a network connection drops, or a user enters invalid data. If unhandled, these crash your program. Python uses **Exceptions**.
+
+\`\`\`python
+try:
+    num = int(input("Enter a number: "))
+    result = 10 / num
+except ValueError:
+    print("That's not a valid number!")
+except ZeroDivisionError:
+    print("You cannot divide by zero!")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+finally:
+    print("This block always runs, error or no error.")
+\`\`\`
+
+### File Handling
+Python makes it easy to read and write files using the \`open()\` function. It's best practice to use the \`with\` statement, which automatically closes the file for you (even if an error occurs).
+
+\`\`\`python
+# Writing to a file
+with open("notes.txt", "w") as file:
+    file.write("Hello Cortex!\\n")
+    file.write("Python is awesome.\\n")
+
+# Reading from a file
+with open("notes.txt", "r") as file:
+    content = file.read()
+    print(content)
+\`\`\`
+
+### File Modes
+*   \`r\`: Read (default)
+*   \`w\`: Write (overwrites existing file)
+*   \`a\`: Append (adds to the end of the file)
+*   \`b\`: Binary mode (for images, PDFs)`,
+      codeExample: 'def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return "Cannot divide by zero"\n    finally:\n        print("Division attempt finished.")\n\nprint(safe_divide(10, 2))\nprint(safe_divide(10, 0))',
+      quiz: [{ question: 'Which block is ALWAYS executed whether an error occurs or not?', options: ['except', 'else', 'finally', 'catch'], correctAnswer: 2 }]
+    },
+    {
+      title: 'Intermediate: Advanced Functions (Lambda & Comprehensions)',
+      duration: '3h 15m',
+      notes: `### Lambda Functions
+A lambda function is a small, anonymous function. It can take any number of arguments but can only have one expression. They are used for short, throwaway operations.
+
+\`\`\`python
+# Normal function
+def add(x, y):
+    return x + y
+
+# Lambda function
+add_lambda = lambda x, y: x + y
+print(add_lambda(2, 3)) # 5
+\`\`\`
+
+### List Comprehensions
+A concise way to create lists based on existing lists. It is faster and more readable than using a for loop with append().
+
+\`\`\`python
+# Normal way
+squares = []
+for i in range(10):
+    squares.append(i * i)
+
+# Comprehension way
+squares = [i * i for i in range(10)]
+\`\`\`
+
+### Map, Filter, and Reduce
+These are functional programming tools:
+*   **Map**: Applies a function to all items in an iterable.
+*   **Filter**: Filters items based on a condition.
+*   **Reduce**: Applies a rolling computation (like sum) to sequential pairs.
+
+\`\`\`python
+from functools import reduce
+
+nums = [1, 2, 3, 4]
+doubled = list(map(lambda x: x * 2, nums)) # [2, 4, 6, 8]
+evens = list(filter(lambda x: x % 2 == 0, nums)) # [2, 4]
+total = reduce(lambda x, y: x + y, nums) # 10
+\`\`\``,
+      codeExample: '# Finding names starting with A\nnames = ["Anas", "Bob", "Alice", "Charlie"]\na_names = [name for name in names if name.startswith("A")]\nprint(a_names) # [\'Anas\', \'Alice\']',
+      quiz: [{ question: 'What is the return type of a lambda function?', options: ['It must have explicit return', 'Implicit return of the expression', 'Always returns None', 'Returns a tuple'], correctAnswer: 1 }]
+    },
+
+    // --- LEVEL 3: PROFESSIONAL ---
+    {
+      title: 'Professional: Decorators & Generators',
+      duration: '4h 00m',
+      notes: `### Decorators
+A decorator is a function that takes another function and extends its behavior without explicitly modifying it. It is heavily used in frameworks (like \`@app.route\` in Flask).
 
 \`\`\`python
 def my_decorator(func):
     def wrapper():
-        print("Before the function is called.")
+        print("Something before the function.")
         func()
-        print("After the function is called.")
+        print("Something after the function.")
     return wrapper
 
 @my_decorator
@@ -29,52 +278,38 @@ def say_hello():
 say_hello()
 \`\`\`
 
-### Real-World Use Cases
-Decorators are used in web frameworks (Flask/Django) for routing, in authentication to check if a user is logged in, and for logging execution time.`,
-      codeExample: 'import time\n\ndef timer_decorator(func):\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        end = time.time()\n        print(f"{func.__name__} took {end - start:.4f}s")\n        return result\n    return wrapper\n\n@timer_decorator\ndef process_data():\n    time.sleep(1.5)\n    print("Data processed")\n\nprocess_data()',
-      quiz: [{ question: 'What is the symbol used to apply a decorator?', options: ['#', '@', '$', '&'], correctAnswer: 1 }]
-    },
-    {
-      title: 'Generators & Iterators',
-      duration: '2h 30m',
-      notes: `### Memory Efficiency
-When you create a list (e.g., \`[x for x in range(1000000)]\`), Python allocates memory for all 1 million numbers at once.
-
-**Generators** use the \`yield\` keyword to produce a sequence of results lazily. They only compute the next value when you ask for it, saving immense amounts of RAM.
+### Generators and Yield
+When you create a list of 1 million items, it takes massive memory. Generators use the \`yield\` keyword to produce items one at a time, lazily, using minimal memory.
 
 \`\`\`python
-def count_up_to(max):
-    count = 1
-    while count <= max:
-        yield count
-        count += 1
+def generate_numbers(n):
+    for i in range(n):
+        yield i * i
 
-counter = count_up_to(5)
-print(next(counter)) # 1
-print(next(counter)) # 2
+gen = generate_numbers(1000000)
+print(next(gen)) # 0
+print(next(gen)) # 1
 \`\`\`
-
-### Iterators vs Iterables
-An **Iterable** is an object that can return an iterator (like a list). An **Iterator** is an object with a \`__next__\` method that keeps track of its current state. Generators are a simpler way to create iterators.`,
-      codeExample: '# Generator expression (like list comprehension but with parentheses)\ngen = (x * x for x in range(1, 6))\n\nfor val in gen:\n    print(val)\n\n# Output: 1, 4, 9, 16, 25\n# The whole list was never stored in memory!',
-      quiz: [{ question: 'Which keyword pauses a generator function and sends a value back?', options: ['return', 'yield', 'async', 'await'], correctAnswer: 1 }]
+They are the foundation of efficient data processing in Python.`,
+      codeExample: 'import time\n\ndef timer(func):\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        print(f"Took {time.time() - start}s")\n        return result\n    return wrapper\n\n@timer\ndef heavy_task():\n    time.sleep(1)\n\nheavy_task()',
+      quiz: [{ question: 'Which keyword turns a normal function into a generator?', options: ['return', 'yield', 'async', 'await'], correctAnswer: 1 }]
     },
     {
-      title: 'Asynchronous Python (Asyncio)',
-      duration: '3h 00m',
-      notes: `### Concurrency vs Parallelism
-By default, Python is synchronous. If you make a network request that takes 5 seconds, the program freezes.
+      title: 'Professional: Asyncio & Concurrency',
+      duration: '4h 30m',
+      notes: `### Synchronous vs Asynchronous
+By default, Python is synchronous. If a task takes 5 seconds, it blocks everything else. 
 
-**Asyncio** is a library to write concurrent code using the \`async\` / \`await\` syntax. It uses a single thread but switches between tasks when one is waiting for I/O (like network requests or reading files).
+**Asyncio** allows you to write concurrent code using the \`async\` and \`await\` keywords. It runs on a single thread but switches between tasks when waiting for I/O operations (like API calls or database queries).
 
 \`\`\`python
 import asyncio
 
 async def fetch_data():
     print("Start fetching...")
-    await asyncio.sleep(2) # Non-blocking wait
-    print("Data fetched!")
-    return {"data": "mocked"}
+    await asyncio.sleep(2) # Simulates a 2s network call
+    print("Done fetching!")
+    return {"data": "result"}
 
 async def main():
     await fetch_data()
@@ -82,19 +317,10 @@ async def main():
 asyncio.run(main())
 \`\`\`
 
-### When to use Asyncio?
-Use it for **I/O bound** tasks (web scraping, API calls, database queries). Do NOT use it for CPU-bound tasks (heavy math, image processing).`,
-      codeExample: 'import asyncio\n\nasync def task1():\n    await asyncio.sleep(1)\n    print("Task 1 Done")\n\nasync def task2():\n    await asyncio.sleep(2)\n    print("Task 2 Done")\n\nasync def main():\n    # Run both tasks AT THE SAME TIME\n    await asyncio.gather(task1(), task2())\n\nasyncio.run(main())',
-      quiz: [{ question: 'What does await do?', options: ['Stops the program', 'Pauses the coroutine and yields control', 'Deletes the function', 'Creates a new thread'], correctAnswer: 1 }]
-    },
-    {
-      title: 'Concurrency: Multithreading & Multiprocessing',
-      duration: '3h 00m',
-      notes: `### The GIL (Global Interpreter Lock)
-Python has a GIL, which means only one thread can execute Python bytecode at a time. This is a major limitation. 
-
-*   **Multithreading** (\`threading\` module) is good for **I/O-bound** tasks (like downloading files). The GIL is released during I/O operations.
-*   **Multiprocessing** (\`multiprocessing\` module) bypasses the GIL by spawning entirely new Python processes. This is perfect for **CPU-bound** tasks (like heavy math or video rendering).
+### Concurrency: Threading vs Multiprocessing
+Because of Python's GIL (Global Interpreter Lock), only one thread executes Python bytecode at a time.
+*   **Threading**: Great for I/O-bound tasks (downloading files, web scraping). The GIL is released during I/O.
+*   **Multiprocessing**: Bypasses the GIL by creating separate Python processes. Great for CPU-bound tasks (heavy math, video processing).
 
 \`\`\`python
 from multiprocessing import Pool
@@ -102,151 +328,46 @@ from multiprocessing import Pool
 def square(x):
     return x * x
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     with Pool(4) as p: # Uses 4 CPU cores
         print(p.map(square, [1, 2, 3, 4]))
-\`\`\`
-
-### When to use which?
-*   Downloading 100 images? -> **Threading** (or Asyncio).
-*   Calculating prime numbers up to 1 billion? -> **Multiprocessing**.`,
-      codeExample: 'import time\nfrom multiprocessing import Process\n\ndef heavy_task(name):\n    print(f"Starting {name}")\n    time.sleep(2)\n    print(f"Finished {name}")\n\nif __name__ == "__main__":\n    p1 = Process(target=heavy_task, args=("Process 1",))\n    p2 = Process(target=heavy_task, args=("Process 2",))\n    p1.start()\n    p2.start()\n    p1.join()\n    p2.join()\n    print("Both processes completed")',
-      quiz: [{ question: 'What does the GIL stand for?', options: ['Global Interpreter Lock', 'General Interface Language', 'Graphic Input Layer', 'Global Integration Logic'], correctAnswer: 0 }]
+\`\`\``,
+      codeExample: 'import asyncio\n\nasync def task(name, seconds):\n    print(f"Starting {name}")\n    await asyncio.sleep(seconds)\n    print(f"Finished {name}")\n\nasync def main():\n    # Runs both tasks at the same time\n    await asyncio.gather(\n        task("Task 1", 2),\n        task("Task 2", 1)\n    )\n\nasyncio.run(main())',
+      quiz: [{ question: 'Which is better for CPU-bound heavy tasks (like data crunching)?', options: ['Threading', 'Asyncio', 'Multiprocessing', 'Single-threading'], correctAnswer: 2 }]
     },
     {
-      title: 'Advanced Object-Oriented Programming',
-      duration: '2h 30m',
+      title: 'Professional: Advanced OOP & Dunder Methods',
+      duration: '4h 15m',
       notes: `### Dunder (Magic) Methods
-Python classes have special methods surrounded by double underscores. They allow your custom objects to behave like built-in types.
+Python classes have special methods surrounded by double underscores. They allow your custom objects to behave like built-in Python types.
 
-*   \`__str__\`: Defines what \`print(object)\` shows.
-*   \`__repr__\`: Defines the official string representation (used in debugging).
-*   \`__len__\`: Allows you to use \`len(object)\`.
-*   \`__getitem__\`: Allows you to index your object like a list.
+*   \`__init__\`: Constructor.
+*   \`__str__\`: What \`print(object)\` shows.
+*   \`__repr__\`: Official string representation (used in debugging).
+*   \`__len__\`: Allows use of \`len(object)\`.
+*   \`__getitem__\`: Allows indexing like a list.
 
 \`\`\`python
-class Book:
-    def __init__(self, title, pages):
-        self.title = title
-        self.pages = pages
-
-    def __str__(self):
-        return f"Book: {self.title}"
+class Playlist:
+    def __init__(self, songs):
+        self.songs = songs
 
     def __len__(self):
-        return self.pages
+        return len(self.songs)
 
-my_book = Book("Python Mastery", 300)
-print(my_book)      # Book: Python Mastery
-print(len(my_book)) # 300
+    def __getitem__(self, index):
+        return self.songs[index]
+
+my_playlist = Playlist(["Song A", "Song B", "Song C"])
+print(len(my_playlist)) # 3
+print(my_playlist[1])   # Song B
 \`\`\`
 
 ### Class Methods vs Static Methods
-*   \`@classmethod\`: Takes \`cls\` as the first argument and can modify class state.
-*   \`@staticmethod\`: Doesn't take \`self\` or \`cls\`. Just a regular function inside a class.`,
-      codeExample: 'class Employee:\n    raise_amount = 1.05\n\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n\n    @classmethod\n    def set_raise_amount(cls, amount):\n        cls.raise_amount = amount\n\n    def apply_raise(self):\n        self.salary = int(self.salary * self.raise_amount)\n\nEmployee.set_raise_amount(1.10)\nemp = Employee("Anas", 50000)\nemp.apply_raise()\nprint(emp.salary) # 55000',
-      quiz: [{ question: 'Which dunder method allows the use of len(object)?', options: ['__size__', '__length__', '__len__', '__count__'], correctAnswer: 2 }]
-    },
-    {
-      title: 'Memory Management & Garbage Collection',
-      duration: '2h 15m',
-      notes: `### Python Memory Model
-Python manages memory automatically. Every object in Python has a reference count. When an object is created, its reference count is 1. When you assign it to another variable, the count increases. When a variable is deleted, the count decreases.
-
-When the reference count reaches **zero**, Python's Garbage Collector automatically destroys the object and frees the memory.
-
-\`\`\`python
-import sys
-
-a = [1, 2, 3]
-print(sys.getrefcount(a)) # Output: 2 (a and the getrefcount argument)
-b = a
-print(sys.getrefcount(a)) # Output: 3
-del b
-print(sys.getrefcount(a)) # Output: 2
-\`\`\`
-
-### Circular References
-If Object A points to Object B, and Object B points to Object A, their reference counts will never reach zero, causing a memory leak. Python has a "Cyclic Garbage Collector" that detects and cleans these up.`,
-      codeExample: 'import gc\n\n# Force garbage collection\ngc.collect()\n\n# Disable garbage collection (rarely recommended)\n# gc.disable()\n\n# Check threshold for garbage collection\nprint(gc.get_threshold())',
-      quiz: [{ question: 'How does Python primarily track memory?', options: ['Pointers', 'Reference Counting', 'Manual Allocation', 'Linked Lists'], correctAnswer: 1 }]
-    },
-    {
-      title: 'Advanced Data Structures',
-      duration: '2h 30m',
-      notes: `### Beyond Lists and Dictionaries
-Python's standard library provides highly optimized data structures in the \`collections\` module.
-
-*   **\`Counter\`**: A dictionary subclass for counting hashable objects.
-*   **\`defaultdict\`**: A dictionary that provides a default value for missing keys, preventing KeyErrors.
-*   **\`deque\` (Double-Ended Queue)**: Like a list, but appending and popping from the *left* side is extremely fast (O(1) time complexity).
-
-\`\`\`python
-from collections import Counter, defaultdict, deque
-
-# Counter
-words = ["apple", "banana", "apple", "orange", "banana", "apple"]
-count = Counter(words)
-print(count) # Counter({'apple': 3, 'banana': 2, 'orange': 1})
-
-# defaultdict
-dd = defaultdict(int)
-dd["new_key"] += 1
-print(dd) # defaultdict(<class 'int'>, {'new_key': 1})
-\`\`\`
-
-### Why use deque?
-A standard list takes O(n) time to insert at the beginning. A deque takes O(1) time. Use deque when you need a queue (FIFO) or stack (LIFO).`,
-      codeExample: 'from collections import deque\n\nq = deque([1, 2, 3])\nq.append(4)      # Add to right\nq.appendleft(0)  # Add to left\nprint(q) # deque([0, 1, 2, 3, 4])\n\nq.pop()          # Remove from right\nq.popleft()      # Remove from left\nprint(q) # deque([1, 2, 3])',
-      quiz: [{ question: 'Which data structure is best for fast insertions at both ends?', options: ['List', 'Tuple', 'Deque', 'Set'], correctAnswer: 2 }]
-    },
-    {
-      title: 'Testing in Python (Unit Testing)',
-      duration: '2h 15m',
-      notes: `### Why Test?
-Professional developers do not just write code; they write code that *proves* their other code works. Testing prevents bugs from reaching production.
-
-### Pytest vs Unittest
-Python has a built-in \`unittest\` module, but the industry standard is **Pytest** because it uses simple \`assert\` statements.
-
-\`\`\`python
-# test_math.py
-def add(a, b):
-    return a + b
-
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-\`\`\`
-You run tests by typing \`pytest\` in the terminal.
-
-### Test-Driven Development (TDD)
-TDD is a workflow where you write the *test first*, watch it fail, and then write the code to make the test pass. This results in much cleaner architecture.`,
-      codeExample: 'import pytest\n\ndef divide(a, b):\n    if b == 0:\n        raise ValueError("Cannot divide by zero")\n    return a / b\n\ndef test_divide():\n    assert divide(10, 2) == 5.0\n\ndef test_divide_by_zero():\n    with pytest.raises(ValueError):\n        divide(10, 0)',
-      quiz: [{ question: 'Which keyword is used in Pytest to check if an error is raised?', options: ['pytest.raise', 'pytest.throws', 'pytest.raises', 'pytest.error'], correctAnswer: 2 }]
-    },
-    {
-      title: 'Web Scraping (BeautifulSoup)',
-      duration: '2h 45m',
-      notes: `### Scraping the Web
-Web scraping is the process of extracting data from websites. Python is the king of web scraping using two libraries: **Requests** (to download the HTML) and **BeautifulSoup** (to parse the HTML).
-
-\`\`\`python
-import requests
-from bs4 import BeautifulSoup
-
-url = "https://example.com"
-response = requests.get(url)
-
-soup = BeautifulSoup(response.text, 'html.parser')
-title = soup.find('h1').text
-print(title)
-\`\`\`
-
-### Ethical Scraping
-Always check a website's \`robots.txt\` file (e.g., \`example.com/robots.txt\`) to see if they allow scraping. Do not spam their servers with thousands of requests per second.`,
-      codeExample: 'import requests\nfrom bs4 import BeautifulSoup\n\nurl = "https://news.ycombinator.com/"\nresponse = requests.get(url)\nsoup = BeautifulSoup(response.text, "html.parser")\n\n# Find all headline links\nheadlines = soup.find_all("span", class_="titleline")\nfor h in headlines[:5]:\n    print(h.text)',
-      quiz: [{ question: 'Which library is used to parse HTML in Python?', options: ['Pandas', 'NumPy', 'BeautifulSoup', 'Requests'], correctAnswer: 2 }]
+*   **@classmethod**: Takes \`cls\` as the first argument. Used to create factory methods or access class-level variables.
+*   **@staticmethod**: Doesn't take \`self\` or \`cls\`. It behaves like a normal function but is placed inside the class for logical grouping.`,
+      codeExample: 'class Vector:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __repr__(self):\n        return f"Vector({self.x}, {self.y})"\n\nv1 = Vector(2, 3)\nv2 = Vector(5, 1)\nprint(v1 + v2) # Vector(7, 4)',
+      quiz: [{ question: 'Which dunder method allows you to add two objects using the + operator?', options: ['__add__', '__plus__', '__sum__', '__concat__'], correctAnswer: 0 }]
     }
   ]
 };
