@@ -4,7 +4,7 @@ import connectDB from './config/db.js';
 import Course from './models/Course.js';
 import Module from './models/Module.js';
 
-// Import ALL 10 data files
+// Import ALL 11 data files
 import { jsCourseData } from './data/jsCourseData.js';
 import { htmlCourseData } from './data/htmlCourseData.js';
 import { gitCourseData } from './data/gitCourseData.js';
@@ -15,10 +15,12 @@ import { tailwindCourseData } from './data/tailwindCourseData.js';
 import { vercelCourseData } from './data/vercelCourseData.js';
 import { typescriptCourseData } from './data/typescriptCourseData.js';
 import { projectsCourseData } from './data/projectsCourseData.js';
+import { pythonCourseData } from './data/pythonCourseData.js'; // <-- Naya Python Course
 
 dotenv.config();
 connectDB();
 
+// Array of all 11 courses to seed
 const allCoursesData = [
   htmlCourseData,
   jsCourseData,
@@ -29,7 +31,8 @@ const allCoursesData = [
   tailwindCourseData,
   vercelCourseData,
   typescriptCourseData,
-  projectsCourseData
+  projectsCourseData,
+  pythonCourseData // <-- Array mein add kiya
 ];
 
 const seedData = async () => {
