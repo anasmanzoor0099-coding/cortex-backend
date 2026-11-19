@@ -12,16 +12,35 @@ const enrollmentSchema = new mongoose.Schema(
       ref: 'Course',
       required: true,
     },
-    // Array of Module IDs that the student has ticked as completed
     completedModules: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Module',
       },
     ],
+    passedQuizModules: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Module',
+      },
+    ],
+    completedLessons: {
+      type: [String],
+      default: [],
+    },
     progressPercentage: {
       type: Number,
       default: 0,
+      min: 0,
+      max: 100,
+    },
+    lastAccessedAt: {
+      type: Date,
+      default: Date.now,
+    },
+    completedAt: {
+      type: Date,
+      default: null,
     },
   },
   { timestamps: true }
@@ -29,5 +48,6 @@ const enrollmentSchema = new mongoose.Schema(
 
 // Prevent a student from enrolling in the same course twice
 enrollmentSchema.index({ student: 1, course: 1 }, { unique: true });
+enrollmentSchema.index({ course: 1 });
 
 export default mongoose.model('Enrollment', enrollmentSchema);

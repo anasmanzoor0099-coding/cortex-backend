@@ -1,39 +1,49 @@
-import crypto from 'crypto';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import sendEmail from '../utils/sendEmail.js';
+import { isValidEmail, normalizeEmail, validateString } from '../utils/validators.js';
 
-// Helper to generate JWT Token
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+const generateToken = (id, tokenVersion = 0) => {
+  return jwt.sign({ id, tokenVersion }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   });
 };
 
-// @desc    Register user (Step 1: Email Only)
+export const sanitizeUser = (user) => ({
+  _id: user._id,
+  name: user.name,
+  email: user.email,
+  role: user.role,
+});
+
+// @desc    Register user (Step 1: Send 6-digit verification code)
 // @route   POST /api/auth/register
 export const register = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const name = validateString(req.body.name, 2, 80);
+    const email = normalizeEmail(req.body.email);
 
-    // Check if user exists
-    let user = await User.findOne({ email });
-    if (user && user.isVerified) {
-      return res.status(400).json({ message: 'User already exists and is verified.' });
+    if (!name) {
+      return res.status(400).json({ message: 'Please provide a valid name (2–80 characters).' });
+    }
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ message: 'Please provide a valid email address.' });
     }
 
-    // Generate a 6-digit verification token
+    let user = await User.findOne({ email });
+    if (user && user.isVerified) {
+      return res.status(400).json({ message: 'An account with this email already exists. Please log in.' });
+    }
+
     const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
-    const verificationTokenExpire = Date.now() + 15 * 60 * 1000; // 15 mins
+    const verificationTokenExpire = new Date(Date.now() + 15 * 60 * 1000);
 
     if (user && !user.isVerified) {
-      // Update existing unverified user
       user.name = name;
       user.verificationToken = verificationToken;
       user.verificationTokenExpire = verificationTokenExpire;
       await user.save();
     } else {
-      // Create new user
       user = await User.create({
         name,
         email,
@@ -42,11 +52,15 @@ export const register = async (req, res) => {
       });
     }
 
-    // Send email
     const message = `
-      <h2>Welcome to Cortex, ${name}!</h2>
-      <p>Your verification code is: <strong style="font-size: 24px; color: #00f0ff;">${verificationToken}</strong></p>
-      <p>This code expires in 15 minutes.</p>
+      <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px; border: 1px solid #EAE6DF; border-radius: 12px;">
+        <h2 style="color: #1C1C1C; margin-bottom: 8px;">Welcome to Cortex, ${name}!</h2>
+        <p style="color: #6B6B6B;">Use the verification code below to verify your email and set your password:</p>
+        <div style="background: #FDFBF7; border: 1px solid #EAE6DF; border-radius: 8px; padding: 16px; text-align: center; margin: 20px 0;">
+          <strong style="font-size: 28px; letter-spacing: 6px; color: #FF8C42;">${verificationToken}</strong>
+        </div>
+        <p style="color: #6B6B6B; font-size: 13px;">This code expires in 15 minutes. If you did not request this, you can safely ignore this email.</p>
+      </div>
     `;
 
     try {
@@ -55,15 +69,15 @@ export const register = async (req, res) => {
         subject: 'Cortex - Email Verification Code',
         html: message,
       });
-      res.status(201).json({ message: 'Verification code sent to email.' });
-    } catch (error) {
+      return res.status(201).json({ message: 'Verification code sent to your email.' });
+    } catch (emailError) {
       user.verificationToken = undefined;
       user.verificationTokenExpire = undefined;
       await user.save();
-      return res.status(500).json({ message: 'Email could not be sent' });
+      return res.status(500).json({ message: 'Could not send verification email. Please try again later.' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error during registration.' });
   }
 };
 
@@ -71,34 +85,42 @@ export const register = async (req, res) => {
 // @route   POST /api/auth/verify-email
 export const verifyEmailAndSetPassword = async (req, res) => {
   try {
-    const { email, token, password } = req.body;
+    const email = normalizeEmail(req.body.email);
+    const token = typeof req.body.token === 'string' ? req.body.token.trim() : '';
+    const password = typeof req.body.password === 'string' ? req.body.password : '';
+
+    if (!isValidEmail(email) || !/^\d{6}$/.test(token)) {
+      return res.status(400).json({ message: 'Please provide a valid email and 6-digit verification code.' });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters long.' });
+    }
 
     const user = await User.findOne({
       email,
       verificationToken: token,
       verificationTokenExpire: { $gt: Date.now() },
-    });
+    }).select('+verificationToken +verificationTokenExpire');
 
     if (!user) {
       return res.status(400).json({ message: 'Invalid or expired verification code.' });
     }
 
-    // Set password and verify
     user.password = password;
     user.isVerified = true;
     user.verificationToken = undefined;
     user.verificationTokenExpire = undefined;
     await user.save();
 
-    const jwtToken = generateToken(user._id);
+    const jwtToken = generateToken(user._id, user.tokenVersion ?? 0);
 
-    res.status(200).json({
-      message: 'Email verified successfully! You can now login.',
+    return res.status(200).json({
+      message: 'Email verified successfully!',
       token: jwtToken,
-      user: { _id: user._id, name: user.name, email: user.email, role: user.role }
+      user: sanitizeUser(user),
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error during email verification.' });
   }
 };
 
@@ -106,26 +128,35 @@ export const verifyEmailAndSetPassword = async (req, res) => {
 // @route   POST /api/auth/login
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = normalizeEmail(req.body.email);
+    const password = typeof req.body.password === 'string' ? req.body.password : '';
+
+    if (!isValidEmail(email) || !password) {
+      return res.status(400).json({ message: 'Please provide a valid email and password.' });
+    }
 
     const user = await User.findOne({ email }).select('+password');
-    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
-    
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid email or password.' });
+    }
+
     if (!user.isVerified) {
-      return res.status(401).json({ message: 'Please verify your email first.' });
+      return res.status(401).json({ message: 'Please verify your email before logging in.' });
     }
 
     const isMatch = await user.matchPassword(password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid email or password.' });
+    }
 
-    const token = generateToken(user._id);
+    const token = generateToken(user._id, user.tokenVersion ?? 0);
 
-    res.status(200).json({
+    return res.status(200).json({
       token,
-      user: { _id: user._id, name: user.name, email: user.email, role: user.role }
+      user: sanitizeUser(user),
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error during login.' });
   }
 };
 
@@ -133,30 +164,47 @@ export const login = async (req, res) => {
 // @route   POST /api/auth/forgot-password
 export const forgotPassword = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(404).json({ message: 'There is no user with that email.' });
+    const email = normalizeEmail(req.body.email);
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ message: 'Please provide a valid email address.' });
+    }
 
-    // Generate 6-digit reset token
+    const user = await User.findOne({ email });
+    if (!user || !user.isVerified) {
+      return res.status(404).json({ message: 'No verified account found with that email address.' });
+    }
+
     const resetToken = Math.floor(100000 + Math.random() * 900000).toString();
     user.resetPasswordToken = resetToken;
-    user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+    user.resetPasswordExpire = new Date(Date.now() + 15 * 60 * 1000);
     await user.save();
 
     const message = `
-      <h2>Password Reset</h2>
-      <p>Your password reset code is: <strong style="font-size: 24px; color: #00f0ff;">${resetToken}</strong></p>
-      <p>This code expires in 15 minutes.</p>
+      <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; padding: 24px; border: 1px solid #EAE6DF; border-radius: 12px;">
+        <h2 style="color: #1C1C1C; margin-bottom: 8px;">Password Reset Request</h2>
+        <p style="color: #6B6B6B;">Use the 6-digit code below to reset your Cortex password:</p>
+        <div style="background: #FDFBF7; border: 1px solid #EAE6DF; border-radius: 8px; padding: 16px; text-align: center; margin: 20px 0;">
+          <strong style="font-size: 28px; letter-spacing: 6px; color: #FF8C42;">${resetToken}</strong>
+        </div>
+        <p style="color: #6B6B6B; font-size: 13px;">This code expires in 15 minutes. If you did not request a password reset, please ignore this email.</p>
+      </div>
     `;
 
-    await sendEmail({
-      email: user.email,
-      subject: 'Cortex - Password Reset Code',
-      html: message,
-    });
-
-    res.status(200).json({ message: 'Reset code sent to email.' });
+    try {
+      await sendEmail({
+        email: user.email,
+        subject: 'Cortex - Password Reset Code',
+        html: message,
+      });
+      return res.status(200).json({ message: 'Password reset code sent to your email.' });
+    } catch (emailError) {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
+      await user.save();
+      return res.status(500).json({ message: 'Could not send reset email. Please try again later.' });
+    }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error while processing password reset.' });
   }
 };
 
@@ -164,53 +212,77 @@ export const forgotPassword = async (req, res) => {
 // @route   POST /api/auth/reset-password
 export const resetPassword = async (req, res) => {
   try {
-    const { email, token, newPassword } = req.body;
+    const email = normalizeEmail(req.body.email);
+    const token = typeof req.body.token === 'string' ? req.body.token.trim() : '';
+    const newPassword = typeof req.body.newPassword === 'string' ? req.body.newPassword : '';
+
+    if (!isValidEmail(email) || !/^\d{6}$/.test(token)) {
+      return res.status(400).json({ message: 'Please provide a valid email and 6-digit reset code.' });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ message: 'New password must be at least 6 characters long.' });
+    }
 
     const user = await User.findOne({
       email,
       resetPasswordToken: token,
       resetPasswordExpire: { $gt: Date.now() },
-    });
+    }).select('+resetPasswordToken +resetPasswordExpire');
 
-    if (!user) return res.status(400).json({ message: 'Invalid or expired reset code.' });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired reset code.' });
+    }
 
     user.password = newPassword;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save();
 
-    res.status(200).json({ message: 'Password reset successful. You can now login.' });
+    return res.status(200).json({ message: 'Password reset successful. You can now log in.' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error while resetting password.' });
   }
 };
+
 // @desc    Upgrade user to instructor using a secret code
 // @route   PUT /api/auth/become-instructor
 export const becomeInstructor = async (req, res) => {
   try {
-    const { secretCode } = req.body;
+    const secretCode = typeof req.body.secretCode === 'string' ? req.body.secretCode.trim() : '';
+    const configuredCode = process.env.INSTRUCTOR_SECRET_CODE;
 
-    // Check if the code matches the .env variable
-    if (secretCode !== process.env.INSTRUCTOR_SECRET_CODE) {
+    if (!configuredCode) {
+      return res.status(503).json({ message: 'Instructor onboarding is currently unavailable.' });
+    }
+
+    if (!secretCode || secretCode !== configuredCode) {
       return res.status(401).json({ message: 'Invalid instructor secret code.' });
     }
 
-    // Find the user and update their role
     const user = await User.findById(req.user._id);
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
 
     if (user.role === 'instructor' || user.role === 'admin') {
-      return res.status(400).json({ message: 'You are already an instructor.' });
+      return res.status(400).json({ message: 'You already have instructor privileges.' });
     }
 
     user.role = 'instructor';
     await user.save();
 
-    res.status(200).json({ 
+    return res.status(200).json({
       message: 'Congratulations! You are now an instructor.',
-      role: user.role
+      role: user.role,
+      user: sanitizeUser(user),
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: 'Server error while updating role.' });
   }
+};
+
+// @desc    Get current authenticated user profile
+// @route   GET /api/auth/me
+export const getMe = async (req, res) => {
+  return res.status(200).json({ user: sanitizeUser(req.user) });
 };

@@ -5,8 +5,8 @@ import Course from './models/Course.js';
 import Module from './models/Module.js';
 
 // Import ALL 11 data files
-import { jsCourseData } from './data/jsCourseData.js';
 import { htmlCourseData } from './data/htmlCourseData.js';
+import { jsCourseData } from './data/jsCourseData.js';
 import { gitCourseData } from './data/gitCourseData.js';
 import { reactCourseData } from './data/reactCourseData.js';
 import { nodeCourseData } from './data/nodeCourseData.js';
@@ -15,12 +15,10 @@ import { tailwindCourseData } from './data/tailwindCourseData.js';
 import { vercelCourseData } from './data/vercelCourseData.js';
 import { typescriptCourseData } from './data/typescriptCourseData.js';
 import { projectsCourseData } from './data/projectsCourseData.js';
-import { pythonCourseData } from './data/pythonCourseData.js'; // <-- Naya Python Course
+import { pythonCourseData } from './data/pythonCourseData.js';
 
 dotenv.config();
-connectDB();
 
-// Array of all 11 courses to seed
 const allCoursesData = [
   htmlCourseData,
   jsCourseData,
@@ -32,33 +30,39 @@ const allCoursesData = [
   vercelCourseData,
   typescriptCourseData,
   projectsCourseData,
-  pythonCourseData // <-- Array mein add kiya
+  pythonCourseData,
 ];
 
 const seedData = async () => {
   try {
+    await connectDB();
+
     await Course.deleteMany();
     await Module.deleteMany();
-    console.log('🧹 Old data cleared...');
+    console.log('🧹 Old courses and modules cleared...');
+
+    let totalModules = 0;
 
     for (const courseData of allCoursesData) {
       const { modules, ...courseFields } = courseData;
-      
+
       const createdCourse = await Course.create(courseFields);
-      
-      const moduleDocs = modules.map(mod => ({
+
+      const moduleDocs = modules.map((mod, index) => ({
         ...mod,
-        courseId: createdCourse._id
+        order: mod.order ?? index,
+        courseId: createdCourse._id,
       }));
 
       await Module.insertMany(moduleDocs);
+      totalModules += moduleDocs.length;
     }
 
-    console.log(`✅ SUCCESS: ${allCoursesData.length} Massive Detailed Courses created!`);
-    console.log('🎉 Database Seeding Complete!');
-    process.exit();
+    console.log(`✅ SUCCESS: ${allCoursesData.length} courses and ${totalModules} modules created!`);
+    await mongoose.connection.close();
+    process.exit(0);
   } catch (error) {
-    console.error(`❌ Error: ${error.message}`);
+    console.error(`❌ Error seeding database: ${error.message}`);
     process.exit(1);
   }
 };

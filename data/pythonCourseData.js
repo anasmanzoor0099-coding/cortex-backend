@@ -1,4959 +1,2165 @@
 export const pythonCourseData = {
-  title: 'The Complete Python Masterclass: Beginner to Professional',
-  description: 'Master Python from absolute beginner to professional level, including programming fundamentals, data structures, OOP, testing, algorithms, APIs, databases, automation, concurrency, security, and real-world projects.',
-  thumbnail: 'python',
-  totalDuration: '60h 00m',
-  modules: [
+  "title": "Python Programming Mastery",
+  "description": "Master Python from foundational syntax and memory model to object-oriented design, file persistence, automated testing, and memory-efficient generators.",
+  "thumbnail": "python",
+  "totalDuration": "61h 00m",
+  "category": "Programming Languages",
+  "difficulty": "Beginner",
+  "tags": [
+    "Python",
+    "OOP",
+    "Testing",
+    "Automation",
+    "Data Structures"
+  ],
+  "learningOutcomes": [
+    "Write clean, idiomatic Python following PEP 8 and type hinting best practices",
+    "Understand Python memory model, mutability, scope, and collections deeply",
+    "Design modular applications using Object-Oriented Programming and custom exceptions",
+    "Persist and process data using files, JSON, and defensive validation",
+    "Write automated test suites with unittest and pytest, and build lazy generator pipelines"
+  ],
+  "prerequisites": [
+    "Basic computer literacy — no prior programming experience required"
+  ],
+  "targetAudience": "Beginners and aspiring backend/automation engineers who want a complete, production-grade foundation in Python.",
+  "practicalProject": "Build a CLI Student Records & Grade Analytics System with JSON persistence, custom exception handling, and automated pytest coverage.",
+  "modules": [
     {
-      title: 'Module 1: Introduction to Python',
-      duration: '2h 00m',
-      notes: `### What is Python?
-Python is a high-level, general-purpose programming language used in web development, automation, data science, artificial intelligence, and scripting.
-
-### Installing Python
-Install Python from python.org and verify it in your terminal using \`python --version\` or \`py --version\` on Windows.
-
-### Your first program
-\`\`\`python
-print("Hello, Python!")
-print("Welcome to Cortex.")
-\`\`\`
-
-### Understanding print()
-The \`print()\` function displays information in the terminal. You can print text, numbers, variables, and the results of expressions.
-
-### Comments
-Use \`#\` for single-line comments. Comments explain code and are ignored by the interpreter.
-
-### Indentation
-Python uses indentation to define code blocks. Use four spaces consistently.
-
-### Running a Python file
-Save your program as \`main.py\` and run \`python main.py\` in the terminal.`,
-      codeExample: `print("Welcome to Python Masterclass!")
-
-name = input("Enter your name: ")
-print(f"Hello, {name}!")
-
-print("Python is easy to read.")
-print(10 + 20)
-print(type(name))`,
-      quiz: [
+      "title": "Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model",
+      "duration": "5h 00m",
+      "notes": "# Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain Python's purpose, strengths, and common applications.\n- Understand how Python source code is executed.\n- Install Python and configure Visual Studio Code.\n- Run Python programs through the terminal and editor.\n- Apply Python syntax, indentation, comments, and naming conventions.\n- Understand variables as names bound to objects.\n- Distinguish dynamic typing from static typing.\n- Recognize fundamental built-in data types.\n- Perform string indexing, slicing, concatenation, and formatting.\n- Collect user input and convert it to appropriate types.\n- Handle common errors and invalid input.\n- Build a small interactive application using professional coding practices.\n\n---\n\n## 2. Introduction to Python\n\nPython is a high-level, general-purpose programming language created by Guido van Rossum. Its first public release appeared in 1991.\n\nPython emphasizes readability and developer productivity. Its syntax allows programmers to express many ideas with less boilerplate than languages that require more explicit declarations and structural punctuation.\n\n### 2.1 Where Python Is Used\n\nPython is used in many areas of software development:\n\n1. **Web development:** Django, Flask, and FastAPI.\n2. **Data analysis:** Pandas and NumPy.\n3. **Artificial intelligence:** PyTorch and TensorFlow.\n4. **Automation:** File processing, repetitive tasks, and testing.\n5. **Backend development:** APIs, authentication services, and business logic.\n6. **Scientific computing:** Numerical calculations and research tools.\n7. **Education:** Learning programming concepts and problem-solving.\n\nPython is versatile, but it is not automatically the best choice for every task. Performance requirements, deployment targets, available libraries, and project constraints influence language selection.\n\n### 2.2 Why Developers Choose Python\n\n**Readable syntax**\n\n    student_name = \"Ayesha\"\n    print(student_name)\n\nThis example is straightforward to understand without extensive boilerplate.\n\n**A large standard library**\n\nPython includes modules for tasks such as mathematics, dates, file handling, JSON processing, networking, and testing.\n\n**A large ecosystem**\n\nThird-party packages extend Python for web applications, machine learning, data analysis, and many other domains.\n\n**Cross-platform support**\n\nPython programs can run on Windows, macOS, and Linux, subject to operating-system dependencies and compatible packages.\n\n### 2.3 Python's Design Philosophy\n\nPython's design philosophy values readability, simplicity, and explicit code. You can inspect parts of this philosophy by running:\n\n    import this\n\nThis displays the Zen of Python in a standard Python environment.\n\n---\n\n## 3. How Python Executes a Program\n\nA Python program typically begins as source code in a file ending in `.py`.\n\nFor example:\n\n    print(\"Hello, Python!\")\n\nWhen you run a program using the standard CPython implementation, the process broadly involves:\n\n1. Python reads and parses the source code.\n2. The compiler produces Python bytecode for execution.\n3. The Python virtual machine executes that bytecode.\n4. The program interacts with memory, the operating system, and other resources as required.\n\n### 3.1 Source Code, Bytecode, and Machine Code\n\n**Source code** is the human-readable Python program you write.\n\n**Bytecode** is an intermediate representation used by CPython.\n\n**Machine code** consists of processor instructions executed directly by a CPU.\n\nDo not assume Python simply interprets every source line directly as machine instructions. CPython generally compiles source into bytecode before execution. Other Python implementations may use different execution strategies.\n\n### 3.2 Is Python Compiled or Interpreted?\n\nPython is commonly described as an interpreted language because developers usually run programs through a Python runtime rather than compiling a standalone native executable themselves.\n\nHowever, the description is simplified: CPython compiles source into bytecode and then executes it. The distinction between compiled and interpreted languages is more nuanced than a strict either-or classification.\n\n### 3.3 Why This Matters\n\nUnderstanding the execution process helps you distinguish:\n\n- A syntax error that prevents a program from being compiled successfully.\n- A runtime error that occurs during execution.\n- A logical error where the program runs but produces the wrong result.\n\nThese are different problems and require different debugging strategies.\n\n---\n\n## 4. Installing Python and Configuring Your Environment\n\nA development environment includes the Python interpreter, code editor, terminal, and any tools needed to run or debug a program.\n\n### 4.1 Install Python\n\n1. Visit the official Python website at python.org.\n2. Download a stable Python 3 release suitable for your operating system.\n3. Run the installer.\n4. On Windows, enable the option to add Python to PATH if the installer provides it.\n5. Complete the installation.\n6. Open a new terminal and verify the installation.\n\nTry:\n\n    python --version\n\nIf that command does not work on Windows, try:\n\n    py --version\n\nOn macOS or Linux, you may need:\n\n    python3 --version\n\nA successful command displays the installed Python version.\n\n### 4.2 Install Visual Studio Code\n\n1. Install Visual Studio Code.\n2. Open the Extensions panel.\n3. Install the official Python extension from Microsoft.\n4. Open a project folder.\n5. Create a file named `main.py`.\n6. Use the command palette to select the appropriate Python interpreter if required.\n\nRemember that Visual Studio Code is the editor; the Python interpreter is a separate program that executes your code.\n\n### 4.3 Your First Program\n\nCreate `main.py`:\n\n    print(\"Hello, Python!\")\n    print(\"I am learning software development.\")\n\nSave the file.\n\nOpen the integrated terminal in VS Code and run:\n\n    python main.py\n\nIf the command is unavailable on Windows, try:\n\n    py main.py\n\nOn macOS or Linux, try:\n\n    python3 main.py\n\nExpected output:\n\n    Hello, Python!\n    I am learning software development.\n\n### 4.4 A Simple Project Structure\n\nFor a small learning project:\n\n    python-masterclass/\n        main.py\n        README.md\n\nAs projects grow, you may add separate folders for source code, tests, configuration, and documentation.\n\n### 4.5 Recommended Development Workflow\n\n1. Write a small amount of code.\n2. Save the file.\n3. Run the program.\n4. Read the output and any error messages.\n5. Test normal and unusual inputs.\n6. Fix the problem.\n7. Run the program again.\n\nThis repeatable cycle is more effective than writing a large program before testing anything.\n\n---\n\n## 5. Python Syntax and Indentation\n\nSyntax defines the rules for writing valid programs.\n\nPython uses indentation to define blocks of code. Many other languages use braces to mark those blocks.\n\n### 5.1 Correct Indentation\n\n    temperature = 35\n\n    if temperature > 30:\n        print(\"It is hot\")\n        print(\"Stay hydrated\")\n\n    print(\"Program finished\")\n\nThe two indented statements belong to the if block. The final print statement is outside that block.\n\n### 5.2 Incorrect Indentation\n\nThe following example is intentionally invalid:\n\n    # if temperature > 30:\n    # print(\"It is hot\")\n\nThe statement inside the block is not indented, so Python raises an indentation-related error.\n\n### 5.3 The Four-Space Convention\n\nPEP 8, Python's widely used style guide, recommends four spaces per indentation level.\n\nUse consistent spaces rather than mixing tabs and spaces.\n\n### 5.4 Case Sensitivity\n\nPython identifiers are case-sensitive.\n\n    score = 90\n    Score = 75\n\nThese are two different names.\n\nSimilarly:\n\n    print(\"Hello\")\n\nis valid, while writing `Print(\"Hello\")` does not call the built-in `print()` function.\n\n### 5.5 Statements and Expressions\n\nA **statement** performs an action.\n\n    score = 90\n\nAn **expression** produces a value.\n\n    score + 10\n\nExpressions can appear inside statements:\n\n    updated_score = score + 10\n\n### 5.6 Comments\n\nA comment begins with the `#` character.\n\n    # Calculate the student's final score\n    final_score = 85\n\nComments help explain why a decision was made or clarify a non-obvious part of the code.\n\nAvoid comments that merely repeat the obvious:\n\n    # Set score to 85\n    score = 85\n\n### 5.7 Docstrings\n\nTriple-quoted strings are commonly used for documentation strings, called docstrings, when placed at the beginning of a module, function, class, or method.\n\n    \"\"\"Utilities for calculating student results.\"\"\"\n\nA triple-quoted string is not automatically a comment. It is a string literal. Its meaning depends on where and how it is used.\n\n---\n\n## 6. Variables and Naming Conventions\n\nA variable name allows your program to refer to a value.\n\n    student_name = \"Ayesha\"\n    student_age = 20\n    course_score = 92.5\n\nPython binds each name to an object.\n\n### 6.1 Valid Variable Names\n\nValid examples:\n\n    name = \"Ali\"\n    student_count = 30\n    _temporary_value = 10\n    score2 = 85\n\nInvalid examples:\n\n    # 2score = 85\n    # student-name = \"Ali\"\n    # class = \"Python\"\n\nThe examples are commented out because they are invalid Python assignments.\n\nRules include:\n\n- Names cannot start with a digit.\n- Names may contain letters, digits, and underscores.\n- Hyphens are not permitted in ordinary identifiers.\n- Reserved keywords cannot be used as variable names.\n- Names are case-sensitive.\n\n### 6.2 Use Meaningful Names\n\nAvoid vague names when a descriptive name is available.\n\nLess clear:\n\n    x = 4500\n    y = 0.15\n\nClearer:\n\n    monthly_salary = 4500\n    tax_rate = 0.15\n\nMeaningful names make code easier to read, maintain, and debug.\n\n### 6.3 Python Naming Style\n\nPEP 8 commonly recommends:\n\n- Variables and functions: `snake_case`\n- Classes: `PascalCase`\n- Constants: uppercase names with underscores\n\nExamples:\n\n    student_total = 50\n    MAX_ATTEMPTS = 5\n\n    class StudentProfile:\n        pass\n\nUppercase constant names communicate intent; Python does not enforce them as immutable constants.\n\n---\n\n## 7. The Python Memory Model\n\nUnderstanding how names and objects relate to one another is important for more advanced programming.\n\n### 7.1 Variables Are Names Bound to Objects\n\nConsider:\n\n    age = 20\n\nConceptually, Python creates or reuses an integer object representing 20 and binds the name `age` to that object.\n\nThe variable is not best understood as a permanently reserved box containing a value. A Python name refers to an object.\n\n### 7.2 Rebinding a Name\n\n    value = 100\n    value = \"Python\"\n\nThe name `value` first refers to an integer object and is later rebound to a string object.\n\nThis is allowed because Python uses dynamic typing.\n\n### 7.3 Multiple Names Can Refer to One Object\n\n    first = [10, 20, 30]\n    second = first\n\n    second.append(40)\n\n    print(first)\n    print(second)\n\nOutput:\n\n    [10, 20, 30, 40]\n    [10, 20, 30, 40]\n\nBoth names refer to the same list. Modifying that list through either reference affects the same object.\n\n### 7.4 Separate Objects Can Have Equal Values\n\n    first = [1, 2, 3]\n    second = [1, 2, 3]\n\n    print(first == second)\n    print(first is second)\n\nOutput:\n\n    True\n    False\n\nThe equality operator checks whether the values are equal. The identity operator checks whether the references point to the same object.\n\n### 7.5 Mutable and Immutable Objects\n\nCommon immutable types include:\n\n- int\n- float\n- bool\n- str\n- tuple, when considering the tuple's own item references\n\nCommon mutable types include:\n\n- list\n- dict\n- set\n\nExample with an immutable integer:\n\n    number = 10\n    updated_number = number\n    updated_number = updated_number + 5\n\n    print(number)\n    print(updated_number)\n\nOutput:\n\n    10\n    15\n\nRebinding `updated_number` does not change the integer associated with `number`.\n\nExample with a mutable list:\n\n    original = [1, 2]\n    alias = original\n    alias.append(3)\n\n    print(original)\n\nOutput:\n\n    [1, 2, 3]\n\nThe list is modified in place, so both names still refer to the modified object.\n\n### 7.6 Why the Memory Model Matters\n\nThis knowledge becomes important when working with:\n\n- Function arguments\n- Lists and dictionaries\n- Object-oriented programming\n- Shared state\n- Copying data\n- Debugging unexpected changes\n\nLater modules will explore these ideas in greater detail.\n\n---\n\n## 8. Dynamic Typing and Type Inspection\n\nPython is dynamically typed. You do not normally declare a variable's type before assigning a value.\n\n    item = 42\n    print(type(item))\n\n    item = \"Python\"\n    print(type(item))\n\nThe name can be rebound to objects of different types.\n\n### 8.1 Common Built-in Types\n\n| Type | Example | Purpose |\n|---|---|---|\n| int | `42` | Whole-number values |\n| float | `3.14` | Floating-point numbers |\n| str | `\"Hello\"` | Text |\n| bool | `True` | Logical truth values |\n| NoneType | `None` | Absence of a value |\n| list | `[1, 2, 3]` | Mutable sequence |\n| tuple | `(1, 2, 3)` | Immutable sequence of references |\n| dict | `{\"name\": \"Ali\"}` | Key-value mapping |\n| set | `{1, 2, 3}` | Collection of unique hashable values |\n\nThis module focuses on fundamental types and strings. Collections will receive more detailed treatment in later modules.\n\n### 8.2 The type() Function\n\n    price = 99.5\n    print(type(price))\n\nOutput:\n\n    <class 'float'>\n\nThe `type()` function helps inspect the type of an object.\n\n### 8.3 The isinstance() Function\n\n    age = 20\n\n    print(isinstance(age, int))\n    print(isinstance(age, str))\n\nOutput:\n\n    True\n    False\n\nUse `isinstance()` when checking whether an object belongs to a type or a compatible subclass.\n\nOne detail: in Python, `bool` is a subclass of `int`, so `isinstance(True, int)` evaluates to True. If a program must reject Boolean values where an integer is expected, additional validation is needed.\n\n### 8.4 Dynamic Typing Does Not Mean No Rules\n\nPython still enforces operations supported by the objects involved.\n\n    # This raises TypeError:\n    # print(\"Age: \" + 20)\n\nThe string and integer cannot be concatenated directly using `+`. Convert the integer to a string or use an f-string.\n\n---\n\n## 9. Type Conversion and Casting\n\nType conversion changes a value from one type to another when the conversion is supported.\n\n### 9.1 Common Conversion Functions\n\n    number = int(\"42\")\n    price = float(\"19.99\")\n    message = str(100)\n    enabled = bool(1)\n\n    print(number)\n    print(price)\n    print(message)\n    print(enabled)\n\nOutput:\n\n    42\n    19.99\n    100\n    True\n\n### 9.2 Conversion Can Fail\n\n    # This raises ValueError:\n    # age = int(\"twenty\")\n\nA program that converts user input should handle invalid values when they are possible.\n\n### 9.3 Integer Conversion and Decimal Values\n\n    print(int(8.9))\n    print(int(-8.9))\n\nOutput:\n\n    8\n    -8\n\nConverting a float to an integer truncates the fractional part toward zero. It does not round to the nearest integer.\n\n### 9.4 Boolean Conversion\n\n    print(bool(0))\n    print(bool(1))\n    print(bool(\"\"))\n    print(bool(\"False\"))\n\nOutput:\n\n    False\n    True\n    False\n    True\n\nA non-empty string is truthy, even when its text reads \"False\".\n\nThis matters when validating user input: converting the string `\"False\"` using `bool()` does not parse it as a logical false value.\n\n---\n\n## 10. Strings: Text in Python\n\nA string is an immutable sequence of Unicode code points.\n\nStrings can be written with single or double quotes:\n\n    first_message = 'Hello'\n    second_message = \"Python\"\n\nTriple-quoted strings can span multiple lines:\n\n    description = \"\"\"Python is readable.\n    Python supports many programming domains.\"\"\"\n\n### 10.1 String Concatenation\n\nConcatenation joins strings.\n\n    first_name = \"Anas\"\n    last_name = \"Manzoor\"\n\n    full_name = first_name + \" \" + last_name\n    print(full_name)\n\nOutput:\n\n    Anas Manzoor\n\nBoth operands must be compatible with string concatenation.\n\n### 10.2 String Repetition\n\n    laugh = \"Ha\" * 3\n    print(laugh)\n\nOutput:\n\n    HaHaHa\n\n### 10.3 String Length\n\nUse `len()` to count the number of elements in a string.\n\n    language = \"Python\"\n    print(len(language))\n\nOutput:\n\n    6\n\n### 10.4 Indexing\n\nPython string indexes start at zero.\n\n    language = \"Python\"\n\n    print(language[0])\n    print(language[1])\n    print(language[-1])\n\nOutput:\n\n    P\n    y\n    n\n\nPositive indexes count from the beginning. Negative indexes count backward from the end.\n\nAn index outside the valid range raises an IndexError.\n\n### 10.5 Slicing\n\nSlicing extracts part of a sequence.\n\nSyntax:\n\n    text[start:stop:step]\n\nThe stop position is excluded.\n\n    text = \"Programming\"\n\n    print(text[0:4])\n    print(text[:4])\n    print(text[4:])\n    print(text[::2])\n    print(text[::-1])\n\nOutput:\n\n    Prog\n    Prog\n    ramming\n    Pormig\n    gnimmargorP\n\nA slice usually returns a new string. It does not modify the original string.\n\n### 10.6 String Immutability\n\nStrings cannot be modified in place.\n\n    word = \"Python\"\n\n    # This raises TypeError:\n    # word[0] = \"J\"\n\n    word = \"J\" + word[1:]\n    print(word)\n\nOutput:\n\n    Jython\n\nThe final assignment creates a new string value and rebinds the name `word`.\n\n### 10.7 Essential String Methods\n\n    text = \"  Hello Python  \"\n\n    print(text.strip())\n    print(text.lower())\n    print(text.upper())\n    print(text.replace(\"Python\", \"World\"))\n    print(text.startswith(\"  Hello\"))\n    print(text.find(\"Python\"))\n\nString methods generally return new strings or results rather than modifying the original string.\n\n### 10.8 Splitting and Joining\n\n    csv_line = \"Ali,Sara,Ahmed\"\n    names = csv_line.split(\",\")\n\n    print(names)\n\n    combined = \" | \".join(names)\n    print(combined)\n\nOutput:\n\n    ['Ali', 'Sara', 'Ahmed']\n    Ali | Sara | Ahmed\n\nThese operations are useful for processing simple delimited text. Real CSV files can contain quoted fields and embedded separators, so use Python's `csv` module for proper CSV file processing.\n\n### 10.9 Case Normalization\n\n    email = \"STUDENT@EXAMPLE.COM\"\n\n    normalized_email = email.strip().lower()\n    print(normalized_email)\n\nNormalization can help with consistent comparisons. For real identity and email systems, follow the service's actual validation and comparison rules rather than assuming every identifier is case-insensitive.\n\n---\n\n## 11. User Input and Output\n\n### 11.1 The print() Function\n\n    print(\"Hello\", \"World\")\n    print(\"Python\", 3)\n\nBy default, print separates multiple arguments with a space and ends with a newline.\n\nYou can customize the separator and ending:\n\n    print(\"2026\", \"10\", \"29\", sep=\"-\")\n    print(\"Loading\", end=\"...\")\n    print(\"Done\")\n\n### 11.2 The input() Function\n\nThe `input()` function displays an optional prompt and returns the entered text as a string.\n\n    name = input(\"Enter your name: \")\n    print(\"Welcome\", name)\n\nEven when the user types digits, the result is initially a string.\n\n### 11.3 Converting Numeric Input\n\n    age_text = input(\"Enter your age: \")\n    age = int(age_text)\n\n    print(\"Next year you will be\", age + 1)\n\nIf the user enters a non-integer value, `int()` raises ValueError. Use exception handling when input may be invalid.\n\n### 11.4 F-Strings\n\nF-strings make it easy to embed values in text.\n\n    name = \"Anas\"\n    age = 20\n\n    print(f\"My name is {name} and I am {age} years old.\")\n\nYou can include expressions:\n\n    price = 1250\n    quantity = 3\n\n    print(f\"Total: {price * quantity}\")\n\n### 11.5 Formatting Decimal Places\n\n    average = 87.45678\n\n    print(f\"Average: {average:.2f}\")\n\nOutput:\n\n    Average: 87.46\n\nThe format specification `.2f` displays a floating-point number to two decimal places. Formatting controls how a value is displayed; it does not change the underlying numeric value.\n\n---\n\n## 12. Handling Errors and Debugging\n\nErrors are a normal part of software development. Learning to identify them is a core programming skill.\n\n### 12.1 SyntaxError\n\nOccurs when Python cannot parse the code.\n\n    # Intentionally invalid:\n    # print(\"Hello\"\n\nThe closing parenthesis is missing.\n\n### 12.2 IndentationError\n\nOccurs when indentation rules are violated.\n\n    # Intentionally invalid:\n    # if True:\n    # print(\"Hello\")\n\n### 12.3 NameError\n\nOccurs when a name is not defined in the current accessible scope.\n\n    # Intentionally invalid:\n    # print(student_score)\n\nDefine the variable before using it.\n\n### 12.4 TypeError\n\nOccurs when an operation is not supported for the given types.\n\n    # Intentionally invalid:\n    # print(\"Age: \" + 21)\n\nCorrect alternatives:\n\n    print(\"Age:\", 21)\n    print(\"Age: \" + str(21))\n    print(f\"Age: {21}\")\n\n### 12.5 ValueError\n\nOccurs when the type is suitable for an operation but the supplied value is invalid for that conversion or operation.\n\n    # This raises ValueError:\n    # int(\"hello\")\n\n### 12.6 IndexError\n\nOccurs when a sequence is accessed using an invalid index.\n\n    letters = [\"A\", \"B\"]\n\n    # This raises IndexError:\n    # print(letters[5])\n\n### 12.7 A Basic Debugging Workflow\n\nWhen a program fails:\n\n1. Read the final line of the traceback to identify the error type and message.\n2. Inspect the line number mentioned in the traceback.\n3. Check the values and types involved.\n4. Reproduce the issue with a small example.\n5. Fix the cause rather than hiding the error.\n6. Run the program again and test related cases.\n\nAvoid catching every exception without a reason. Exception handling should help the program recover from known problems without hiding programming mistakes.\n\n---\n\n## 13. Practical Project: Interactive Student Profile\n\nThis project combines variables, strings, numeric conversion, validation, and f-string formatting.\n\n    print(\"=== Student Profile Creator ===\")\n\n    name = input(\"Enter your name: \").strip()\n    department = input(\"Enter your department: \").strip()\n    age_text = input(\"Enter your age: \").strip()\n\n    try:\n        age = int(age_text)\n\n        if not name:\n            print(\"Error: name cannot be empty\")\n\n        elif not department:\n            print(\"Error: department cannot be empty\")\n\n        elif age < 1 or age > 120:\n            print(\"Error: enter a reasonable age\")\n\n        else:\n            print(\"\\n=== Student Profile ===\")\n            print(f\"Name: {name}\")\n            print(f\"Department: {department}\")\n            print(f\"Age: {age}\")\n            print(f\"Next year: {age + 1}\")\n\n    except ValueError:\n        print(\"Error: age must be a whole number\")\n\n### Project Analysis\n\nThis program demonstrates several important ideas:\n\n- `input()` collects text.\n- `strip()` removes surrounding whitespace.\n- `int()` converts age into an integer.\n- `try-except` handles invalid numeric input.\n- Conditional statements validate required fields and age.\n- F-strings format the output.\n\nThe program is a learning example, not a complete student management system. A production application would also need appropriate data storage, validation rules, access controls, and privacy protections.\n\n---\n\n## 14. Additional Practice Challenges\n\n### Beginner\n\n1. Print your name, university, department, and programming goal.\n2. Create variables representing your age, semester, and favorite language.\n3. Ask for a user's name and display a welcome message.\n4. Convert a string containing a number to an integer and add 10.\n5. Print the first and last characters of a word.\n\n### Intermediate\n\n6. Ask for a full name and normalize extra whitespace.\n7. Reverse a string using slicing.\n8. Ask for a product name, unit price, and quantity, then calculate the total.\n9. Accept an age as input and handle invalid values safely.\n10. Demonstrate the difference between equality and identity using two lists.\n\n### Advanced\n\n11. Explain what happens when two names refer to the same mutable list.\n12. Write a string-processing program that removes surrounding whitespace and normalizes case.\n13. Refactor a program that repeats output formatting into a reusable function.\n14. Design a small input-validation workflow that separates invalid input from valid application data.\n15. Describe the differences among SyntaxError, NameError, TypeError, and ValueError, with one example of each.\n\n---\n\n## 15. Professional Coding Checklist\n\nBefore considering a program complete, ask:\n\n- Are variable names descriptive?\n- Is indentation consistent?\n- Are comments useful rather than repetitive?\n- Does the program validate external input?\n- Are expected error conditions handled?\n- Are strings formatted clearly?\n- Have boundary cases been tested?\n- Does the code separate calculation from display when appropriate?\n- Are any exceptions being hidden unnecessarily?\n- Can another developer understand the program without guessing?\n\nProfessional code is not merely code that runs. It should also be understandable, maintainable, and reliable.\n\n---\n\n## 16. Module Summary\n\nIn this module, you learned the essential foundations of Python programming.\n\nYou explored Python's applications, execution process, development environment, syntax, indentation, comments, variables, and naming conventions.\n\nYou also learned how names refer to objects, how dynamic typing works, and how mutable and immutable objects differ.\n\nYou practiced fundamental data types, type conversion, string indexing and slicing, string methods, input/output, and f-string formatting.\n\nFinally, you learned to identify common errors, handle invalid input, debug failures, and build a practical student profile application.\n\nThese concepts form the foundation for the next module, where you will learn operators, expressions, comparisons, and operator precedence.\n\n## 17. Knowledge Check\n\nBefore moving to Module 2, make sure you can answer these questions:\n\n1. What is the difference between Python source code and bytecode?\n2. Why is indentation important in Python?\n3. What does it mean that Python is dynamically typed?\n4. Why can two names referring to the same list create unexpected changes?\n5. What is the difference between mutable and immutable objects?\n6. What does input() return?\n7. How does string slicing with a step of -1 work?\n8. What is the difference between a SyntaxError and a TypeError?\n9. Why should user input be validated before it is used?\n10. When should you use an f-string?\n\nCompleting these topics prepares you to write more reliable Python programs and understand the deeper programming concepts introduced in later modules.\n",
+      "codeExample": "def create_student_profile():\n    print(\"=== Student Profile Creator ===\")\n\n    name = input(\"Enter your name: \").strip()\n    department = input(\"Enter your department: \").strip()\n    age_text = input(\"Enter your age: \").strip()\n\n    try:\n        age = int(age_text)\n\n        if not name:\n            print(\"Error: name cannot be empty\")\n        elif not department:\n            print(\"Error: department cannot be empty\")\n        elif not 1 <= age <= 120:\n            print(\"Error: enter a reasonable age\")\n        else:\n            print(\"\\n=== Student Profile ===\")\n            print(f\"Name: {name}\")\n            print(f\"Department: {department}\")\n            print(f\"Age: {age}\")\n            print(f\"Next year: {age + 1}\")\n    except ValueError:\n        print(\"Error: age must be a whole number\")\n\n\nif __name__ == \"__main__\":\n    create_student_profile()",
+      "quiz": [
         {
-          question: 'Which function displays output in Python?',
-          options: ['display()', 'print()', 'echo()', 'write()'],
-          correctAnswer: 1
+          "question": "What does the input() function return?",
+          "options": [
+            "An integer in every case",
+            "A string",
+            "A Boolean",
+            "A float in every case"
+          ],
+          "correctAnswer": 1,
+          "explanation": "input() always reads user console input and returns a str, even if the user types digits like \"42\"."
         },
         {
-          question: 'Which symbol starts a single-line comment?',
-          options: ['//', '<!--', '#', '**'],
-          correctAnswer: 2
+          "question": "What indentation convention does PEP 8 recommend?",
+          "options": [
+            "Two spaces",
+            "Four spaces",
+            "Eight spaces",
+            "No indentation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "PEP 8 specifies 4 spaces per indentation level for clean, consistent Python readability."
+        },
+        {
+          "question": "What does dynamic typing mean in Python?",
+          "options": [
+            "Variables must be declared with a fixed type",
+            "A name can be rebound to objects of different types",
+            "Python does not have data types",
+            "All variables are strings"
+          ],
+          "correctAnswer": 1,
+          "explanation": "In Python, types belong to objects in memory, so a variable name can be rebound to an int and later to a str."
+        },
+        {
+          "question": "What is the result of \"Python\"[-1]?",
+          "options": [
+            "P",
+            "y",
+            "n",
+            "An IndexError"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Negative index -1 accesses the last character of a sequence, which is \"n\" in \"Python\"."
+        },
+        {
+          "question": "Which statement about strings is correct?",
+          "options": [
+            "Strings can be modified character by character in place",
+            "Strings are immutable",
+            "Strings cannot contain spaces",
+            "Strings only support numeric characters"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Python strings are immutable: methods like .upper() or .replace() return a new string without modifying the original."
+        },
+        {
+          "question": "What does int(8.9) return?",
+          "options": [
+            "9",
+            "8",
+            "8.9",
+            "A ValueError"
+          ],
+          "correctAnswer": 1,
+          "explanation": "int(float_val) truncates toward zero, dropping the decimal .9 and returning 8."
+        },
+        {
+          "question": "What does the expression bool(\"False\") evaluate to?",
+          "options": [
+            "False",
+            "True",
+            "None",
+            "A TypeError"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Any non-empty string is truthy in Python — even \"False\" — so bool(\"False\") returns True."
+        },
+        {
+          "question": "Which exception commonly occurs when int(\"hello\") is evaluated?",
+          "options": [
+            "NameError",
+            "IndexError",
+            "ValueError",
+            "IndentationError"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Converting a non-numeric string like \"hello\" with int() raises a ValueError."
+        },
+        {
+          "question": "If second = first and first is a list, what happens when second.append(4) executes?",
+          "options": [
+            "Only second sees the change",
+            "The shared list changes, so both names refer to the modified list",
+            "Both names are deleted",
+            "Python automatically copies the list"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Assigning second = first binds both names to the same mutable list object, so mutating via second is visible via first."
+        },
+        {
+          "question": "Which is the recommended way to insert a variable into a formatted message?",
+          "options": [
+            "Use an f-string",
+            "Use input() for every variable",
+            "Use a comment",
+            "Use type() to concatenate values"
+          ],
+          "correctAnswer": 0,
+          "explanation": "f-strings (f\"Hello {name}\") are concise, readable, fast at runtime, and the standard modern Python formatting approach."
         }
+      ],
+      "assignment": "Problem Statement:\nA university admissions office needs a reliable CLI Student Profile Creator that collects student details from the terminal, validates numeric ranges, and prints a neatly aligned summary card.\n\nObjectives:\n- Read user input with input() and convert types explicitly with int() and float().\n- Handle invalid numeric strings cleanly using try/except ValueError without crashing.\n- Format multi-line terminal output using f-strings and precision specifiers.\n\nRequirements:\n1. Prompt for full_name (must be non-empty after .strip()), age (integer 16..100), and gpa (float 0.0..4.0).\n2. Reject empty names or out-of-range numbers with clear retry prompts.\n3. Display a formatted Student Profile Card using f-strings (e.g., GPA formatted to 2 decimal places: {gpa:.2f}).\n4. Include a status badge (\"Honors\" if gpa >= 3.5 else \"Standard\").\n\nStep-by-Step Instructions:\n1. Create student_profile.py and write helper functions get_non_empty_str() and get_bounded_number().\n2. Wrap int() / float() parsing in try/except ValueError.\n3. Format and print the summary card.\n4. Test with valid data, \"abc\" for age, and 5.2 for GPA.\n\nDeliverables:\n- student_profile.py runnable via python student_profile.py.\n\nEvaluation Criteria:\n- Zero unhandled ValueError crashes on non-numeric input.\n- Clean f-string alignment and .2f GPA formatting.",
+      "lessons": [
+        {
+          "title": "Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model: Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model.",
+          "objectives": [
+            "Master Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain Python's purpose, strengths, and common applications.\n- Understand how Python source code is executed.\n- Install Python and configure Visual Studio Code.\n- Run Python programs through the terminal and editor.\n- Apply Python syntax, indentation, comments, and naming conventions.\n- Understand variables as names bound to objects.\n- Distinguish dynamic typing from static typing.\n- Recognize fundamental built-in data types.\n- Perform string indexing, slicing, concatenation, and formatting.\n- Collect user input and convert it to appropriate types.\n- Handle common errors and invalid input.\n- Build a small interactive application using professional coding practices.\n\n---\n\n## 2. Introduction to Python\n\nPython is a high-level, general-purpose programming language created by Guido van Rossum. Its first public release appeared in 1991.\n\nPython emphasizes readability and developer productivity. Its syntax allows programmers to express many ideas with less boilerplate than languages that require more explicit declarations and structural punctuation.\n\n### 2.1 Where Python Is Used\n\nPython is used in many areas of software development:\n\n1. **Web development:** Django, Flask, and FastAPI.\n2. **Data analysis:** Pandas and NumPy.\n3. **Artificial intelligence:** PyTorch and TensorFlow.\n4. **Automation:** File processing, repetitive tasks, and testing.\n5. **Backend development:** APIs, authentication services, and business logic.\n6. **Scientific computing:** Numerical calculations and research tools.\n7. **Education:** Learning programming concepts and problem-solving.\n\nPython is versatile, but it is not automatically the best choice for every task. Performance requirements, deployment targets, available libraries, and project constraints influence language selection.\n\n### 2.2 Why Developers Choose Python\n\n**Readable syntax**\n\n    student_name = \"Ayesha\"\n    print(student_name)\n\nThis example is straightforward to understand without extensive boilerplate.\n\n**A large standard library**\n\nPython includes modules for tasks such as mathematics, dates, file handling, JSON processing, networking, and testing.\n\n**A large ecosystem**\n\nThird-party packages extend Python for web applications, machine learning, data analysis, and many other domains.\n\n**Cross-platform support**\n\nPython programs can run on Windows, macOS, and Linux, subject to operating-system dependencies and compatible packages.\n\n### 2.3 Python's Design Philosophy\n\nPython's design philosophy values readability, simplicity, and explicit code. You can inspect parts of this philosophy by running:\n\n    import this\n\nThis displays the Zen of Python in a standard Python environment.\n\n---\n\n## 3. How Python Executes a Program\n\nA Python program typically begins as source code in a file ending in `.py`.\n\nFor example:\n\n    print(\"Hello, Python!\")\n\nWhen you run a program using the standard CPython implementation, the process broadly involves:\n\n1. Python reads and parses the source code.\n2. The compiler produces Python bytecode for execution.\n3. The Python virtual machine executes that bytecode.\n4. The program interacts with memory, the operating system, and other resources as required.\n\n### 3.1 Source Code, Bytecode, and Machine Code\n\n**Source code** is the human-readable Python program you write.\n\n**Bytecode** is an intermediate representation used by CPython.\n\n**Machine code** consists of processor instructions executed directly by a CPU.\n\nDo not assume Python simply interprets every source line directly as machine instructions. CPython generally compiles source into bytecode before execution. Other Python implementations may use different execution strategies.\n\n### 3.2 Is Python Compiled or Interpreted?\n\nPython is commonly described as an interpreted language because developers usually run programs through a Python runtime rather than compiling a standalone native executable themselves.\n\nHowever, the description is simplified: CPython compiles source into bytecode and then executes it. The distinction between compiled and interpreted languages is more nuanced than a strict either-or classification.\n\n### 3.3 Why This Matters\n\nUnderstanding the execution process helps you distinguish:\n\n- A syntax error that prevents a program from being compiled successfully.\n- A runtime error that occurs during execution.\n- A logical error where the program runs but produces the wrong result.\n\nThese are different problems and require different debugging strategies.\n\n---\n\n## 4. Installing Python and Configuring Your Environment\n\nA development environment includes the Python interpreter, code editor, terminal, and any tools needed to run or debug a program.\n\n### 4.1 Install Python\n\n1. Visit the official Python website at python.org.\n2. Download a stable Python 3 release suitable for your operating system.\n3. Run the installer.\n4. On Windows, enable the option to add Python to PATH if the installer provides it.\n5. Complete the installation.\n6. Open a new terminal and verify the installation.\n\nTry:\n\n    python --version\n\nIf that command does not work on Windows, try:\n\n    py --version\n\nOn macOS or Linux, you may need:\n\n    python3 --version\n\nA successful command displays the installed Python version.\n\n### 4.2 Install Visual Studio Code\n\n1. Install Visual Studio Code.\n2. Open the Extensions panel.\n3. Install the official Python extension from Microsoft.\n4. Open a project folder.\n5. Create a file named `main.py`.\n6. Use the command palette to select the appropriate Python interpreter if required.\n\nRemember that Visual Studio Code is the editor; the Python interpreter is a separate program that executes your code.\n\n### 4.3 Your First Program\n\nCreate `main.py`:\n\n    print(\"Hello, Python!\")\n    print(\"I am learning software development.\")\n\nSave the file.\n\nOpen the integrated terminal in VS Code and run:\n\n    python main.py\n\nIf the command is unavailable on Windows, try:\n\n    py main.py\n\nOn macOS or Linux, try:\n\n    python3 main.py\n\nExpected output:\n\n    Hello, Python!\n    I am learning software development.\n\n### 4.4 A Simple Project Structure\n\nFor a small learning project:\n\n    python-masterclass/\n        main.py\n        README.md\n\nAs projects grow, you may add separate folders for source code, tests, configuration, and documentation.\n\n### 4.5 Recommended Development Workflow\n\n1. Write a small amount of code.\n2. Save the file.\n3. Run the program.\n4. Read the output and any error messages.\n5. Test normal and unusual inputs.\n6. Fix the problem.\n7. Run the program again.\n\nThis repeatable cycle is more effective than writing a large program before testing anything.\n\n---\n\n## 5. Python Syntax and Indentation\n\nSyntax defines the rules for writing valid programs.\n\nPython uses indentation to define blocks of code. Many other languages use braces to mark those blocks.\n\n### 5.1 Correct Indentation\n\n    temperature = 35\n\n    if temperature > 30:\n        print(\"It is hot\")\n        print(\"Stay hydrated\")\n\n    print(\"Program finished\")\n\nThe two indented statements belong to the if block. The final print statement is outside that block.\n\n### 5.2 Incorrect Indentation\n\nThe following example is intentionally invalid:\n\n    # if temperature > 30:\n    # print(\"It is hot\")\n\nThe statement inside the block is not indented, so Python raises an indentation-related error.\n\n### 5.3 The Four-Space Convention\n\nPEP 8, Python's widely used style guide, recommends four spaces per indentation level.\n\nUse consistent spaces rather than mixing tabs and spaces.\n\n### 5.4 Case Sensitivity\n\nPython identifiers are case-sensitive.\n\n    score = 90\n    Score = 75\n\nThese are two different names.\n\nSimilarly:\n\n    print(\"Hello\")\n\nis valid, while writing `Print(\"Hello\")` does not call the built-in `print()` function.\n\n### 5.5 Statements and Expressions\n\nA **statement** performs an action.\n\n    score = 90\n\nAn **expression** produces a value.\n\n    score + 10\n\nExpressions can appear inside statements:\n\n    updated_score = score + 10\n\n### 5.6 Comments\n\nA comment begins with the `#` character.\n\n    # Calculate the student's final score\n    final_score = 85\n\nComments help explain why a decision was made or clarify a non-obvious part of the code.\n\nAvoid comments that merely repeat the obvious:\n\n    # Set score to 85\n    score = 85\n\n### 5.7 Docstrings\n\nTriple-quoted strings are commonly used for documentation strings, called docstrings, when placed at the beginning of a module, function, class, or method.\n\n    \"\"\"Utilities for calculating student results.\"\"\"\n\nA triple-quoted string is not automatically a comment. It is a string literal. Its meaning depends on where and how it is used.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write a script prompting for your name and favorite language using input(), strip whitespace with .strip(), and print an f-string greeting.\n2. Run `python -V` and check indentation (4 spaces per PEP 8).\n\nExpected Result:\nClean greeting printed with no leading/trailing spaces.",
+          "keyTakeaways": [
+            "Understand and apply Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "6. Variables and Naming Conventions",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model: 6. Variables and Naming Conventions.",
+          "objectives": [
+            "Master 6. Variables and Naming Conventions",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 6. Variables and Naming Conventions\n\nA variable name allows your program to refer to a value.\n\n    student_name = \"Ayesha\"\n    student_age = 20\n    course_score = 92.5\n\nPython binds each name to an object.\n\n### 6.1 Valid Variable Names\n\nValid examples:\n\n    name = \"Ali\"\n    student_count = 30\n    _temporary_value = 10\n    score2 = 85\n\nInvalid examples:\n\n    # 2score = 85\n    # student-name = \"Ali\"\n    # class = \"Python\"\n\nThe examples are commented out because they are invalid Python assignments.\n\nRules include:\n\n- Names cannot start with a digit.\n- Names may contain letters, digits, and underscores.\n- Hyphens are not permitted in ordinary identifiers.\n- Reserved keywords cannot be used as variable names.\n- Names are case-sensitive.\n\n### 6.2 Use Meaningful Names\n\nAvoid vague names when a descriptive name is available.\n\nLess clear:\n\n    x = 4500\n    y = 0.15\n\nClearer:\n\n    monthly_salary = 4500\n    tax_rate = 0.15\n\nMeaningful names make code easier to read, maintain, and debug.\n\n### 6.3 Python Naming Style\n\nPEP 8 commonly recommends:\n\n- Variables and functions: `snake_case`\n- Classes: `PascalCase`\n- Constants: uppercase names with underscores\n\nExamples:\n\n    student_total = 50\n    MAX_ATTEMPTS = 5\n\n    class StudentProfile:\n        pass\n\nUppercase constant names communicate intent; Python does not enforce them as immutable constants.\n\n---\n\n## 7. The Python Memory Model\n\nUnderstanding how names and objects relate to one another is important for more advanced programming.\n\n### 7.1 Variables Are Names Bound to Objects\n\nConsider:\n\n    age = 20\n\nConceptually, Python creates or reuses an integer object representing 20 and binds the name `age` to that object.\n\nThe variable is not best understood as a permanently reserved box containing a value. A Python name refers to an object.\n\n### 7.2 Rebinding a Name\n\n    value = 100\n    value = \"Python\"\n\nThe name `value` first refers to an integer object and is later rebound to a string object.\n\nThis is allowed because Python uses dynamic typing.\n\n### 7.3 Multiple Names Can Refer to One Object\n\n    first = [10, 20, 30]\n    second = first\n\n    second.append(40)\n\n    print(first)\n    print(second)\n\nOutput:\n\n    [10, 20, 30, 40]\n    [10, 20, 30, 40]\n\nBoth names refer to the same list. Modifying that list through either reference affects the same object.\n\n### 7.4 Separate Objects Can Have Equal Values\n\n    first = [1, 2, 3]\n    second = [1, 2, 3]\n\n    print(first == second)\n    print(first is second)\n\nOutput:\n\n    True\n    False\n\nThe equality operator checks whether the values are equal. The identity operator checks whether the references point to the same object.\n\n### 7.5 Mutable and Immutable Objects\n\nCommon immutable types include:\n\n- int\n- float\n- bool\n- str\n- tuple, when considering the tuple's own item references\n\nCommon mutable types include:\n\n- list\n- dict\n- set\n\nExample with an immutable integer:\n\n    number = 10\n    updated_number = number\n    updated_number = updated_number + 5\n\n    print(number)\n    print(updated_number)\n\nOutput:\n\n    10\n    15\n\nRebinding `updated_number` does not change the integer associated with `number`.\n\nExample with a mutable list:\n\n    original = [1, 2]\n    alias = original\n    alias.append(3)\n\n    print(original)\n\nOutput:\n\n    [1, 2, 3]\n\nThe list is modified in place, so both names still refer to the modified object.\n\n### 7.6 Why the Memory Model Matters\n\nThis knowledge becomes important when working with:\n\n- Function arguments\n- Lists and dictionaries\n- Object-oriented programming\n- Shared state\n- Copying data\n- Debugging unexpected changes\n\nLater modules will explore these ideas in greater detail.\n\n---\n\n## 8. Dynamic Typing and Type Inspection\n\nPython is dynamically typed. You do not normally declare a variable's type before assigning a value.\n\n    item = 42\n    print(type(item))\n\n    item = \"Python\"\n    print(type(item))\n\nThe name can be rebound to objects of different types.\n\n### 8.1 Common Built-in Types\n\n| Type | Example | Purpose |\n|---|---|---|\n| int | `42` | Whole-number values |\n| float | `3.14` | Floating-point numbers |\n| str | `\"Hello\"` | Text |\n| bool | `True` | Logical truth values |\n| NoneType | `None` | Absence of a value |\n| list | `[1, 2, 3]` | Mutable sequence |\n| tuple | `(1, 2, 3)` | Immutable sequence of references |\n| dict | `{\"name\": \"Ali\"}` | Key-value mapping |\n| set | `{1, 2, 3}` | Collection of unique hashable values |\n\nThis module focuses on fundamental types and strings. Collections will receive more detailed treatment in later modules.\n\n### 8.2 The type() Function\n\n    price = 99.5\n    print(type(price))\n\nOutput:\n\n    <class 'float'>\n\nThe `type()` function helps inspect the type of an object.\n\n### 8.3 The isinstance() Function\n\n    age = 20\n\n    print(isinstance(age, int))\n    print(isinstance(age, str))\n\nOutput:\n\n    True\n    False\n\nUse `isinstance()` when checking whether an object belongs to a type or a compatible subclass.\n\nOne detail: in Python, `bool` is a subclass of `int`, so `isinstance(True, int)` evaluates to True. If a program must reject Boolean values where an integer is expected, additional validation is needed.\n\n### 8.4 Dynamic Typing Does Not Mean No Rules\n\nPython still enforces operations supported by the objects involved.\n\n    # This raises TypeError:\n    # print(\"Age: \" + 20)\n\nThe string and integer cannot be concatenated directly using `+`. Convert the integer to a string or use an f-string.\n\n---\n\n## 9. Type Conversion and Casting\n\nType conversion changes a value from one type to another when the conversion is supported.\n\n### 9.1 Common Conversion Functions\n\n    number = int(\"42\")\n    price = float(\"19.99\")\n    message = str(100)\n    enabled = bool(1)\n\n    print(number)\n    print(price)\n    print(message)\n    print(enabled)\n\nOutput:\n\n    42\n    19.99\n    100\n    True\n\n### 9.2 Conversion Can Fail\n\n    # This raises ValueError:\n    # age = int(\"twenty\")\n\nA program that converts user input should handle invalid values when they are possible.\n\n### 9.3 Integer Conversion and Decimal Values\n\n    print(int(8.9))\n    print(int(-8.9))\n\nOutput:\n\n    8\n    -8\n\nConverting a float to an integer truncates the fractional part toward zero. It does not round to the nearest integer.\n\n### 9.4 Boolean Conversion\n\n    print(bool(0))\n    print(bool(1))\n    print(bool(\"\"))\n    print(bool(\"False\"))\n\nOutput:\n\n    False\n    True\n    False\n    True\n\nA non-empty string is truthy, even when its text reads \"False\".\n\nThis matters when validating user input: converting the string `\"False\"` using `bool()` does not parse it as a logical false value.\n\n---\n\n## 10. Strings: Text in Python\n\nA string is an immutable sequence of Unicode code points.\n\nStrings can be written with single or double quotes:\n\n    first_message = 'Hello'\n    second_message = \"Python\"\n\nTriple-quoted strings can span multiple lines:\n\n    description = \"\"\"Python is readable.\n    Python supports many programming domains.\"\"\"\n\n### 10.1 String Concatenation\n\nConcatenation joins strings.\n\n    first_name = \"Anas\"\n    last_name = \"Manzoor\"\n\n    full_name = first_name + \" \" + last_name\n    print(full_name)\n\nOutput:\n\n    Anas Manzoor\n\nBoth operands must be compatible with string concatenation.\n\n### 10.2 String Repetition\n\n    laugh = \"Ha\" * 3\n    print(laugh)\n\nOutput:\n\n    HaHaHa\n\n### 10.3 String Length\n\nUse `len()` to count the number of elements in a string.\n\n    language = \"Python\"\n    print(len(language))\n\nOutput:\n\n    6\n\n### 10.4 Indexing\n\nPython string indexes start at zero.\n\n    language = \"Python\"\n\n    print(language[0])\n    print(language[1])\n    print(language[-1])\n\nOutput:\n\n    P\n    y\n    n\n\nPositive indexes count from the beginning. Negative indexes count backward from the end.\n\nAn index outside the valid range raises an IndexError.\n\n### 10.5 Slicing\n\nSlicing extracts part of a sequence.\n\nSyntax:\n\n    text[start:stop:step]\n\nThe stop position is excluded.\n\n    text = \"Programming\"\n\n    print(text[0:4])\n    print(text[:4])\n    print(text[4:])\n    print(text[::2])\n    print(text[::-1])\n\nOutput:\n\n    Prog\n    Prog\n    ramming\n    Pormig\n    gnimmargorP\n\nA slice usually returns a new string. It does not modify the original string.\n\n### 10.6 String Immutability\n\nStrings cannot be modified in place.\n\n    word = \"Python\"\n\n    # This raises TypeError:\n    # word[0] = \"J\"\n\n    word = \"J\" + word[1:]\n    print(word)\n\nOutput:\n\n    Jython\n\nThe final assignment creates a new string value and rebinds the name `word`.\n\n### 10.7 Essential String Methods\n\n    text = \"  Hello Python  \"\n\n    print(text.strip())\n    print(text.lower())\n    print(text.upper())\n    print(text.replace(\"Python\", \"World\"))\n    print(text.startswith(\"  Hello\"))\n    print(text.find(\"Python\"))\n\nString methods generally return new strings or results rather than modifying the original string.\n\n### 10.8 Splitting and Joining\n\n    csv_line = \"Ali,Sara,Ahmed\"\n    names = csv_line.split(\",\")\n\n    print(names)\n\n    combined = \" | \".join(names)\n    print(combined)\n\nOutput:\n\n    ['Ali', 'Sara', 'Ahmed']\n    Ali | Sara | Ahmed\n\nThese operations are useful for processing simple delimited text. Real CSV files can contain quoted fields and embedded separators, so use Python's `csv` module for proper CSV file processing.\n\n### 10.9 Case Normalization\n\n    email = \"STUDENT@EXAMPLE.COM\"\n\n    normalized_email = email.strip().lower()\n    print(normalized_email)\n\nNormalization can help with consistent comparisons. For real identity and email systems, follow the service's actual validation and comparison rules rather than assuming every identifier is case-insensitive.\n\n---\n\n## 11. User Input and Output\n\n### 11.1 The print() Function\n\n    print(\"Hello\", \"World\")\n    print(\"Python\", 3)\n\nBy default, print separates multiple arguments with a space and ends with a newline.\n\nYou can customize the separator and ending:\n\n    print(\"2026\", \"10\", \"29\", sep=\"-\")\n    print(\"Loading\", end=\"...\")\n    print(\"Done\")\n\n### 11.2 The input() Function\n\nThe `input()` function displays an optional prompt and returns the entered text as a string.\n\n    name = input(\"Enter your name: \")\n    print(\"Welcome\", name)\n\nEven when the user types digits, the result is initially a string.\n\n### 11.3 Converting Numeric Input\n\n    age_text = input(\"Enter your age: \")\n    age = int(age_text)\n\n    print(\"Next year you will be\", age + 1)\n\nIf the user enters a non-integer value, `int()` raises ValueError. Use exception handling when input may be invalid.\n\n### 11.4 F-Strings\n\nF-strings make it easy to embed values in text.\n\n    name = \"Anas\"\n    age = 20\n\n    print(f\"My name is {name} and I am {age} years old.\")\n\nYou can include expressions:\n\n    price = 1250\n    quantity = 3\n\n    print(f\"Total: {price * quantity}\")\n\n### 11.5 Formatting Decimal Places\n\n    average = 87.45678\n\n    print(f\"Average: {average:.2f}\")\n\nOutput:\n\n    Average: 87.46\n\nThe format specification `.2f` displays a floating-point number to two decimal places. Formatting controls how a value is displayed; it does not change the underlying numeric value.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Test string indexing (`\"Python\"[0]`, `\"Python\"[-1]`) and slicing (`\"Python\"[1:4]`) in the Python REPL.\n2. Verify `bool(\"False\")` vs `bool(\"\")` and `int(8.9)` truncation.\n\nExpected Result:\nObserve `\"P\"`, `\"n\"`, `\"yth\"`, `True`, `False`, and `8`.",
+          "keyTakeaways": [
+            "Understand and apply 6. Variables and Naming Conventions",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "12. Handling Errors and Debugging",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model: 12. Handling Errors and Debugging.",
+          "objectives": [
+            "Master 12. Handling Errors and Debugging",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 12. Handling Errors and Debugging\n\nErrors are a normal part of software development. Learning to identify them is a core programming skill.\n\n### 12.1 SyntaxError\n\nOccurs when Python cannot parse the code.\n\n    # Intentionally invalid:\n    # print(\"Hello\"\n\nThe closing parenthesis is missing.\n\n### 12.2 IndentationError\n\nOccurs when indentation rules are violated.\n\n    # Intentionally invalid:\n    # if True:\n    # print(\"Hello\")\n\n### 12.3 NameError\n\nOccurs when a name is not defined in the current accessible scope.\n\n    # Intentionally invalid:\n    # print(student_score)\n\nDefine the variable before using it.\n\n### 12.4 TypeError\n\nOccurs when an operation is not supported for the given types.\n\n    # Intentionally invalid:\n    # print(\"Age: \" + 21)\n\nCorrect alternatives:\n\n    print(\"Age:\", 21)\n    print(\"Age: \" + str(21))\n    print(f\"Age: {21}\")\n\n### 12.5 ValueError\n\nOccurs when the type is suitable for an operation but the supplied value is invalid for that conversion or operation.\n\n    # This raises ValueError:\n    # int(\"hello\")\n\n### 12.6 IndexError\n\nOccurs when a sequence is accessed using an invalid index.\n\n    letters = [\"A\", \"B\"]\n\n    # This raises IndexError:\n    # print(letters[5])\n\n### 12.7 A Basic Debugging Workflow\n\nWhen a program fails:\n\n1. Read the final line of the traceback to identify the error type and message.\n2. Inspect the line number mentioned in the traceback.\n3. Check the values and types involved.\n4. Reproduce the issue with a small example.\n5. Fix the cause rather than hiding the error.\n6. Run the program again and test related cases.\n\nAvoid catching every exception without a reason. Exception handling should help the program recover from known problems without hiding programming mistakes.\n\n---\n\n## 13. Practical Project: Interactive Student Profile\n\nThis project combines variables, strings, numeric conversion, validation, and f-string formatting.\n\n    print(\"=== Student Profile Creator ===\")\n\n    name = input(\"Enter your name: \").strip()\n    department = input(\"Enter your department: \").strip()\n    age_text = input(\"Enter your age: \").strip()\n\n    try:\n        age = int(age_text)\n\n        if not name:\n            print(\"Error: name cannot be empty\")\n\n        elif not department:\n            print(\"Error: department cannot be empty\")\n\n        elif age < 1 or age > 120:\n            print(\"Error: enter a reasonable age\")\n\n        else:\n            print(\"\\n=== Student Profile ===\")\n            print(f\"Name: {name}\")\n            print(f\"Department: {department}\")\n            print(f\"Age: {age}\")\n            print(f\"Next year: {age + 1}\")\n\n    except ValueError:\n        print(\"Error: age must be a whole number\")\n\n### Project Analysis\n\nThis program demonstrates several important ideas:\n\n- `input()` collects text.\n- `strip()` removes surrounding whitespace.\n- `int()` converts age into an integer.\n- `try-except` handles invalid numeric input.\n- Conditional statements validate required fields and age.\n- F-strings format the output.\n\nThe program is a learning example, not a complete student management system. A production application would also need appropriate data storage, validation rules, access controls, and privacy protections.\n\n---\n\n## 14. Additional Practice Challenges\n\n### Beginner\n\n1. Print your name, university, department, and programming goal.\n2. Create variables representing your age, semester, and favorite language.\n3. Ask for a user's name and display a welcome message.\n4. Convert a string containing a number to an integer and add 10.\n5. Print the first and last characters of a word.\n\n### Intermediate\n\n6. Ask for a full name and normalize extra whitespace.\n7. Reverse a string using slicing.\n8. Ask for a product name, unit price, and quantity, then calculate the total.\n9. Accept an age as input and handle invalid values safely.\n10. Demonstrate the difference between equality and identity using two lists.\n\n### Advanced\n\n11. Explain what happens when two names refer to the same mutable list.\n12. Write a string-processing program that removes surrounding whitespace and normalizes case.\n13. Refactor a program that repeats output formatting into a reusable function.\n14. Design a small input-validation workflow that separates invalid input from valid application data.\n15. Describe the differences among SyntaxError, NameError, TypeError, and ValueError, with one example of each.\n\n---\n\n## 15. Professional Coding Checklist\n\nBefore considering a program complete, ask:\n\n- Are variable names descriptive?\n- Is indentation consistent?\n- Are comments useful rather than repetitive?\n- Does the program validate external input?\n- Are expected error conditions handled?\n- Are strings formatted clearly?\n- Have boundary cases been tested?\n- Does the code separate calculation from display when appropriate?\n- Are any exceptions being hidden unnecessarily?\n- Can another developer understand the program without guessing?\n\nProfessional code is not merely code that runs. It should also be understandable, maintainable, and reliable.\n\n---\n\n## 16. Module Summary\n\nIn this module, you learned the essential foundations of Python programming.\n\nYou explored Python's applications, execution process, development environment, syntax, indentation, comments, variables, and naming conventions.\n\nYou also learned how names refer to objects, how dynamic typing works, and how mutable and immutable objects differ.\n\nYou practiced fundamental data types, type conversion, string indexing and slicing, string methods, input/output, and f-string formatting.\n\nFinally, you learned to identify common errors, handle invalid input, debug failures, and build a practical student profile application.\n\nThese concepts form the foundation for the next module, where you will learn operators, expressions, comparisons, and operator precedence.\n\n## 17. Knowledge Check\n\nBefore moving to Module 2, make sure you can answer these questions:\n\n1. What is the difference between Python source code and bytecode?\n2. Why is indentation important in Python?\n3. What does it mean that Python is dynamically typed?\n4. Why can two names referring to the same list create unexpected changes?\n5. What is the difference between mutable and immutable objects?\n6. What does input() return?\n7. How does string slicing with a step of -1 work?\n8. What is the difference between a SyntaxError and a TypeError?\n9. Why should user input be validated before it is used?\n10. When should you use an f-string?\n\nCompleting these topics prepares you to write more reliable Python programs and understand the deeper programming concepts introduced in later modules.",
+          "codeExample": "def create_student_profile():\n    print(\"=== Student Profile Creator ===\")\n\n    name = input(\"Enter your name: \").strip()\n    department = input(\"Enter your department: \").strip()\n    age_text = input(\"Enter your age: \").strip()\n\n    try:\n        age = int(age_text)\n\n        if not name:\n            print(\"Error: name cannot be empty\")\n        elif not department:\n            print(\"Error: department cannot be empty\")\n        elif not 1 <= age <= 120:\n            print(\"Error: enter a reasonable age\")\n        else:\n            print(\"\\n=== Student Profile ===\")\n            print(f\"Name: {name}\")\n            print(f\"Department: {department}\")\n            print(f\"Age: {age}\")\n            print(f\"Next year: {age + 1}\")\n    except ValueError:\n        print(\"Error: age must be a whole number\")\n\n\nif __name__ == \"__main__\":\n    create_student_profile()",
+          "codeExplanation": "1. create_student_profile() reads name, department, and age_text via input() and cleans surrounding whitespace with .strip().\n2. try/except ValueError wraps int(age_text) so typing non-numeric text like \"twenty\" prints a friendly error instead of crashing.\n3. Explicit validation checks ensure name and department are non-empty and age falls in a realistic range before printing the f-string profile summary.\n\nHow to Run & Expected Output:\nSave as `profile.py` and run `python profile.py`. Enter name, department, and age -> prints a formatted Student Profile summary; entering \"abc\" for age prints an error cleanly.",
+          "practiceExercise": "Guided Exercise:\n1. Run the Student Profile Creator and test entering `\"twenty\"` for age to verify `try/except ValueError` catches it gracefully.\n\nIndependent Challenge:\nExtend the validator to also reject ages below 10 or above 120.\n\nExpected Result:\nZero unhandled tracebacks on invalid user input.",
+          "keyTakeaways": [
+            "Understand and apply 12. Handling Errors and Debugging",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 1: Python Foundations — Setup, Syntax, Data Types, Strings & Memory Model",
+        "Apply Python best practices with clean, readable examples",
+        "Master 6. Variables and Naming Conventions",
+        "Master 12. Handling Errors and Debugging"
       ]
     },
     {
-      title: 'Module 2: Variables and Data Types',
-      duration: '2h 30m',
-      notes: `### Variables
-Variables are names that refer to objects. Python is dynamically typed, so you do not declare a variable's type before assigning a value.
-
-### Basic data types
-- \`str\`: text
-- \`int\`: whole numbers
-- \`float\`: decimal numbers
-- \`bool\`: True or False
-- \`NoneType\`: represents the absence of a value
-
-### Example
-\`\`\`python
-name = "Anas"
-age = 18
-height = 5.6
-is_student = True
-result = None
-\`\`\`
-
-### Naming rules
-Variable names cannot start with a number or contain spaces. Use descriptive names and the \`snake_case\` convention.
-
-### Type checking
-Use \`type(value)\` to inspect a value's type.
-
-### Type conversion
-Use \`int()\`, \`float()\`, \`str()\`, and \`bool()\` to convert values when appropriate. Invalid conversions can raise \`ValueError\`.
-
-### Equality and identity
-Use \`==\` to compare values and \`is\` to check object identity. For checking for None, use \`is None\`.`,
-      codeExample: `student_name = "Anas"
-age = 18
-height = 5.6
-is_student = True
-
-print(type(student_name))
-print(type(age))
-print(type(height))
-print(type(is_student))
-
-number_text = "100"
-number = int(number_text)
-
-print(number + 50)
-print(f"{student_name} is {age} years old.")`,
-      quiz: [
+      "title": "Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals",
+      "duration": "5h 00m",
+      "notes": "\n# Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand how variables work in Python.\n- Identify Python's built-in data types.\n- Use type() and isinstance() to inspect values.\n- Convert values safely between different data types.\n- Understand dynamic typing and strong typing.\n- Explain the difference between mutable and immutable objects.\n- Understand object references, identity, and equality.\n- Recognize common problems caused by shared references.\n- Use copy operations when working with mutable objects.\n- Write reliable Python programs that validate and process data.\n\n## 2. Understanding Variables\n\nA variable is a name that refers to an object in Python.\n\nUnlike some languages where variables are thought of as fixed memory boxes, Python names refer to objects. An assignment associates a name with an object.\n\nExample:\n\n```python\nname = \"Anas\"\nage = 18\nheight = 5.6\n\nprint(name)\nprint(age)\nprint(height)\n```\n\nOutput:\n\n```text\nAnas\n18\n5.6\n```\n\nHere:\n- name refers to a string object.\n- age refers to an integer object.\n- height refers to a floating-point object.\n\nPython does not require you to declare a variable's type before assigning a value.\n\n## 3. Variable Naming Rules\n\nA valid Python variable name:\n\n- Must begin with a letter or underscore.\n- May contain letters, digits, and underscores.\n- Cannot contain spaces.\n- Cannot begin with a digit.\n- Cannot be a reserved Python keyword.\n- Is case-sensitive.\n\nValid examples:\n\n```python\nstudent_name = \"Ali\"\nstudent_age = 19\n_total = 500\ncourse2 = \"Python\"\nuserEmail = \"student@example.com\"\n```\n\nInvalid examples:\n\n```python\n# Invalid variable names\n# 2name = \"Ali\"\n# student name = \"Ali\"\n# class = \"Python\"\n```\n\nThe word class is reserved by Python, so it cannot be used as a variable name.\n\n### Professional Naming Convention\n\nPython developers commonly use snake_case for variables and functions.\n\n```python\nfirst_name = \"Ali\"\ntotal_marks = 450\nis_registered = True\ncourse_price = 1999\n```\n\nPrefer meaningful names over unclear names.\n\nAvoid:\n\n```python\nx = 450\ny = 560\nz = x / y\n```\n\nPrefer:\n\n```python\nobtained_marks = 450\ntotal_marks = 560\npercentage = obtained_marks / total_marks * 100\n```\n\nMeaningful names make code easier to understand, test, and maintain.\n\n## 4. Assigning and Reassigning Variables\n\nPython allows a name to refer to a different object later.\n\n```python\nscore = 50\nprint(score)\n\nscore = 85\nprint(score)\n```\n\nOutput:\n\n```text\n50\n85\n```\n\nThe name score initially refers to the integer 50. After reassignment, it refers to the integer 85.\n\nThis does not mean the integer 50 was changed. Integers are immutable objects.\n\n### Multiple Assignment\n\n```python\nname, age, city = \"Anas\", 18, \"Bahawalpur\"\n\nprint(name)\nprint(age)\nprint(city)\n```\n\n### Assigning One Value to Multiple Names\n\n```python\nfirst = second = third = 100\n\nprint(first, second, third)\n```\n\nBe careful when using this pattern with mutable objects. All three names will refer to the same object if the assigned value is a mutable object.\n\n## 5. Python's Built-in Data Types\n\nPython provides several built-in types for representing information.\n\n### Integer: int\n\nIntegers represent whole numbers.\n\n```python\nstudents = 120\ntemperature = -5\nzero_value = 0\n\nprint(type(students))\n```\n\nIntegers can represent very large whole numbers, subject to available system memory.\n\n### Floating-Point: float\n\nFloats represent numbers with a fractional component.\n\n```python\nprice = 499.99\ntemperature = 36.5\npercentage = 87.25\n\nprint(type(price))\n```\n\nFloating-point calculations may have small precision limitations.\n\n```python\nprint(0.1 + 0.2)\n```\n\nThe result may appear as:\n\n```text\n0.30000000000000004\n```\n\nThis happens because many decimal fractions cannot be represented exactly in binary floating-point.\n\nFor financial calculations requiring exact decimal arithmetic, consider Python's decimal.Decimal type.\n\n### String: str\n\nStrings represent text.\n\n```python\nstudent_name = \"Anas\"\nmessage = 'Welcome to Python'\nmultiline_text = \"\"\"This is\na multiline string.\"\"\"\n\nprint(type(student_name))\n```\n\nStrings are immutable. Operations such as replacing text create new string objects rather than modifying the original string in place.\n\n### Boolean: bool\n\nBooleans represent logical truth values.\n\n```python\nis_logged_in = True\nhas_completed_course = False\n\nprint(type(is_logged_in))\n```\n\nPython's Boolean values are True and False, with capital first letters.\n\n### NoneType\n\nNone represents the absence of a value.\n\n```python\nmiddle_name = None\n\nprint(middle_name)\nprint(type(middle_name))\n```\n\nNone is commonly used for optional information or as a placeholder when a value is not yet available.\n\n### List: list\n\nLists store ordered collections of items and are mutable.\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\"]\n\ncourses.append(\"SQL\")\nprint(courses)\n```\n\nA list can contain values of different types, although collections with a consistent type are often easier to work with.\n\n### Tuple: tuple\n\nTuples store ordered collections and cannot have their elements reassigned.\n\n```python\ncoordinates = (30.1575, 71.5249)\nprint(coordinates)\n```\n\nTuples are useful for fixed collections of values.\n\n### Set: set\n\nSets store unique elements.\n\n```python\nlanguages = {\"Python\", \"JavaScript\", \"Python\"}\nprint(languages)\n```\n\nDuplicate values are removed. Sets do not provide positional indexing like lists.\n\n### Dictionary: dict\n\nDictionaries store key-value pairs.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"age\": 18,\n    \"course\": \"Software Engineering\"\n}\n\nprint(student[\"name\"])\nprint(student[\"course\"])\n```\n\nDictionaries are useful for structured records and configuration data.\n\n## 6. Checking Types with type() and isinstance()\n\nUse type() to inspect an object's type.\n\n```python\nage = 18\nprice = 299.50\nname = \"Anas\"\n\nprint(type(age))\nprint(type(price))\nprint(type(name))\n```\n\nUse isinstance() when checking whether a value belongs to a type or class.\n\n```python\nage = 18\n\nprint(isinstance(age, int))\nprint(isinstance(age, str))\n```\n\nOutput:\n\n```text\nTrue\nFalse\n```\n\nFor most type-checking conditions in application code, isinstance() is more flexible than directly comparing type() results.\n\n### Important Boolean Detail\n\nIn Python, bool is a subclass of int.\n\n```python\nprint(isinstance(True, int))\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThis behavior can matter when validating numeric inputs. If your application requires an integer but must reject Boolean values, check for bool explicitly.\n\n```python\nvalue = True\n\nif isinstance(value, int) and not isinstance(value, bool):\n    print(\"Valid integer\")\nelse:\n    print(\"Not an acceptable integer\")\n```\n\n## 7. Dynamic Typing\n\nPython is dynamically typed. A name can refer to objects of different types at different times.\n\n```python\nvalue = 100\nprint(type(value))\n\nvalue = \"One hundred\"\nprint(type(value))\n\nvalue = [100, 200, 300]\nprint(type(value))\n```\n\nThe name value is reassigned to different objects.\n\nDynamic typing makes Python flexible, but developers must still ensure that operations make sense for the current value.\n\n```python\nage = 18\nprint(age + 2)\n```\n\nThis works because adding integers is valid.\n\nHowever:\n\n```python\n# This raises TypeError:\n# print(\"18\" + 2)\n```\n\nPython does not automatically treat every numeric-looking string as a number.\n\n## 8. Strong Typing\n\nPython is dynamically typed and strongly typed.\n\nStrong typing means Python generally does not silently convert incompatible values for operations.\n\n```python\nage_text = \"18\"\nextra_years = 2\n\n# print(age_text + extra_years)  # TypeError\n```\n\nConvert the value explicitly when the intended meaning is numeric.\n\n```python\nage_text = \"18\"\nextra_years = 2\n\nage = int(age_text)\nfuture_age = age + extra_years\n\nprint(future_age)\n```\n\nOutput:\n\n```text\n20\n```\n\n## 9. Type Conversion\n\nType conversion changes a value from one type to another.\n\nPython provides constructors such as int(), float(), str(), list(), tuple(), set(), and bool().\n\n### String to Integer\n\n```python\nage_text = \"18\"\nage = int(age_text)\n\nprint(age + 2)\n```\n\nThe string must contain a valid integer representation.\n\n```python\n# int(\"eighteen\")  # ValueError\n```\n\n### Integer to Float\n\n```python\nnumber = 10\ndecimal_number = float(number)\n\nprint(decimal_number)\n```\n\nOutput:\n\n```text\n10.0\n```\n\n### Float to Integer\n\n```python\nprice = 19.99\nwhole_number = int(price)\n\nprint(whole_number)\n```\n\nOutput:\n\n```text\n19\n```\n\nint() truncates the fractional part toward zero; it does not round to the nearest integer.\n\n### Number to String\n\n```python\nage = 18\nmessage = \"Age: \" + str(age)\n\nprint(message)\n```\n\n### String to Float\n\n```python\nprice_text = \"499.95\"\nprice = float(price_text)\n\nprint(price)\n```\n\n### Converting a List to a Tuple\n\n```python\nitems = [\"Python\", \"JavaScript\", \"SQL\"]\nfixed_items = tuple(items)\n\nprint(fixed_items)\n```\n\n### Converting a List to a Set\n\n```python\nnumbers = [1, 2, 2, 3, 3, 4]\nunique_numbers = set(numbers)\n\nprint(unique_numbers)\n```\n\nThe set contains unique values, but you should not rely on its display order.\n\n## 10. Truthiness and bool()\n\nPython values can be interpreted as true or false in conditions.\n\nCommon falsy values include:\n\n- False\n- None\n- Numeric zero, including 0 and 0.0\n- Empty strings\n- Empty lists, tuples, dictionaries, and sets\n\nExamples:\n\n```python\nprint(bool(0))\nprint(bool(25))\nprint(bool(\"\"))\nprint(bool(\"Python\"))\nprint(bool([]))\nprint(bool([1, 2]))\n```\n\nOutput:\n\n```text\nFalse\nTrue\nFalse\nTrue\nFalse\nTrue\n```\n\nA common mistake is assuming the string \"False\" evaluates to False.\n\n```python\nprint(bool(\"False\"))\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThe string is non-empty, so it is truthy. To interpret textual answers such as \"yes\" and \"no\", implement explicit validation instead of relying on bool().\n\n## 11. Mutable and Immutable Objects\n\nMutability describes whether an object's contents can change after creation.\n\n### Common Immutable Types\n\n- int\n- float\n- bool\n- str\n- tuple (the tuple's structure is immutable, although it may contain mutable objects)\n- frozenset\n- NoneType\n\n### Common Mutable Types\n\n- list\n- dict\n- set\n- Most user-defined objects, unless their design prevents mutation\n\nExample with an immutable integer:\n\n```python\nnumber = 10\nnumber = number + 5\n\nprint(number)\n```\n\nThe calculation creates or obtains an integer representing 15, and the name number is reassigned. The original integer object is not changed.\n\nExample with a mutable list:\n\n```python\nscores = [70, 80, 90]\nscores.append(95)\n\nprint(scores)\n```\n\nThe existing list is modified.\n\nUnderstanding this distinction helps prevent unexpected behavior in functions, loops, and application state.\n\n## 12. Object References and Aliasing\n\nWhen you assign one variable to another, Python generally copies the reference, not the entire object.\n\n```python\nfirst_list = [10, 20, 30]\nsecond_list = first_list\n\nsecond_list.append(40)\n\nprint(first_list)\nprint(second_list)\n```\n\nOutput:\n\n```text\n[10, 20, 30, 40]\n[10, 20, 30, 40]\n```\n\nBoth names refer to the same list object. This is known as aliasing.\n\nChanging the list through either name affects the same object.\n\n### Checking Object Identity\n\nThe is operator checks whether two references point to the same object.\n\n```python\na = [1, 2, 3]\nb = a\nc = [1, 2, 3]\n\nprint(a is b)\nprint(a is c)\nprint(a == c)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nRemember:\n\n- is checks object identity.\n- == checks value equality.\n\nFor ordinary value comparisons, use ==. Use is when identity itself matters, especially for checks such as value is None.\n\n## 13. Copying Mutable Objects\n\nSometimes you need a separate list rather than another reference to the same list.\n\n### Shallow Copy\n\n```python\noriginal = [10, 20, 30]\ncopied = original.copy()\n\ncopied.append(40)\n\nprint(original)\nprint(copied)\n```\n\nOutput:\n\n```text\n[10, 20, 30]\n[10, 20, 30, 40]\n```\n\nThe outer lists are different objects.\n\nYou can also create a shallow copy using:\n\n```python\ncopied = list(original)\n# Or:\ncopied = original[:]\n```\n\n### Important: Shallow Copy and Nested Objects\n\nA shallow copy creates a new outer collection, but references to nested objects are still shared.\n\n```python\noriginal = [[1, 2], [3, 4]]\ncopied = original.copy()\n\ncopied[0].append(99)\n\nprint(original)\nprint(copied)\n```\n\nBoth outer lists refer to the same inner list at index 0, so the nested change is visible through both references.\n\n### Deep Copy\n\nWhen you need to recursively copy nested objects, Python's copy module provides deepcopy().\n\n```python\nimport copy\n\noriginal = [[1, 2], [3, 4]]\ncopied = copy.deepcopy(original)\n\ncopied[0].append(99)\n\nprint(original)\nprint(copied)\n```\n\nOutput:\n\n```text\n[[1, 2], [3, 4]]\n[[1, 2, 99], [3, 4]]\n```\n\nDeep copying is not always necessary and may be expensive for large or complex objects. Choose the copying strategy that matches your application's requirements.\n\n## 14. The Python Memory Model\n\nAt a high level, Python programs work with objects and references.\n\nWhen you write:\n\n```python\nstudent_name = \"Anas\"\n```\n\nPython creates or obtains a string object and binds the name student_name to it.\n\nWhen you write:\n\n```python\nstudent_name = \"Ali\"\n```\n\nthe name is rebound to another string object. The earlier object may remain alive if another reference points to it.\n\nPython manages object memory automatically. In CPython, memory management commonly uses reference counting together with a cyclic garbage collector. Other Python implementations may manage memory differently.\n\n### Reference Example\n\n```python\nfirst = [1, 2]\nsecond = first\nthird = first.copy()\n\nprint(first is second)\nprint(first is third)\n```\n\nThe first and second names share the same list. The third name refers to a separate outer list.\n\n### Why Memory Fundamentals Matter\n\nThese concepts are especially useful when:\n\n- Passing lists and dictionaries into functions.\n- Managing student progress and course data.\n- Updating shared application state.\n- Debugging unexpected changes.\n- Working with nested data structures.\n- Understanding object lifetimes and memory usage.\n\nDo not assume that assigning a variable always duplicates the underlying object.\n\n## 15. Avoiding Common Assignment Mistakes\n\n### Mistake 1: Assuming Assignment Copies a List\n\nIncorrect assumption:\n\n```python\nfirst = [1, 2, 3]\nsecond = first\n```\n\nThis does not create two independent lists.\n\nUse first.copy() when a shallow copy is appropriate.\n\n### Mistake 2: Using is for Value Comparison\n\nAvoid:\n\n```python\n# Avoid this for comparing ordinary values:\n# if score is 100:\n#     print(\"Perfect\")\n```\n\nPrefer:\n\n```python\nif score == 100:\n    print(\"Perfect\")\n```\n\n### Mistake 3: Converting Unvalidated Input\n\n```python\nage_text = input(\"Enter age: \")\n```\n\nThe result of input() is a string. Converting it directly may raise ValueError if the user enters invalid text.\n\nUse try-except and validate the value.\n\n```python\nage_text = input(\"Enter age: \")\n\ntry:\n    age = int(age_text)\nexcept ValueError:\n    print(\"Please enter a valid whole number.\")\nelse:\n    print(\"Your age is:\", age)\n```\n\n### Mistake 4: Treating Every Numeric Value as an Integer\n\nA value such as 18.5 cannot be converted to int without losing its fractional component.\n\nSelect a type that preserves the information your application needs.\n\n## 16. Practical Project: Student Result Processor\n\nBuild a small program that receives a student's name, marks, and total marks, validates the data, calculates the percentage, and displays the result.\n\nRequirements:\n\n1. Ask the user for their name.\n2. Accept obtained marks and total marks as input.\n3. Convert numeric strings into numbers.\n4. Reject invalid numeric input.\n5. Reject negative marks and totals of zero or less.\n6. Reject obtained marks greater than total marks.\n7. Calculate the percentage.\n8. Display the result using formatted strings.\n\nThis project combines variables, strings, type conversion, numeric types, conditions, and exception handling.\n\n## 17. Professional Practices\n\n- Use clear, descriptive variable names.\n- Choose data types based on the meaning of the data.\n- Validate external input before converting or processing it.\n- Use isinstance() for flexible type checks.\n- Use == for value equality and is for object identity.\n- Understand when a mutable object is shared.\n- Copy collections when independent state is required.\n- Avoid unnecessary deep copies.\n- Never store passwords as plain text in a real application.\n- Separate data validation from business logic as your projects grow.\n- Add tests for invalid inputs and boundary values.\n\n## 18. Practice Exercises\n\n### Beginner\n\n1. Create variables for a student's name, age, semester, and GPA.\n2. Print each variable along with its type.\n3. Convert the string \"250\" into an integer and add 50.\n4. Convert the float 89.75 into an integer and explain the result.\n5. Create a list of five programming languages and add another language.\n\n### Intermediate\n\n6. Write a program that accepts two numeric strings and calculates their sum.\n7. Handle invalid input using try-except.\n8. Demonstrate the difference between == and is.\n9. Create a list, assign it to another variable, and demonstrate aliasing.\n10. Use copy() to create a separate list and compare the behavior.\n\n### Advanced\n\n11. Create a nested list and demonstrate why a shallow copy may not isolate nested changes.\n12. Use copy.deepcopy() to create an independent nested structure.\n13. Write a function that validates a student's marks and returns a percentage.\n14. Explain why bool(\"False\") evaluates to True.\n15. Describe how Python names, objects, references, and garbage collection relate to one another.\n\n## 19. Module Summary\n\nIn this module, you learned that:\n\n- Variables are names bound to objects.\n- Python uses dynamic typing and strong typing.\n- Built-in types represent different kinds of data.\n- Type conversion should be explicit and validated.\n- Mutable objects can be modified after creation.\n- Assignment can create shared references rather than copies.\n- is checks identity, while == checks equality.\n- Shallow copies duplicate the outer collection, not nested objects.\n- Deep copies can recursively copy nested structures.\n- Python manages memory automatically, with implementation-specific details.\n\nThese fundamentals prepare you for conditions, loops, functions, and data structures in upcoming modules.\n",
+      "codeExample": "import copy\n\n\ndef calculate_percentage(obtained_marks, total_marks):\n    if total_marks <= 0:\n        raise ValueError(\"Total marks must be greater than zero.\")\n\n    if obtained_marks < 0 or obtained_marks > total_marks:\n        raise ValueError(\"Obtained marks must be between zero and total marks.\")\n\n    return (obtained_marks / total_marks) * 100\n\n\ndef main():\n    print(\"STUDENT RESULT PROCESSOR\")\n    print(\"-\" * 30)\n\n    name = input(\"Enter student name: \").strip()\n\n    if not name:\n        print(\"Student name cannot be empty.\")\n        return\n\n    try:\n        obtained_marks = float(input(\"Enter obtained marks: \"))\n        total_marks = float(input(\"Enter total marks: \"))\n\n        percentage = calculate_percentage(obtained_marks, total_marks)\n\n    except ValueError as error:\n        print(\"Input error:\", error)\n        return\n\n    print(\"\\nSTUDENT RESULT\")\n    print(\"-\" * 30)\n    print(f\"Name: {name}\")\n    print(f\"Obtained marks: {obtained_marks:g}\")\n    print(f\"Total marks: {total_marks:g}\")\n    print(f\"Percentage: {percentage:.2f}%\")\n\n    # Demonstrate object references and shallow copying.\n    original_courses = [\"Python\", \"JavaScript\", \"C++\"]\n    shared_courses = original_courses\n    independent_courses = original_courses.copy()\n\n    shared_courses.append(\"SQL\")\n    independent_courses.append(\"Java\")\n\n    print(\"\\nREFERENCE DEMONSTRATION\")\n    print(\"Original list:\", original_courses)\n    print(\"Shared list:\", shared_courses)\n    print(\"Independent copy:\", independent_courses)\n    print(\"Original and shared are identical:\", original_courses is shared_courses)\n    print(\"Original and copy are identical:\", original_courses is independent_courses)\n\n    # Demonstrate a deep copy of nested data.\n    student_data = {\"name\": name, \"scores\": [80, 90]}\n    copied_data = copy.deepcopy(student_data)\n    copied_data[\"scores\"].append(95)\n\n    print(\"\\nNESTED DATA DEMONSTRATION\")\n    print(\"Original student data:\", student_data)\n    print(\"Copied student data:\", copied_data)\n\n\nif __name__ == \"__main__\":\n    main()",
+      "quiz": [
         {
-          question: 'Which data type represents a decimal number?',
-          options: ['int', 'str', 'float', 'bool'],
-          correctAnswer: 2
+          "question": "What does a Python variable represent?",
+          "options": [
+            "A permanently reserved memory box",
+            "A name that refers to an object",
+            "A command that always creates a new object",
+            "A special type of loop"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Variables in Python are names (references) bound to objects living in memory, not fixed typed memory boxes."
         },
         {
-          question: 'What does int("25") return?',
-          options: ['"25"', '25', '25.0', 'None'],
-          correctAnswer: 1
+          "question": "Which variable name follows Python naming rules?",
+          "options": [
+            "2student",
+            "student name",
+            "student_name",
+            "class"
+          ],
+          "correctAnswer": 2,
+          "explanation": "PEP 8 recommends snake_case (lowercase words separated by underscores) for variable names."
+        },
+        {
+          "question": "Which statement about Python typing is correct?",
+          "options": [
+            "Python is statically typed and weakly typed",
+            "Python is dynamically typed and strongly typed",
+            "Python variables can never refer to different types",
+            "Python converts all strings to integers automatically"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Python checks types at runtime (dynamic) and refuses implicit incompatible operations like \"5\" + 2 (strongly typed)."
+        },
+        {
+          "question": "What does int(19.99) return?",
+          "options": [
+            "20",
+            "19.99",
+            "19",
+            "A ValueError in every case"
+          ],
+          "correctAnswer": 2,
+          "explanation": "int(19.99) truncates the fractional part toward zero, yielding 19."
+        },
+        {
+          "question": "What is the result of bool(\"False\")?",
+          "options": [
+            "False",
+            "True",
+            "None",
+            "A TypeError"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Because \"False\" is a non-empty string, Python evaluates bool(\"False\") as True."
+        },
+        {
+          "question": "What does the is operator check?",
+          "options": [
+            "Whether two objects have equal values",
+            "Whether two references point to the same object",
+            "Whether two variables have the same name",
+            "Whether a variable is a string"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `is` operator tests object identity (same memory address / id()), whereas `==` tests value equality."
+        },
+        {
+          "question": "What happens when second = first is executed and first is a list?",
+          "options": [
+            "A deep copy is always created",
+            "The list becomes immutable",
+            "Both names refer to the same list object",
+            "The list is converted into a tuple"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Simple assignment copies the reference, so both names point to the exact same list instance."
+        },
+        {
+          "question": "What does list.copy() create?",
+          "options": [
+            "A shallow copy of the list",
+            "A deep copy of every nested object",
+            "An immutable list",
+            "A reference to the original list only"
+          ],
+          "correctAnswer": 0,
+          "explanation": "list.copy() creates a new outer list (shallow copy), while nested mutable elements still share references."
+        },
+        {
+          "question": "Which module provides deepcopy()?",
+          "options": [
+            "math",
+            "random",
+            "copy",
+            "typing"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The standard library `copy` module provides `copy.deepcopy()` for recursively cloning nested mutable objects."
+        },
+        {
+          "question": "Why should external input be validated before conversion?",
+          "options": [
+            "Python does not support input strings",
+            "Invalid values can cause conversion errors or incorrect results",
+            "Validation makes every object immutable",
+            "Conversion automatically verifies business rules"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Validating untrusted input before calling int() or float() prevents ValueError crashes and bad data."
         }
+      ],
+      "assignment": "Problem Statement:\nA grading script accidentally mutates original student gradebooks when computing curve adjustments because it used list aliasing (b = a) and shallow .copy() on nested dictionaries. Build a Grade & Memory Inspector that fixes this and proves object identity differences with id().\n\nObjectives:\n- Demonstrate Python name-to-object reference binding using id() and is.\n- Contrast aliasing (=), shallow copy (.copy()), and copy.deepcopy() on nested structures.\n\nRequirements:\n1. Create a nested gradebook dict: {\"ada\": {\"scores\": [88, 92], \"curve\": 0}}.\n2. Show that alias = gradebook shares the exact same id(alias) == id(gradebook).\n3. Show that shallow = gradebook.copy() gets a new outer id(), yet shallow[\"ada\"][\"scores\"] still mutates the original nested list!\n4. Use copy.deepcopy(gradebook) to apply a +5 curve safely without altering the original gradebook.\n5. Safely convert raw string scores [\"90\", \"85\", \"invalid\"] into integers, logging skipped invalid entries.\n\nStep-by-Step Instructions:\n1. Write grade_inspector.py importing copy.\n2. Print id() comparisons before and after mutation for alias, shallow copy, and deepcopy.\n3. Implement safe_parse_scores(raw_list) returning valid ints only.\n\nDeliverables:\n- grade_inspector.py.\n\nEvaluation Criteria:\n- Original gradebook remains completely untouched after deepcopy curve adjustment.\n- Clear printed proof of id() behavior.",
+      "lessons": [
+        {
+          "title": "Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals: Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals.",
+          "objectives": [
+            "Master Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand how variables work in Python.\n- Identify Python's built-in data types.\n- Use type() and isinstance() to inspect values.\n- Convert values safely between different data types.\n- Understand dynamic typing and strong typing.\n- Explain the difference between mutable and immutable objects.\n- Understand object references, identity, and equality.\n- Recognize common problems caused by shared references.\n- Use copy operations when working with mutable objects.\n- Write reliable Python programs that validate and process data.\n\n## 2. Understanding Variables\n\nA variable is a name that refers to an object in Python.\n\nUnlike some languages where variables are thought of as fixed memory boxes, Python names refer to objects. An assignment associates a name with an object.\n\nExample:\n\n```python\nname = \"Anas\"\nage = 18\nheight = 5.6\n\nprint(name)\nprint(age)\nprint(height)\n```\n\nOutput:\n\n```text\nAnas\n18\n5.6\n```\n\nHere:\n- name refers to a string object.\n- age refers to an integer object.\n- height refers to a floating-point object.\n\nPython does not require you to declare a variable's type before assigning a value.\n\n## 3. Variable Naming Rules\n\nA valid Python variable name:\n\n- Must begin with a letter or underscore.\n- May contain letters, digits, and underscores.\n- Cannot contain spaces.\n- Cannot begin with a digit.\n- Cannot be a reserved Python keyword.\n- Is case-sensitive.\n\nValid examples:\n\n```python\nstudent_name = \"Ali\"\nstudent_age = 19\n_total = 500\ncourse2 = \"Python\"\nuserEmail = \"student@example.com\"\n```\n\nInvalid examples:\n\n```python\n# Invalid variable names\n# 2name = \"Ali\"\n# student name = \"Ali\"\n# class = \"Python\"\n```\n\nThe word class is reserved by Python, so it cannot be used as a variable name.\n\n### Professional Naming Convention\n\nPython developers commonly use snake_case for variables and functions.\n\n```python\nfirst_name = \"Ali\"\ntotal_marks = 450\nis_registered = True\ncourse_price = 1999\n```\n\nPrefer meaningful names over unclear names.\n\nAvoid:\n\n```python\nx = 450\ny = 560\nz = x / y\n```\n\nPrefer:\n\n```python\nobtained_marks = 450\ntotal_marks = 560\npercentage = obtained_marks / total_marks * 100\n```\n\nMeaningful names make code easier to understand, test, and maintain.\n\n## 4. Assigning and Reassigning Variables\n\nPython allows a name to refer to a different object later.\n\n```python\nscore = 50\nprint(score)\n\nscore = 85\nprint(score)\n```\n\nOutput:\n\n```text\n50\n85\n```\n\nThe name score initially refers to the integer 50. After reassignment, it refers to the integer 85.\n\nThis does not mean the integer 50 was changed. Integers are immutable objects.\n\n### Multiple Assignment\n\n```python\nname, age, city = \"Anas\", 18, \"Bahawalpur\"\n\nprint(name)\nprint(age)\nprint(city)\n```\n\n### Assigning One Value to Multiple Names\n\n```python\nfirst = second = third = 100\n\nprint(first, second, third)\n```\n\nBe careful when using this pattern with mutable objects. All three names will refer to the same object if the assigned value is a mutable object.\n\n## 5. Python's Built-in Data Types\n\nPython provides several built-in types for representing information.\n\n### Integer: int\n\nIntegers represent whole numbers.\n\n```python\nstudents = 120\ntemperature = -5\nzero_value = 0\n\nprint(type(students))\n```\n\nIntegers can represent very large whole numbers, subject to available system memory.\n\n### Floating-Point: float\n\nFloats represent numbers with a fractional component.\n\n```python\nprice = 499.99\ntemperature = 36.5\npercentage = 87.25\n\nprint(type(price))\n```\n\nFloating-point calculations may have small precision limitations.\n\n```python\nprint(0.1 + 0.2)\n```\n\nThe result may appear as:\n\n```text\n0.30000000000000004\n```\n\nThis happens because many decimal fractions cannot be represented exactly in binary floating-point.\n\nFor financial calculations requiring exact decimal arithmetic, consider Python's decimal.Decimal type.\n\n### String: str\n\nStrings represent text.\n\n```python\nstudent_name = \"Anas\"\nmessage = 'Welcome to Python'\nmultiline_text = \"\"\"This is\na multiline string.\"\"\"\n\nprint(type(student_name))\n```\n\nStrings are immutable. Operations such as replacing text create new string objects rather than modifying the original string in place.\n\n### Boolean: bool\n\nBooleans represent logical truth values.\n\n```python\nis_logged_in = True\nhas_completed_course = False\n\nprint(type(is_logged_in))\n```\n\nPython's Boolean values are True and False, with capital first letters.\n\n### NoneType\n\nNone represents the absence of a value.\n\n```python\nmiddle_name = None\n\nprint(middle_name)\nprint(type(middle_name))\n```\n\nNone is commonly used for optional information or as a placeholder when a value is not yet available.\n\n### List: list\n\nLists store ordered collections of items and are mutable.\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\"]\n\ncourses.append(\"SQL\")\nprint(courses)\n```\n\nA list can contain values of different types, although collections with a consistent type are often easier to work with.\n\n### Tuple: tuple\n\nTuples store ordered collections and cannot have their elements reassigned.\n\n```python\ncoordinates = (30.1575, 71.5249)\nprint(coordinates)\n```\n\nTuples are useful for fixed collections of values.\n\n### Set: set\n\nSets store unique elements.\n\n```python\nlanguages = {\"Python\", \"JavaScript\", \"Python\"}\nprint(languages)\n```\n\nDuplicate values are removed. Sets do not provide positional indexing like lists.\n\n### Dictionary: dict\n\nDictionaries store key-value pairs.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"age\": 18,\n    \"course\": \"Software Engineering\"\n}\n\nprint(student[\"name\"])\nprint(student[\"course\"])\n```\n\nDictionaries are useful for structured records and configuration data.\n\n## 6. Checking Types with type() and isinstance()\n\nUse type() to inspect an object's type.\n\n```python\nage = 18\nprice = 299.50\nname = \"Anas\"\n\nprint(type(age))\nprint(type(price))\nprint(type(name))\n```\n\nUse isinstance() when checking whether a value belongs to a type or class.\n\n```python\nage = 18\n\nprint(isinstance(age, int))\nprint(isinstance(age, str))\n```\n\nOutput:\n\n```text\nTrue\nFalse\n```\n\nFor most type-checking conditions in application code, isinstance() is more flexible than directly comparing type() results.\n\n### Important Boolean Detail\n\nIn Python, bool is a subclass of int.\n\n```python\nprint(isinstance(True, int))\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThis behavior can matter when validating numeric inputs. If your application requires an integer but must reject Boolean values, check for bool explicitly.\n\n```python\nvalue = True\n\nif isinstance(value, int) and not isinstance(value, bool):\n    print(\"Valid integer\")\nelse:\n    print(\"Not an acceptable integer\")\n```",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Bind `a = [1, 2]`, `b = a`, and `c = a.copy()`. Print `id(a)`, `id(b)`, and `id(c)` and test `a is b` vs `a is c`.\n\nExpected Result:\n`a is b` is `True`, while `a is c` is `False`.",
+          "keyTakeaways": [
+            "Understand and apply Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "7. Dynamic Typing",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals: 7. Dynamic Typing.",
+          "objectives": [
+            "Master 7. Dynamic Typing",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 7. Dynamic Typing\n\nPython is dynamically typed. A name can refer to objects of different types at different times.\n\n```python\nvalue = 100\nprint(type(value))\n\nvalue = \"One hundred\"\nprint(type(value))\n\nvalue = [100, 200, 300]\nprint(type(value))\n```\n\nThe name value is reassigned to different objects.\n\nDynamic typing makes Python flexible, but developers must still ensure that operations make sense for the current value.\n\n```python\nage = 18\nprint(age + 2)\n```\n\nThis works because adding integers is valid.\n\nHowever:\n\n```python\n# This raises TypeError:\n# print(\"18\" + 2)\n```\n\nPython does not automatically treat every numeric-looking string as a number.\n\n## 8. Strong Typing\n\nPython is dynamically typed and strongly typed.\n\nStrong typing means Python generally does not silently convert incompatible values for operations.\n\n```python\nage_text = \"18\"\nextra_years = 2\n\n# print(age_text + extra_years)  # TypeError\n```\n\nConvert the value explicitly when the intended meaning is numeric.\n\n```python\nage_text = \"18\"\nextra_years = 2\n\nage = int(age_text)\nfuture_age = age + extra_years\n\nprint(future_age)\n```\n\nOutput:\n\n```text\n20\n```\n\n## 9. Type Conversion\n\nType conversion changes a value from one type to another.\n\nPython provides constructors such as int(), float(), str(), list(), tuple(), set(), and bool().\n\n### String to Integer\n\n```python\nage_text = \"18\"\nage = int(age_text)\n\nprint(age + 2)\n```\n\nThe string must contain a valid integer representation.\n\n```python\n# int(\"eighteen\")  # ValueError\n```\n\n### Integer to Float\n\n```python\nnumber = 10\ndecimal_number = float(number)\n\nprint(decimal_number)\n```\n\nOutput:\n\n```text\n10.0\n```\n\n### Float to Integer\n\n```python\nprice = 19.99\nwhole_number = int(price)\n\nprint(whole_number)\n```\n\nOutput:\n\n```text\n19\n```\n\nint() truncates the fractional part toward zero; it does not round to the nearest integer.\n\n### Number to String\n\n```python\nage = 18\nmessage = \"Age: \" + str(age)\n\nprint(message)\n```\n\n### String to Float\n\n```python\nprice_text = \"499.95\"\nprice = float(price_text)\n\nprint(price)\n```\n\n### Converting a List to a Tuple\n\n```python\nitems = [\"Python\", \"JavaScript\", \"SQL\"]\nfixed_items = tuple(items)\n\nprint(fixed_items)\n```\n\n### Converting a List to a Set\n\n```python\nnumbers = [1, 2, 2, 3, 3, 4]\nunique_numbers = set(numbers)\n\nprint(unique_numbers)\n```\n\nThe set contains unique values, but you should not rely on its display order.\n\n## 10. Truthiness and bool()\n\nPython values can be interpreted as true or false in conditions.\n\nCommon falsy values include:\n\n- False\n- None\n- Numeric zero, including 0 and 0.0\n- Empty strings\n- Empty lists, tuples, dictionaries, and sets\n\nExamples:\n\n```python\nprint(bool(0))\nprint(bool(25))\nprint(bool(\"\"))\nprint(bool(\"Python\"))\nprint(bool([]))\nprint(bool([1, 2]))\n```\n\nOutput:\n\n```text\nFalse\nTrue\nFalse\nTrue\nFalse\nTrue\n```\n\nA common mistake is assuming the string \"False\" evaluates to False.\n\n```python\nprint(bool(\"False\"))\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThe string is non-empty, so it is truthy. To interpret textual answers such as \"yes\" and \"no\", implement explicit validation instead of relying on bool().\n\n## 11. Mutable and Immutable Objects\n\nMutability describes whether an object's contents can change after creation.\n\n### Common Immutable Types\n\n- int\n- float\n- bool\n- str\n- tuple (the tuple's structure is immutable, although it may contain mutable objects)\n- frozenset\n- NoneType\n\n### Common Mutable Types\n\n- list\n- dict\n- set\n- Most user-defined objects, unless their design prevents mutation\n\nExample with an immutable integer:\n\n```python\nnumber = 10\nnumber = number + 5\n\nprint(number)\n```\n\nThe calculation creates or obtains an integer representing 15, and the name number is reassigned. The original integer object is not changed.\n\nExample with a mutable list:\n\n```python\nscores = [70, 80, 90]\nscores.append(95)\n\nprint(scores)\n```\n\nThe existing list is modified.\n\nUnderstanding this distinction helps prevent unexpected behavior in functions, loops, and application state.\n\n## 12. Object References and Aliasing\n\nWhen you assign one variable to another, Python generally copies the reference, not the entire object.\n\n```python\nfirst_list = [10, 20, 30]\nsecond_list = first_list\n\nsecond_list.append(40)\n\nprint(first_list)\nprint(second_list)\n```\n\nOutput:\n\n```text\n[10, 20, 30, 40]\n[10, 20, 30, 40]\n```\n\nBoth names refer to the same list object. This is known as aliasing.\n\nChanging the list through either name affects the same object.\n\n### Checking Object Identity\n\nThe is operator checks whether two references point to the same object.\n\n```python\na = [1, 2, 3]\nb = a\nc = [1, 2, 3]\n\nprint(a is b)\nprint(a is c)\nprint(a == c)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nRemember:\n\n- is checks object identity.\n- == checks value equality.\n\nFor ordinary value comparisons, use ==. Use is when identity itself matters, especially for checks such as value is None.\n\n## 13. Copying Mutable Objects\n\nSometimes you need a separate list rather than another reference to the same list.\n\n### Shallow Copy\n\n```python\noriginal = [10, 20, 30]\ncopied = original.copy()\n\ncopied.append(40)\n\nprint(original)\nprint(copied)\n```\n\nOutput:\n\n```text\n[10, 20, 30]\n[10, 20, 30, 40]\n```\n\nThe outer lists are different objects.\n\nYou can also create a shallow copy using:\n\n```python\ncopied = list(original)\n# Or:\ncopied = original[:]\n```\n\n### Important: Shallow Copy and Nested Objects\n\nA shallow copy creates a new outer collection, but references to nested objects are still shared.\n\n```python\noriginal = [[1, 2], [3, 4]]\ncopied = original.copy()\n\ncopied[0].append(99)\n\nprint(original)\nprint(copied)\n```\n\nBoth outer lists refer to the same inner list at index 0, so the nested change is visible through both references.\n\n### Deep Copy\n\nWhen you need to recursively copy nested objects, Python's copy module provides deepcopy().\n\n```python\nimport copy\n\noriginal = [[1, 2], [3, 4]]\ncopied = copy.deepcopy(original)\n\ncopied[0].append(99)\n\nprint(original)\nprint(copied)\n```\n\nOutput:\n\n```text\n[[1, 2], [3, 4]]\n[[1, 2, 99], [3, 4]]\n```\n\nDeep copying is not always necessary and may be expensive for large or complex objects. Choose the copying strategy that matches your application's requirements.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Convert `[\"10\", \"25\", \"bad\", \"40\"]` into a list of integers using a `try/except ValueError` helper that skips `\"bad\"`.\n\nExpected Result:\nReturns `[10, 25, 40]` cleanly.",
+          "keyTakeaways": [
+            "Understand and apply 7. Dynamic Typing",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "14. The Python Memory Model",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals: 14. The Python Memory Model.",
+          "objectives": [
+            "Master 14. The Python Memory Model",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 14. The Python Memory Model\n\nAt a high level, Python programs work with objects and references.\n\nWhen you write:\n\n```python\nstudent_name = \"Anas\"\n```\n\nPython creates or obtains a string object and binds the name student_name to it.\n\nWhen you write:\n\n```python\nstudent_name = \"Ali\"\n```\n\nthe name is rebound to another string object. The earlier object may remain alive if another reference points to it.\n\nPython manages object memory automatically. In CPython, memory management commonly uses reference counting together with a cyclic garbage collector. Other Python implementations may manage memory differently.\n\n### Reference Example\n\n```python\nfirst = [1, 2]\nsecond = first\nthird = first.copy()\n\nprint(first is second)\nprint(first is third)\n```\n\nThe first and second names share the same list. The third name refers to a separate outer list.\n\n### Why Memory Fundamentals Matter\n\nThese concepts are especially useful when:\n\n- Passing lists and dictionaries into functions.\n- Managing student progress and course data.\n- Updating shared application state.\n- Debugging unexpected changes.\n- Working with nested data structures.\n- Understanding object lifetimes and memory usage.\n\nDo not assume that assigning a variable always duplicates the underlying object.\n\n## 15. Avoiding Common Assignment Mistakes\n\n### Mistake 1: Assuming Assignment Copies a List\n\nIncorrect assumption:\n\n```python\nfirst = [1, 2, 3]\nsecond = first\n```\n\nThis does not create two independent lists.\n\nUse first.copy() when a shallow copy is appropriate.\n\n### Mistake 2: Using is for Value Comparison\n\nAvoid:\n\n```python\n# Avoid this for comparing ordinary values:\n# if score is 100:\n#     print(\"Perfect\")\n```\n\nPrefer:\n\n```python\nif score == 100:\n    print(\"Perfect\")\n```\n\n### Mistake 3: Converting Unvalidated Input\n\n```python\nage_text = input(\"Enter age: \")\n```\n\nThe result of input() is a string. Converting it directly may raise ValueError if the user enters invalid text.\n\nUse try-except and validate the value.\n\n```python\nage_text = input(\"Enter age: \")\n\ntry:\n    age = int(age_text)\nexcept ValueError:\n    print(\"Please enter a valid whole number.\")\nelse:\n    print(\"Your age is:\", age)\n```\n\n### Mistake 4: Treating Every Numeric Value as an Integer\n\nA value such as 18.5 cannot be converted to int without losing its fractional component.\n\nSelect a type that preserves the information your application needs.\n\n## 16. Practical Project: Student Result Processor\n\nBuild a small program that receives a student's name, marks, and total marks, validates the data, calculates the percentage, and displays the result.\n\nRequirements:\n\n1. Ask the user for their name.\n2. Accept obtained marks and total marks as input.\n3. Convert numeric strings into numbers.\n4. Reject invalid numeric input.\n5. Reject negative marks and totals of zero or less.\n6. Reject obtained marks greater than total marks.\n7. Calculate the percentage.\n8. Display the result using formatted strings.\n\nThis project combines variables, strings, type conversion, numeric types, conditions, and exception handling.\n\n## 17. Professional Practices\n\n- Use clear, descriptive variable names.\n- Choose data types based on the meaning of the data.\n- Validate external input before converting or processing it.\n- Use isinstance() for flexible type checks.\n- Use == for value equality and is for object identity.\n- Understand when a mutable object is shared.\n- Copy collections when independent state is required.\n- Avoid unnecessary deep copies.\n- Never store passwords as plain text in a real application.\n- Separate data validation from business logic as your projects grow.\n- Add tests for invalid inputs and boundary values.\n\n## 18. Practice Exercises\n\n### Beginner\n\n1. Create variables for a student's name, age, semester, and GPA.\n2. Print each variable along with its type.\n3. Convert the string \"250\" into an integer and add 50.\n4. Convert the float 89.75 into an integer and explain the result.\n5. Create a list of five programming languages and add another language.\n\n### Intermediate\n\n6. Write a program that accepts two numeric strings and calculates their sum.\n7. Handle invalid input using try-except.\n8. Demonstrate the difference between == and is.\n9. Create a list, assign it to another variable, and demonstrate aliasing.\n10. Use copy() to create a separate list and compare the behavior.\n\n### Advanced\n\n11. Create a nested list and demonstrate why a shallow copy may not isolate nested changes.\n12. Use copy.deepcopy() to create an independent nested structure.\n13. Write a function that validates a student's marks and returns a percentage.\n14. Explain why bool(\"False\") evaluates to True.\n15. Describe how Python names, objects, references, and garbage collection relate to one another.\n\n## 19. Module Summary\n\nIn this module, you learned that:\n\n- Variables are names bound to objects.\n- Python uses dynamic typing and strong typing.\n- Built-in types represent different kinds of data.\n- Type conversion should be explicit and validated.\n- Mutable objects can be modified after creation.\n- Assignment can create shared references rather than copies.\n- is checks identity, while == checks equality.\n- Shallow copies duplicate the outer collection, not nested objects.\n- Deep copies can recursively copy nested structures.\n- Python manages memory automatically, with implementation-specific details.\n\nThese fundamentals prepare you for conditions, loops, functions, and data structures in upcoming modules.",
+          "codeExample": "import copy\n\n\ndef calculate_percentage(obtained_marks, total_marks):\n    if total_marks <= 0:\n        raise ValueError(\"Total marks must be greater than zero.\")\n\n    if obtained_marks < 0 or obtained_marks > total_marks:\n        raise ValueError(\"Obtained marks must be between zero and total marks.\")\n\n    return (obtained_marks / total_marks) * 100\n\n\ndef main():\n    print(\"STUDENT RESULT PROCESSOR\")\n    print(\"-\" * 30)\n\n    name = input(\"Enter student name: \").strip()\n\n    if not name:\n        print(\"Student name cannot be empty.\")\n        return\n\n    try:\n        obtained_marks = float(input(\"Enter obtained marks: \"))\n        total_marks = float(input(\"Enter total marks: \"))\n\n        percentage = calculate_percentage(obtained_marks, total_marks)\n\n    except ValueError as error:\n        print(\"Input error:\", error)\n        return\n\n    print(\"\\nSTUDENT RESULT\")\n    print(\"-\" * 30)\n    print(f\"Name: {name}\")\n    print(f\"Obtained marks: {obtained_marks:g}\")\n    print(f\"Total marks: {total_marks:g}\")\n    print(f\"Percentage: {percentage:.2f}%\")\n\n    # Demonstrate object references and shallow copying.\n    original_courses = [\"Python\", \"JavaScript\", \"C++\"]\n    shared_courses = original_courses\n    independent_courses = original_courses.copy()\n\n    shared_courses.append(\"SQL\")\n    independent_courses.append(\"Java\")\n\n    print(\"\\nREFERENCE DEMONSTRATION\")\n    print(\"Original list:\", original_courses)\n    print(\"Shared list:\", shared_courses)\n    print(\"Independent copy:\", independent_courses)\n    print(\"Original and shared are identical:\", original_courses is shared_courses)\n    print(\"Original and copy are identical:\", original_courses is independent_courses)\n\n    # Demonstrate a deep copy of nested data.\n    student_data = {\"name\": name, \"scores\": [80, 90]}\n    copied_data = copy.deepcopy(student_data)\n    copied_data[\"scores\"].append(95)\n\n    print(\"\\nNESTED DATA DEMONSTRATION\")\n    print(\"Original student data:\", student_data)\n    print(\"Copied student data:\", copied_data)\n\n\nif __name__ == \"__main__\":\n    main()",
+          "codeExplanation": "1. calculate_percentage() guards against total_marks <= 0 and out-of-range obtained_marks using ValueError before dividing.\n2. The script demonstrates Python's reference model using copy.deepcopy() alongside shallow copying so nested grade dictionaries don't mutate unexpectedly.\n\nHow to Run & Expected Output:\nSave as `grade_memory.py` and run `python grade_memory.py`. Prints computed percentages and confirms original nested dicts remain intact after deepcopy edits.",
+          "practiceExercise": "Guided Exercise:\n1. Create a nested dict `{\"group\": [1, 2]}`, make a shallow `.copy()` and a `copy.deepcopy()`, append `3` to the shallow copy, and inspect the original.\n\nExpected Result:\nShallow copy mutates the original nested list; `deepcopy` leaves the original untouched.",
+          "keyTakeaways": [
+            "Understand and apply 14. The Python Memory Model",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 2: Variables, Data Types, Type Conversion & Memory Fundamentals",
+        "Apply Python best practices with clean, readable examples",
+        "Master 7. Dynamic Typing",
+        "Master 14. The Python Memory Model"
       ]
     },
     {
-      title: 'Module 3: Operators and Expressions',
-      duration: '2h 00m',
-      notes: `### Arithmetic operators
-- \`+\`: addition
-- \`-\`: subtraction
-- \`*\`: multiplication
-- \`/\`: division
-- \`//\`: floor division
-- \`%\`: remainder
-- \`**\`: exponentiation
-
-### Comparison operators
-Use \`==\`, \`!=\`, \`>\`, \`<\`, \`>=\`, and \`<=\` to compare values.
-
-### Logical operators
-- \`and\`: both conditions must be true.
-- \`or\`: at least one condition must be true.
-- \`not\`: reverses a Boolean value.
-
-### Assignment operators
-Operators such as \`+=\`, \`-=\`, and \`*=\` update a variable.
-
-### Operator precedence
-Parentheses make complex expressions clearer and help you control evaluation order.
-
-### Division by zero
-Dividing by zero raises \`ZeroDivisionError\`. Validate inputs when calculations depend on user data.`,
-      codeExample: `price = 500
-discount_percent = 10
-
-discount = price * discount_percent / 100
-final_price = price - discount
-
-print("Discount:", discount)
-print("Final price:", final_price)
-
-print(17 // 5)
-print(17 % 5)
-print(2 ** 4)
-
-age = 18
-print(age >= 18 and age < 60)`,
-      quiz: [
+      "title": "Module 3: Python Operators, Expressions & Decision-Making",
+      "duration": "5h 00m",
+      "notes": "\n# Module 3: Python Operators, Expressions & Decision-Making\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand arithmetic, comparison, assignment, logical, and bitwise operators.\n- Evaluate expressions using operator precedence.\n- Use membership and identity operators correctly.\n- Write conditional statements with if, elif, and else.\n- Combine conditions using logical operators.\n- Use nested conditions and conditional expressions.\n- Understand truthy and falsy values in conditional logic.\n- Validate input and handle invalid data.\n- Build practical decision-making programs.\n- Avoid common logical errors and write readable conditions.\n\n## 2. What Is an Operator?\n\nAn operator is a symbol or keyword that performs an operation on values or variables.\n\nExamples:\n\n```python\na = 10\nb = 3\n\nprint(a + b)\nprint(a > b)\nprint(a == b)\n```\n\nOutput:\n\n```text\n13\nTrue\nFalse\n```\n\nIn these examples, + performs addition, > compares values, and == checks equality.\n\nAn expression is a combination of values, variables, and operators that produces a result.\n\n```python\ntotal_price = 500 + 250\nis_expensive = total_price > 600\n\nprint(total_price)\nprint(is_expensive)\n```\n\n## 3. Arithmetic Operators\n\nArithmetic operators perform mathematical calculations.\n\n| Operator | Meaning | Example | Result |\n| --- | --- | --- | --- |\n| + | Addition | 10 + 3 | 13 |\n| - | Subtraction | 10 - 3 | 7 |\n| * | Multiplication | 10 * 3 | 30 |\n| / | Division | 10 / 3 | 3.333... |\n| // | Floor division | 10 // 3 | 3 |\n| % | Modulo/remainder | 10 % 3 | 1 |\n| ** | Exponentiation | 2 ** 3 | 8 |\n\n### Division\n\nThe / operator produces a floating-point result in ordinary numeric division.\n\n```python\nprint(10 / 2)\nprint(7 / 2)\n```\n\nOutput:\n\n```text\n5.0\n3.5\n```\n\n### Floor Division\n\nFloor division rounds the mathematical quotient down toward negative infinity.\n\n```python\nprint(7 // 2)\nprint(-7 // 2)\n```\n\nOutput:\n\n```text\n3\n-4\n```\n\nNotice that -7 // 2 gives -4, not -3.\n\n### Modulo Operator\n\nThe modulo operator returns the remainder according to Python's division rules.\n\n```python\nprint(10 % 3)\nprint(12 % 2)\nprint(17 % 5)\n```\n\nOutput:\n\n```text\n1\n0\n2\n```\n\nA common use is checking whether a number is even or odd.\n\n```python\nnumber = 14\n\nif number % 2 == 0:\n    print(\"Even number\")\nelse:\n    print(\"Odd number\")\n```\n\n### Exponentiation\n\n```python\nprint(2 ** 3)\nprint(5 ** 2)\nprint(9 ** 0.5)\n```\n\nOutput:\n\n```text\n8\n25\n3.0\n```\n\nThe final example calculates the square root of 9.\n\n## 4. Comparison Operators\n\nComparison operators compare values and produce a Boolean result: True or False.\n\n| Operator | Meaning |\n| --- | --- |\n| == | Equal to |\n| != | Not equal to |\n| > | Greater than |\n| < | Less than |\n| >= | Greater than or equal to |\n| <= | Less than or equal to |\n\nExample:\n\n```python\nage = 18\n\nprint(age == 18)\nprint(age != 18)\nprint(age > 16)\nprint(age < 21)\nprint(age >= 18)\nprint(age <= 17)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\nTrue\nTrue\nFalse\n```\n\n### Important Difference: = and ==\n\nThe single equals sign assigns a value.\n\n```python\nage = 18\n```\n\nThe double equals sign compares values.\n\n```python\nprint(age == 18)\n```\n\nConfusing these operators can cause syntax errors or incorrect logic.\n\n### Chained Comparisons\n\nPython allows multiple comparisons in a single expression.\n\n```python\nage = 20\n\nprint(18 <= age <= 25)\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThis is equivalent in meaning to checking that age is at least 18 and at most 25.\n\nChained comparisons are often more readable than repeating the same variable.\n\n## 5. Assignment Operators\n\nAssignment operators assign values or update an existing variable.\n\n| Operator | Example | Equivalent operation |\n| --- | --- | --- |\n| = | x = 10 | Assign 10 |\n| += | x += 3 | x = x + 3 |\n| -= | x -= 3 | x = x - 3 |\n| *= | x *= 3 | x = x * 3 |\n| /= | x /= 3 | x = x / 3 |\n| //= | x //= 3 | x = x // 3 |\n| %= | x %= 3 | x = x % 3 |\n| **= | x **= 3 | x = x ** 3 |\n\nExample:\n\n```python\nbalance = 1000\n\nbalance += 250\nprint(balance)\n\nbalance -= 100\nprint(balance)\n\nbalance *= 2\nprint(balance)\n```\n\nOutput:\n\n```text\n1250\n1150\n2300\n```\n\nAssignment operators are useful for updating scores, balances, counters, and totals.\n\n## 6. Logical Operators\n\nLogical operators combine or reverse Boolean conditions.\n\n### and\n\nBoth conditions must be true.\n\n```python\nage = 20\nhas_student_card = True\n\nprint(age >= 18 and has_student_card)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### or\n\nAt least one condition must be true.\n\n```python\nis_weekend = False\nis_holiday = True\n\nprint(is_weekend or is_holiday)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### not\n\nThe not operator reverses a truth value.\n\n```python\nis_blocked = False\n\nprint(not is_blocked)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### Combining Logical Operators\n\n```python\nage = 21\nhas_ticket = True\nis_banned = False\n\ncan_enter = age >= 18 and has_ticket and not is_banned\n\nprint(can_enter)\n```\n\nOutput:\n\n```text\nTrue\n```\n\nUse parentheses when they make complicated conditions easier to understand.\n\n```python\nif (age >= 18 and has_ticket) and not is_banned:\n    print(\"Access granted\")\n```\n\n## 7. Short-Circuit Evaluation\n\nPython may stop evaluating a logical expression once the result is known.\n\nFor and, if the first operand is falsy, the second operand may not be evaluated.\n\nFor or, if the first operand is truthy, the second operand may not be evaluated.\n\nExample:\n\n```python\nage = 16\n\nif age >= 18 and 100 / age > 2:\n    print(\"Condition passed\")\nelse:\n    print(\"Condition not passed\")\n```\n\nBecause age >= 18 is False, Python does not need to evaluate the second expression.\n\nShort-circuiting can also protect against accessing a value that might be None.\n\n```python\nusername = None\n\nif username is not None and username.strip():\n    print(\"Username is available\")\nelse:\n    print(\"Username is missing or empty\")\n```\n\nPut the safety check first when the later operation depends on it.\n\n## 8. Membership Operators\n\nThe in and not in operators check whether an item belongs to a collection or appears in a sequence.\n\n### Checking a String\n\n```python\nmessage = \"Welcome to Python\"\n\nprint(\"Python\" in message)\nprint(\"Java\" not in message)\n```\n\nOutput:\n\n```text\nTrue\nTrue\n```\n\nString membership is case-sensitive.\n\n```python\nprint(\"python\" in \"Python\")\n```\n\nOutput:\n\n```text\nFalse\n```\n\n### Checking a List\n\n```python\nsupported_languages = [\"Python\", \"JavaScript\", \"C++\"]\n\nlanguage = \"Python\"\n\nif language in supported_languages:\n    print(\"Language supported\")\n```\n\n### Checking a Dictionary\n\nFor dictionaries, in checks keys by default.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"age\": 18\n}\n\nprint(\"name\" in student)\nprint(\"Anas\" in student)\nprint(\"Anas\" in student.values())\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nUse .values() when you specifically need to search dictionary values.\n\n## 9. Identity Operators\n\nPython provides is and is not to check object identity.\n\n```python\nfirst = [1, 2, 3]\nsecond = first\nthird = [1, 2, 3]\n\nprint(first is second)\nprint(first is third)\nprint(first == third)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nThe first and second names reference the same object. The third list contains equal values but is a different object.\n\n### Correct Use of None\n\n```python\nresult = None\n\nif result is None:\n    print(\"No result available\")\n```\n\nPrefer is None and is not None for None checks.\n\nDo not use is as a substitute for == when comparing ordinary values.\n\n## 10. Bitwise Operators\n\nBitwise operators work on the binary representation of integers.\n\nThey are useful in areas such as permissions, bit flags, networking, and low-level programming.\n\n| Operator | Meaning |\n| --- | --- |\n| & | Bitwise AND |\n| | | Bitwise OR |\n| ^ | Bitwise XOR |\n| ~ | Bitwise NOT |\n| << | Left shift |\n| >> | Right shift |\n\n### Bitwise AND\n\n```python\nprint(6 & 3)\n```\n\nBinary representation:\n\n```text\n6 = 110\n3 = 011\n---------\n    010 = 2\n```\n\nOutput:\n\n```text\n2\n```\n\n### Bitwise OR\n\n```python\nprint(6 | 3)\n```\n\nOutput:\n\n```text\n7\n```\n\n### Bitwise XOR\n\nXOR produces a 1 when corresponding bits differ.\n\n```python\nprint(6 ^ 3)\n```\n\nOutput:\n\n```text\n5\n```\n\n### Left and Right Shifts\n\n```python\nprint(5 << 1)\nprint(8 >> 1)\n```\n\nOutput:\n\n```text\n10\n4\n```\n\nBitwise operators are distinct from logical and and or. Beginners should understand their purpose before using them in application logic.\n\n## 11. Operator Precedence\n\nOperator precedence determines which parts of an expression are evaluated first.\n\nA simplified order from higher to lower precedence is:\n\n1. Parentheses and grouping.\n2. Exponentiation.\n3. Unary operators such as +x, -x, and ~x.\n4. Multiplication, division, floor division, and modulo.\n5. Addition and subtraction.\n6. Bit shifts.\n7. Bitwise AND, XOR, and OR.\n8. Comparisons, membership, and identity checks.\n9. not.\n10. and.\n11. or.\n\nAssignment statements have their own rules and are not simply another arithmetic operator in this list.\n\nExample:\n\n```python\nresult = 2 + 3 * 4\nprint(result)\n```\n\nOutput:\n\n```text\n14\n```\n\nMultiplication is evaluated before addition.\n\nUse parentheses to make the intended calculation explicit.\n\n```python\nresult = (2 + 3) * 4\nprint(result)\n```\n\nOutput:\n\n```text\n20\n```\n\n### Exponentiation and Negative Values\n\n```python\nprint(-2 ** 2)\nprint((-2) ** 2)\n```\n\nOutput:\n\n```text\n-4\n4\n```\n\nExponentiation is evaluated before the leading unary minus. Parentheses change the meaning.\n\n### Best Practice\n\nEven when you know precedence rules, use parentheses in complex expressions when they improve readability.\n\n## 12. Introduction to Conditional Statements\n\nA conditional statement allows a program to make decisions based on conditions.\n\n### The if Statement\n\n```python\nage = 20\n\nif age >= 18:\n    print(\"You are an adult\")\n```\n\nThe indented block executes only when the condition is truthy.\n\n### The if-else Statement\n\n```python\nnumber = 7\n\nif number % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")\n```\n\nExactly one branch executes.\n\n### The if-elif-else Statement\n\nUse elif when multiple alternatives need to be checked.\n\n```python\nmarks = 82\n\nif marks >= 90:\n    grade = \"A+\"\nelif marks >= 80:\n    grade = \"A\"\nelif marks >= 70:\n    grade = \"B\"\nelif marks >= 60:\n    grade = \"C\"\nelse:\n    grade = \"Needs improvement\"\n\nprint(grade)\n```\n\nPython checks conditions in order and executes the first matching branch.\n\nFor marks of 82, the grade is A.\n\n### Why Order Matters\n\nIf you check marks >= 60 first, a student with 95 marks will match that condition and later branches will not execute.\n\nArrange ranges from the most restrictive or highest threshold to the lower thresholds when appropriate.\n\n## 13. Indentation in Conditions\n\nPython uses indentation to define code blocks.\n\nCorrect:\n\n```python\nage = 20\n\nif age >= 18:\n    print(\"Eligible\")\n    print(\"Access permitted\")\n\nprint(\"Program continues\")\n```\n\nThe final print statement is outside the conditional block.\n\nIncorrect indentation can cause an IndentationError or change program behavior.\n\nUse consistent indentation, conventionally four spaces per level.\n\n## 14. Nested Conditional Statements\n\nA nested conditional is an if statement inside another conditional block.\n\n```python\nage = 20\nhas_identity_card = True\n\nif age >= 18:\n    if has_identity_card:\n        print(\"Verification successful\")\n    else:\n        print(\"Identity card required\")\nelse:\n    print(\"Minimum age requirement not met\")\n```\n\nNested conditions can express dependent decisions, but excessive nesting makes code harder to maintain.\n\nFor simple logic, combining conditions may be clearer.\n\n```python\nif age >= 18 and has_identity_card:\n    print(\"Verification successful\")\n```\n\n## 15. Conditional Expressions\n\nA conditional expression selects a value based on a condition.\n\n```python\nage = 20\nstatus = \"Adult\" if age >= 18 else \"Minor\"\n\nprint(status)\n```\n\nOutput:\n\n```text\nAdult\n```\n\nThis is often called the ternary expression in Python discussions.\n\nUse it for simple decisions. Prefer a normal if-else statement when the logic is complex or spans multiple lines.\n\n## 16. Truthy and Falsy Conditions\n\nConditions do not always need to contain an explicit comparison.\n\n```python\nusername = \"Anas\"\n\nif username:\n    print(\"Username provided\")\nelse:\n    print(\"Username missing\")\n```\n\nAn empty string is falsy, while a non-empty string is truthy.\n\nCommon falsy values include:\n\n- False\n- None\n- 0 and 0.0\n- Empty strings\n- Empty lists\n- Empty tuples\n- Empty dictionaries\n- Empty sets\n\nExample:\n\n```python\ncourses = []\n\nif not courses:\n    print(\"No courses enrolled\")\n```\n\nThis is a common Python pattern.\n\nHowever, distinguish between a value being missing and a numeric value being zero when your application requires that difference.\n\n## 17. Validating User Input\n\nExternal input is untrusted. A program should validate it before relying on it.\n\nExample:\n\n```python\nage_text = input(\"Enter your age: \").strip()\n\ntry:\n    age = int(age_text)\nexcept ValueError:\n    print(\"Enter a valid whole number.\")\nelse:\n    if age < 0:\n        print(\"Age cannot be negative.\")\n    elif age > 120:\n        print(\"Please verify the age entered.\")\n    elif age >= 18:\n        print(\"Adult account category.\")\n    else:\n        print(\"Minor account category.\")\n```\n\nThis example demonstrates two separate responsibilities:\n\n- Conversion validation: can the text be converted to an integer?\n- Business validation: is the converted value acceptable for this application?\n\nIn real applications, the acceptable range depends on the actual business rules.\n\n## 18. Common Logical Mistakes\n\n### Mistake 1: Incorrect Range Conditions\n\nIncorrect:\n\n```python\n# Incorrect logic:\n# if age == 18 and age == 25:\n#     print(\"Eligible\")\n```\n\nOne number cannot equal both 18 and 25 at the same time.\n\nCorrect:\n\n```python\nif 18 <= age <= 25:\n    print(\"Eligible\")\n```\n\n### Mistake 2: Repeating a Comparison Incorrectly\n\nIncorrect:\n\n```python\n# This does not check both alternatives:\n# if age == 18 or 25:\n#     print(\"Eligible\")\n```\n\nThe integer 25 is truthy, so this condition does not mean what a beginner might expect.\n\nCorrect:\n\n```python\nif age == 18 or age == 25:\n    print(\"Eligible\")\n```\n\n### Mistake 3: Confusing and with or\n\nIf a user must satisfy both requirements, use and.\n\n```python\nif age >= 18 and has_ticket:\n    print(\"Entry allowed\")\n```\n\nIf either condition is enough, use or.\n\n```python\nif is_weekend or is_holiday:\n    print(\"No regular classes\")\n```\n\n### Mistake 4: Using Separate if Statements Instead of elif\n\nSeparate if statements can execute several branches.\n\n```python\nscore = 95\n\nif score >= 60:\n    print(\"Passed\")\n\nif score >= 90:\n    print(\"Excellent\")\n```\n\nOutput:\n\n```text\nPassed\nExcellent\n```\n\nThat may be intentional. If only one branch should run, use if-elif-else.\n\n### Mistake 5: Ignoring Boundaries\n\nWhen checking numeric ranges, test values exactly at the boundaries.\n\nFor a valid range of 18 through 25 inclusive, test 17, 18, 25, and 26.\n\n## 19. Practical Project: Student Eligibility System\n\nCreate a command-line application that determines whether a student qualifies for a course.\n\nRequirements:\n\n1. Ask for the student's name.\n2. Ask for the student's age.\n3. Ask for their percentage.\n4. Convert and validate numeric inputs.\n5. Reject empty names.\n6. Reject negative ages and percentages outside 0–100.\n7. Define eligibility as age at least 16 and percentage at least 60.\n8. Assign a performance category based on percentage.\n9. Display the eligibility result and category.\n10. Handle invalid input without crashing.\n\nThe exact age and percentage requirements are example business rules for this learning project, not universal admission requirements.\n\n## 20. Advanced Practice: Access-Control Logic\n\nConsider this scenario:\n\nA student can access a course only if:\n\n- The account is active.\n- The student is enrolled.\n- The course is published.\n- The student is not blocked.\n\nExample:\n\n```python\naccount_active = True\nis_enrolled = True\ncourse_published = True\nis_blocked = False\n\ncan_access_course = (\n    account_active\n    and is_enrolled\n    and course_published\n    and not is_blocked\n)\n\nif can_access_course:\n    print(\"Course access granted\")\nelse:\n    print(\"Course access denied\")\n```\n\nThis demonstrates how operators and conditions support real application features.\n\nIn a production system, access checks must also be enforced on the server, not only in the user interface.\n\n## 21. Practice Exercises\n\n### Beginner\n\n1. Calculate the sum, difference, product, and quotient of two numbers.\n2. Determine whether an integer is even or odd.\n3. Compare two numbers using all six comparison operators.\n4. Use += and -= to update a student's score.\n5. Check whether a word exists in a list of supported languages.\n\n### Intermediate\n\n6. Write a program that classifies marks into grades.\n7. Check whether a number falls within a specified inclusive range.\n8. Build a login eligibility check using and, or, and not.\n9. Create a simple discount calculator using conditional statements.\n10. Demonstrate the difference between == and is.\n\n### Advanced\n\n11. Build a student course eligibility system with input validation.\n12. Write a program that identifies the largest of three numbers.\n13. Build a simple shipping-cost calculator based on order value.\n14. Create a role-based course access decision using multiple conditions.\n15. Explain short-circuit evaluation and demonstrate why condition order matters.\n\n## 22. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Explain the purpose of common Python operators.\n- Distinguish assignment from comparison.\n- Predict the result of arithmetic expressions.\n- Use logical operators correctly.\n- Understand operator precedence.\n- Use membership and identity operators appropriately.\n- Write if, elif, and else blocks with correct indentation.\n- Validate user input and handle conversion errors.\n- Test boundary values.\n- Write readable decision-making logic.\n- Recognize when server-side authorization is required.\n\n## 23. Module Summary\n\nIn this module, you learned that:\n\n- Operators perform calculations and comparisons.\n- Logical operators combine conditions.\n- Short-circuit evaluation can prevent unnecessary operations.\n- Membership operators check for contained values.\n- Identity operators check whether references point to the same object.\n- Operator precedence affects expression results.\n- Conditional statements control program flow.\n- Input validation protects programs from invalid data.\n- Clear conditions make software more reliable and maintainable.\n\nNext, you will learn loops and iteration to automate repetitive tasks and process collections of data.\n",
+      "codeExample": "def classify_grade(percentage):\n    if percentage < 0 or percentage > 100:\n        raise ValueError(\"Percentage must be between 0 and 100.\")\n\n    if percentage >= 90:\n        return \"A+\"\n    elif percentage >= 80:\n        return \"A\"\n    elif percentage >= 70:\n        return \"B\"\n    elif percentage >= 60:\n        return \"C\"\n    else:\n        return \"Needs improvement\"\n\n\ndef main():\n    print(\"STUDENT ELIGIBILITY SYSTEM\")\n    print(\"-\" * 35)\n\n    name = input(\"Enter student name: \").strip()\n\n    if not name:\n        print(\"Name cannot be empty.\")\n        return\n\n    try:\n        age = int(input(\"Enter age: \").strip())\n        percentage = float(input(\"Enter percentage (0-100): \").strip())\n    except ValueError:\n        print(\"Invalid input. Enter a whole number for age and a number for percentage.\")\n        return\n\n    if age < 0:\n        print(\"Age cannot be negative.\")\n        return\n\n    if not 0 <= percentage <= 100:\n        print(\"Percentage must be between 0 and 100.\")\n        return\n\n    eligible = age >= 16 and percentage >= 60\n    grade = classify_grade(percentage)\n\n    print(\"\\nSTUDENT REPORT\")\n    print(\"-\" * 35)\n    print(f\"Name: {name}\")\n    print(f\"Age: {age}\")\n    print(f\"Percentage: {percentage:.2f}%\")\n    print(f\"Performance category: {grade}\")\n\n    if eligible:\n        print(\"Eligibility: Eligible for this example course.\")\n    else:\n        print(\"Eligibility: Not eligible under the example rules.\")\n\n    # Demonstrate membership and logical operators.\n    supported_courses = [\"Python\", \"JavaScript\", \"C++\"]\n    requested_course = input(\"\\nEnter a course name: \").strip()\n\n    if requested_course in supported_courses and eligible:\n        print(\"Course selection accepted.\")\n    elif requested_course not in supported_courses:\n        print(\"This course is not in the supported list.\")\n    else:\n        print(\"Your eligibility requirements are not met.\")\n\n\nif __name__ == \"__main__\":\n    main()",
+      "quiz": [
         {
-          question: 'What is the result of 17 % 5?',
-          options: ['2', '3', '3.4', '12'],
-          correctAnswer: 0
+          "question": "What is the result of 10 // 3 in Python?",
+          "options": [
+            "3.333...",
+            "3",
+            "1",
+            "4"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Floor division `//` divides and rounds down to the nearest integer, so 10 // 3 returns 3."
         },
         {
-          question: 'Which operator performs exponentiation?',
-          options: ['^', '**', '//', '%%'],
-          correctAnswer: 1
+          "question": "Which operator checks whether two values are equal?",
+          "options": [
+            "=",
+            "is",
+            "==",
+            "!="
+          ],
+          "correctAnswer": 2,
+          "explanation": "Double equals `==` compares two values for equality, whereas `=` is assignment."
+        },
+        {
+          "question": "What is the result of 10 % 4?",
+          "options": [
+            "2",
+            "2.5",
+            "4",
+            "0"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Modulo `%` returns the remainder of division: 10 divided by 4 leaves remainder 2."
+        },
+        {
+          "question": "Which logical operator requires both conditions to be true?",
+          "options": [
+            "or",
+            "not",
+            "and",
+            "in"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`and` evaluates to True only when both left and right conditions are truthy."
+        },
+        {
+          "question": "What does the expression 18 <= age <= 25 check?",
+          "options": [
+            "Whether age is exactly 18 or 25",
+            "Whether age is between 18 and 25, inclusive",
+            "Whether age is greater than 25",
+            "Whether age is less than 18"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Python natively supports chained comparisons, checking (18 <= age) and (age <= 25) cleanly."
+        },
+        {
+          "question": "What does the in operator check?",
+          "options": [
+            "Object identity",
+            "Numeric equality only",
+            "Membership in a collection or sequence",
+            "Whether a variable is an integer"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`in` tests whether an item exists inside a string, list, tuple, set, or dict keys."
+        },
+        {
+          "question": "Which is the recommended way to check whether result is None?",
+          "options": [
+            "result == False",
+            "result is None",
+            "result = None",
+            "result in None"
+          ],
+          "correctAnswer": 1,
+          "explanation": "None is a singleton object in Python, so PEP 8 recommends identity checks (`is None` / `is not None`)."
+        },
+        {
+          "question": "Why does if age == 18 or 25: not correctly check whether age is 18 or 25?",
+          "options": [
+            "or cannot be used with numbers",
+            "25 is always converted to a string",
+            "The integer 25 is truthy, so the expression does not perform the intended second comparison",
+            "The == operator only works with strings"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Python parses `age == 18 or 25` as `(age == 18) or (25)`, and since 25 is truthy, the condition is always True!"
+        },
+        {
+          "question": "When should you use elif instead of a separate if statement?",
+          "options": [
+            "When multiple independent conditions must all execute",
+            "When only the first matching branch in a sequence should execute",
+            "When comparing strings only",
+            "When a variable has no value"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Using elif links mutually exclusive branches so Python stops checking as soon as the first condition matches."
+        },
+        {
+          "question": "Where must a production website enforce course access permissions?",
+          "options": [
+            "Only in CSS",
+            "Only in the browser interface",
+            "On the server, with appropriate authorization checks",
+            "Only in a Python comment"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Client-side UI checks can be bypassed; authorization must always be enforced on the backend server."
         }
+      ],
+      "assignment": "Problem Statement:\nBuild a University Admissions & Scholarship Eligibility Evaluator CLI that determines admission tier and scholarship percentage from GPA, entrance score, and extracurricular credits using clean Python expressions.\n\nObjectives:\n- Use chained comparisons (e.g., 3.5 <= gpa <= 4.0) and boolean operators (and, or, not).\n- Avoid classic Python pitfalls like if tier == \"A\" or \"B\": and use is None for None checks.\n\nRequirements:\n1. Write evaluate_applicant(gpa, test_score, volunteer_hours, legacy_notes=None).\n2. Validate numeric bounds first (raise ValueError if invalid).\n3. Use if / elif / else branches cleanly:\n   - Full Scholarship: gpa >= 3.8 and test_score >= 90\n   - Merit Scholarship: 3.5 <= gpa < 3.8 and (test_score >= 85 or volunteer_hours >= 50)\n   - Standard Admission: gpa >= 2.8 and test_score >= 70\n   - Waitlist / Not Admitted otherwise.\n4. Check if legacy_notes is not None before printing notes.\n\nStep-by-Step Instructions:\n1. Create admissions.py with evaluate_applicant().\n2. Test all 4 decision tiers plus boundary cases (exact 3.5 GPA, None notes).\n\nDeliverables:\n- admissions.py with sample test assertions.\n\nEvaluation Criteria:\n- Chained comparisons and explicit None checks (is None / is not None).\n- Mutually exclusive if/elif/else ordering from strictest to broadest.",
+      "lessons": [
+        {
+          "title": "Module 3: Python Operators, Expressions & Decision-Making",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 3: Python Operators, Expressions & Decision-Making: Module 3: Python Operators, Expressions & Decision-Making.",
+          "objectives": [
+            "Master Module 3: Python Operators, Expressions & Decision-Making",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 3: Python Operators, Expressions & Decision-Making\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand arithmetic, comparison, assignment, logical, and bitwise operators.\n- Evaluate expressions using operator precedence.\n- Use membership and identity operators correctly.\n- Write conditional statements with if, elif, and else.\n- Combine conditions using logical operators.\n- Use nested conditions and conditional expressions.\n- Understand truthy and falsy values in conditional logic.\n- Validate input and handle invalid data.\n- Build practical decision-making programs.\n- Avoid common logical errors and write readable conditions.\n\n## 2. What Is an Operator?\n\nAn operator is a symbol or keyword that performs an operation on values or variables.\n\nExamples:\n\n```python\na = 10\nb = 3\n\nprint(a + b)\nprint(a > b)\nprint(a == b)\n```\n\nOutput:\n\n```text\n13\nTrue\nFalse\n```\n\nIn these examples, + performs addition, > compares values, and == checks equality.\n\nAn expression is a combination of values, variables, and operators that produces a result.\n\n```python\ntotal_price = 500 + 250\nis_expensive = total_price > 600\n\nprint(total_price)\nprint(is_expensive)\n```\n\n## 3. Arithmetic Operators\n\nArithmetic operators perform mathematical calculations.\n\n| Operator | Meaning | Example | Result |\n| --- | --- | --- | --- |\n| + | Addition | 10 + 3 | 13 |\n| - | Subtraction | 10 - 3 | 7 |\n| * | Multiplication | 10 * 3 | 30 |\n| / | Division | 10 / 3 | 3.333... |\n| // | Floor division | 10 // 3 | 3 |\n| % | Modulo/remainder | 10 % 3 | 1 |\n| ** | Exponentiation | 2 ** 3 | 8 |\n\n### Division\n\nThe / operator produces a floating-point result in ordinary numeric division.\n\n```python\nprint(10 / 2)\nprint(7 / 2)\n```\n\nOutput:\n\n```text\n5.0\n3.5\n```\n\n### Floor Division\n\nFloor division rounds the mathematical quotient down toward negative infinity.\n\n```python\nprint(7 // 2)\nprint(-7 // 2)\n```\n\nOutput:\n\n```text\n3\n-4\n```\n\nNotice that -7 // 2 gives -4, not -3.\n\n### Modulo Operator\n\nThe modulo operator returns the remainder according to Python's division rules.\n\n```python\nprint(10 % 3)\nprint(12 % 2)\nprint(17 % 5)\n```\n\nOutput:\n\n```text\n1\n0\n2\n```\n\nA common use is checking whether a number is even or odd.\n\n```python\nnumber = 14\n\nif number % 2 == 0:\n    print(\"Even number\")\nelse:\n    print(\"Odd number\")\n```\n\n### Exponentiation\n\n```python\nprint(2 ** 3)\nprint(5 ** 2)\nprint(9 ** 0.5)\n```\n\nOutput:\n\n```text\n8\n25\n3.0\n```\n\nThe final example calculates the square root of 9.\n\n## 4. Comparison Operators\n\nComparison operators compare values and produce a Boolean result: True or False.\n\n| Operator | Meaning |\n| --- | --- |\n| == | Equal to |\n| != | Not equal to |\n| > | Greater than |\n| < | Less than |\n| >= | Greater than or equal to |\n| <= | Less than or equal to |\n\nExample:\n\n```python\nage = 18\n\nprint(age == 18)\nprint(age != 18)\nprint(age > 16)\nprint(age < 21)\nprint(age >= 18)\nprint(age <= 17)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\nTrue\nTrue\nFalse\n```\n\n### Important Difference: = and ==\n\nThe single equals sign assigns a value.\n\n```python\nage = 18\n```\n\nThe double equals sign compares values.\n\n```python\nprint(age == 18)\n```\n\nConfusing these operators can cause syntax errors or incorrect logic.\n\n### Chained Comparisons\n\nPython allows multiple comparisons in a single expression.\n\n```python\nage = 20\n\nprint(18 <= age <= 25)\n```\n\nOutput:\n\n```text\nTrue\n```\n\nThis is equivalent in meaning to checking that age is at least 18 and at most 25.\n\nChained comparisons are often more readable than repeating the same variable.\n\n## 5. Assignment Operators\n\nAssignment operators assign values or update an existing variable.\n\n| Operator | Example | Equivalent operation |\n| --- | --- | --- |\n| = | x = 10 | Assign 10 |\n| += | x += 3 | x = x + 3 |\n| -= | x -= 3 | x = x - 3 |\n| *= | x *= 3 | x = x * 3 |\n| /= | x /= 3 | x = x / 3 |\n| //= | x //= 3 | x = x // 3 |\n| %= | x %= 3 | x = x % 3 |\n| **= | x **= 3 | x = x ** 3 |\n\nExample:\n\n```python\nbalance = 1000\n\nbalance += 250\nprint(balance)\n\nbalance -= 100\nprint(balance)\n\nbalance *= 2\nprint(balance)\n```\n\nOutput:\n\n```text\n1250\n1150\n2300\n```\n\nAssignment operators are useful for updating scores, balances, counters, and totals.\n\n## 6. Logical Operators\n\nLogical operators combine or reverse Boolean conditions.\n\n### and\n\nBoth conditions must be true.\n\n```python\nage = 20\nhas_student_card = True\n\nprint(age >= 18 and has_student_card)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### or\n\nAt least one condition must be true.\n\n```python\nis_weekend = False\nis_holiday = True\n\nprint(is_weekend or is_holiday)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### not\n\nThe not operator reverses a truth value.\n\n```python\nis_blocked = False\n\nprint(not is_blocked)\n```\n\nOutput:\n\n```text\nTrue\n```\n\n### Combining Logical Operators\n\n```python\nage = 21\nhas_ticket = True\nis_banned = False\n\ncan_enter = age >= 18 and has_ticket and not is_banned\n\nprint(can_enter)\n```\n\nOutput:\n\n```text\nTrue\n```\n\nUse parentheses when they make complicated conditions easier to understand.\n\n```python\nif (age >= 18 and has_ticket) and not is_banned:\n    print(\"Access granted\")\n```\n\n## 7. Short-Circuit Evaluation\n\nPython may stop evaluating a logical expression once the result is known.\n\nFor and, if the first operand is falsy, the second operand may not be evaluated.\n\nFor or, if the first operand is truthy, the second operand may not be evaluated.\n\nExample:\n\n```python\nage = 16\n\nif age >= 18 and 100 / age > 2:\n    print(\"Condition passed\")\nelse:\n    print(\"Condition not passed\")\n```\n\nBecause age >= 18 is False, Python does not need to evaluate the second expression.\n\nShort-circuiting can also protect against accessing a value that might be None.\n\n```python\nusername = None\n\nif username is not None and username.strip():\n    print(\"Username is available\")\nelse:\n    print(\"Username is missing or empty\")\n```\n\nPut the safety check first when the later operation depends on it.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Test `10 // 3`, `10 % 4`, and chained comparison `18 <= 21 <= 25` in Python.\n\nExpected Result:\nPrints `3`, `2`, and `True`.",
+          "keyTakeaways": [
+            "Understand and apply Module 3: Python Operators, Expressions & Decision-Making",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "8. Membership Operators",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 3: Python Operators, Expressions & Decision-Making: 8. Membership Operators.",
+          "objectives": [
+            "Master 8. Membership Operators",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 8. Membership Operators\n\nThe in and not in operators check whether an item belongs to a collection or appears in a sequence.\n\n### Checking a String\n\n```python\nmessage = \"Welcome to Python\"\n\nprint(\"Python\" in message)\nprint(\"Java\" not in message)\n```\n\nOutput:\n\n```text\nTrue\nTrue\n```\n\nString membership is case-sensitive.\n\n```python\nprint(\"python\" in \"Python\")\n```\n\nOutput:\n\n```text\nFalse\n```\n\n### Checking a List\n\n```python\nsupported_languages = [\"Python\", \"JavaScript\", \"C++\"]\n\nlanguage = \"Python\"\n\nif language in supported_languages:\n    print(\"Language supported\")\n```\n\n### Checking a Dictionary\n\nFor dictionaries, in checks keys by default.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"age\": 18\n}\n\nprint(\"name\" in student)\nprint(\"Anas\" in student)\nprint(\"Anas\" in student.values())\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nUse .values() when you specifically need to search dictionary values.\n\n## 9. Identity Operators\n\nPython provides is and is not to check object identity.\n\n```python\nfirst = [1, 2, 3]\nsecond = first\nthird = [1, 2, 3]\n\nprint(first is second)\nprint(first is third)\nprint(first == third)\n```\n\nOutput:\n\n```text\nTrue\nFalse\nTrue\n```\n\nThe first and second names reference the same object. The third list contains equal values but is a different object.\n\n### Correct Use of None\n\n```python\nresult = None\n\nif result is None:\n    print(\"No result available\")\n```\n\nPrefer is None and is not None for None checks.\n\nDo not use is as a substitute for == when comparing ordinary values.\n\n## 10. Bitwise Operators\n\nBitwise operators work on the binary representation of integers.\n\nThey are useful in areas such as permissions, bit flags, networking, and low-level programming.\n\n| Operator | Meaning |\n| --- | --- |\n| & | Bitwise AND |\n| | | Bitwise OR |\n| ^ | Bitwise XOR |\n| ~ | Bitwise NOT |\n| << | Left shift |\n| >> | Right shift |\n\n### Bitwise AND\n\n```python\nprint(6 & 3)\n```\n\nBinary representation:\n\n```text\n6 = 110\n3 = 011\n---------\n    010 = 2\n```\n\nOutput:\n\n```text\n2\n```\n\n### Bitwise OR\n\n```python\nprint(6 | 3)\n```\n\nOutput:\n\n```text\n7\n```\n\n### Bitwise XOR\n\nXOR produces a 1 when corresponding bits differ.\n\n```python\nprint(6 ^ 3)\n```\n\nOutput:\n\n```text\n5\n```\n\n### Left and Right Shifts\n\n```python\nprint(5 << 1)\nprint(8 >> 1)\n```\n\nOutput:\n\n```text\n10\n4\n```\n\nBitwise operators are distinct from logical and and or. Beginners should understand their purpose before using them in application logic.\n\n## 11. Operator Precedence\n\nOperator precedence determines which parts of an expression are evaluated first.\n\nA simplified order from higher to lower precedence is:\n\n1. Parentheses and grouping.\n2. Exponentiation.\n3. Unary operators such as +x, -x, and ~x.\n4. Multiplication, division, floor division, and modulo.\n5. Addition and subtraction.\n6. Bit shifts.\n7. Bitwise AND, XOR, and OR.\n8. Comparisons, membership, and identity checks.\n9. not.\n10. and.\n11. or.\n\nAssignment statements have their own rules and are not simply another arithmetic operator in this list.\n\nExample:\n\n```python\nresult = 2 + 3 * 4\nprint(result)\n```\n\nOutput:\n\n```text\n14\n```\n\nMultiplication is evaluated before addition.\n\nUse parentheses to make the intended calculation explicit.\n\n```python\nresult = (2 + 3) * 4\nprint(result)\n```\n\nOutput:\n\n```text\n20\n```\n\n### Exponentiation and Negative Values\n\n```python\nprint(-2 ** 2)\nprint((-2) ** 2)\n```\n\nOutput:\n\n```text\n-4\n4\n```\n\nExponentiation is evaluated before the leading unary minus. Parentheses change the meaning.\n\n### Best Practice\n\nEven when you know precedence rules, use parentheses in complex expressions when they improve readability.\n\n## 12. Introduction to Conditional Statements\n\nA conditional statement allows a program to make decisions based on conditions.\n\n### The if Statement\n\n```python\nage = 20\n\nif age >= 18:\n    print(\"You are an adult\")\n```\n\nThe indented block executes only when the condition is truthy.\n\n### The if-else Statement\n\n```python\nnumber = 7\n\nif number % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")\n```\n\nExactly one branch executes.\n\n### The if-elif-else Statement\n\nUse elif when multiple alternatives need to be checked.\n\n```python\nmarks = 82\n\nif marks >= 90:\n    grade = \"A+\"\nelif marks >= 80:\n    grade = \"A\"\nelif marks >= 70:\n    grade = \"B\"\nelif marks >= 60:\n    grade = \"C\"\nelse:\n    grade = \"Needs improvement\"\n\nprint(grade)\n```\n\nPython checks conditions in order and executes the first matching branch.\n\nFor marks of 82, the grade is A.\n\n### Why Order Matters\n\nIf you check marks >= 60 first, a student with 95 marks will match that condition and later branches will not execute.\n\nArrange ranges from the most restrictive or highest threshold to the lower thresholds when appropriate.\n\n## 13. Indentation in Conditions\n\nPython uses indentation to define code blocks.\n\nCorrect:\n\n```python\nage = 20\n\nif age >= 18:\n    print(\"Eligible\")\n    print(\"Access permitted\")\n\nprint(\"Program continues\")\n```\n\nThe final print statement is outside the conditional block.\n\nIncorrect indentation can cause an IndentationError or change program behavior.\n\nUse consistent indentation, conventionally four spaces per level.\n\n## 14. Nested Conditional Statements\n\nA nested conditional is an if statement inside another conditional block.\n\n```python\nage = 20\nhas_identity_card = True\n\nif age >= 18:\n    if has_identity_card:\n        print(\"Verification successful\")\n    else:\n        print(\"Identity card required\")\nelse:\n    print(\"Minimum age requirement not met\")\n```\n\nNested conditions can express dependent decisions, but excessive nesting makes code harder to maintain.\n\nFor simple logic, combining conditions may be clearer.\n\n```python\nif age >= 18 and has_identity_card:\n    print(\"Verification successful\")\n```\n\n## 15. Conditional Expressions\n\nA conditional expression selects a value based on a condition.\n\n```python\nage = 20\nstatus = \"Adult\" if age >= 18 else \"Minor\"\n\nprint(status)\n```\n\nOutput:\n\n```text\nAdult\n```\n\nThis is often called the ternary expression in Python discussions.\n\nUse it for simple decisions. Prefer a normal if-else statement when the logic is complex or spans multiple lines.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Fix the buggy condition `if status == \"active\" or \"pending\":` into `if status in (\"active\", \"pending\"):` and test with `status = \"closed\"`.\n\nExpected Result:\n`\"closed\"` correctly evaluates to `False`.",
+          "keyTakeaways": [
+            "Understand and apply 8. Membership Operators",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "16. Truthy and Falsy Conditions",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 3: Python Operators, Expressions & Decision-Making: 16. Truthy and Falsy Conditions.",
+          "objectives": [
+            "Master 16. Truthy and Falsy Conditions",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 16. Truthy and Falsy Conditions\n\nConditions do not always need to contain an explicit comparison.\n\n```python\nusername = \"Anas\"\n\nif username:\n    print(\"Username provided\")\nelse:\n    print(\"Username missing\")\n```\n\nAn empty string is falsy, while a non-empty string is truthy.\n\nCommon falsy values include:\n\n- False\n- None\n- 0 and 0.0\n- Empty strings\n- Empty lists\n- Empty tuples\n- Empty dictionaries\n- Empty sets\n\nExample:\n\n```python\ncourses = []\n\nif not courses:\n    print(\"No courses enrolled\")\n```\n\nThis is a common Python pattern.\n\nHowever, distinguish between a value being missing and a numeric value being zero when your application requires that difference.\n\n## 17. Validating User Input\n\nExternal input is untrusted. A program should validate it before relying on it.\n\nExample:\n\n```python\nage_text = input(\"Enter your age: \").strip()\n\ntry:\n    age = int(age_text)\nexcept ValueError:\n    print(\"Enter a valid whole number.\")\nelse:\n    if age < 0:\n        print(\"Age cannot be negative.\")\n    elif age > 120:\n        print(\"Please verify the age entered.\")\n    elif age >= 18:\n        print(\"Adult account category.\")\n    else:\n        print(\"Minor account category.\")\n```\n\nThis example demonstrates two separate responsibilities:\n\n- Conversion validation: can the text be converted to an integer?\n- Business validation: is the converted value acceptable for this application?\n\nIn real applications, the acceptable range depends on the actual business rules.\n\n## 18. Common Logical Mistakes\n\n### Mistake 1: Incorrect Range Conditions\n\nIncorrect:\n\n```python\n# Incorrect logic:\n# if age == 18 and age == 25:\n#     print(\"Eligible\")\n```\n\nOne number cannot equal both 18 and 25 at the same time.\n\nCorrect:\n\n```python\nif 18 <= age <= 25:\n    print(\"Eligible\")\n```\n\n### Mistake 2: Repeating a Comparison Incorrectly\n\nIncorrect:\n\n```python\n# This does not check both alternatives:\n# if age == 18 or 25:\n#     print(\"Eligible\")\n```\n\nThe integer 25 is truthy, so this condition does not mean what a beginner might expect.\n\nCorrect:\n\n```python\nif age == 18 or age == 25:\n    print(\"Eligible\")\n```\n\n### Mistake 3: Confusing and with or\n\nIf a user must satisfy both requirements, use and.\n\n```python\nif age >= 18 and has_ticket:\n    print(\"Entry allowed\")\n```\n\nIf either condition is enough, use or.\n\n```python\nif is_weekend or is_holiday:\n    print(\"No regular classes\")\n```\n\n### Mistake 4: Using Separate if Statements Instead of elif\n\nSeparate if statements can execute several branches.\n\n```python\nscore = 95\n\nif score >= 60:\n    print(\"Passed\")\n\nif score >= 90:\n    print(\"Excellent\")\n```\n\nOutput:\n\n```text\nPassed\nExcellent\n```\n\nThat may be intentional. If only one branch should run, use if-elif-else.\n\n### Mistake 5: Ignoring Boundaries\n\nWhen checking numeric ranges, test values exactly at the boundaries.\n\nFor a valid range of 18 through 25 inclusive, test 17, 18, 25, and 26.\n\n## 19. Practical Project: Student Eligibility System\n\nCreate a command-line application that determines whether a student qualifies for a course.\n\nRequirements:\n\n1. Ask for the student's name.\n2. Ask for the student's age.\n3. Ask for their percentage.\n4. Convert and validate numeric inputs.\n5. Reject empty names.\n6. Reject negative ages and percentages outside 0–100.\n7. Define eligibility as age at least 16 and percentage at least 60.\n8. Assign a performance category based on percentage.\n9. Display the eligibility result and category.\n10. Handle invalid input without crashing.\n\nThe exact age and percentage requirements are example business rules for this learning project, not universal admission requirements.\n\n## 20. Advanced Practice: Access-Control Logic\n\nConsider this scenario:\n\nA student can access a course only if:\n\n- The account is active.\n- The student is enrolled.\n- The course is published.\n- The student is not blocked.\n\nExample:\n\n```python\naccount_active = True\nis_enrolled = True\ncourse_published = True\nis_blocked = False\n\ncan_access_course = (\n    account_active\n    and is_enrolled\n    and course_published\n    and not is_blocked\n)\n\nif can_access_course:\n    print(\"Course access granted\")\nelse:\n    print(\"Course access denied\")\n```\n\nThis demonstrates how operators and conditions support real application features.\n\nIn a production system, access checks must also be enforced on the server, not only in the user interface.\n\n## 21. Practice Exercises\n\n### Beginner\n\n1. Calculate the sum, difference, product, and quotient of two numbers.\n2. Determine whether an integer is even or odd.\n3. Compare two numbers using all six comparison operators.\n4. Use += and -= to update a student's score.\n5. Check whether a word exists in a list of supported languages.\n\n### Intermediate\n\n6. Write a program that classifies marks into grades.\n7. Check whether a number falls within a specified inclusive range.\n8. Build a login eligibility check using and, or, and not.\n9. Create a simple discount calculator using conditional statements.\n10. Demonstrate the difference between == and is.\n\n### Advanced\n\n11. Build a student course eligibility system with input validation.\n12. Write a program that identifies the largest of three numbers.\n13. Build a simple shipping-cost calculator based on order value.\n14. Create a role-based course access decision using multiple conditions.\n15. Explain short-circuit evaluation and demonstrate why condition order matters.\n\n## 22. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Explain the purpose of common Python operators.\n- Distinguish assignment from comparison.\n- Predict the result of arithmetic expressions.\n- Use logical operators correctly.\n- Understand operator precedence.\n- Use membership and identity operators appropriately.\n- Write if, elif, and else blocks with correct indentation.\n- Validate user input and handle conversion errors.\n- Test boundary values.\n- Write readable decision-making logic.\n- Recognize when server-side authorization is required.\n\n## 23. Module Summary\n\nIn this module, you learned that:\n\n- Operators perform calculations and comparisons.\n- Logical operators combine conditions.\n- Short-circuit evaluation can prevent unnecessary operations.\n- Membership operators check for contained values.\n- Identity operators check whether references point to the same object.\n- Operator precedence affects expression results.\n- Conditional statements control program flow.\n- Input validation protects programs from invalid data.\n- Clear conditions make software more reliable and maintainable.\n\nNext, you will learn loops and iteration to automate repetitive tasks and process collections of data.",
+          "codeExample": "def classify_grade(percentage):\n    if percentage < 0 or percentage > 100:\n        raise ValueError(\"Percentage must be between 0 and 100.\")\n\n    if percentage >= 90:\n        return \"A+\"\n    elif percentage >= 80:\n        return \"A\"\n    elif percentage >= 70:\n        return \"B\"\n    elif percentage >= 60:\n        return \"C\"\n    else:\n        return \"Needs improvement\"\n\n\ndef main():\n    print(\"STUDENT ELIGIBILITY SYSTEM\")\n    print(\"-\" * 35)\n\n    name = input(\"Enter student name: \").strip()\n\n    if not name:\n        print(\"Name cannot be empty.\")\n        return\n\n    try:\n        age = int(input(\"Enter age: \").strip())\n        percentage = float(input(\"Enter percentage (0-100): \").strip())\n    except ValueError:\n        print(\"Invalid input. Enter a whole number for age and a number for percentage.\")\n        return\n\n    if age < 0:\n        print(\"Age cannot be negative.\")\n        return\n\n    if not 0 <= percentage <= 100:\n        print(\"Percentage must be between 0 and 100.\")\n        return\n\n    eligible = age >= 16 and percentage >= 60\n    grade = classify_grade(percentage)\n\n    print(\"\\nSTUDENT REPORT\")\n    print(\"-\" * 35)\n    print(f\"Name: {name}\")\n    print(f\"Age: {age}\")\n    print(f\"Percentage: {percentage:.2f}%\")\n    print(f\"Performance category: {grade}\")\n\n    if eligible:\n        print(\"Eligibility: Eligible for this example course.\")\n    else:\n        print(\"Eligibility: Not eligible under the example rules.\")\n\n    # Demonstrate membership and logical operators.\n    supported_courses = [\"Python\", \"JavaScript\", \"C++\"]\n    requested_course = input(\"\\nEnter a course name: \").strip()\n\n    if requested_course in supported_courses and eligible:\n        print(\"Course selection accepted.\")\n    elif requested_course not in supported_courses:\n        print(\"This course is not in the supported list.\")\n    else:\n        print(\"Your eligibility requirements are not met.\")\n\n\nif __name__ == \"__main__\":\n    main()",
+          "codeExplanation": "1. classify_grade(percentage) validates bounds (0..100) first, raising ValueError on invalid inputs.\n2. Mutually exclusive if/elif/else branches step down from >= 90 (\"A+\") through >= 60 (\"C\") cleanly without overlapping conditions.\n\nHow to Run & Expected Output:\nSave as `grades.py` and run `python grades.py`. Prints grade letters (\"A+\", \"A\", \"B\", \"C\") for sample percentages and raises ValueError on -5 or 105.",
+          "practiceExercise": "Guided Exercise:\n1. Call `classify_grade()` with `95`, `82`, `71`, `55`, and `-1` (inside `try/except ValueError`).\n\nExpected Result:\nReturns `\"A+\"`, `\"A\"`, `\"B\"`, `\"F\"`, and catches `ValueError` for `-1`.",
+          "keyTakeaways": [
+            "Understand and apply 16. Truthy and Falsy Conditions",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 3: Python Operators, Expressions & Decision-Making",
+        "Apply Python best practices with clean, readable examples",
+        "Master 8. Membership Operators",
+        "Master 16. Truthy and Falsy Conditions"
       ]
     },
     {
-      title: 'Module 4: Strings and Text Formatting',
-      duration: '2h 30m',
-      notes: `### Strings
-Strings represent text and are immutable sequences of Unicode characters.
-
-### Creating strings
-You can use single quotes, double quotes, or triple quotes for multiline text.
-
-### Indexing and slicing
-Indexes begin at zero. Negative indexes count backward from the end. The slice \`text[1:4]\` includes indexes 1, 2, and 3.
-
-### Useful string methods
-- \`.strip()\`: removes surrounding whitespace.
-- \`.lower()\`: converts text to lowercase.
-- \`.upper()\`: converts text to uppercase.
-- \`.title()\`: capitalizes words.
-- \`.replace()\`: replaces matching text.
-- \`.split()\`: splits text into a list.
-- \`.join()\`: joins strings together.
-
-### f-strings
-Use f-strings to insert variables into text and format numbers.
-
-### String immutability
-String methods return new strings rather than changing the original string.`,
-      codeExample: `name = "  anas manzoor  "
-clean_name = name.strip().title()
-
-print(clean_name)
-print(clean_name[0])
-print(clean_name[-1])
-print(clean_name[0:4])
-
-languages = "Python,JavaScript,SQL".split(",")
-print(languages)
-
-print(" | ".join(languages))
-
-price = 1250.567
-print(f"Price: Rs. {price:.2f}")`,
-      quiz: [
+      "title": "Module 4: Loops, Iteration & Repetitive Task Automation",
+      "duration": "5h 00m",
+      "notes": "\n# Module 4: Loops, Iteration & Repetitive Task Automation\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why loops are essential in programming.\n- Use for and while loops correctly.\n- Iterate over strings, lists, tuples, dictionaries, and sets.\n- Use range() to generate sequences of integers.\n- Control loops using break, continue, and pass.\n- Build nested loops and understand their complexity.\n- Use enumerate() and zip() during iteration.\n- Avoid infinite loops and common off-by-one errors.\n- Use loop else clauses appropriately.\n- Apply loops to student records, course progress, and result processing.\n- Write readable and efficient iterative programs.\n\n## 2. What Is a Loop?\n\nA loop repeats a block of code while following a specified iteration rule or condition.\n\nWithout loops, displaying five course names would require repeated print statements.\n\n```python\nprint(\"Python\")\nprint(\"JavaScript\")\nprint(\"C++\")\nprint(\"Java\")\nprint(\"SQL\")\n```\n\nUsing a loop:\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\", \"Java\", \"SQL\"]\n\nfor course in courses:\n    print(course)\n```\n\nThe loop processes each item without duplicating the same statement.\n\nLoops are used for:\n- Processing student records.\n- Displaying course modules.\n- Calculating totals and averages.\n- Searching collections.\n- Validating repeated input.\n- Generating reports.\n- Processing API responses and database results.\n\n## 3. The for Loop\n\nA for loop iterates over the items of an iterable object.\n\nAn iterable is an object that can provide its items one at a time, such as a list, string, tuple, set, or dictionary.\n\nSyntax:\n\n```python\nfor item in iterable:\n    # Statements to repeat\n    print(item)\n```\n\nExample:\n\n```python\nlanguages = [\"Python\", \"JavaScript\", \"C++\"]\n\nfor language in languages:\n    print(language)\n```\n\nOutput:\n\n```text\nPython\nJavaScript\nC++\n```\n\nDuring each iteration, the loop variable refers to the current item.\n\n## 4. Iterating Over Strings\n\nStrings are iterable, so a loop can process each character.\n\n```python\nword = \"CORTEX\"\n\nfor character in word:\n    print(character)\n```\n\nOutput:\n\n```text\nC\nO\nR\nT\nE\nX\n```\n\nA practical example is counting vowels.\n\n```python\nword = \"programming\"\nvowels = \"aeiou\"\nvowel_count = 0\n\nfor character in word.lower():\n    if character in vowels:\n        vowel_count += 1\n\nprint(\"Vowels:\", vowel_count)\n```\n\nThe loop examines every character and increases the counter when the character is a vowel.\n\n## 5. The range() Function\n\nrange() generates a sequence of integers commonly used with for loops.\n\n### range(stop)\n\n```python\nfor number in range(5):\n    print(number)\n```\n\nOutput:\n\n```text\n0\n1\n2\n3\n4\n```\n\nThe starting value defaults to zero, and the stop value is excluded.\n\n### range(start, stop)\n\n```python\nfor number in range(2, 7):\n    print(number)\n```\n\nOutput:\n\n```text\n2\n3\n4\n5\n6\n```\n\n### range(start, stop, step)\n\n```python\nfor number in range(2, 11, 2):\n    print(number)\n```\n\nOutput:\n\n```text\n2\n4\n6\n8\n10\n```\n\nThe step controls the increment between values.\n\n### Counting Backward\n\n```python\nfor number in range(5, 0, -1):\n    print(number)\n```\n\nOutput:\n\n```text\n5\n4\n3\n2\n1\n```\n\nThe stop value remains excluded, even when counting backward.\n\n### Important Range Detail\n\nrange() does not normally build a complete list of all its values. It represents an integer sequence efficiently.\n\nIf you specifically need a list:\n\n```python\nnumbers = list(range(5))\nprint(numbers)\n```\n\nOutput:\n\n```text\n[0, 1, 2, 3, 4]\n```\n\n## 6. Accumulators and Counters\n\nA counter tracks how many times something occurs. An accumulator collects a running result.\n\n### Counting\n\n```python\ncount = 0\n\nfor number in range(1, 6):\n    count += 1\n\nprint(\"Count:\", count)\n```\n\nOutput:\n\n```text\nCount: 5\n```\n\n### Summing Values\n\n```python\nnumbers = [10, 20, 30, 40]\ntotal = 0\n\nfor number in numbers:\n    total += number\n\nprint(\"Total:\", total)\n```\n\nOutput:\n\n```text\nTotal: 100\n```\n\nPython also provides sum() for this common operation:\n\n```python\ntotal = sum(numbers)\n```\n\nLearning the loop version helps you understand how aggregation works internally.\n\n### Calculating an Average\n\n```python\nmarks = [80, 75, 90, 85]\ntotal = 0\n\nfor mark in marks:\n    total += mark\n\naverage = total / len(marks)\n\nprint(f\"Average: {average:.2f}\")\n```\n\nBefore dividing, ensure the collection is not empty. Otherwise, division by zero or another invalid calculation may occur.\n\n## 7. The while Loop\n\nA while loop repeats while its condition evaluates to true.\n\nSyntax:\n\n```python\nwhile condition:\n    # Statements to repeat\n```\n\nExample:\n\n```python\ncounter = 1\n\nwhile counter <= 5:\n    print(counter)\n    counter += 1\n```\n\nOutput:\n\n```text\n1\n2\n3\n4\n5\n```\n\nThe counter changes during each iteration. Eventually, the condition becomes false and the loop ends.\n\n### When to Use while\n\nUse while when the number of repetitions depends on a condition rather than a known collection.\n\nExamples include:\n- Repeatedly requesting valid input.\n- Running a menu until the user chooses Exit.\n- Continuing a process while a task remains incomplete.\n- Waiting for a condition to change in an appropriately designed program.\n\nFor iterating through a collection, a for loop is usually simpler.\n\n## 8. Avoiding Infinite Loops\n\nAn infinite loop occurs when a loop never reaches a terminating condition.\n\nProblematic example:\n\n```python\n# Do not run this example as written.\n# counter = 1\n# while counter <= 5:\n#     print(counter)\n#     # counter never changes\n```\n\nBecause counter never increases, the condition remains true.\n\nCorrect version:\n\n```python\ncounter = 1\n\nwhile counter <= 5:\n    print(counter)\n    counter += 1\n```\n\nWhen creating a while loop, ask:\n1. What condition keeps the loop running?\n2. Which statement changes the state used by that condition?\n3. Under what circumstances will the condition become false?\n4. Can invalid input prevent the loop from terminating?\n\n## 9. User Input with a while Loop\n\nA loop can repeatedly request valid input.\n\n```python\nwhile True:\n    answer = input(\"Enter a number from 1 to 10: \").strip()\n\n    try:\n        number = int(answer)\n    except ValueError:\n        print(\"Please enter a whole number.\")\n        continue\n\n    if 1 <= number <= 10:\n        print(\"Accepted:\", number)\n        break\n\n    print(\"Number must be between 1 and 10.\")\n```\n\nThis example combines:\n- An intentional loop.\n- Input conversion.\n- Exception handling.\n- continue to retry.\n- break to finish after valid input.\n\n## 10. The break Statement\n\nbreak immediately terminates the nearest enclosing loop.\n\n```python\nfor number in range(1, 10):\n    if number == 5:\n        break\n\n    print(number)\n```\n\nOutput:\n\n```text\n1\n2\n3\n4\n```\n\nThe number 5 is not printed because the loop stops before reaching print().\n\n### Searching for an Item\n\n```python\nstudents = [\"Ali\", \"Sara\", \"Ahmed\", \"Ayesha\"]\ntarget = \"Ahmed\"\n\nfor student in students:\n    if student == target:\n        print(\"Student found:\", student)\n        break\n```\n\nThe loop stops once it finds the requested student.\n\nFor ordinary list membership, target in students is simpler. The explicit loop is useful when you need additional work during the search.\n\n## 11. The continue Statement\n\ncontinue skips the remaining statements in the current iteration and proceeds to the next iteration.\n\n```python\nfor number in range(1, 8):\n    if number == 4:\n        continue\n\n    print(number)\n```\n\nOutput:\n\n```text\n1\n2\n3\n5\n6\n7\n```\n\nThe number 4 is skipped.\n\n### Processing Valid Records\n\n```python\nscores = [85, -1, 72, -5, 91]\n\nfor score in scores:\n    if score < 0:\n        continue\n\n    print(\"Valid score:\", score)\n```\n\nThis example skips negative scores. In production software, silently skipping invalid records may hide data-quality problems, so log or report rejected records when necessary.\n\n## 12. The pass Statement\n\npass is a placeholder statement that performs no operation.\n\n```for\n```\n\nThe correct syntax example is:\n\n```python\nfor number in range(3):\n    pass\n```\n\nIt allows a syntactically valid block to exist while you plan or implement its behavior later.\n\nFor example:\n\n```python\ndef generate_report():\n    pass\n```\n\nA function containing only pass does not yet generate a report. Replace the placeholder with the intended implementation before relying on it.\n\nRemember:\n- break terminates a loop.\n- continue skips to the next iteration.\n- pass does nothing and allows execution to continue normally.\n\n## 13. Looping Through Dictionaries\n\nDictionaries contain keys and values.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"course\": \"Software Engineering\",\n    \"semester\": 1\n}\n\nfor key in student:\n    print(key)\n```\n\nBy default, iterating over a dictionary produces its keys.\n\n### Iterating Through Values\n\n```python\nfor value in student.values():\n    print(value)\n```\n\n### Iterating Through Key-Value Pairs\n\n```python\nfor key, value in student.items():\n    print(f\"{key}: {value}\")\n```\n\nOutput:\n\n```text\nname: Anas\ncourse: Software Engineering\nsemester: 1\n```\n\nDictionary iteration is useful for displaying records, processing settings, and generating reports.\n\n## 14. Using enumerate()\n\nenumerate() provides both an item's index and its value.\n\nWithout enumerate():\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\"]\n\nfor index in range(len(courses)):\n    print(index, courses[index])\n```\n\nUsing enumerate():\n\n```python\nfor index, course in enumerate(courses):\n    print(index, course)\n```\n\nOutput:\n\n```text\n0 Python\n1 JavaScript\n2 C++\n```\n\nTo begin counting from one:\n\n```python\nfor position, course in enumerate(courses, start=1):\n    print(f\"{position}. {course}\")\n```\n\nenumerate() is generally more readable than manually maintaining an index counter.\n\n## 15. Using zip()\n\nzip() iterates over multiple iterables in parallel.\n\n```python\nstudents = [\"Ali\", \"Sara\", \"Ahmed\"]\nmarks = [85, 92, 78]\n\nfor student, mark in zip(students, marks):\n    print(f\"{student}: {mark}\")\n```\n\nOutput:\n\n```text\nAli: 85\nSara: 92\nAhmed: 78\n```\n\nBy default, zip() stops when the shortest iterable is exhausted.\n\nIf you need to detect mismatched lengths, validate them or consider zip(..., strict=True) in Python 3.10 and later.\n\n```python\nnames = [\"Ali\", \"Sara\"]\nscores = [80, 90]\n\nfor name, score in zip(names, scores, strict=True):\n    print(name, score)\n```\n\nIf the lengths differ, strict=True raises ValueError.\n\n## 16. Nested Loops\n\nA nested loop is a loop inside another loop.\n\n```python\nfor row in range(1, 4):\n    for column in range(1, 4):\n        print(f\"({row}, {column})\")\n```\n\nThe inner loop completes its iterations for every iteration of the outer loop.\n\n### Multiplication Table\n\n```python\nnumber = 5\n\nfor multiplier in range(1, 11):\n    print(f\"{number} x {multiplier} = {number * multiplier}\")\n```\n\n### Grid Example\n\n```python\nfor row in range(3):\n    for column in range(4):\n        print(\"*\", end=\" \")\n    print()\n```\n\nOutput:\n\n```text\n* * * *\n* * * *\n* * * *\n```\n\nThe outer loop controls the rows. The inner loop controls the columns.\n\n### Performance Considerations\n\nIf an outer loop runs n times and an inner loop runs m times for each outer iteration, the inner operation executes approximately n × m times.\n\nIf both loops run n times, the number of inner iterations is n².\n\nNested loops are not automatically bad, but they can become expensive when processing large datasets.\n\n## 17. Loop else Clauses\n\nPython loops may have an else clause. The else block executes when the loop finishes normally, without being terminated by break.\n\nExample:\n\n```python\nnumbers = [2, 4, 6, 8]\ntarget = 5\n\nfor number in numbers:\n    if number == target:\n        print(\"Found\")\n        break\nelse:\n    print(\"Not found\")\n```\n\nOutput:\n\n```text\nNot found\n```\n\nThe else clause belongs to the loop, not to an if statement.\n\nIt is useful in searches where you need to distinguish between finding an item and exhausting the collection.\n\n### Another Example\n\n```python\nfor number in range(3):\n    print(number)\nelse:\n    print(\"Loop completed normally\")\n```\n\nThe message appears because the loop finishes without break.\n\nIf break executes, the loop's else clause is skipped. A continue statement does not prevent the else clause from executing after normal completion.\n\n## 18. Iterating Safely Over Collections\n\nAvoid changing a collection's structure while directly iterating over it unless you understand the consequences.\n\nPotentially problematic example:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\n\nfor number in numbers:\n    if number % 2 == 0:\n        numbers.remove(number)\n```\n\nRemoving elements while iterating can cause elements to be skipped.\n\nA clearer approach is to create a new filtered list:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\nodd_numbers = [\n    number for number in numbers\n    if number % 2 != 0\n]\n\nprint(odd_numbers)\n```\n\nOutput:\n\n```text\n[1, 3, 5]\n```\n\nYou will study comprehensions in greater detail in a later module.\n\n## 19. Common Loop Mistakes\n\n### Mistake 1: Off-by-One Errors\n\n```python\nfor number in range(1, 5):\n    print(number)\n```\n\nThis prints 1 through 4, not 1 through 5, because the stop value is excluded.\n\nUse range(1, 6) to include 5.\n\n### Mistake 2: Forgetting to Update a while Loop\n\nA missing counter update can cause an infinite loop.\n\nAlways ensure the loop state can change toward termination.\n\n### Mistake 3: Incorrect Indentation\n\nStatements indented inside a loop execute on every iteration. Statements outside it execute after the loop.\n\nCheck indentation carefully.\n\n### Mistake 4: Using break When continue Is Needed\n\nbreak exits the loop entirely. continue skips only the current iteration.\n\nChoose based on the intended behavior.\n\n### Mistake 5: Dividing by Zero\n\nBefore calculating an average, ensure there is at least one value.\n\n```python\nscores = []\n\nif scores:\n    average = sum(scores) / len(scores)\n    print(average)\nelse:\n    print(\"No scores available.\")\n```\n\n### Mistake 6: Unnecessary Manual Indexing\n\nWhen you need both an index and a value, enumerate() is often clearer than range(len(...)).\n\n## 20. Practical Project: Student Marks Analyzer\n\nBuild a program that analyzes a collection of student marks.\n\nRequirements:\n\n1. Store marks for several students in a list.\n2. Use a loop to calculate the total.\n3. Calculate the average safely.\n4. Count passing and failing students.\n5. Identify the highest and lowest scores.\n6. Skip or report invalid marks.\n7. Display each score with a numbered position.\n8. Print a final summary.\n\nFor this example, assume a passing score is 50 out of 100.\n\nYour program should not assume that the collection always contains valid data. Consider what happens if it is empty.\n\n## 21. Advanced Project: Cortex Course Progress Report\n\nImagine a course contains multiple modules, and each module has a completion status.\n\nExample data:\n\n```python\nmodules = [\n    {\"title\": \"Python Foundations\", \"completed\": True},\n    {\"title\": \"Data Types\", \"completed\": True},\n    {\"title\": \"Operators\", \"completed\": False},\n    {\"title\": \"Loops\", \"completed\": False}\n]\n```\n\nUse a loop to:\n\n- Display every module with its status.\n- Count completed modules.\n- Count incomplete modules.\n- Calculate completion percentage.\n- Print a message when every module is complete.\n- Handle an empty course correctly.\n\nThis project connects Python iteration to a feature found in a learning platform such as Cortex.\n\nFor a real deployed application, the backend should calculate or validate important progress data rather than trusting values sent by a browser.\n\n## 22. Practice Exercises\n\n### Beginner\n\n1. Print numbers from 1 to 20 using a for loop.\n2. Print even numbers from 2 to 50.\n3. Calculate the sum of integers from 1 to 100.\n4. Print every character in a user's name.\n5. Display a multiplication table for a number entered by the user.\n\n### Intermediate\n\n6. Use a while loop to validate a number between 1 and 10.\n7. Count vowels in a string.\n8. Find a student's name in a list using break.\n9. Display dictionary keys and values.\n10. Pair student names and marks using zip().\n\n### Advanced\n\n11. Build a nested-loop pattern printer.\n12. Create a number-search program using a loop else clause.\n13. Filter invalid marks from a list and report rejected entries.\n14. Create a student marks analyzer with totals, average, and pass rate.\n15. Calculate course completion percentage using a list of module dictionaries.\n\n## 23. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Choose between for and while loops.\n- Explain range() and its exclusive stop value.\n- Use counters and accumulators correctly.\n- Prevent accidental infinite loops.\n- Apply break, continue, and pass appropriately.\n- Iterate through dictionaries and sequences.\n- Use enumerate() and zip().\n- Understand nested-loop performance.\n- Use loop else clauses correctly.\n- Avoid modifying a collection unsafely during iteration.\n- Handle empty collections and invalid values.\n\n## 24. Module Summary\n\nIn this module, you learned that:\n\n- Loops automate repetitive work.\n- for loops iterate over iterable objects.\n- while loops continue while a condition is true.\n- range() generates integer sequences.\n- Counters and accumulators help summarize data.\n- break, continue, and pass have different purposes.\n- enumerate() provides indexes and values.\n- zip() combines iterables during iteration.\n- Nested loops can multiply the amount of work performed.\n- A loop's else clause runs after normal completion without break.\n- Safe iteration and termination checks prevent common bugs.\n\nNext, you will learn functions, parameters, return values, scope, and reusable program design.\n",
+      "codeExample": "def analyze_marks(marks, passing_score=50):\n    if not marks:\n        return {\n            \"count\": 0,\n            \"total\": 0,\n            \"average\": None,\n            \"passed\": 0,\n            \"failed\": 0,\n            \"highest\": None,\n            \"lowest\": None,\n        }\n\n    total = 0\n    passed = 0\n    failed = 0\n    highest = marks[0]\n    lowest = marks[0]\n\n    for mark in marks:\n        if not isinstance(mark, (int, float)) or isinstance(mark, bool):\n            raise TypeError(\"Every mark must be a number, not a Boolean.\")\n\n        if not 0 <= mark <= 100:\n            raise ValueError(\"Every mark must be between 0 and 100.\")\n\n        total += mark\n\n        if mark >= passing_score:\n            passed += 1\n        else:\n            failed += 1\n\n        if mark > highest:\n            highest = mark\n\n        if mark < lowest:\n            lowest = mark\n\n    return {\n        \"count\": len(marks),\n        \"total\": total,\n        \"average\": total / len(marks),\n        \"passed\": passed,\n        \"failed\": failed,\n        \"highest\": highest,\n        \"lowest\": lowest,\n    }\n\n\ndef main():\n    print(\"CORTEX STUDENT MARKS ANALYZER\")\n    print(\"-\" * 36)\n\n    marks = []\n    student_count_text = input(\"How many students? \").strip()\n\n    try:\n        student_count = int(student_count_text)\n        if student_count < 0:\n            raise ValueError(\"Student count cannot be negative.\")\n    except ValueError as error:\n        print(\"Invalid student count:\", error)\n        return\n\n    for position in range(1, student_count + 1):\n        while True:\n            mark_text = input(f\"Enter marks for student {position} (0-100): \").strip()\n\n            try:\n                mark = float(mark_text)\n            except ValueError:\n                print(\"Please enter a valid number.\")\n                continue\n\n            if not 0 <= mark <= 100:\n                print(\"Marks must be between 0 and 100.\")\n                continue\n\n            marks.append(mark)\n            break\n\n    if not marks:\n        print(\"No student records were entered.\")\n        return\n\n    print(\"\\nINDIVIDUAL RESULTS\")\n    print(\"-\" * 36)\n\n    for position, mark in enumerate(marks, start=1):\n        status = \"PASS\" if mark >= 50 else \"FAIL\"\n        print(f\"Student {position}: {mark:g}/100 - {status}\")\n\n    try:\n        report = analyze_marks(marks)\n    except (TypeError, ValueError) as error:\n        print(\"Could not analyze results:\", error)\n        return\n\n    print(\"\\nSUMMARY REPORT\")\n    print(\"-\" * 36)\n    print(f\"Students analyzed: {report[chr(99) + chr(111) + chr(117) + chr(110) + chr(116)]}\")\n    print(f\"Total marks: {report[chr(116) + chr(111) + chr(116) + chr(97) + chr(108)] :g}\")\n    print(f\"Average: {report[chr(97) + chr(118) + chr(101) + chr(114) + chr(97) + chr(103) + chr(101)]:.2f}\")\n    print(f\"Passed: {report[chr(112) + chr(97) + chr(115) + chr(115) + chr(101) + chr(100)]}\")\n    print(f\"Failed: {report[chr(102) + chr(97) + chr(105) + chr(108) + chr(101) + chr(100)]}\")\n    print(f\"Highest score: {report[chr(104) + chr(105) + chr(103) + chr(104) + chr(101) + chr(115) + chr(116)]:g}\")\n    print(f\"Lowest score: {report[chr(108) + chr(111) + chr(119) + chr(101) + chr(115) + chr(116)]:g}\")\n\n\nif __name__ == \"__main__\":\n    main()",
+      "quiz": [
         {
-          question: 'What does text[1:4] return?',
-          options: [
-            'Characters at indexes 1, 2, and 3',
-            'Characters at indexes 1, 2, 3, and 4',
-            'Only the fourth character',
-            'The complete string'
+          "question": "Which loop is commonly used to iterate through each item in a list?",
+          "options": [
+            "if",
+            "for",
+            "try",
+            "def"
           ],
-          correctAnswer: 0
+          "correctAnswer": 1,
+          "explanation": "Python’s `for item in collection:` loop iterates cleanly over lists and any iterable without manual index counters."
         },
         {
-          question: 'Are Python strings mutable?',
-          options: ['Yes, always', 'No, strings are immutable', 'Only numbers are immutable', 'Only long strings are mutable'],
-          correctAnswer: 1
+          "question": "What values are generated by range(1, 5)?",
+          "options": [
+            "1, 2, 3, 4, 5",
+            "0, 1, 2, 3, 4",
+            "1, 2, 3, 4",
+            "2, 3, 4, 5"
+          ],
+          "correctAnswer": 2,
+          "explanation": "range(start, stop) includes start (1) and excludes stop (5), generating 1, 2, 3, 4."
+        },
+        {
+          "question": "Which statement immediately exits the nearest enclosing loop?",
+          "options": [
+            "continue",
+            "pass",
+            "break",
+            "return"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`break` exits the innermost enclosing for/while loop immediately."
+        },
+        {
+          "question": "What does continue do?",
+          "options": [
+            "Terminates the entire program",
+            "Skips the rest of the current iteration",
+            "Always ends the loop",
+            "Repeats the previous iteration"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`continue` skips remaining statements in the current iteration and jumps straight to the next iteration."
+        },
+        {
+          "question": "Which function provides an index and an item while iterating?",
+          "options": [
+            "sum()",
+            "enumerate()",
+            "type()",
+            "input()"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`enumerate(iterable)` yields (index, item) pairs cleanly without manual counter variables."
+        },
+        {
+          "question": "What happens when zip() receives iterables of different lengths by default?",
+          "options": [
+            "It always raises ValueError",
+            "It repeats the shortest iterable",
+            "It stops when the shortest iterable is exhausted",
+            "It sorts all the values"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`zip()` pairs elements from multiple iterables and stops as soon as the shortest iterable finishes."
+        },
+        {
+          "question": "When does a loop else clause execute?",
+          "options": [
+            "Whenever the loop executes break",
+            "When the loop completes normally without break",
+            "Only when the loop is infinite",
+            "Only when the loop contains continue"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A loop’s `else:` block runs only if the loop finished normally without hitting a `break` statement."
+        },
+        {
+          "question": "What is the main risk of forgetting to update a while-loop counter?",
+          "options": [
+            "The loop may never terminate",
+            "The list becomes immutable",
+            "Python converts the counter to a string",
+            "The program automatically restarts"
+          ],
+          "correctAnswer": 0,
+          "explanation": "If a while-loop condition never becomes False (because the counter wasn’t updated), it loops infinitely."
+        },
+        {
+          "question": "If an outer loop runs 10 times and an inner loop runs 10 times per outer iteration, how many times does the inner body execute?",
+          "options": [
+            "10",
+            "20",
+            "100",
+            "1,000"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Nested loops multiply iterations: 10 outer iterations * 10 inner iterations = 100 executions."
+        },
+        {
+          "question": "What is a safer approach when filtering items from a list?",
+          "options": [
+            "Remove every item while directly iterating over the same list",
+            "Create a new filtered list when appropriate",
+            "Use break after the first item",
+            "Convert the list into a string first"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Mutating a list while iterating skips elements; building a new filtered list (e.g., comprehension) is safe and clean."
         }
+      ],
+      "assignment": "Problem Statement:\nBuild a Batch Marks Analyzer CLI that processes a list of student exam scores, skips invalid/absent sentinel entries, computes pass/fail statistics, and prints ranked results using Python loop idioms.\n\nObjectives:\n- Iterate cleanly with for, enumerate(start=1), zip(), break, and continue.\n- Avoid mutating a list while iterating over it.\n\nRequirements:\n1. Given parallel lists students = [...] and scores = [...] (including an \"ABSENT\" or -1 sentinel).\n2. Pair them with zip(students, scores) and number valid rows with enumerate(..., start=1).\n3. Use continue to skip invalid/absent scores cleanly and build a new valid_scores list (never .remove() mid-loop!).\n4. Compute average, highest, lowest, and pass count (>= 60).\n5. Support an interactive while loop menu (1: Analyze, 2: Quit) with a guaranteed exit via break.\n\nStep-by-Step Instructions:\n1. Create marks_analyzer.py.\n2. Implement analyze_marks(students, scores) returning a summary dict.\n3. Wrap it in a simple while True CLI loop that exits cleanly when the user types \"q\".\n\nDeliverables:\n- marks_analyzer.py.\n\nEvaluation Criteria:\n- Uses enumerate() and zip() instead of manual range(len(...)) indexing.\n- Zero in-place list mutation during iteration.",
+      "lessons": [
+        {
+          "title": "Module 4: Loops, Iteration & Repetitive Task Automation",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 4: Loops, Iteration & Repetitive Task Automation: Module 4: Loops, Iteration & Repetitive Task Automation.",
+          "objectives": [
+            "Master Module 4: Loops, Iteration & Repetitive Task Automation",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 4: Loops, Iteration & Repetitive Task Automation\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why loops are essential in programming.\n- Use for and while loops correctly.\n- Iterate over strings, lists, tuples, dictionaries, and sets.\n- Use range() to generate sequences of integers.\n- Control loops using break, continue, and pass.\n- Build nested loops and understand their complexity.\n- Use enumerate() and zip() during iteration.\n- Avoid infinite loops and common off-by-one errors.\n- Use loop else clauses appropriately.\n- Apply loops to student records, course progress, and result processing.\n- Write readable and efficient iterative programs.\n\n## 2. What Is a Loop?\n\nA loop repeats a block of code while following a specified iteration rule or condition.\n\nWithout loops, displaying five course names would require repeated print statements.\n\n```python\nprint(\"Python\")\nprint(\"JavaScript\")\nprint(\"C++\")\nprint(\"Java\")\nprint(\"SQL\")\n```\n\nUsing a loop:\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\", \"Java\", \"SQL\"]\n\nfor course in courses:\n    print(course)\n```\n\nThe loop processes each item without duplicating the same statement.\n\nLoops are used for:\n- Processing student records.\n- Displaying course modules.\n- Calculating totals and averages.\n- Searching collections.\n- Validating repeated input.\n- Generating reports.\n- Processing API responses and database results.\n\n## 3. The for Loop\n\nA for loop iterates over the items of an iterable object.\n\nAn iterable is an object that can provide its items one at a time, such as a list, string, tuple, set, or dictionary.\n\nSyntax:\n\n```python\nfor item in iterable:\n    # Statements to repeat\n    print(item)\n```\n\nExample:\n\n```python\nlanguages = [\"Python\", \"JavaScript\", \"C++\"]\n\nfor language in languages:\n    print(language)\n```\n\nOutput:\n\n```text\nPython\nJavaScript\nC++\n```\n\nDuring each iteration, the loop variable refers to the current item.\n\n## 4. Iterating Over Strings\n\nStrings are iterable, so a loop can process each character.\n\n```python\nword = \"CORTEX\"\n\nfor character in word:\n    print(character)\n```\n\nOutput:\n\n```text\nC\nO\nR\nT\nE\nX\n```\n\nA practical example is counting vowels.\n\n```python\nword = \"programming\"\nvowels = \"aeiou\"\nvowel_count = 0\n\nfor character in word.lower():\n    if character in vowels:\n        vowel_count += 1\n\nprint(\"Vowels:\", vowel_count)\n```\n\nThe loop examines every character and increases the counter when the character is a vowel.\n\n## 5. The range() Function\n\nrange() generates a sequence of integers commonly used with for loops.\n\n### range(stop)\n\n```python\nfor number in range(5):\n    print(number)\n```\n\nOutput:\n\n```text\n0\n1\n2\n3\n4\n```\n\nThe starting value defaults to zero, and the stop value is excluded.\n\n### range(start, stop)\n\n```python\nfor number in range(2, 7):\n    print(number)\n```\n\nOutput:\n\n```text\n2\n3\n4\n5\n6\n```\n\n### range(start, stop, step)\n\n```python\nfor number in range(2, 11, 2):\n    print(number)\n```\n\nOutput:\n\n```text\n2\n4\n6\n8\n10\n```\n\nThe step controls the increment between values.\n\n### Counting Backward\n\n```python\nfor number in range(5, 0, -1):\n    print(number)\n```\n\nOutput:\n\n```text\n5\n4\n3\n2\n1\n```\n\nThe stop value remains excluded, even when counting backward.\n\n### Important Range Detail\n\nrange() does not normally build a complete list of all its values. It represents an integer sequence efficiently.\n\nIf you specifically need a list:\n\n```python\nnumbers = list(range(5))\nprint(numbers)\n```\n\nOutput:\n\n```text\n[0, 1, 2, 3, 4]\n```\n\n## 6. Accumulators and Counters\n\nA counter tracks how many times something occurs. An accumulator collects a running result.\n\n### Counting\n\n```python\ncount = 0\n\nfor number in range(1, 6):\n    count += 1\n\nprint(\"Count:\", count)\n```\n\nOutput:\n\n```text\nCount: 5\n```\n\n### Summing Values\n\n```python\nnumbers = [10, 20, 30, 40]\ntotal = 0\n\nfor number in numbers:\n    total += number\n\nprint(\"Total:\", total)\n```\n\nOutput:\n\n```text\nTotal: 100\n```\n\nPython also provides sum() for this common operation:\n\n```python\ntotal = sum(numbers)\n```\n\nLearning the loop version helps you understand how aggregation works internally.\n\n### Calculating an Average\n\n```python\nmarks = [80, 75, 90, 85]\ntotal = 0\n\nfor mark in marks:\n    total += mark\n\naverage = total / len(marks)\n\nprint(f\"Average: {average:.2f}\")\n```\n\nBefore dividing, ensure the collection is not empty. Otherwise, division by zero or another invalid calculation may occur.\n\n## 7. The while Loop\n\nA while loop repeats while its condition evaluates to true.\n\nSyntax:\n\n```python\nwhile condition:\n    # Statements to repeat\n```\n\nExample:\n\n```python\ncounter = 1\n\nwhile counter <= 5:\n    print(counter)\n    counter += 1\n```\n\nOutput:\n\n```text\n1\n2\n3\n4\n5\n```\n\nThe counter changes during each iteration. Eventually, the condition becomes false and the loop ends.\n\n### When to Use while\n\nUse while when the number of repetitions depends on a condition rather than a known collection.\n\nExamples include:\n- Repeatedly requesting valid input.\n- Running a menu until the user chooses Exit.\n- Continuing a process while a task remains incomplete.\n- Waiting for a condition to change in an appropriately designed program.\n\nFor iterating through a collection, a for loop is usually simpler.\n\n## 8. Avoiding Infinite Loops\n\nAn infinite loop occurs when a loop never reaches a terminating condition.\n\nProblematic example:\n\n```python\n# Do not run this example as written.\n# counter = 1\n# while counter <= 5:\n#     print(counter)\n#     # counter never changes\n```\n\nBecause counter never increases, the condition remains true.\n\nCorrect version:\n\n```python\ncounter = 1\n\nwhile counter <= 5:\n    print(counter)\n    counter += 1\n```\n\nWhen creating a while loop, ask:\n1. What condition keeps the loop running?\n2. Which statement changes the state used by that condition?\n3. Under what circumstances will the condition become false?\n4. Can invalid input prevent the loop from terminating?",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Iterate over `[\"HTML\", \"JS\", \"Python\"]` using `enumerate(items, start=1)` to print `1. HTML`, `2. JS`, `3. Python`.\n\nExpected Result:\nNumbered list printed without manual counter variables.",
+          "keyTakeaways": [
+            "Understand and apply Module 4: Loops, Iteration & Repetitive Task Automation",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "9. User Input with a while Loop",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 4: Loops, Iteration & Repetitive Task Automation: 9. User Input with a while Loop.",
+          "objectives": [
+            "Master 9. User Input with a while Loop",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 9. User Input with a while Loop\n\nA loop can repeatedly request valid input.\n\n```python\nwhile True:\n    answer = input(\"Enter a number from 1 to 10: \").strip()\n\n    try:\n        number = int(answer)\n    except ValueError:\n        print(\"Please enter a whole number.\")\n        continue\n\n    if 1 <= number <= 10:\n        print(\"Accepted:\", number)\n        break\n\n    print(\"Number must be between 1 and 10.\")\n```\n\nThis example combines:\n- An intentional loop.\n- Input conversion.\n- Exception handling.\n- continue to retry.\n- break to finish after valid input.\n\n## 10. The break Statement\n\nbreak immediately terminates the nearest enclosing loop.\n\n```python\nfor number in range(1, 10):\n    if number == 5:\n        break\n\n    print(number)\n```\n\nOutput:\n\n```text\n1\n2\n3\n4\n```\n\nThe number 5 is not printed because the loop stops before reaching print().\n\n### Searching for an Item\n\n```python\nstudents = [\"Ali\", \"Sara\", \"Ahmed\", \"Ayesha\"]\ntarget = \"Ahmed\"\n\nfor student in students:\n    if student == target:\n        print(\"Student found:\", student)\n        break\n```\n\nThe loop stops once it finds the requested student.\n\nFor ordinary list membership, target in students is simpler. The explicit loop is useful when you need additional work during the search.\n\n## 11. The continue Statement\n\ncontinue skips the remaining statements in the current iteration and proceeds to the next iteration.\n\n```python\nfor number in range(1, 8):\n    if number == 4:\n        continue\n\n    print(number)\n```\n\nOutput:\n\n```text\n1\n2\n3\n5\n6\n7\n```\n\nThe number 4 is skipped.\n\n### Processing Valid Records\n\n```python\nscores = [85, -1, 72, -5, 91]\n\nfor score in scores:\n    if score < 0:\n        continue\n\n    print(\"Valid score:\", score)\n```\n\nThis example skips negative scores. In production software, silently skipping invalid records may hide data-quality problems, so log or report rejected records when necessary.\n\n## 12. The pass Statement\n\npass is a placeholder statement that performs no operation.\n\n```for\n```\n\nThe correct syntax example is:\n\n```python\nfor number in range(3):\n    pass\n```\n\nIt allows a syntactically valid block to exist while you plan or implement its behavior later.\n\nFor example:\n\n```python\ndef generate_report():\n    pass\n```\n\nA function containing only pass does not yet generate a report. Replace the placeholder with the intended implementation before relying on it.\n\nRemember:\n- break terminates a loop.\n- continue skips to the next iteration.\n- pass does nothing and allows execution to continue normally.\n\n## 13. Looping Through Dictionaries\n\nDictionaries contain keys and values.\n\n```python\nstudent = {\n    \"name\": \"Anas\",\n    \"course\": \"Software Engineering\",\n    \"semester\": 1\n}\n\nfor key in student:\n    print(key)\n```\n\nBy default, iterating over a dictionary produces its keys.\n\n### Iterating Through Values\n\n```python\nfor value in student.values():\n    print(value)\n```\n\n### Iterating Through Key-Value Pairs\n\n```python\nfor key, value in student.items():\n    print(f\"{key}: {value}\")\n```\n\nOutput:\n\n```text\nname: Anas\ncourse: Software Engineering\nsemester: 1\n```\n\nDictionary iteration is useful for displaying records, processing settings, and generating reports.\n\n## 14. Using enumerate()\n\nenumerate() provides both an item's index and its value.\n\nWithout enumerate():\n\n```python\ncourses = [\"Python\", \"JavaScript\", \"C++\"]\n\nfor index in range(len(courses)):\n    print(index, courses[index])\n```\n\nUsing enumerate():\n\n```python\nfor index, course in enumerate(courses):\n    print(index, course)\n```\n\nOutput:\n\n```text\n0 Python\n1 JavaScript\n2 C++\n```\n\nTo begin counting from one:\n\n```python\nfor position, course in enumerate(courses, start=1):\n    print(f\"{position}. {course}\")\n```\n\nenumerate() is generally more readable than manually maintaining an index counter.\n\n## 15. Using zip()\n\nzip() iterates over multiple iterables in parallel.\n\n```python\nstudents = [\"Ali\", \"Sara\", \"Ahmed\"]\nmarks = [85, 92, 78]\n\nfor student, mark in zip(students, marks):\n    print(f\"{student}: {mark}\")\n```\n\nOutput:\n\n```text\nAli: 85\nSara: 92\nAhmed: 78\n```\n\nBy default, zip() stops when the shortest iterable is exhausted.\n\nIf you need to detect mismatched lengths, validate them or consider zip(..., strict=True) in Python 3.10 and later.\n\n```python\nnames = [\"Ali\", \"Sara\"]\nscores = [80, 90]\n\nfor name, score in zip(names, scores, strict=True):\n    print(name, score)\n```\n\nIf the lengths differ, strict=True raises ValueError.\n\n## 16. Nested Loops\n\nA nested loop is a loop inside another loop.\n\n```python\nfor row in range(1, 4):\n    for column in range(1, 4):\n        print(f\"({row}, {column})\")\n```\n\nThe inner loop completes its iterations for every iteration of the outer loop.\n\n### Multiplication Table\n\n```python\nnumber = 5\n\nfor multiplier in range(1, 11):\n    print(f\"{number} x {multiplier} = {number * multiplier}\")\n```\n\n### Grid Example\n\n```python\nfor row in range(3):\n    for column in range(4):\n        print(\"*\", end=\" \")\n    print()\n```\n\nOutput:\n\n```text\n* * * *\n* * * *\n* * * *\n```\n\nThe outer loop controls the rows. The inner loop controls the columns.\n\n### Performance Considerations\n\nIf an outer loop runs n times and an inner loop runs m times for each outer iteration, the inner operation executes approximately n × m times.\n\nIf both loops run n times, the number of inner iterations is n².\n\nNested loops are not automatically bad, but they can become expensive when processing large datasets.\n\n## 17. Loop else Clauses\n\nPython loops may have an else clause. The else block executes when the loop finishes normally, without being terminated by break.\n\nExample:\n\n```python\nnumbers = [2, 4, 6, 8]\ntarget = 5\n\nfor number in numbers:\n    if number == target:\n        print(\"Found\")\n        break\nelse:\n    print(\"Not found\")\n```\n\nOutput:\n\n```text\nNot found\n```\n\nThe else clause belongs to the loop, not to an if statement.\n\nIt is useful in searches where you need to distinguish between finding an item and exhausting the collection.\n\n### Another Example\n\n```python\nfor number in range(3):\n    print(number)\nelse:\n    print(\"Loop completed normally\")\n```\n\nThe message appears because the loop finishes without break.\n\nIf break executes, the loop's else clause is skipped. A continue statement does not prevent the else clause from executing after normal completion.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Pair `names = [\"Ada\", \"Grace\"]` and `scores = [98, 95]` with `zip(names, scores)` and test a `for ... else:` loop with and without `break`.\n\nExpected Result:\nObserve `else:` runs only when `break` is not triggered.",
+          "keyTakeaways": [
+            "Understand and apply 9. User Input with a while Loop",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "18. Iterating Safely Over Collections",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 4: Loops, Iteration & Repetitive Task Automation: 18. Iterating Safely Over Collections.",
+          "objectives": [
+            "Master 18. Iterating Safely Over Collections",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 18. Iterating Safely Over Collections\n\nAvoid changing a collection's structure while directly iterating over it unless you understand the consequences.\n\nPotentially problematic example:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\n\nfor number in numbers:\n    if number % 2 == 0:\n        numbers.remove(number)\n```\n\nRemoving elements while iterating can cause elements to be skipped.\n\nA clearer approach is to create a new filtered list:\n\n```python\nnumbers = [1, 2, 3, 4, 5]\nodd_numbers = [\n    number for number in numbers\n    if number % 2 != 0\n]\n\nprint(odd_numbers)\n```\n\nOutput:\n\n```text\n[1, 3, 5]\n```\n\nYou will study comprehensions in greater detail in a later module.\n\n## 19. Common Loop Mistakes\n\n### Mistake 1: Off-by-One Errors\n\n```python\nfor number in range(1, 5):\n    print(number)\n```\n\nThis prints 1 through 4, not 1 through 5, because the stop value is excluded.\n\nUse range(1, 6) to include 5.\n\n### Mistake 2: Forgetting to Update a while Loop\n\nA missing counter update can cause an infinite loop.\n\nAlways ensure the loop state can change toward termination.\n\n### Mistake 3: Incorrect Indentation\n\nStatements indented inside a loop execute on every iteration. Statements outside it execute after the loop.\n\nCheck indentation carefully.\n\n### Mistake 4: Using break When continue Is Needed\n\nbreak exits the loop entirely. continue skips only the current iteration.\n\nChoose based on the intended behavior.\n\n### Mistake 5: Dividing by Zero\n\nBefore calculating an average, ensure there is at least one value.\n\n```python\nscores = []\n\nif scores:\n    average = sum(scores) / len(scores)\n    print(average)\nelse:\n    print(\"No scores available.\")\n```\n\n### Mistake 6: Unnecessary Manual Indexing\n\nWhen you need both an index and a value, enumerate() is often clearer than range(len(...)).\n\n## 20. Practical Project: Student Marks Analyzer\n\nBuild a program that analyzes a collection of student marks.\n\nRequirements:\n\n1. Store marks for several students in a list.\n2. Use a loop to calculate the total.\n3. Calculate the average safely.\n4. Count passing and failing students.\n5. Identify the highest and lowest scores.\n6. Skip or report invalid marks.\n7. Display each score with a numbered position.\n8. Print a final summary.\n\nFor this example, assume a passing score is 50 out of 100.\n\nYour program should not assume that the collection always contains valid data. Consider what happens if it is empty.\n\n## 21. Advanced Project: Cortex Course Progress Report\n\nImagine a course contains multiple modules, and each module has a completion status.\n\nExample data:\n\n```python\nmodules = [\n    {\"title\": \"Python Foundations\", \"completed\": True},\n    {\"title\": \"Data Types\", \"completed\": True},\n    {\"title\": \"Operators\", \"completed\": False},\n    {\"title\": \"Loops\", \"completed\": False}\n]\n```\n\nUse a loop to:\n\n- Display every module with its status.\n- Count completed modules.\n- Count incomplete modules.\n- Calculate completion percentage.\n- Print a message when every module is complete.\n- Handle an empty course correctly.\n\nThis project connects Python iteration to a feature found in a learning platform such as Cortex.\n\nFor a real deployed application, the backend should calculate or validate important progress data rather than trusting values sent by a browser.\n\n## 22. Practice Exercises\n\n### Beginner\n\n1. Print numbers from 1 to 20 using a for loop.\n2. Print even numbers from 2 to 50.\n3. Calculate the sum of integers from 1 to 100.\n4. Print every character in a user's name.\n5. Display a multiplication table for a number entered by the user.\n\n### Intermediate\n\n6. Use a while loop to validate a number between 1 and 10.\n7. Count vowels in a string.\n8. Find a student's name in a list using break.\n9. Display dictionary keys and values.\n10. Pair student names and marks using zip().\n\n### Advanced\n\n11. Build a nested-loop pattern printer.\n12. Create a number-search program using a loop else clause.\n13. Filter invalid marks from a list and report rejected entries.\n14. Create a student marks analyzer with totals, average, and pass rate.\n15. Calculate course completion percentage using a list of module dictionaries.\n\n## 23. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Choose between for and while loops.\n- Explain range() and its exclusive stop value.\n- Use counters and accumulators correctly.\n- Prevent accidental infinite loops.\n- Apply break, continue, and pass appropriately.\n- Iterate through dictionaries and sequences.\n- Use enumerate() and zip().\n- Understand nested-loop performance.\n- Use loop else clauses correctly.\n- Avoid modifying a collection unsafely during iteration.\n- Handle empty collections and invalid values.\n\n## 24. Module Summary\n\nIn this module, you learned that:\n\n- Loops automate repetitive work.\n- for loops iterate over iterable objects.\n- while loops continue while a condition is true.\n- range() generates integer sequences.\n- Counters and accumulators help summarize data.\n- break, continue, and pass have different purposes.\n- enumerate() provides indexes and values.\n- zip() combines iterables during iteration.\n- Nested loops can multiply the amount of work performed.\n- A loop's else clause runs after normal completion without break.\n- Safe iteration and termination checks prevent common bugs.\n\nNext, you will learn functions, parameters, return values, scope, and reusable program design.",
+          "codeExample": "def analyze_marks(marks, passing_score=50):\n    if not marks:\n        return {\n            \"count\": 0,\n            \"total\": 0,\n            \"average\": None,\n            \"passed\": 0,\n            \"failed\": 0,\n            \"highest\": None,\n            \"lowest\": None,\n        }\n\n    total = 0\n    passed = 0\n    failed = 0\n    highest = marks[0]\n    lowest = marks[0]\n\n    for mark in marks:\n        if not isinstance(mark, (int, float)) or isinstance(mark, bool):\n            raise TypeError(\"Every mark must be a number, not a Boolean.\")\n\n        if not 0 <= mark <= 100:\n            raise ValueError(\"Every mark must be between 0 and 100.\")\n\n        total += mark\n\n        if mark >= passing_score:\n            passed += 1\n        else:\n            failed += 1\n\n        if mark > highest:\n            highest = mark\n\n        if mark < lowest:\n            lowest = mark\n\n    return {\n        \"count\": len(marks),\n        \"total\": total,\n        \"average\": total / len(marks),\n        \"passed\": passed,\n        \"failed\": failed,\n        \"highest\": highest,\n        \"lowest\": lowest,\n    }\n\n\ndef main():\n    print(\"CORTEX STUDENT MARKS ANALYZER\")\n    print(\"-\" * 36)\n\n    marks = []\n    student_count_text = input(\"How many students? \").strip()\n\n    try:\n        student_count = int(student_count_text)\n        if student_count < 0:\n            raise ValueError(\"Student count cannot be negative.\")\n    except ValueError as error:\n        print(\"Invalid student count:\", error)\n        return\n\n    for position in range(1, student_count + 1):\n        while True:\n            mark_text = input(f\"Enter marks for student {position} (0-100): \").strip()\n\n            try:\n                mark = float(mark_text)\n            except ValueError:\n                print(\"Please enter a valid number.\")\n                continue\n\n            if not 0 <= mark <= 100:\n                print(\"Marks must be between 0 and 100.\")\n                continue\n\n            marks.append(mark)\n            break\n\n    if not marks:\n        print(\"No student records were entered.\")\n        return\n\n    print(\"\\nINDIVIDUAL RESULTS\")\n    print(\"-\" * 36)\n\n    for position, mark in enumerate(marks, start=1):\n        status = \"PASS\" if mark >= 50 else \"FAIL\"\n        print(f\"Student {position}: {mark:g}/100 - {status}\")\n\n    try:\n        report = analyze_marks(marks)\n    except (TypeError, ValueError) as error:\n        print(\"Could not analyze results:\", error)\n        return\n\n    print(\"\\nSUMMARY REPORT\")\n    print(\"-\" * 36)\n    print(f\"Students analyzed: {report[chr(99) + chr(111) + chr(117) + chr(110) + chr(116)]}\")\n    print(f\"Total marks: {report[chr(116) + chr(111) + chr(116) + chr(97) + chr(108)] :g}\")\n    print(f\"Average: {report[chr(97) + chr(118) + chr(101) + chr(114) + chr(97) + chr(103) + chr(101)]:.2f}\")\n    print(f\"Passed: {report[chr(112) + chr(97) + chr(115) + chr(115) + chr(101) + chr(100)]}\")\n    print(f\"Failed: {report[chr(102) + chr(97) + chr(105) + chr(108) + chr(101) + chr(100)]}\")\n    print(f\"Highest score: {report[chr(104) + chr(105) + chr(103) + chr(104) + chr(101) + chr(115) + chr(116)]:g}\")\n    print(f\"Lowest score: {report[chr(108) + chr(111) + chr(119) + chr(101) + chr(115) + chr(116)]:g}\")\n\n\nif __name__ == \"__main__\":\n    main()",
+          "codeExplanation": "1. analyze_marks(marks, passing_score=50) handles an empty list immediately with safe None/0 defaults instead of dividing by zero.\n2. It iterates cleanly through marks tracking total, pass/fail counts, highest, and lowest in a single O(n) pass.\n\nHow to Run & Expected Output:\nSave as `marks.py` and run `python marks.py`. Outputs a summary dictionary with count, total, average, passed, failed, highest, and lowest.",
+          "practiceExercise": "Guided Exercise:\n1. Call `analyze_marks([])` and `analyze_marks([45, 78, 92, 60])` and verify both outputs.\n\nIndependent Challenge:\nFilter out scores `< 0` using a list comprehension instead of mutating mid-loop.\n\nExpected Result:\nEmpty list returns safe `None`/`0` summary; non-empty list prints accurate pass/fail stats.",
+          "keyTakeaways": [
+            "Understand and apply 18. Iterating Safely Over Collections",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 4: Loops, Iteration & Repetitive Task Automation",
+        "Apply Python best practices with clean, readable examples",
+        "Master 9. User Input with a while Loop",
+        "Master 18. Iterating Safely Over Collections"
       ]
     },
     {
-      title: 'Module 5: Input, Output, and Conditions',
-      duration: '2h 30m',
-      notes: `### User input
-The \`input()\` function reads text from the user and returns a string. Convert the value before performing numeric calculations.
-
-### Conditional statements
-Use \`if\`, \`elif\`, and \`else\` to make decisions.
-
-### Example
-\`\`\`python
-marks = 85
-
-if marks >= 90:
-    print("Grade A")
-elif marks >= 80:
-    print("Grade B")
-else:
-    print("Keep practicing")
-\`\`\`
-
-### Boolean conditions
-Conditions evaluate to True or False. Combine conditions with logical operators.
-
-### Truthiness
-Empty strings, empty collections, zero, and None are false-like in conditional expressions.
-
-### Input validation
-Use try/except to handle invalid numeric input. Give users helpful messages instead of allowing expected input errors to crash the program.`,
-      codeExample: `raw_marks = input("Enter your marks: ").strip()
-
-try:
-    marks = float(raw_marks)
-
-    if not 0 <= marks <= 100:
-        print("Marks must be between 0 and 100.")
-    elif marks >= 90:
-        print("Grade: A")
-    elif marks >= 80:
-        print("Grade: B")
-    elif marks >= 70:
-        print("Grade: C")
-    elif marks >= 60:
-        print("Grade: D")
-    else:
-        print("Grade: F")
-
-except ValueError:
-    print("Please enter a valid number.")`,
-      quiz: [
+      "title": "Module 5: Functions, Parameters, Return Values & Scope",
+      "duration": "5h 00m",
+      "notes": "\n# Module 5: Functions, Parameters, Return Values & Scope\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Define and call functions using def.\n- Understand parameters, arguments, and return values.\n- Use positional, keyword, default, and variable-length arguments.\n- Understand local, global, and enclosing scopes.\n- Write reusable functions with clear responsibilities.\n- Understand how Python passes object references to functions.\n- Avoid mutable default argument problems.\n- Use lambda functions appropriately.\n- Write docstrings and type hints.\n- Understand recursion and its limitations.\n- Build modular applications using functions.\n- Test functions with valid, invalid, and boundary inputs.\n\n## 2. What Is a Function?\n\nA function is a reusable block of code designed to perform a particular task.\n\nWithout a function:\n\n```python\nprice1 = 100\nquantity1 = 3\nprint(price1 * quantity1)\n\nprice2 = 250\nquantity2 = 2\nprint(price2 * quantity2)\n```\n\nWith a function:\n\n```python\ndef calculate_total(price, quantity):\n    return price * quantity\n\nprint(calculate_total(100, 3))\nprint(calculate_total(250, 2))\n```\n\nOutput:\n\n```text\n300\n500\n```\n\nThe function lets you reuse the same logic with different inputs.\n\nFunctions improve:\n- Reusability.\n- Readability.\n- Testing.\n- Debugging.\n- Separation of responsibilities.\n- Long-term maintenance.\n\n## 3. Defining and Calling Functions\n\nPython uses the def keyword to define a function.\n\n```python\ndef greet():\n    print(\"Welcome to Cortex!\")\n\ngreet()\n```\n\nOutput:\n\n```text\nWelcome to Cortex!\n```\n\nThe definition creates a function object and binds its name. The function body runs when the function is called.\n\nA function can be called multiple times:\n\n```python\ndef show_separator():\n    print(\"-\" * 30)\n\nshow_separator()\nprint(\"STUDENT REPORT\")\nshow_separator()\n```\n\n### Function Naming\n\nUse descriptive snake_case names.\n\nGood examples:\n\n```python\ndef calculate_percentage():\n    pass\n\ndef validate_email():\n    pass\n\ndef get_course_progress():\n    pass\n```\n\nAvoid names that do not explain the function's purpose, such as do_it() or x1().\n\n## 4. Parameters and Arguments\n\nA parameter is a name in a function definition. An argument is a value supplied when calling the function.\n\n```python\ndef greet_student(name):\n    print(f\"Welcome, {name}!\")\n\ngreet_student(\"Anas\")\ngreet_student(\"Ali\")\n```\n\nHere, name is a parameter. \"Anas\" and \"Ali\" are arguments.\n\n### Multiple Parameters\n\n```python\ndef introduce_student(name, semester, department):\n    print(f\"Name: {name}\")\n    print(f\"Semester: {semester}\")\n    print(f\"Department: {department}\")\n\nintroduce_student(\"Anas\", 1, \"Software Engineering\")\n```\n\nParameters allow functions to work with different data without duplicating code.\n\n## 5. Positional Arguments\n\nPositional arguments are matched to parameters according to their order.\n\n```python\ndef subtract(a, b):\n    return a - b\n\nprint(subtract(10, 3))\nprint(subtract(3, 10))\n```\n\nOutput:\n\n```text\n7\n-7\n```\n\nOrder matters. Reversing the arguments changes the result.\n\nUse descriptive parameter names so the expected order is easy to understand.\n\n## 6. Keyword Arguments\n\nKeyword arguments identify parameters by name.\n\n```python\ndef create_student(name, age, department):\n    return {\n        \"name\": name,\n        \"age\": age,\n        \"department\": department\n    }\n\nstudent = create_student(\n    department=\"Software Engineering\",\n    name=\"Anas\",\n    age=18\n)\n\nprint(student)\n```\n\nKeyword arguments can improve readability, especially when a function accepts several parameters.\n\nPositional arguments generally must appear before keyword arguments in a call.\n\n## 7. Default Parameter Values\n\nA parameter can have a default value.\n\n```python\ndef greet(name, message=\"Welcome to Cortex\"):\n    print(f\"{message}, {name}!\")\n\ngreet(\"Anas\")\ngreet(\"Ali\", \"Good morning\")\n```\n\nOutput:\n\n```text\nWelcome to Cortex, Anas!\nGood morning, Ali!\n```\n\nParameters with defaults may be omitted during a call.\n\n### Parameter Ordering\n\nParameters without defaults should come before parameters with defaults.\n\nCorrect:\n\n```python\ndef register_student(name, semester=1):\n    return {\"name\": name, \"semester\": semester}\n```\n\nA function definition that places a required positional parameter after a defaulted positional parameter causes a SyntaxError.\n\n## 8. Return Values\n\nThe return statement sends a result back to the caller and ends the current function call.\n\n```python\ndef square(number):\n    return number * number\n\nresult = square(5)\nprint(result)\n```\n\nOutput:\n\n```text\n25\n```\n\n### print() Versus return\n\nprint() displays information to the console. return provides a value that other code can use.\n\n```python\ndef add_and_print(a, b):\n    print(a + b)\n\ndef add_and_return(a, b):\n    return a + b\n\nfirst_result = add_and_print(2, 3)\nsecond_result = add_and_return(2, 3)\n\nprint(\"First result:\", first_result)\nprint(\"Second result:\", second_result)\n```\n\nOutput:\n\n```text\n5\n5\nFirst result: None\nSecond result: 5\n```\n\nThe first function prints the sum but does not explicitly return it. Python returns None when a function finishes without returning another value.\n\nUse return when the result must be reused, tested, combined, or stored.\n\n## 9. Returning Multiple Values\n\nPython allows a function to return multiple values, commonly by returning a tuple.\n\n```python\ndef analyze_marks(marks):\n    total = sum(marks)\n    average = total / len(marks)\n    highest = max(marks)\n\n    return total, average, highest\n\ntotal, average, highest = analyze_marks([80, 90, 70])\n\nprint(total)\nprint(average)\nprint(highest)\n```\n\nOutput:\n\n```text\n240\n80.0\n90\n```\n\nAlways validate that marks is not empty before dividing by its length.\n\n### Returning a Dictionary\n\nWhen results have several named fields, a dictionary may be clearer.\n\n```python\ndef summarize_marks(marks):\n    if not marks:\n        raise ValueError(\"Marks cannot be empty.\")\n\n    return {\n        \"total\": sum(marks),\n        \"average\": sum(marks) / len(marks),\n        \"highest\": max(marks),\n        \"lowest\": min(marks)\n    }\n\nreport = summarize_marks([80, 90, 70])\nprint(report[\"average\"])\n```\n\n## 10. Early Returns\n\nA function can return early when a condition is not satisfied.\n\n```python\ndef calculate_average(marks):\n    if not marks:\n        return None\n\n    return sum(marks) / len(marks)\n\nprint(calculate_average([]))\nprint(calculate_average([80, 90]))\n```\n\nEarly returns can reduce unnecessary nesting.\n\nChoose an appropriate approach for invalid data. Returning None may be suitable when absence is an expected result; raising an exception may be better when the input violates the function's contract.\n\n## 11. Variable-Length Positional Arguments: *args\n\nUse *args when a function should accept a variable number of positional arguments.\n\n```python\ndef calculate_total(*prices):\n    return sum(prices)\n\nprint(calculate_total(100, 200))\nprint(calculate_total(100, 200, 300, 400))\n```\n\nInside the function, prices is a tuple containing the supplied positional arguments.\n\n### Practical Example\n\n```python\ndef calculate_average(*scores):\n    if not scores:\n        return None\n\n    return sum(scores) / len(scores)\n\nprint(calculate_average(80, 90, 70))\n```\n\nDo not use *args automatically. Prefer explicit parameters when the expected inputs are known.\n\n## 12. Variable-Length Keyword Arguments: **kwargs\n\nUse **kwargs to accept additional keyword arguments.\n\n```python\ndef display_profile(**details):\n    for key, value in details.items():\n        print(f\"{key}: {value}\")\n\ndisplay_profile(\n    name=\"Anas\",\n    department=\"Software Engineering\",\n    semester=1\n)\n```\n\nInside the function, details is a dictionary.\n\nThis can be useful for flexible configuration, but unrestricted keyword inputs should be validated when they affect application behavior.\n\n## 13. Combining Argument Types\n\nA function may combine different kinds of parameters.\n\n```python\ndef create_course(title, duration=10, *topics, instructor=\"Unknown\", **metadata):\n    return {\n        \"title\": title,\n        \"duration\": duration,\n        \"topics\": topics,\n        \"instructor\": instructor,\n        \"metadata\": metadata\n    }\n\ncourse = create_course(\n    \"Python Masterclass\",\n    20,\n    \"Basics\",\n    \"Functions\",\n    instructor=\"Course Team\",\n    level=\"Beginner\"\n)\n\nprint(course)\n```\n\nUnderstand the parameter order and calling rules before using complex signatures.\n\nFor clearer APIs, explicit keyword-only parameters are often preferable.\n\n## 14. Keyword-Only Parameters\n\nA parameter after * must be supplied by keyword.\n\n```python\ndef enroll_student(name, *, course, semester=1):\n    return {\n        \"name\": name,\n        \"course\": course,\n        \"semester\": semester\n    }\n\nstudent = enroll_student(\n    \"Anas\",\n    course=\"Python\",\n    semester=1\n)\n\nprint(student)\n```\n\nThis makes calls clearer by requiring the caller to name important arguments.\n\nPython also supports positional-only parameters using / in function signatures.\n\n```python\ndef divide(numerator, denominator, /):\n    return numerator / denominator\n\nprint(divide(10, 2))\n```\n\nThe slash means those parameters must be supplied positionally. This feature is useful when designing certain APIs.\n\n## 15. Scope: Local Variables\n\nScope determines where a name can be accessed.\n\nA local variable is created inside a function and is generally accessible only within that function.\n\n```python\ndef calculate_total():\n    price = 500\n    quantity = 3\n    return price * quantity\n\nprint(calculate_total())\n```\n\nThe local variables price and quantity are not automatically available outside the function.\n\nTrying to access price outside this function raises NameError unless another accessible binding named price exists.\n\nLocal variables help keep implementation details isolated.\n\n## 16. Global Variables\n\nA global variable is defined at module level.\n\n```python\ncourse_name = \"Python\"\n\ndef display_course():\n    print(course_name)\n\ndisplay_course()\n```\n\nA function can read an accessible global name.\n\nHowever, assigning to a name inside a function normally creates a local binding unless the function declares otherwise.\n\n```python\ncount = 10\n\ndef update_count():\n    count = 20\n    print(\"Inside:\", count)\n\nupdate_count()\nprint(\"Outside:\", count)\n```\n\nOutput:\n\n```text\nInside: 20\nOutside: 10\n```\n\nThe local count is separate from the module-level count.\n\n### The global Keyword\n\nUse global when you intentionally need to rebind a module-level name.\n\n```python\ncount = 10\n\ndef update_count():\n    global count\n    count = 20\n\nupdate_count()\nprint(count)\n```\n\nAlthough valid, excessive use of global state makes testing and maintenance harder. Prefer returning values or using explicitly managed objects.\n\n## 17. The nonlocal Keyword and Enclosing Scope\n\nNested functions can access names in an enclosing function's scope.\n\n```python\ndef outer():\n    message = \"Hello\"\n\n    def inner():\n        print(message)\n\n    inner()\n\nouter()\n```\n\nThe inner function can read message from the enclosing function.\n\nUse nonlocal when a nested function must rebind a name from an enclosing function.\n\n```python\ndef create_counter():\n    count = 0\n\n    def increment():\n        nonlocal count\n        count += 1\n        return count\n\n    return increment\n\ncounter = create_counter()\n\nprint(counter())\nprint(counter())\nprint(counter())\n```\n\nOutput:\n\n```text\n1\n2\n3\n```\n\nThis demonstrates a closure: the returned function retains access to the enclosing variable.\n\n## 18. Python's LEGB Name Resolution\n\nPython commonly resolves names using the LEGB rule:\n\n- Local: names in the current function.\n- Enclosing: names in enclosing function scopes.\n- Global: names defined at the module level.\n- Built-in: names provided by Python's built-ins.\n\nExample:\n\n```python\nmessage = \"Global\"\n\ndef outer():\n    message = \"Enclosing\"\n\n    def inner():\n        message = \"Local\"\n        print(message)\n\n    inner()\n\nouter()\n```\n\nOutput:\n\n```text\nLocal\n```\n\nThe local binding is found first.\n\nAvoid naming variables after important built-ins such as list, str, sum, or input. Doing so can hide the built-in name and create confusing errors.\n\n## 19. Mutable Objects Passed to Functions\n\nPython passes object references through argument assignment. This is often described as call by sharing.\n\nA function parameter becomes a local name referring to the supplied object.\n\n```python\ndef add_course(courses):\n    courses.append(\"Python\")\n\nmy_courses = [\"JavaScript\"]\nadd_course(my_courses)\n\nprint(my_courses)\n```\n\nOutput:\n\n```text\n['JavaScript', 'Python']\n```\n\nThe function mutates the same list object supplied by the caller.\n\n### Rebinding Is Different from Mutation\n\n```python\ndef replace_list(items):\n    items = [\"New\", \"Values\"]\n\noriginal = [\"Python\", \"JavaScript\"]\nreplace_list(original)\n\nprint(original)\n```\n\nOutput:\n\n```text\n['Python', 'JavaScript']\n```\n\nThe assignment changes the local name items, not the caller's original binding.\n\nIf a function should avoid changing the caller's collection, create an appropriate copy or return a new collection.\n\n## 20. Mutable Default Argument Pitfall\n\nDefault parameter expressions are evaluated when the function is defined, not each time it is called.\n\nProblematic example:\n\n```python\ndef add_course(course, courses=[]):\n    courses.append(course)\n    return courses\n\nprint(add_course(\"Python\"))\nprint(add_course(\"JavaScript\"))\n```\n\nThe same list is reused across calls, so values accumulate unexpectedly.\n\n### Correct Pattern\n\n```python\ndef add_course(course, courses=None):\n    if courses is None:\n        courses = []\n\n    courses.append(course)\n    return courses\n\nprint(add_course(\"Python\"))\nprint(add_course(\"JavaScript\"))\n```\n\nEach call without an explicit list now receives a newly created list.\n\nThis is one of the most important function-design rules in Python.\n\n## 21. Lambda Functions\n\nA lambda creates a small anonymous function containing a single expression.\n\n```python\nsquare = lambda number: number * number\n\nprint(square(5))\n```\n\nOutput:\n\n```text\n25\n```\n\nA lambda can be useful as a short key function for sorting.\n\n```python\nstudents = [\n    {\"name\": \"Ali\", \"marks\": 78},\n    {\"name\": \"Sara\", \"marks\": 95},\n    {\"name\": \"Ahmed\", \"marks\": 84}\n]\n\nstudents.sort(key=lambda student: student[\"marks\"], reverse=True)\n\nfor student in students:\n    print(student[\"name\"], student[\"marks\"])\n```\n\nFor complex logic, use a normal def function. Lambda functions are expressions, not a replacement for every function definition.\n\n## 22. Docstrings\n\nA docstring describes what a function, class, or module does.\n\n```python\ndef calculate_percentage(obtained, total):\n    \"\"\"Return the percentage for valid obtained and total marks.\"\"\"\n    if total <= 0:\n        raise ValueError(\"Total marks must be positive.\")\n\n    if not 0 <= obtained <= total:\n        raise ValueError(\"Obtained marks must be within the valid range.\")\n\n    return obtained / total * 100\n\nprint(calculate_percentage(450, 500))\nprint(calculate_percentage.__doc__)\n```\n\nGood documentation explains purpose, inputs, outputs, assumptions, and important exceptions.\n\nAvoid documenting obvious details while leaving important behavior unexplained.\n\n## 23. Type Hints\n\nType hints communicate expected input and output types.\n\n```python\ndef calculate_total(price: float, quantity: int) -> float:\n    return price * quantity\n\nprint(calculate_total(199.50, 3))\n```\n\nThe annotation suggests that price should be a float, quantity an integer, and the result a float.\n\nPython generally does not enforce these annotations automatically at runtime. Tools such as static type checkers can analyze them.\n\n### Collection Type Hints\n\n```python\ndef average_score(scores: list[float]) -> float:\n    if not scores:\n        raise ValueError(\"At least one score is required.\")\n\n    return sum(scores) / len(scores)\n\nprint(average_score([80.0, 90.0, 85.0]))\n```\n\nFor Python 3.9 and later, built-in collection types such as list[float] can be used in annotations.\n\n## 24. Recursion\n\nRecursion occurs when a function calls itself.\n\nEvery recursive solution needs:\n- A base case that stops recursion.\n- A recursive case that moves toward the base case.\n\nExample:\n\n```python\ndef factorial(number):\n    if number < 0:\n        raise ValueError(\"Number cannot be negative.\")\n\n    if number <= 1:\n        return 1\n\n    return number * factorial(number - 1)\n\nprint(factorial(5))\n```\n\nOutput:\n\n```text\n120\n```\n\nThe base case prevents the function from calling itself forever.\n\nPython has a recursion limit. Deep recursive calls may raise RecursionError, so loops are often preferable for simple repetitive tasks.\n\n## 25. Function Composition\n\nFunction composition means combining functions so the result of one operation becomes the input to another.\n\n```python\ndef normalize_name(name):\n    return name.strip().title()\n\ndef is_valid_name(name):\n    return bool(name)\n\nraw_name = \"  anas manzoor  \"\nclean_name = normalize_name(raw_name)\n\nif is_valid_name(clean_name):\n    print(f\"Welcome, {clean_name}!\")\n```\n\nSmall functions with clear responsibilities are easier to reuse and test than one enormous function.\n\nA useful design principle is to keep input/output operations separate from calculations when practical.\n\n## 26. Practical Project: Student Result Management\n\nCreate a program that processes student results using reusable functions.\n\nRequirements:\n\n1. Create a function to validate a student's name.\n2. Create a function to validate marks.\n3. Create a function to calculate percentages.\n4. Create a function to assign grades.\n5. Create a function to generate a result dictionary.\n6. Use parameters and return values instead of relying on global variables.\n7. Handle invalid input with clear messages.\n8. Add docstrings and useful type hints.\n9. Ensure empty data is handled intentionally.\n10. Write a small test section to check important cases.\n\n## 27. Advanced Project: Cortex Course Progress Utilities\n\nImagine Cortex needs reusable functions for course progress.\n\nBuild functions that:\n\n- Calculate the percentage of completed modules.\n- Return a list of incomplete module titles.\n- Validate that progress values are in the permitted range.\n- Return a structured progress report.\n- Handle an empty course.\n- Avoid accidentally mutating the original module list.\n- Use type hints and docstrings.\n\nExample data:\n\n```python\nmodules = [\n    {\"title\": \"Foundations\", \"completed\": True},\n    {\"title\": \"Data Types\", \"completed\": True},\n    {\"title\": \"Functions\", \"completed\": False}\n]\n```\n\nFor a real application, the server should validate important progress changes and enforce permissions independently of the browser.\n\n## 28. Practice Exercises\n\n### Beginner\n\n1. Write a function that greets a student by name.\n2. Write a function that adds two numbers and returns the result.\n3. Write a function that converts Celsius to Fahrenheit.\n4. Write a function that calculates a percentage.\n5. Write a function that checks whether a number is even.\n\n### Intermediate\n\n6. Create a grade-calculation function with input validation.\n7. Use default parameters to create a course description.\n8. Write a function accepting any number of scores with *args.\n9. Create a dictionary of profile details using **kwargs.\n10. Demonstrate local and global variables.\n\n### Advanced\n\n11. Demonstrate the difference between mutating a list and rebinding a parameter.\n12. Reproduce and fix the mutable default argument problem.\n13. Write a closure that maintains a counter.\n14. Build a recursive factorial function with input validation.\n15. Create a small student result module with type hints, docstrings, and test cases.\n\n## 29. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Define and call reusable functions.\n- Distinguish parameters from arguments.\n- Use positional and keyword arguments.\n- Apply default and keyword-only parameters.\n- Understand *args and **kwargs.\n- Return values rather than relying only on print().\n- Explain local, enclosing, global, and built-in scope.\n- Understand mutation and rebinding.\n- Avoid mutable default arguments.\n- Use lambda functions for simple expressions.\n- Write useful docstrings and type hints.\n- Understand recursion and its limits.\n- Design functions with clear responsibilities.\n\n## 30. Module Summary\n\nYou have learned that functions help organize programs into reusable components.\n\nYou now understand:\n\n- Function definitions and calls.\n- Parameters, arguments, and return values.\n- Default and variable-length arguments.\n- Local and global scope.\n- The LEGB name-resolution rule.\n- Closures and nonlocal variables.\n- Mutable objects passed to functions.\n- Mutable default argument pitfalls.\n- Lambda functions, docstrings, and type hints.\n- Recursion and function composition.\n\nNext, you will learn Python collections in greater depth: lists, tuples, dictionaries, sets, and the operations used to manage structured data.\n",
+      "codeExample": "from typing import Any\n\n\ndef validate_name(name: str) -> str:\n    \"\"\"Return a cleaned name or raise ValueError if it is empty.\"\"\"\n    cleaned_name = name.strip()\n\n    if not cleaned_name:\n        raise ValueError(\"Student name cannot be empty.\")\n\n    return cleaned_name\n\n\ndef validate_marks(obtained: float, total: float) -> None:\n    \"\"\"Validate obtained marks against the total possible marks.\"\"\"\n    if total <= 0:\n        raise ValueError(\"Total marks must be greater than zero.\")\n\n    if not 0 <= obtained <= total:\n        raise ValueError(\"Obtained marks must be between zero and total marks.\")\n\n\ndef calculate_percentage(obtained: float, total: float) -> float:\n    \"\"\"Calculate a percentage after validating the marks.\"\"\"\n    validate_marks(obtained, total)\n    return obtained / total * 100\n\n\ndef assign_grade(percentage: float) -> str:\n    \"\"\"Return a grade for a percentage between zero and one hundred.\"\"\"\n    if not 0 <= percentage <= 100:\n        raise ValueError(\"Percentage must be between 0 and 100.\")\n\n    if percentage >= 90:\n        return \"A+\"\n    elif percentage >= 80:\n        return \"A\"\n    elif percentage >= 70:\n        return \"B\"\n    elif percentage >= 60:\n        return \"C\"\n    else:\n        return \"Needs improvement\"\n\n\ndef create_result(name: str, obtained: float, total: float) -> dict[str, Any]:\n    \"\"\"Build a validated student result report.\"\"\"\n    cleaned_name = validate_name(name)\n    percentage = calculate_percentage(obtained, total)\n\n    return {\n        \"name\": cleaned_name,\n        \"obtained\": obtained,\n        \"total\": total,\n        \"percentage\": percentage,\n        \"grade\": assign_grade(percentage),\n    }\n\n\ndef main() -> None:\n    print(\"CORTEX STUDENT RESULT MANAGER\")\n    print(\"-\" * 38)\n\n    name = input(\"Student name: \")\n\n    try:\n        obtained = float(input(\"Obtained marks: \"))\n        total = float(input(\"Total marks: \"))\n        result = create_result(name, obtained, total)\n    except ValueError as error:\n        print(\"Unable to create result:\", error)\n        return\n\n    print(\"\\nRESULT REPORT\")\n    print(\"-\" * 38)\n    print(f\"Student: {result[chr(110) + chr(97) + chr(109) + chr(101)]}\")\n    print(f\"Marks: {result[chr(111) + chr(98) + chr(116) + chr(97) + chr(105) + chr(110) + chr(101) + chr(100)] :g} / {result[chr(116) + chr(111) + chr(116) + chr(97) + chr(108)]:g}\")\n    print(f\"Percentage: {result[chr(112) + chr(101) + chr(114) + chr(99) + chr(101) + chr(110) + chr(116) + chr(97) + chr(103) + chr(101)]:.2f}%\")\n    print(f\"Grade: {result[chr(103) + chr(114) + chr(97) + chr(100) + chr(101)]}\")\n\n    print(\"\\nQUICK TESTS\")\n    print(\"50 out of 100:\", calculate_percentage(50, 100))\n    print(\"Grade for 95%:\", assign_grade(95))\n\n\nif __name__ == \"__main__\":\n    main()",
+      "quiz": [
         {
-          question: 'What type does input() return before conversion?',
-          options: ['int', 'float', 'str', 'bool'],
-          correctAnswer: 2
+          "question": "Which keyword defines a function in Python?",
+          "options": [
+            "function",
+            "def",
+            "func",
+            "define"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Python defines functions using the `def` keyword followed by the function name and parameters."
         },
         {
-          question: 'Which keyword checks another condition after if?',
-          options: ['otherwise', 'elif', 'repeat', 'nextif'],
-          correctAnswer: 1
+          "question": "What is the main difference between print() and return?",
+          "options": [
+            "They always do exactly the same thing",
+            "return sends a value back to the caller, while print() displays output",
+            "print() always returns the calculation result",
+            "return can only be used with strings"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`return` hands a value back to the calling code for reuse, whereas `print()` only writes text to stdout."
+        },
+        {
+          "question": "What does a function return when it finishes without an explicit return value?",
+          "options": [
+            "0",
+            "False",
+            "An empty string",
+            "None"
+          ],
+          "correctAnswer": 3,
+          "explanation": "A Python function with no explicit return value implicitly returns `None`."
+        },
+        {
+          "question": "What does *args collect inside a function?",
+          "options": [
+            "Extra positional arguments in a tuple",
+            "Extra keyword arguments in a dictionary",
+            "Only integer arguments",
+            "The function return value"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`*args` packs any extra positional arguments passed to a function into a tuple."
+        },
+        {
+          "question": "What does **kwargs collect inside a function?",
+          "options": [
+            "A list of positional arguments",
+            "A dictionary of additional keyword arguments",
+            "A single string",
+            "The function documentation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`**kwargs` packs any extra keyword arguments (name=value) into a dictionary."
+        },
+        {
+          "question": "What does the LEGB rule describe?",
+          "options": [
+            "Python loop execution",
+            "The order Python uses to resolve names",
+            "The order of arithmetic operators",
+            "How lists are sorted"
+          ],
+          "correctAnswer": 1,
+          "explanation": "LEGB (Local, Enclosing, Global, Built-in) is the scope lookup order Python uses to resolve variable names."
+        },
+        {
+          "question": "Why can a mutable default argument such as courses=[] cause a bug?",
+          "options": [
+            "Lists cannot be function parameters",
+            "The default list is recreated on every call",
+            "The same default list can be reused across calls",
+            "Python converts the list to a tuple"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Default argument values are evaluated once when `def` runs, so a mutable list default is shared across all calls!"
+        },
+        {
+          "question": "What is a closure?",
+          "options": [
+            "A loop that never ends",
+            "A function that retains access to variables from its enclosing scope",
+            "A dictionary with no values",
+            "A syntax error in a function"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A closure is an inner function that remembers variables from its enclosing function scope even after the outer function returns."
+        },
+        {
+          "question": "What is a key requirement for a recursive function?",
+          "options": [
+            "It must always use global variables",
+            "It must contain a base case that stops recursion",
+            "It must return a string",
+            "It must contain a while loop"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Without a base case that stops recursive calls, recursion hits Python’s RecursionError limit."
+        },
+        {
+          "question": "What do Python type hints generally do by themselves?",
+          "options": [
+            "Automatically validate every argument at runtime",
+            "Replace exception handling",
+            "Document expected types and support static analysis",
+            "Prevent variables from being reassigned"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Python type hints are metadata for editors, linters (mypy/pyright), and humans — Python does not enforce them at runtime automatically."
         }
+      ],
+      "assignment": "Problem Statement:\nRefactor a monolithic procedural billing script into clean, modular, type-hinted Python functions with proper docstrings, pure return values, and safe default arguments.\n\nObjectives:\n- Replace print()-only helpers with pure functions that return computed values.\n- Fix a mutable default argument bug (items=[] -> items=None).\n- Use *args, **kwargs, type hints, and docstrings cleanly.\n\nRequirements:\n1. Write add_line_item(item, cart=None) initializing cart = [] when cart is None (never cart=[]!).\n2. Write calculate_invoice(items: list[dict], tax_rate: float = 0.08, discount: float = 0.0) -> dict with a clear docstring.\n3. Write build_logger(prefix: str) returning a closure log(msg) that prefixes messages cleanly.\n4. Keep I/O (print()) strictly in main(), separate from calculation functions.\n\nStep-by-Step Instructions:\n1. Create billing_refactor.py.\n2. Call add_line_item(\"Book\") twice without passing cart and assert each call returns a 1-item list (proving no shared mutable default!).\n3. Test calculate_invoice with assertions.\n\nDeliverables:\n- billing_refactor.py.\n\nEvaluation Criteria:\n- Zero mutable default arguments (items=[]).\n- Complete type hints and docstrings on public functions.",
+      "lessons": [
+        {
+          "title": "Module 5: Functions, Parameters, Return Values & Scope",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 5: Functions, Parameters, Return Values & Scope: Module 5: Functions, Parameters, Return Values & Scope.",
+          "objectives": [
+            "Master Module 5: Functions, Parameters, Return Values & Scope",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 5: Functions, Parameters, Return Values & Scope\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Define and call functions using def.\n- Understand parameters, arguments, and return values.\n- Use positional, keyword, default, and variable-length arguments.\n- Understand local, global, and enclosing scopes.\n- Write reusable functions with clear responsibilities.\n- Understand how Python passes object references to functions.\n- Avoid mutable default argument problems.\n- Use lambda functions appropriately.\n- Write docstrings and type hints.\n- Understand recursion and its limitations.\n- Build modular applications using functions.\n- Test functions with valid, invalid, and boundary inputs.\n\n## 2. What Is a Function?\n\nA function is a reusable block of code designed to perform a particular task.\n\nWithout a function:\n\n```python\nprice1 = 100\nquantity1 = 3\nprint(price1 * quantity1)\n\nprice2 = 250\nquantity2 = 2\nprint(price2 * quantity2)\n```\n\nWith a function:\n\n```python\ndef calculate_total(price, quantity):\n    return price * quantity\n\nprint(calculate_total(100, 3))\nprint(calculate_total(250, 2))\n```\n\nOutput:\n\n```text\n300\n500\n```\n\nThe function lets you reuse the same logic with different inputs.\n\nFunctions improve:\n- Reusability.\n- Readability.\n- Testing.\n- Debugging.\n- Separation of responsibilities.\n- Long-term maintenance.\n\n## 3. Defining and Calling Functions\n\nPython uses the def keyword to define a function.\n\n```python\ndef greet():\n    print(\"Welcome to Cortex!\")\n\ngreet()\n```\n\nOutput:\n\n```text\nWelcome to Cortex!\n```\n\nThe definition creates a function object and binds its name. The function body runs when the function is called.\n\nA function can be called multiple times:\n\n```python\ndef show_separator():\n    print(\"-\" * 30)\n\nshow_separator()\nprint(\"STUDENT REPORT\")\nshow_separator()\n```\n\n### Function Naming\n\nUse descriptive snake_case names.\n\nGood examples:\n\n```python\ndef calculate_percentage():\n    pass\n\ndef validate_email():\n    pass\n\ndef get_course_progress():\n    pass\n```\n\nAvoid names that do not explain the function's purpose, such as do_it() or x1().\n\n## 4. Parameters and Arguments\n\nA parameter is a name in a function definition. An argument is a value supplied when calling the function.\n\n```python\ndef greet_student(name):\n    print(f\"Welcome, {name}!\")\n\ngreet_student(\"Anas\")\ngreet_student(\"Ali\")\n```\n\nHere, name is a parameter. \"Anas\" and \"Ali\" are arguments.\n\n### Multiple Parameters\n\n```python\ndef introduce_student(name, semester, department):\n    print(f\"Name: {name}\")\n    print(f\"Semester: {semester}\")\n    print(f\"Department: {department}\")\n\nintroduce_student(\"Anas\", 1, \"Software Engineering\")\n```\n\nParameters allow functions to work with different data without duplicating code.\n\n## 5. Positional Arguments\n\nPositional arguments are matched to parameters according to their order.\n\n```python\ndef subtract(a, b):\n    return a - b\n\nprint(subtract(10, 3))\nprint(subtract(3, 10))\n```\n\nOutput:\n\n```text\n7\n-7\n```\n\nOrder matters. Reversing the arguments changes the result.\n\nUse descriptive parameter names so the expected order is easy to understand.\n\n## 6. Keyword Arguments\n\nKeyword arguments identify parameters by name.\n\n```python\ndef create_student(name, age, department):\n    return {\n        \"name\": name,\n        \"age\": age,\n        \"department\": department\n    }\n\nstudent = create_student(\n    department=\"Software Engineering\",\n    name=\"Anas\",\n    age=18\n)\n\nprint(student)\n```\n\nKeyword arguments can improve readability, especially when a function accepts several parameters.\n\nPositional arguments generally must appear before keyword arguments in a call.\n\n## 7. Default Parameter Values\n\nA parameter can have a default value.\n\n```python\ndef greet(name, message=\"Welcome to Cortex\"):\n    print(f\"{message}, {name}!\")\n\ngreet(\"Anas\")\ngreet(\"Ali\", \"Good morning\")\n```\n\nOutput:\n\n```text\nWelcome to Cortex, Anas!\nGood morning, Ali!\n```\n\nParameters with defaults may be omitted during a call.\n\n### Parameter Ordering\n\nParameters without defaults should come before parameters with defaults.\n\nCorrect:\n\n```python\ndef register_student(name, semester=1):\n    return {\"name\": name, \"semester\": semester}\n```\n\nA function definition that places a required positional parameter after a defaulted positional parameter causes a SyntaxError.\n\n## 8. Return Values\n\nThe return statement sends a result back to the caller and ends the current function call.\n\n```python\ndef square(number):\n    return number * number\n\nresult = square(5)\nprint(result)\n```\n\nOutput:\n\n```text\n25\n```\n\n### print() Versus return\n\nprint() displays information to the console. return provides a value that other code can use.\n\n```python\ndef add_and_print(a, b):\n    print(a + b)\n\ndef add_and_return(a, b):\n    return a + b\n\nfirst_result = add_and_print(2, 3)\nsecond_result = add_and_return(2, 3)\n\nprint(\"First result:\", first_result)\nprint(\"Second result:\", second_result)\n```\n\nOutput:\n\n```text\n5\n5\nFirst result: None\nSecond result: 5\n```\n\nThe first function prints the sum but does not explicitly return it. Python returns None when a function finishes without returning another value.\n\nUse return when the result must be reused, tested, combined, or stored.\n\n## 9. Returning Multiple Values\n\nPython allows a function to return multiple values, commonly by returning a tuple.\n\n```python\ndef analyze_marks(marks):\n    total = sum(marks)\n    average = total / len(marks)\n    highest = max(marks)\n\n    return total, average, highest\n\ntotal, average, highest = analyze_marks([80, 90, 70])\n\nprint(total)\nprint(average)\nprint(highest)\n```\n\nOutput:\n\n```text\n240\n80.0\n90\n```\n\nAlways validate that marks is not empty before dividing by its length.\n\n### Returning a Dictionary\n\nWhen results have several named fields, a dictionary may be clearer.\n\n```python\ndef summarize_marks(marks):\n    if not marks:\n        raise ValueError(\"Marks cannot be empty.\")\n\n    return {\n        \"total\": sum(marks),\n        \"average\": sum(marks) / len(marks),\n        \"highest\": max(marks),\n        \"lowest\": min(marks)\n    }\n\nreport = summarize_marks([80, 90, 70])\nprint(report[\"average\"])\n```\n\n## 10. Early Returns\n\nA function can return early when a condition is not satisfied.\n\n```python\ndef calculate_average(marks):\n    if not marks:\n        return None\n\n    return sum(marks) / len(marks)\n\nprint(calculate_average([]))\nprint(calculate_average([80, 90]))\n```\n\nEarly returns can reduce unnecessary nesting.\n\nChoose an appropriate approach for invalid data. Returning None may be suitable when absence is an expected result; raising an exception may be better when the input violates the function's contract.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write a pure function `area(width: float, height: float) -> float` that `return`s the area instead of calling `print()`, and call it inside `print(area(4, 5))`.\n\nExpected Result:\nPrints `20` and lets callers reuse the returned number.",
+          "keyTakeaways": [
+            "Understand and apply Module 5: Functions, Parameters, Return Values & Scope",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "11. Variable-Length Positional Arguments: *args",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 5: Functions, Parameters, Return Values & Scope: 11. Variable-Length Positional Arguments: *args.",
+          "objectives": [
+            "Master 11. Variable-Length Positional Arguments: *args",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 11. Variable-Length Positional Arguments: *args\n\nUse *args when a function should accept a variable number of positional arguments.\n\n```python\ndef calculate_total(*prices):\n    return sum(prices)\n\nprint(calculate_total(100, 200))\nprint(calculate_total(100, 200, 300, 400))\n```\n\nInside the function, prices is a tuple containing the supplied positional arguments.\n\n### Practical Example\n\n```python\ndef calculate_average(*scores):\n    if not scores:\n        return None\n\n    return sum(scores) / len(scores)\n\nprint(calculate_average(80, 90, 70))\n```\n\nDo not use *args automatically. Prefer explicit parameters when the expected inputs are known.\n\n## 12. Variable-Length Keyword Arguments: **kwargs\n\nUse **kwargs to accept additional keyword arguments.\n\n```python\ndef display_profile(**details):\n    for key, value in details.items():\n        print(f\"{key}: {value}\")\n\ndisplay_profile(\n    name=\"Anas\",\n    department=\"Software Engineering\",\n    semester=1\n)\n```\n\nInside the function, details is a dictionary.\n\nThis can be useful for flexible configuration, but unrestricted keyword inputs should be validated when they affect application behavior.\n\n## 13. Combining Argument Types\n\nA function may combine different kinds of parameters.\n\n```python\ndef create_course(title, duration=10, *topics, instructor=\"Unknown\", **metadata):\n    return {\n        \"title\": title,\n        \"duration\": duration,\n        \"topics\": topics,\n        \"instructor\": instructor,\n        \"metadata\": metadata\n    }\n\ncourse = create_course(\n    \"Python Masterclass\",\n    20,\n    \"Basics\",\n    \"Functions\",\n    instructor=\"Course Team\",\n    level=\"Beginner\"\n)\n\nprint(course)\n```\n\nUnderstand the parameter order and calling rules before using complex signatures.\n\nFor clearer APIs, explicit keyword-only parameters are often preferable.\n\n## 14. Keyword-Only Parameters\n\nA parameter after * must be supplied by keyword.\n\n```python\ndef enroll_student(name, *, course, semester=1):\n    return {\n        \"name\": name,\n        \"course\": course,\n        \"semester\": semester\n    }\n\nstudent = enroll_student(\n    \"Anas\",\n    course=\"Python\",\n    semester=1\n)\n\nprint(student)\n```\n\nThis makes calls clearer by requiring the caller to name important arguments.\n\nPython also supports positional-only parameters using / in function signatures.\n\n```python\ndef divide(numerator, denominator, /):\n    return numerator / denominator\n\nprint(divide(10, 2))\n```\n\nThe slash means those parameters must be supplied positionally. This feature is useful when designing certain APIs.\n\n## 15. Scope: Local Variables\n\nScope determines where a name can be accessed.\n\nA local variable is created inside a function and is generally accessible only within that function.\n\n```python\ndef calculate_total():\n    price = 500\n    quantity = 3\n    return price * quantity\n\nprint(calculate_total())\n```\n\nThe local variables price and quantity are not automatically available outside the function.\n\nTrying to access price outside this function raises NameError unless another accessible binding named price exists.\n\nLocal variables help keep implementation details isolated.\n\n## 16. Global Variables\n\nA global variable is defined at module level.\n\n```python\ncourse_name = \"Python\"\n\ndef display_course():\n    print(course_name)\n\ndisplay_course()\n```\n\nA function can read an accessible global name.\n\nHowever, assigning to a name inside a function normally creates a local binding unless the function declares otherwise.\n\n```python\ncount = 10\n\ndef update_count():\n    count = 20\n    print(\"Inside:\", count)\n\nupdate_count()\nprint(\"Outside:\", count)\n```\n\nOutput:\n\n```text\nInside: 20\nOutside: 10\n```\n\nThe local count is separate from the module-level count.\n\n### The global Keyword\n\nUse global when you intentionally need to rebind a module-level name.\n\n```python\ncount = 10\n\ndef update_count():\n    global count\n    count = 20\n\nupdate_count()\nprint(count)\n```\n\nAlthough valid, excessive use of global state makes testing and maintenance harder. Prefer returning values or using explicitly managed objects.\n\n## 17. The nonlocal Keyword and Enclosing Scope\n\nNested functions can access names in an enclosing function's scope.\n\n```python\ndef outer():\n    message = \"Hello\"\n\n    def inner():\n        print(message)\n\n    inner()\n\nouter()\n```\n\nThe inner function can read message from the enclosing function.\n\nUse nonlocal when a nested function must rebind a name from an enclosing function.\n\n```python\ndef create_counter():\n    count = 0\n\n    def increment():\n        nonlocal count\n        count += 1\n        return count\n\n    return increment\n\ncounter = create_counter()\n\nprint(counter())\nprint(counter())\nprint(counter())\n```\n\nOutput:\n\n```text\n1\n2\n3\n```\n\nThis demonstrates a closure: the returned function retains access to the enclosing variable.\n\n## 18. Python's LEGB Name Resolution\n\nPython commonly resolves names using the LEGB rule:\n\n- Local: names in the current function.\n- Enclosing: names in enclosing function scopes.\n- Global: names defined at the module level.\n- Built-in: names provided by Python's built-ins.\n\nExample:\n\n```python\nmessage = \"Global\"\n\ndef outer():\n    message = \"Enclosing\"\n\n    def inner():\n        message = \"Local\"\n        print(message)\n\n    inner()\n\nouter()\n```\n\nOutput:\n\n```text\nLocal\n```\n\nThe local binding is found first.\n\nAvoid naming variables after important built-ins such as list, str, sum, or input. Doing so can hide the built-in name and create confusing errors.\n\n## 19. Mutable Objects Passed to Functions\n\nPython passes object references through argument assignment. This is often described as call by sharing.\n\nA function parameter becomes a local name referring to the supplied object.\n\n```python\ndef add_course(courses):\n    courses.append(\"Python\")\n\nmy_courses = [\"JavaScript\"]\nadd_course(my_courses)\n\nprint(my_courses)\n```\n\nOutput:\n\n```text\n['JavaScript', 'Python']\n```\n\nThe function mutates the same list object supplied by the caller.\n\n### Rebinding Is Different from Mutation\n\n```python\ndef replace_list(items):\n    items = [\"New\", \"Values\"]\n\noriginal = [\"Python\", \"JavaScript\"]\nreplace_list(original)\n\nprint(original)\n```\n\nOutput:\n\n```text\n['Python', 'JavaScript']\n```\n\nThe assignment changes the local name items, not the caller's original binding.\n\nIf a function should avoid changing the caller's collection, create an appropriate copy or return a new collection.\n\n## 20. Mutable Default Argument Pitfall\n\nDefault parameter expressions are evaluated when the function is defined, not each time it is called.\n\nProblematic example:\n\n```python\ndef add_course(course, courses=[]):\n    courses.append(course)\n    return courses\n\nprint(add_course(\"Python\"))\nprint(add_course(\"JavaScript\"))\n```\n\nThe same list is reused across calls, so values accumulate unexpectedly.\n\n### Correct Pattern\n\n```python\ndef add_course(course, courses=None):\n    if courses is None:\n        courses = []\n\n    courses.append(course)\n    return courses\n\nprint(add_course(\"Python\"))\nprint(add_course(\"JavaScript\"))\n```\n\nEach call without an explicit list now receives a newly created list.\n\nThis is one of the most important function-design rules in Python.\n\n## 21. Lambda Functions\n\nA lambda creates a small anonymous function containing a single expression.\n\n```python\nsquare = lambda number: number * number\n\nprint(square(5))\n```\n\nOutput:\n\n```text\n25\n```\n\nA lambda can be useful as a short key function for sorting.\n\n```python\nstudents = [\n    {\"name\": \"Ali\", \"marks\": 78},\n    {\"name\": \"Sara\", \"marks\": 95},\n    {\"name\": \"Ahmed\", \"marks\": 84}\n]\n\nstudents.sort(key=lambda student: student[\"marks\"], reverse=True)\n\nfor student in students:\n    print(student[\"name\"], student[\"marks\"])\n```\n\nFor complex logic, use a normal def function. Lambda functions are expressions, not a replacement for every function definition.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write `append_item(val, target=None)` initializing `target = []` inside the body when `None`, and call it twice without passing `target`.\n\nExpected Result:\nEach call returns a fresh 1-item list `[val]`, avoiding the mutable default bug.",
+          "keyTakeaways": [
+            "Understand and apply 11. Variable-Length Positional Arguments: *args",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "22. Docstrings",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 5: Functions, Parameters, Return Values & Scope: 22. Docstrings.",
+          "objectives": [
+            "Master 22. Docstrings",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 22. Docstrings\n\nA docstring describes what a function, class, or module does.\n\n```python\ndef calculate_percentage(obtained, total):\n    \"\"\"Return the percentage for valid obtained and total marks.\"\"\"\n    if total <= 0:\n        raise ValueError(\"Total marks must be positive.\")\n\n    if not 0 <= obtained <= total:\n        raise ValueError(\"Obtained marks must be within the valid range.\")\n\n    return obtained / total * 100\n\nprint(calculate_percentage(450, 500))\nprint(calculate_percentage.__doc__)\n```\n\nGood documentation explains purpose, inputs, outputs, assumptions, and important exceptions.\n\nAvoid documenting obvious details while leaving important behavior unexplained.\n\n## 23. Type Hints\n\nType hints communicate expected input and output types.\n\n```python\ndef calculate_total(price: float, quantity: int) -> float:\n    return price * quantity\n\nprint(calculate_total(199.50, 3))\n```\n\nThe annotation suggests that price should be a float, quantity an integer, and the result a float.\n\nPython generally does not enforce these annotations automatically at runtime. Tools such as static type checkers can analyze them.\n\n### Collection Type Hints\n\n```python\ndef average_score(scores: list[float]) -> float:\n    if not scores:\n        raise ValueError(\"At least one score is required.\")\n\n    return sum(scores) / len(scores)\n\nprint(average_score([80.0, 90.0, 85.0]))\n```\n\nFor Python 3.9 and later, built-in collection types such as list[float] can be used in annotations.\n\n## 24. Recursion\n\nRecursion occurs when a function calls itself.\n\nEvery recursive solution needs:\n- A base case that stops recursion.\n- A recursive case that moves toward the base case.\n\nExample:\n\n```python\ndef factorial(number):\n    if number < 0:\n        raise ValueError(\"Number cannot be negative.\")\n\n    if number <= 1:\n        return 1\n\n    return number * factorial(number - 1)\n\nprint(factorial(5))\n```\n\nOutput:\n\n```text\n120\n```\n\nThe base case prevents the function from calling itself forever.\n\nPython has a recursion limit. Deep recursive calls may raise RecursionError, so loops are often preferable for simple repetitive tasks.\n\n## 25. Function Composition\n\nFunction composition means combining functions so the result of one operation becomes the input to another.\n\n```python\ndef normalize_name(name):\n    return name.strip().title()\n\ndef is_valid_name(name):\n    return bool(name)\n\nraw_name = \"  anas manzoor  \"\nclean_name = normalize_name(raw_name)\n\nif is_valid_name(clean_name):\n    print(f\"Welcome, {clean_name}!\")\n```\n\nSmall functions with clear responsibilities are easier to reuse and test than one enormous function.\n\nA useful design principle is to keep input/output operations separate from calculations when practical.\n\n## 26. Practical Project: Student Result Management\n\nCreate a program that processes student results using reusable functions.\n\nRequirements:\n\n1. Create a function to validate a student's name.\n2. Create a function to validate marks.\n3. Create a function to calculate percentages.\n4. Create a function to assign grades.\n5. Create a function to generate a result dictionary.\n6. Use parameters and return values instead of relying on global variables.\n7. Handle invalid input with clear messages.\n8. Add docstrings and useful type hints.\n9. Ensure empty data is handled intentionally.\n10. Write a small test section to check important cases.\n\n## 27. Advanced Project: Cortex Course Progress Utilities\n\nImagine Cortex needs reusable functions for course progress.\n\nBuild functions that:\n\n- Calculate the percentage of completed modules.\n- Return a list of incomplete module titles.\n- Validate that progress values are in the permitted range.\n- Return a structured progress report.\n- Handle an empty course.\n- Avoid accidentally mutating the original module list.\n- Use type hints and docstrings.\n\nExample data:\n\n```python\nmodules = [\n    {\"title\": \"Foundations\", \"completed\": True},\n    {\"title\": \"Data Types\", \"completed\": True},\n    {\"title\": \"Functions\", \"completed\": False}\n]\n```\n\nFor a real application, the server should validate important progress changes and enforce permissions independently of the browser.\n\n## 28. Practice Exercises\n\n### Beginner\n\n1. Write a function that greets a student by name.\n2. Write a function that adds two numbers and returns the result.\n3. Write a function that converts Celsius to Fahrenheit.\n4. Write a function that calculates a percentage.\n5. Write a function that checks whether a number is even.\n\n### Intermediate\n\n6. Create a grade-calculation function with input validation.\n7. Use default parameters to create a course description.\n8. Write a function accepting any number of scores with *args.\n9. Create a dictionary of profile details using **kwargs.\n10. Demonstrate local and global variables.\n\n### Advanced\n\n11. Demonstrate the difference between mutating a list and rebinding a parameter.\n12. Reproduce and fix the mutable default argument problem.\n13. Write a closure that maintains a counter.\n14. Build a recursive factorial function with input validation.\n15. Create a small student result module with type hints, docstrings, and test cases.\n\n## 29. Professional Checklist\n\nBefore completing this module, make sure you can:\n\n- Define and call reusable functions.\n- Distinguish parameters from arguments.\n- Use positional and keyword arguments.\n- Apply default and keyword-only parameters.\n- Understand *args and **kwargs.\n- Return values rather than relying only on print().\n- Explain local, enclosing, global, and built-in scope.\n- Understand mutation and rebinding.\n- Avoid mutable default arguments.\n- Use lambda functions for simple expressions.\n- Write useful docstrings and type hints.\n- Understand recursion and its limits.\n- Design functions with clear responsibilities.\n\n## 30. Module Summary\n\nYou have learned that functions help organize programs into reusable components.\n\nYou now understand:\n\n- Function definitions and calls.\n- Parameters, arguments, and return values.\n- Default and variable-length arguments.\n- Local and global scope.\n- The LEGB name-resolution rule.\n- Closures and nonlocal variables.\n- Mutable objects passed to functions.\n- Mutable default argument pitfalls.\n- Lambda functions, docstrings, and type hints.\n- Recursion and function composition.\n\nNext, you will learn Python collections in greater depth: lists, tuples, dictionaries, sets, and the operations used to manage structured data.",
+          "codeExample": "from typing import Any\n\n\ndef validate_name(name: str) -> str:\n    \"\"\"Return a cleaned name or raise ValueError if it is empty.\"\"\"\n    cleaned_name = name.strip()\n\n    if not cleaned_name:\n        raise ValueError(\"Student name cannot be empty.\")\n\n    return cleaned_name\n\n\ndef validate_marks(obtained: float, total: float) -> None:\n    \"\"\"Validate obtained marks against the total possible marks.\"\"\"\n    if total <= 0:\n        raise ValueError(\"Total marks must be greater than zero.\")\n\n    if not 0 <= obtained <= total:\n        raise ValueError(\"Obtained marks must be between zero and total marks.\")\n\n\ndef calculate_percentage(obtained: float, total: float) -> float:\n    \"\"\"Calculate a percentage after validating the marks.\"\"\"\n    validate_marks(obtained, total)\n    return obtained / total * 100\n\n\ndef assign_grade(percentage: float) -> str:\n    \"\"\"Return a grade for a percentage between zero and one hundred.\"\"\"\n    if not 0 <= percentage <= 100:\n        raise ValueError(\"Percentage must be between 0 and 100.\")\n\n    if percentage >= 90:\n        return \"A+\"\n    elif percentage >= 80:\n        return \"A\"\n    elif percentage >= 70:\n        return \"B\"\n    elif percentage >= 60:\n        return \"C\"\n    else:\n        return \"Needs improvement\"\n\n\ndef create_result(name: str, obtained: float, total: float) -> dict[str, Any]:\n    \"\"\"Build a validated student result report.\"\"\"\n    cleaned_name = validate_name(name)\n    percentage = calculate_percentage(obtained, total)\n\n    return {\n        \"name\": cleaned_name,\n        \"obtained\": obtained,\n        \"total\": total,\n        \"percentage\": percentage,\n        \"grade\": assign_grade(percentage),\n    }\n\n\ndef main() -> None:\n    print(\"CORTEX STUDENT RESULT MANAGER\")\n    print(\"-\" * 38)\n\n    name = input(\"Student name: \")\n\n    try:\n        obtained = float(input(\"Obtained marks: \"))\n        total = float(input(\"Total marks: \"))\n        result = create_result(name, obtained, total)\n    except ValueError as error:\n        print(\"Unable to create result:\", error)\n        return\n\n    print(\"\\nRESULT REPORT\")\n    print(\"-\" * 38)\n    print(f\"Student: {result[chr(110) + chr(97) + chr(109) + chr(101)]}\")\n    print(f\"Marks: {result[chr(111) + chr(98) + chr(116) + chr(97) + chr(105) + chr(110) + chr(101) + chr(100)] :g} / {result[chr(116) + chr(111) + chr(116) + chr(97) + chr(108)]:g}\")\n    print(f\"Percentage: {result[chr(112) + chr(101) + chr(114) + chr(99) + chr(101) + chr(110) + chr(116) + chr(97) + chr(103) + chr(101)]:.2f}%\")\n    print(f\"Grade: {result[chr(103) + chr(114) + chr(97) + chr(100) + chr(101)]}\")\n\n    print(\"\\nQUICK TESTS\")\n    print(\"50 out of 100:\", calculate_percentage(50, 100))\n    print(\"Grade for 95%:\", assign_grade(95))\n\n\nif __name__ == \"__main__\":\n    main()",
+          "codeExplanation": "1. validate_name(name: str) -> str uses type hints and a concise PEP 257 docstring explaining its contract and ValueError behavior.\n2. Separating validation and calculation functions from I/O makes each function easy to reuse and unit test.\n\nHow to Run & Expected Output:\nSave as `validators.py` and run `python validators.py`. Valid names return trimmed strings; blank strings raise ValueError(\"Student name cannot be empty.\").",
+          "practiceExercise": "Guided Exercise:\n1. Inspect `validate_name.__doc__` using `help(validate_name)` in the REPL.\n\nIndependent Challenge:\nAdd a type-hinted `format_student(name: str, gpa: float) -> str` function with a PEP 257 docstring.\n\nExpected Result:\n`help()` displays your clean docstring and parameter hints.",
+          "keyTakeaways": [
+            "Understand and apply 22. Docstrings",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 5: Functions, Parameters, Return Values & Scope",
+        "Apply Python best practices with clean, readable examples",
+        "Master 11. Variable-Length Positional Arguments: *args",
+        "Master 22. Docstrings"
       ]
     },
     {
-      title: 'Module 6: Loops and Iteration',
-      duration: '3h 00m',
-      notes: `### for loops
-A for loop iterates over an iterable such as a list, string, or range.
-
-### range()
-\`range(5)\` produces the numbers 0 through 4. You can specify a start, stop, and step.
-
-### while loops
-A while loop continues while its condition is true. Make sure the condition can eventually become false.
-
-### Loop control
-- \`break\`: exits the loop.
-- \`continue\`: skips to the next iteration.
-- \`pass\`: does nothing and can act as a placeholder.
-
-### enumerate()
-Use enumerate when you need both the index and the item.
-
-### zip()
-Use zip to iterate through corresponding items from multiple iterables.
-
-### Loop else
-A loop's else block executes if the loop finishes without encountering break.`,
-      codeExample: `print("Even numbers from 1 to 20")
-
-for number in range(1, 21):
-    if number % 2 == 0:
-        print(number)
-
-print("Student scores")
-
-scores = [78, 92, 65, 88]
-
-for position, score in enumerate(scores, start=1):
-    if score < 70:
-        print(f"Student {position}: needs improvement")
-        continue
-
-    print(f"Student {position}: passed with {score}")`,
-      quiz: [
+      "title": "Module 6: Python Collections — Lists, Tuples, Dictionaries, Sets & Advanced Data Operations",
+      "duration": "5h 00m",
+      "notes": "\n# Module 6: Python Collections — Complete Masterclass\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand Python's four major built-in collections.\n- Choose the right collection for different programming problems.\n- Create, access, update, and delete collection elements.\n- Use indexing, slicing, iteration, and comprehensions.\n- Sort, filter, search, and transform data.\n- Understand mutability, copying, references, and nested collections.\n- Process real-world datasets using clean, efficient Python.\n- Build a complete student records management system.\n\n---\n\n## 2. Introduction to Collections\n\nA collection stores multiple values in a single variable.\n\nWithout collections, we might store student marks like this:\n\n    mark1 = 78\n    mark2 = 85\n    mark3 = 92\n    mark4 = 67\n\nThis becomes difficult to maintain when hundreds of students have multiple subjects.\n\nA list solves this problem:\n\n    marks = [78, 85, 92, 67]\n\nPython provides four important built-in collection types:\n\n| Collection | Ordered | Mutable | Duplicates |\n|---|---|---|---|\n| List | Yes | Yes | Allowed |\n| Tuple | Yes | No | Allowed |\n| Dictionary | Insertion order | Yes | Keys must be unique |\n| Set | No guaranteed positional order | Yes | Not allowed |\n\nImportant concepts:\n\n- Ordered means elements maintain a defined order.\n- Mutable means the collection can be changed after creation.\n- Immutable means its elements cannot be reassigned or removed through the collection.\n- Duplicate values are repeated values.\n\nDictionaries preserve insertion order in modern Python. Sets do not provide a guaranteed positional order.\n\n---\n\n## 3. Lists — Flexible and Mutable Collections\n\nA list is useful when you need an ordered collection that can change.\n\n### Creating lists\n\n    empty_list = []\n    numbers = [10, 20, 30, 40]\n    names = [\"Ali\", \"Sara\", \"Ahmed\"]\n    mixed = [10, \"Python\", True, 3.14]\n    nested = [[1, 2], [3, 4]]\n\nAlthough mixed lists are allowed, keeping similar types together usually makes programs easier to understand.\n\n### Accessing elements\n\nPython uses zero-based indexing.\n\n    fruits = [\"apple\", \"banana\", \"mango\", \"orange\"]\n\n    print(fruits[0])   # apple\n    print(fruits[1])   # banana\n    print(fruits[-1])  # orange\n    print(fruits[-2])  # mango\n\nPositive indexes start at zero. Negative indexes count backward from the end.\n\nAn invalid index raises IndexError.\n\n### List slicing\n\nSlicing extracts a portion of a list.\n\nSyntax:\n\n    list_name[start:stop:step]\n\nThe stop index is excluded.\n\n    numbers = [10, 20, 30, 40, 50, 60]\n\n    print(numbers[1:4])   # [20, 30, 40]\n    print(numbers[:3])    # [10, 20, 30]\n    print(numbers[3:])    # [40, 50, 60]\n    print(numbers[::2])   # [10, 30, 50]\n    print(numbers[::-1])  # Reversed list\n\nSlicing generally returns a new list rather than changing the original.\n\n### Modifying lists\n\n    fruits = [\"apple\", \"banana\", \"mango\"]\n\n    fruits[1] = \"orange\"\n    fruits.append(\"grapes\")\n    fruits.insert(1, \"kiwi\")\n\n    print(fruits)\n\nImportant methods:\n\n- append(value): adds one element to the end.\n- extend(iterable): adds multiple elements.\n- insert(index, value): inserts at a specific position.\n- remove(value): removes the first matching value.\n- pop(index): removes and returns an element; without an index, removes the last.\n- clear(): removes all elements.\n- index(value): returns the first matching index.\n- count(value): counts occurrences.\n- reverse(): reverses the list in place.\n- sort(): sorts the list in place.\n- copy(): creates a shallow copy.\n\nExample:\n\n    numbers = [4, 2, 8, 2]\n\n    numbers.append(10)\n    numbers.remove(2)\n\n    last_value = numbers.pop()\n    print(numbers)\n    print(last_value)\n\nRemember: remove() works with a value, while pop() works with an index.\n\n### Sorting lists\n\n    numbers = [40, 10, 30, 20]\n\n    numbers.sort()\n    print(numbers)  # [10, 20, 30, 40]\n\n    numbers.sort(reverse=True)\n    print(numbers)  # [40, 30, 20, 10]\n\nThe sorted() function returns a new sorted list:\n\n    scores = [70, 90, 60]\n    ordered_scores = sorted(scores)\n\n    print(ordered_scores)\n    print(scores)\n\nUse sort() when you want to modify the original list. Use sorted() when you want a separate sorted result.\n\n### Searching lists\n\n    names = [\"Ali\", \"Sara\", \"Ahmed\"]\n\n    if \"Sara\" in names:\n        print(\"Student found\")\n\n    position = names.index(\"Ahmed\")\n\nThe in operator checks membership. Be careful with index(): it raises ValueError if the value is absent.\n\n### List concatenation and repetition\n\n    first = [1, 2]\n    second = [3, 4]\n\n    combined = first + second\n    repeated = first * 3\n\nConcatenation creates a combined list. Repetition repeats its contents.\n\n---\n\n## 4. Tuples — Ordered, Immutable Collections\n\nA tuple is useful when values belong together and should not be changed through the collection.\n\n### Creating tuples\n\n    coordinates = (10, 20)\n    rgb = (255, 120, 50)\n    student = (\"Ali\", 18, \"Software Engineering\")\n\nA single-element tuple requires a trailing comma:\n\n    one_item = (5,)\n    not_a_tuple = (5)\n\nThe second example is an integer surrounded by parentheses.\n\n### Accessing and unpacking tuples\n\n    student = (\"Ali\", 18, \"Software Engineering\")\n\n    print(student[0])\n    print(student[-1])\n\n    name, age, degree = student\n\n    print(name)\n    print(age)\n    print(degree)\n\nUnpacking requires the number of target variables to match the number of values, unless extended unpacking is used.\n\n    first, *middle, last = [10, 20, 30, 40, 50]\n\n    print(first)\n    print(middle)\n    print(last)\n\n### Tuple methods\n\nTuples provide two main methods:\n\n- count(value)\n- index(value)\n\n    values = (10, 20, 10, 30)\n\n    print(values.count(10))\n    print(values.index(20))\n\n### Tuple immutability\n\n    coordinates = (10, 20)\n\n    # coordinates[0] = 50\n    # This raises TypeError\n\nA tuple cannot have its elements reassigned. However, if it contains a mutable object such as a list, that nested object may still change.\n\n    data = ([1, 2], 3)\n    data[0].append(4)\n\n    print(data)  # ([1, 2, 4], 3)\n\nThis demonstrates the difference between an immutable container and mutable objects stored inside it.\n\n### When should you use tuples?\n\nUse tuples for:\n\n- Fixed coordinates.\n- RGB color values.\n- Returning multiple values from functions.\n- Records whose positions have fixed meanings.\n- Values that should not be accidentally reassigned.\n\n---\n\n## 5. Dictionaries — Key-Value Data Storage\n\nA dictionary stores information as key-value pairs.\n\nInstead of remembering that a student's name is at index zero and age is at index one, use meaningful keys.\n\n### Creating dictionaries\n\n    student = {\n        \"name\": \"Ali\",\n        \"age\": 18,\n        \"department\": \"Software Engineering\",\n        \"marks\": 87\n    }\n\nKeys must be unique and hashable. Strings, numbers, and tuples containing hashable values are common key choices.\n\nValues can be almost any Python object.\n\n### Accessing values\n\n    print(student[\"name\"])\n    print(student[\"marks\"])\n\nUsing a missing key with square brackets raises KeyError.\n\nUse get() when a missing key should return a default:\n\n    print(student.get(\"email\", \"Not provided\"))\n\n### Adding and updating data\n\n    student[\"email\"] = \"ali@example.com\"\n    student[\"marks\"] = 92\n\n    student.update({\n        \"age\": 19,\n        \"city\": \"Bahawalpur\"\n    })\n\nIf a key already exists, its value is updated. Otherwise, a new entry is added.\n\n### Removing dictionary entries\n\n    student.pop(\"city\", None)\n    removed_item = student.pop(\"age\", None)\n\n    del student[\"email\"]\n\n    last_pair = student.popitem()\n\npop() removes a specified key and returns its value. popitem() removes and returns the last inserted key-value pair in modern Python.\n\nUse del only when you know the key exists or have handled the possibility of a missing key.\n\n### Dictionary methods\n\n    student = {\"name\": \"Ali\", \"marks\": 90}\n\n    print(student.keys())\n    print(student.values())\n    print(student.items())\n\n    for key, value in student.items():\n        print(key, value)\n\nThe keys(), values(), and items() methods return dynamic view objects that reflect dictionary changes.\n\n### Checking membership\n\n    student = {\"name\": \"Ali\", \"marks\": 90}\n\n    print(\"name\" in student)   # True\n    print(\"Ali\" in student)    # False\n\nDictionary membership checks keys, not values.\n\nTo check values:\n\n    print(\"Ali\" in student.values())\n\n### Nested dictionaries\n\nNested dictionaries are useful for storing records.\n\n    students = {\n        101: {\n            \"name\": \"Ali\",\n            \"marks\": 85\n        },\n        102: {\n            \"name\": \"Sara\",\n            \"marks\": 94\n        }\n    }\n\n    print(students[101][\"name\"])\n    print(students[102][\"marks\"])\n\nThis structure is common in APIs, configuration files, student systems, and database-related applications.\n\n### Counting with dictionaries\n\n    words = [\"python\", \"java\", \"python\", \"cpp\", \"java\", \"python\"]\n\n    frequency = {}\n\n    for word in words:\n        frequency[word] = frequency.get(word, 0) + 1\n\n    print(frequency)\n\nThe get() method makes frequency counting straightforward.\n\n---\n\n## 6. Sets — Unique Values and Set Operations\n\nA set stores unique elements. It is useful for removing duplicates and comparing groups.\n\n### Creating sets\n\n    numbers = {1, 2, 3, 4}\n    empty_set = set()\n    empty_dictionary = {}\n\nUse set() for an empty set because {} creates an empty dictionary.\n\nSets require hashable elements. You cannot directly place a list or dictionary inside a set.\n\n### Removing duplicates\n\n    numbers = [1, 2, 2, 3, 3, 4]\n\n    unique_numbers = set(numbers)\n\n    print(unique_numbers)\n\nA set does not guarantee the original positional order. If preserving order matters, consider using a different technique.\n\n### Adding and removing elements\n\n    languages = {\"Python\", \"Java\"}\n\n    languages.add(\"C++\")\n    languages.update([\"JavaScript\", \"Go\"])\n\n    languages.discard(\"Ruby\")\n    languages.remove(\"Java\")\n\ndiscard() does not raise an error when the value is missing. remove() does.\n\n### Mathematical set operations\n\nSuppose:\n\n    frontend = {\"HTML\", \"CSS\", \"JavaScript\"}\n    backend = {\"Python\", \"JavaScript\", \"Node.js\"}\n\nUnion: all elements from both sets.\n\n    print(frontend | backend)\n\nIntersection: elements shared by both sets.\n\n    print(frontend & backend)\n\nDifference: elements present in the first set but not the second.\n\n    print(frontend - backend)\n\nSymmetric difference: elements in either set, but not both.\n\n    print(frontend ^ backend)\n\nEquivalent named methods include union(), intersection(), difference(), and symmetric_difference().\n\n### Set relationships\n\n    required = {\"Python\", \"SQL\"}\n    completed = {\"Python\", \"SQL\", \"Git\"}\n\n    print(required.issubset(completed))\n    print(completed.issuperset(required))\n    print(required.isdisjoint({\"HTML\", \"CSS\"}))\n\nThese operations are useful for comparing permissions, skills, enrolled courses, and completed tasks.\n\n---\n\n## 7. Collection Comprehensions\n\nComprehensions provide concise ways to construct collections.\n\n### List comprehension\n\n    squares = [number ** 2 for number in range(1, 6)]\n\n    print(squares)\n\nEquivalent traditional approach:\n\n    squares = []\n\n    for number in range(1, 6):\n        squares.append(number ** 2)\n\n### Filtering with comprehensions\n\n    numbers = range(1, 11)\n\n    even_numbers = [\n        number for number in numbers\n        if number % 2 == 0\n    ]\n\n### Conditional expressions\n\n    results = [\n        \"Pass\" if mark >= 50 else \"Fail\"\n        for mark in [80, 35, 67, 42]\n    ]\n\nThis uses a conditional expression to choose a result for each value.\n\n### Set comprehension\n\n    unique_squares = {\n        number ** 2 for number in [1, 2, 2, 3, 3, 4]\n    }\n\nDuplicate results are automatically removed.\n\n### Dictionary comprehension\n\n    squares = {\n        number: number ** 2\n        for number in range(1, 6)\n    }\n\n    print(squares)\n\n### Generator expressions\n\n    total = sum(number ** 2 for number in range(1, 1001))\n\nA generator expression produces values as they are needed rather than creating a complete list first. This can reduce memory use for large sequences.\n\nChoose readability over cleverness. If a comprehension becomes complicated, use a normal loop.\n\n---\n\n## 8. Sorting Collections with Custom Rules\n\nThe key parameter lets you define what Python should compare.\n\n### Sorting strings by length\n\n    names = [\"Ahmed\", \"Ali\", \"Muhammad\", \"Sara\"]\n\n    result = sorted(names, key=len)\n\n### Sorting dictionaries by marks\n\n    students = [\n        {\"name\": \"Ali\", \"marks\": 82},\n        {\"name\": \"Sara\", \"marks\": 95},\n        {\"name\": \"Ahmed\", \"marks\": 74}\n    ]\n\n    ranking = sorted(\n        students,\n        key=lambda student: student[\"marks\"],\n        reverse=True\n    )\n\n    for student in ranking:\n        print(student[\"name\"], student[\"marks\"])\n\nThis technique is useful for leaderboards, product prices, search results, and reports.\n\n### Sorting with multiple criteria\n\n    students = [\n        {\"name\": \"Ali\", \"marks\": 90},\n        {\"name\": \"Sara\", \"marks\": 90},\n        {\"name\": \"Ahmed\", \"marks\": 80}\n    ]\n\n    ranking = sorted(\n        students,\n        key=lambda student: (-student[\"marks\"], student[\"name\"])\n    )\n\nThis sorts by marks descending and then by name ascending.\n\n---\n\n## 9. Mutability, References, and Copying\n\nVariables refer to objects. Assigning a collection to another variable does not automatically duplicate the collection.\n\n### Aliasing\n\n    original = [10, 20, 30]\n    alias = original\n\n    alias.append(40)\n\n    print(original)\n\nBoth variables refer to the same list, so a mutation through either name is visible through the other.\n\n### Shallow copying\n\n    original = [10, 20, 30]\n    copied = original.copy()\n\n    copied.append(40)\n\n    print(original)\n    print(copied)\n\nThe top-level list is copied, so adding an element to the copy does not add it to the original.\n\nHowever, a shallow copy does not recursively copy nested objects.\n\n    original = [[1, 2], [3, 4]]\n    copied = original.copy()\n\n    copied[0].append(99)\n\n    print(original)\n\nThe inner lists are shared.\n\n### Deep copying\n\n    import copy\n\n    original = [[1, 2], [3, 4]]\n    copied = copy.deepcopy(original)\n\n    copied[0].append(99)\n\n    print(original)\n    print(copied)\n\nDeep copying recursively copies nested objects where supported. It is useful when independent nested data is required, but it may cost more time and memory.\n\n### Common mistake: modifying a list while iterating\n\nAvoid removing elements directly from the list being traversed.\n\n    numbers = [1, 2, 3, 4, 5, 6]\n\n    numbers = [\n        number for number in numbers\n        if number % 2 != 0\n    ]\n\nThis creates a new list containing only odd values and avoids skipped elements caused by shifting indexes.\n\n---\n\n## 10. Choosing the Right Collection\n\nUse a list when:\n\n- Order matters.\n- You need indexing or slicing.\n- Values may be added, removed, or changed.\n\nUse a tuple when:\n\n- The sequence represents a fixed record.\n- Reassignment through the collection should be prevented.\n\nUse a dictionary when:\n\n- You need to look up values by meaningful keys.\n- Each record has named attributes.\n- You need fast average-case key lookups.\n\nUse a set when:\n\n- Values must be unique.\n- You need membership tests or set comparisons.\n- You want to remove duplicates without preserving positional order.\n\nA collection should be chosen based on the problem, not just personal preference.\n\n---\n\n## 11. Performance Fundamentals\n\nTypical average-case behavior for built-in collections:\n\n| Operation | Typical performance |\n|---|---|\n| List indexing | O(1) |\n| List append | Amortized O(1) |\n| Search for a value in a list | O(n) |\n| Insert near the beginning of a list | O(n) |\n| Dictionary key lookup | O(1) average |\n| Set membership test | O(1) average |\n| Sort a list | O(n log n) |\n\nThese are typical complexity estimates, not guarantees for every possible input or implementation.\n\nUse a dictionary or set when repeated membership checks are important and the data can appropriately be represented by one.\n\nDo not optimize blindly. Write correct, readable code first, then measure real performance when necessary.\n\n---\n\n## 12. Practical Exercises\n\n### Beginner\n\n1. Create a list of ten numbers and print the first, middle, and last values.\n2. Add and remove elements using append(), insert(), pop(), and remove().\n3. Sort a list in ascending and descending order.\n4. Create a tuple of five subjects and unpack selected values.\n5. Build a dictionary containing a student's name, age, department, and marks.\n\n### Intermediate\n\n6. Count the frequency of each number in a list using a dictionary.\n7. Remove duplicates from a list using a set.\n8. Find the common skills between two students using set intersection.\n9. Use a list comprehension to extract all numbers divisible by three.\n10. Sort a list of student dictionaries by marks.\n\n### Advanced\n\n11. Group students by department using a dictionary.\n12. Find the top three students from a collection of records.\n13. Create a nested dictionary representing multiple courses and their enrolled students.\n14. Compare shallow copying and deep copying using nested lists.\n15. Build a searchable student records system with unique student IDs.\n\n---\n\n## 13. Mini Project: Student Records Manager\n\nBuild a command-line application that stores multiple student records.\n\nEach record should contain:\n\n- A unique student ID.\n- A student's name.\n- A department.\n- Marks for multiple subjects.\n- A calculated average.\n- A pass or fail status.\n\nRequired features:\n\n1. Add a new student.\n2. Display all students.\n3. Search for a student by ID.\n4. Update student marks.\n5. Delete a student.\n6. Display a ranking from highest to lowest average.\n7. Display the class average.\n8. Show the number of passing and failing students.\n9. Prevent duplicate student IDs.\n10. Validate marks and handle missing records safely.\n\nRecommended data structure:\n\n    students = {\n        \"SE001\": {\n            \"name\": \"Ali\",\n            \"department\": \"Software Engineering\",\n            \"marks\": {\n                \"Programming\": 85,\n                \"Mathematics\": 78,\n                \"English\": 90\n            }\n        }\n    }\n\nUse a dictionary for student IDs, nested dictionaries for records, and lists for ranking or report output.\n\nThis structure models a small real-world information system.\n\n---\n\n## 14. Professional Development Practices\n\n- Use descriptive variable names.\n- Avoid mixing unrelated data types in a collection without a clear reason.\n- Check whether a key or value exists before relying on it.\n- Handle missing dictionary keys deliberately.\n- Avoid mutating a collection while iterating over it.\n- Understand whether a function changes an object or returns a new one.\n- Use copies when independent data is needed.\n- Keep data-processing logic separate from user input and output.\n- Write tests for empty collections, duplicate values, missing keys, and boundary cases.\n- Prefer simple, readable operations over unnecessarily complicated comprehensions.\n\n---\n\n## 15. Module Summary\n\nYou have learned:\n\n- Lists are mutable ordered sequences.\n- Tuples are immutable ordered sequences.\n- Dictionaries map unique keys to values.\n- Sets store unique hashable elements.\n- Comprehensions create collections concisely.\n- Custom sorting supports real-world ranking.\n- Copying and references affect how changes propagate.\n- Collection choice influences readability, correctness, and performance.\n\nNext module: **Module 7 — Strings, Text Processing, File Handling & Data Persistence.**\n",
+      "codeExample": "from copy import deepcopy\n\nstudents = {\n    \"SE001\": {\n        \"name\": \"Ali\",\n        \"department\": \"Software Engineering\",\n        \"marks\": {\n            \"Programming\": 85,\n            \"Mathematics\": 78,\n            \"English\": 90\n        }\n    },\n    \"SE002\": {\n        \"name\": \"Sara\",\n        \"department\": \"Software Engineering\",\n        \"marks\": {\n            \"Programming\": 95,\n            \"Mathematics\": 91,\n            \"English\": 88\n        }\n    },\n    \"SE003\": {\n        \"name\": \"Ahmed\",\n        \"department\": \"Computer Science\",\n        \"marks\": {\n            \"Programming\": 72,\n            \"Mathematics\": 68,\n            \"English\": 75\n        }\n    }\n}\n\n\ndef calculate_average(marks):\n    if not marks:\n        return 0.0\n    return sum(marks.values()) / len(marks)\n\n\ndef find_student(student_id):\n    return students.get(student_id)\n\n\ndef add_student(student_id, name, department, marks):\n    if student_id in students:\n        print(\"Error: Student ID already exists.\")\n        return False\n\n    if not name.strip():\n        print(\"Error: Name cannot be empty.\")\n        return False\n\n    if not marks:\n        print(\"Error: At least one subject mark is required.\")\n        return False\n\n    for subject, mark in marks.items():\n        if not isinstance(mark, (int, float)) or isinstance(mark, bool):\n            print(f\"Error: Invalid mark for {subject}.\")\n            return False\n        if not 0 <= mark <= 100:\n            print(f\"Error: {subject} marks must be between 0 and 100.\")\n            return False\n\n    students[student_id] = {\n        \"name\": name.strip(),\n        \"department\": department.strip(),\n        \"marks\": dict(marks)\n    }\n    return True\n\n\ndef display_student(student_id, student):\n    average = calculate_average(student[\"marks\"])\n    status = \"PASS\" if average >= 50 else \"FAIL\"\n\n    print(f\"\\nID: {student_id}\")\n    print(f\"Name: {student[\"name\"]}\")\n    print(f\"Department: {student[\"department\"]}\")\n    print(\"Subject marks:\")\n\n    for subject, mark in student[\"marks\"].items():\n        print(f\"  {subject}: {mark}\")\n\n    print(f\"Average: {average:.2f}\")\n    print(f\"Status: {status}\")\n\n\ndef display_all_students():\n    if not students:\n        print(\"No student records available.\")\n        return\n\n    for student_id, student in students.items():\n        display_student(student_id, student)\n\n\ndef get_ranking():\n    return sorted(\n        students.items(),\n        key=lambda item: calculate_average(item[1][\"marks\"]),\n        reverse=True\n    )\n\n\ndef display_ranking():\n    if not students:\n        print(\"No records available for ranking.\")\n        return\n\n    print(\"\\nSTUDENT RANKING\")\n    print(\"-\" * 45)\n\n    for rank, (student_id, student) in enumerate(get_ranking(), start=1):\n        average = calculate_average(student[\"marks\"])\n        print(f\"{rank}. {student[\"name\"]} ({student_id}) - {average:.2f}\")\n\n\ndef update_marks(student_id, subject, new_mark):\n    student = find_student(student_id)\n\n    if student is None:\n        print(\"Error: Student not found.\")\n        return False\n\n    if not isinstance(new_mark, (int, float)) or isinstance(new_mark, bool):\n        print(\"Error: Mark must be numeric.\")\n        return False\n\n    if not 0 <= new_mark <= 100:\n        print(\"Error: Mark must be between 0 and 100.\")\n        return False\n\n    student[\"marks\"][subject] = new_mark\n    return True\n\n\ndef delete_student(student_id):\n    if students.pop(student_id, None) is None:\n        print(\"Student not found.\")\n        return False\n    return True\n\n\ndef display_class_report():\n    if not students:\n        print(\"No student records available.\")\n        return\n\n    averages = [\n        calculate_average(student[\"marks\"])\n        for student in students.values()\n    ]\n\n    passing = sum(average >= 50 for average in averages)\n    failing = len(averages) - passing\n\n    print(\"\\nCLASS REPORT\")\n    print(f\"Students: {len(students)}\")\n    print(f\"Class average: {sum(averages) / len(averages):.2f}\")\n    print(f\"Passing students: {passing}\")\n    print(f\"Failing students: {failing}\")\n\n\ndef main():\n    while True:\n        print(\"\\n===== STUDENT RECORDS MANAGER =====\")\n        print(\"1. Display all students\")\n        print(\"2. Search student\")\n        print(\"3. Add student\")\n        print(\"4. Update a subject mark\")\n        print(\"5. Delete student\")\n        print(\"6. Show ranking\")\n        print(\"7. Show class report\")\n        print(\"8. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            display_all_students()\n\n        elif choice == \"2\":\n            student_id = input(\"Enter student ID: \").strip()\n            student = find_student(student_id)\n            if student is None:\n                print(\"Student not found.\")\n            else:\n                display_student(student_id, student)\n\n        elif choice == \"3\":\n            student_id = input(\"New student ID: \").strip()\n            name = input(\"Student name: \").strip()\n            department = input(\"Department: \").strip()\n            marks = {}\n\n            try:\n                count = int(input(\"Number of subjects: \"))\n                if count <= 0:\n                    print(\"Enter at least one subject.\")\n                    continue\n\n                for _ in range(count):\n                    subject = input(\"Subject name: \").strip()\n                    if not subject or subject in marks:\n                        print(\"Subject name must be non-empty and unique.\")\n                        break\n\n                    mark = float(input(f\"Marks for {subject}: \"))\n                    marks[subject] = mark\n                else:\n                    if add_student(student_id, name, department, marks):\n                        print(\"Student added successfully.\")\n                    continue\n\n            except ValueError:\n                print(\"Please enter a valid number.\")\n\n        elif choice == \"4\":\n            student_id = input(\"Student ID: \").strip()\n            subject = input(\"Subject: \").strip()\n            try:\n                mark = float(input(\"New mark: \"))\n                if update_marks(student_id, subject, mark):\n                    print(\"Mark updated successfully.\")\n            except ValueError:\n                print(\"Please enter a valid numeric mark.\")\n\n        elif choice == \"5\":\n            student_id = input(\"Student ID to delete: \").strip()\n            if delete_student(student_id):\n                print(\"Student deleted successfully.\")\n\n        elif choice == \"6\":\n            display_ranking()\n\n        elif choice == \"7\":\n            display_class_report()\n\n        elif choice == \"8\":\n            print(\"Goodbye!\")\n            break\n\n        else:\n            print(\"Invalid choice. Select an option from 1 to 8.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'Which keyword immediately exits a loop?',
-          options: ['continue', 'pass', 'break', 'skip'],
-          correctAnswer: 2
+          "question": "Which collection is ordered, mutable, and allows duplicate values?",
+          "options": [
+            "Set",
+            "Tuple",
+            "List",
+            "Dictionary keys"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Python lists (`[...]`) preserve insertion order, allow duplicates, and can be mutated."
         },
         {
-          question: 'What values are produced by range(3)?',
-          options: ['1, 2, 3', '0, 1, 2', '0, 1, 2, 3', 'Only 3'],
-          correctAnswer: 1
+          "question": "What is the index of the first element in a Python list?",
+          "options": [
+            "1",
+            "-1",
+            "0",
+            "It depends on the list"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Python sequences are zero-indexed, meaning the first element is always at index 0."
+        },
+        {
+          "question": "Which expression creates a single-element tuple?",
+          "options": [
+            "(5)",
+            "[5]",
+            "{5}",
+            "(5,)"
+          ],
+          "correctAnswer": 3,
+          "explanation": "A trailing comma `(5,)` is required to distinguish a 1-element tuple from parenthesized integer `(5)`."
+        },
+        {
+          "question": "What does dictionary membership check by default?",
+          "options": [
+            "Values",
+            "Keys",
+            "Both keys and values",
+            "Only the first entry"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`key in my_dict` checks dictionary keys in O(1) average time, not values."
+        },
+        {
+          "question": "Which set operation returns elements present in both sets?",
+          "options": [
+            "Union",
+            "Difference",
+            "Intersection",
+            "Symmetric difference"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Set intersection (`a & b`) returns elements present in both sets."
+        },
+        {
+          "question": "Which method adds one element to the end of a list?",
+          "options": [
+            "append()",
+            "extend()",
+            "insert()",
+            "add()"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`list.append(x)` adds a single element to the end of the list in place."
+        },
+        {
+          "question": "What is the main difference between sort() and sorted()?",
+          "options": [
+            "They always produce the same type of output",
+            "sort() modifies the list in place, while sorted() returns a new sorted list",
+            "sorted() only works with numbers",
+            "sort() cannot sort strings"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`list.sort()` mutates the original list in place and returns None; `sorted(iterable)` returns a brand-new sorted list."
+        },
+        {
+          "question": "What does a shallow copy of a nested list generally share with the original?",
+          "options": [
+            "Nothing at all",
+            "Only integer indexes",
+            "References to nested mutable objects",
+            "Only the original list length"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A shallow copy duplicates only the outer list, so nested mutable lists/dicts inside it are still shared."
+        },
+        {
+          "question": "Which collection is most appropriate for looking up student records by unique student ID?",
+          "options": [
+            "A set of names",
+            "A tuple of IDs",
+            "A dictionary keyed by ID",
+            "A string containing all records"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Dictionaries map unique keys (like student_id) to records with O(1) average lookup time."
+        },
+        {
+          "question": "What is the typical average-case time complexity of checking whether a value exists in a set?",
+          "options": [
+            "O(n²)",
+            "O(n)",
+            "O(log n) always",
+            "O(1)"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Sets use hash tables under the hood, providing O(1) average-case membership testing (`x in my_set`)."
         }
+      ],
+      "assignment": "Problem Statement:\nBuild an In-Memory Student Directory using Python's core collections (dict, set, tuple, list) to support O(1) lookup by student ID, course enrollment deduplication, and fast cohort filtering via comprehensions.\n\nObjectives:\n- Choose dict for O(1) key lookup, set for O(1) membership/deduplication, and tuple for immutable coordinates/records.\n- Use list and dict comprehensions cleanly.\n\nRequirements:\n1. Store students in a dict keyed by student_id: {\"S101\": {\"name\": \"Ada\", \"courses\": {\"PY101\", \"JS201\"}, \"grad_year\": 2026}}.\n2. Implement enroll(directory, student_id, course_code) using set.add() so duplicate enrollments are ignored automatically.\n3. Implement common_courses(directory, id_a, id_b) using set intersection (&).\n4. Use a list comprehension to return names of all students enrolled in a given course_code, sorted alphabetically via sorted().\n\nStep-by-Step Instructions:\n1. Create directory.py with sample data for 5 students.\n2. Implement lookup, enroll, common_courses, and filter_by_course.\n3. Verify O(1) dict lookup and set intersection results.\n\nDeliverables:\n- directory.py.\n\nEvaluation Criteria:\n- Uses set intersection (&) and dict lookup instead of nested O(n^2) loops.\n- Clean, readable comprehensions.",
+      "lessons": [
+        {
+          "title": "Module 6: Python Collections — Complete Masterclass",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 6: Python Collections — Lists, Tuples, Dictionaries, Sets & Advanced Data Operations: Module 6: Python Collections — Complete Masterclass.",
+          "objectives": [
+            "Master Module 6: Python Collections — Complete Masterclass",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 6: Python Collections — Complete Masterclass\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand Python's four major built-in collections.\n- Choose the right collection for different programming problems.\n- Create, access, update, and delete collection elements.\n- Use indexing, slicing, iteration, and comprehensions.\n- Sort, filter, search, and transform data.\n- Understand mutability, copying, references, and nested collections.\n- Process real-world datasets using clean, efficient Python.\n- Build a complete student records management system.\n\n---\n\n## 2. Introduction to Collections\n\nA collection stores multiple values in a single variable.\n\nWithout collections, we might store student marks like this:\n\n    mark1 = 78\n    mark2 = 85\n    mark3 = 92\n    mark4 = 67\n\nThis becomes difficult to maintain when hundreds of students have multiple subjects.\n\nA list solves this problem:\n\n    marks = [78, 85, 92, 67]\n\nPython provides four important built-in collection types:\n\n| Collection | Ordered | Mutable | Duplicates |\n|---|---|---|---|\n| List | Yes | Yes | Allowed |\n| Tuple | Yes | No | Allowed |\n| Dictionary | Insertion order | Yes | Keys must be unique |\n| Set | No guaranteed positional order | Yes | Not allowed |\n\nImportant concepts:\n\n- Ordered means elements maintain a defined order.\n- Mutable means the collection can be changed after creation.\n- Immutable means its elements cannot be reassigned or removed through the collection.\n- Duplicate values are repeated values.\n\nDictionaries preserve insertion order in modern Python. Sets do not provide a guaranteed positional order.\n\n---\n\n## 3. Lists — Flexible and Mutable Collections\n\nA list is useful when you need an ordered collection that can change.\n\n### Creating lists\n\n    empty_list = []\n    numbers = [10, 20, 30, 40]\n    names = [\"Ali\", \"Sara\", \"Ahmed\"]\n    mixed = [10, \"Python\", True, 3.14]\n    nested = [[1, 2], [3, 4]]\n\nAlthough mixed lists are allowed, keeping similar types together usually makes programs easier to understand.\n\n### Accessing elements\n\nPython uses zero-based indexing.\n\n    fruits = [\"apple\", \"banana\", \"mango\", \"orange\"]\n\n    print(fruits[0])   # apple\n    print(fruits[1])   # banana\n    print(fruits[-1])  # orange\n    print(fruits[-2])  # mango\n\nPositive indexes start at zero. Negative indexes count backward from the end.\n\nAn invalid index raises IndexError.\n\n### List slicing\n\nSlicing extracts a portion of a list.\n\nSyntax:\n\n    list_name[start:stop:step]\n\nThe stop index is excluded.\n\n    numbers = [10, 20, 30, 40, 50, 60]\n\n    print(numbers[1:4])   # [20, 30, 40]\n    print(numbers[:3])    # [10, 20, 30]\n    print(numbers[3:])    # [40, 50, 60]\n    print(numbers[::2])   # [10, 30, 50]\n    print(numbers[::-1])  # Reversed list\n\nSlicing generally returns a new list rather than changing the original.\n\n### Modifying lists\n\n    fruits = [\"apple\", \"banana\", \"mango\"]\n\n    fruits[1] = \"orange\"\n    fruits.append(\"grapes\")\n    fruits.insert(1, \"kiwi\")\n\n    print(fruits)\n\nImportant methods:\n\n- append(value): adds one element to the end.\n- extend(iterable): adds multiple elements.\n- insert(index, value): inserts at a specific position.\n- remove(value): removes the first matching value.\n- pop(index): removes and returns an element; without an index, removes the last.\n- clear(): removes all elements.\n- index(value): returns the first matching index.\n- count(value): counts occurrences.\n- reverse(): reverses the list in place.\n- sort(): sorts the list in place.\n- copy(): creates a shallow copy.\n\nExample:\n\n    numbers = [4, 2, 8, 2]\n\n    numbers.append(10)\n    numbers.remove(2)\n\n    last_value = numbers.pop()\n    print(numbers)\n    print(last_value)\n\nRemember: remove() works with a value, while pop() works with an index.\n\n### Sorting lists\n\n    numbers = [40, 10, 30, 20]\n\n    numbers.sort()\n    print(numbers)  # [10, 20, 30, 40]\n\n    numbers.sort(reverse=True)\n    print(numbers)  # [40, 30, 20, 10]\n\nThe sorted() function returns a new sorted list:\n\n    scores = [70, 90, 60]\n    ordered_scores = sorted(scores)\n\n    print(ordered_scores)\n    print(scores)\n\nUse sort() when you want to modify the original list. Use sorted() when you want a separate sorted result.\n\n### Searching lists\n\n    names = [\"Ali\", \"Sara\", \"Ahmed\"]\n\n    if \"Sara\" in names:\n        print(\"Student found\")\n\n    position = names.index(\"Ahmed\")\n\nThe in operator checks membership. Be careful with index(): it raises ValueError if the value is absent.\n\n### List concatenation and repetition\n\n    first = [1, 2]\n    second = [3, 4]\n\n    combined = first + second\n    repeated = first * 3\n\nConcatenation creates a combined list. Repetition repeats its contents.\n\n---\n\n## 4. Tuples — Ordered, Immutable Collections\n\nA tuple is useful when values belong together and should not be changed through the collection.\n\n### Creating tuples\n\n    coordinates = (10, 20)\n    rgb = (255, 120, 50)\n    student = (\"Ali\", 18, \"Software Engineering\")\n\nA single-element tuple requires a trailing comma:\n\n    one_item = (5,)\n    not_a_tuple = (5)\n\nThe second example is an integer surrounded by parentheses.\n\n### Accessing and unpacking tuples\n\n    student = (\"Ali\", 18, \"Software Engineering\")\n\n    print(student[0])\n    print(student[-1])\n\n    name, age, degree = student\n\n    print(name)\n    print(age)\n    print(degree)\n\nUnpacking requires the number of target variables to match the number of values, unless extended unpacking is used.\n\n    first, *middle, last = [10, 20, 30, 40, 50]\n\n    print(first)\n    print(middle)\n    print(last)\n\n### Tuple methods\n\nTuples provide two main methods:\n\n- count(value)\n- index(value)\n\n    values = (10, 20, 10, 30)\n\n    print(values.count(10))\n    print(values.index(20))\n\n### Tuple immutability\n\n    coordinates = (10, 20)\n\n    # coordinates[0] = 50\n    # This raises TypeError\n\nA tuple cannot have its elements reassigned. However, if it contains a mutable object such as a list, that nested object may still change.\n\n    data = ([1, 2], 3)\n    data[0].append(4)\n\n    print(data)  # ([1, 2, 4], 3)\n\nThis demonstrates the difference between an immutable container and mutable objects stored inside it.\n\n### When should you use tuples?\n\nUse tuples for:\n\n- Fixed coordinates.\n- RGB color values.\n- Returning multiple values from functions.\n- Records whose positions have fixed meanings.\n- Values that should not be accidentally reassigned.\n\n---\n\n## 5. Dictionaries — Key-Value Data Storage\n\nA dictionary stores information as key-value pairs.\n\nInstead of remembering that a student's name is at index zero and age is at index one, use meaningful keys.\n\n### Creating dictionaries\n\n    student = {\n        \"name\": \"Ali\",\n        \"age\": 18,\n        \"department\": \"Software Engineering\",\n        \"marks\": 87\n    }\n\nKeys must be unique and hashable. Strings, numbers, and tuples containing hashable values are common key choices.\n\nValues can be almost any Python object.\n\n### Accessing values\n\n    print(student[\"name\"])\n    print(student[\"marks\"])\n\nUsing a missing key with square brackets raises KeyError.\n\nUse get() when a missing key should return a default:\n\n    print(student.get(\"email\", \"Not provided\"))\n\n### Adding and updating data\n\n    student[\"email\"] = \"ali@example.com\"\n    student[\"marks\"] = 92\n\n    student.update({\n        \"age\": 19,\n        \"city\": \"Bahawalpur\"\n    })\n\nIf a key already exists, its value is updated. Otherwise, a new entry is added.\n\n### Removing dictionary entries\n\n    student.pop(\"city\", None)\n    removed_item = student.pop(\"age\", None)\n\n    del student[\"email\"]\n\n    last_pair = student.popitem()\n\npop() removes a specified key and returns its value. popitem() removes and returns the last inserted key-value pair in modern Python.\n\nUse del only when you know the key exists or have handled the possibility of a missing key.\n\n### Dictionary methods\n\n    student = {\"name\": \"Ali\", \"marks\": 90}\n\n    print(student.keys())\n    print(student.values())\n    print(student.items())\n\n    for key, value in student.items():\n        print(key, value)\n\nThe keys(), values(), and items() methods return dynamic view objects that reflect dictionary changes.\n\n### Checking membership\n\n    student = {\"name\": \"Ali\", \"marks\": 90}\n\n    print(\"name\" in student)   # True\n    print(\"Ali\" in student)    # False\n\nDictionary membership checks keys, not values.\n\nTo check values:\n\n    print(\"Ali\" in student.values())\n\n### Nested dictionaries\n\nNested dictionaries are useful for storing records.\n\n    students = {\n        101: {\n            \"name\": \"Ali\",\n            \"marks\": 85\n        },\n        102: {\n            \"name\": \"Sara\",\n            \"marks\": 94\n        }\n    }\n\n    print(students[101][\"name\"])\n    print(students[102][\"marks\"])\n\nThis structure is common in APIs, configuration files, student systems, and database-related applications.\n\n### Counting with dictionaries\n\n    words = [\"python\", \"java\", \"python\", \"cpp\", \"java\", \"python\"]\n\n    frequency = {}\n\n    for word in words:\n        frequency[word] = frequency.get(word, 0) + 1\n\n    print(frequency)\n\nThe get() method makes frequency counting straightforward.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Create a 1-element tuple `(42,)` and verify `type((42,))` vs `type((42))`.\n2. Use `sorted(nums)` vs `nums.sort()` and compare return values.\n\nExpected Result:\n`(42,)` is `tuple`; `sorted()` returns a new list while `.sort()` returns `None`.",
+          "keyTakeaways": [
+            "Understand and apply Module 6: Python Collections — Complete Masterclass",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "6. Sets — Unique Values and Set Operations",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 6: Python Collections — Lists, Tuples, Dictionaries, Sets & Advanced Data Operations: 6. Sets — Unique Values and Set Operations.",
+          "objectives": [
+            "Master 6. Sets — Unique Values and Set Operations",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 6. Sets — Unique Values and Set Operations\n\nA set stores unique elements. It is useful for removing duplicates and comparing groups.\n\n### Creating sets\n\n    numbers = {1, 2, 3, 4}\n    empty_set = set()\n    empty_dictionary = {}\n\nUse set() for an empty set because {} creates an empty dictionary.\n\nSets require hashable elements. You cannot directly place a list or dictionary inside a set.\n\n### Removing duplicates\n\n    numbers = [1, 2, 2, 3, 3, 4]\n\n    unique_numbers = set(numbers)\n\n    print(unique_numbers)\n\nA set does not guarantee the original positional order. If preserving order matters, consider using a different technique.\n\n### Adding and removing elements\n\n    languages = {\"Python\", \"Java\"}\n\n    languages.add(\"C++\")\n    languages.update([\"JavaScript\", \"Go\"])\n\n    languages.discard(\"Ruby\")\n    languages.remove(\"Java\")\n\ndiscard() does not raise an error when the value is missing. remove() does.\n\n### Mathematical set operations\n\nSuppose:\n\n    frontend = {\"HTML\", \"CSS\", \"JavaScript\"}\n    backend = {\"Python\", \"JavaScript\", \"Node.js\"}\n\nUnion: all elements from both sets.\n\n    print(frontend | backend)\n\nIntersection: elements shared by both sets.\n\n    print(frontend & backend)\n\nDifference: elements present in the first set but not the second.\n\n    print(frontend - backend)\n\nSymmetric difference: elements in either set, but not both.\n\n    print(frontend ^ backend)\n\nEquivalent named methods include union(), intersection(), difference(), and symmetric_difference().\n\n### Set relationships\n\n    required = {\"Python\", \"SQL\"}\n    completed = {\"Python\", \"SQL\", \"Git\"}\n\n    print(required.issubset(completed))\n    print(completed.issuperset(required))\n    print(required.isdisjoint({\"HTML\", \"CSS\"}))\n\nThese operations are useful for comparing permissions, skills, enrolled courses, and completed tasks.\n\n---\n\n## 7. Collection Comprehensions\n\nComprehensions provide concise ways to construct collections.\n\n### List comprehension\n\n    squares = [number ** 2 for number in range(1, 6)]\n\n    print(squares)\n\nEquivalent traditional approach:\n\n    squares = []\n\n    for number in range(1, 6):\n        squares.append(number ** 2)\n\n### Filtering with comprehensions\n\n    numbers = range(1, 11)\n\n    even_numbers = [\n        number for number in numbers\n        if number % 2 == 0\n    ]\n\n### Conditional expressions\n\n    results = [\n        \"Pass\" if mark >= 50 else \"Fail\"\n        for mark in [80, 35, 67, 42]\n    ]\n\nThis uses a conditional expression to choose a result for each value.\n\n### Set comprehension\n\n    unique_squares = {\n        number ** 2 for number in [1, 2, 2, 3, 3, 4]\n    }\n\nDuplicate results are automatically removed.\n\n### Dictionary comprehension\n\n    squares = {\n        number: number ** 2\n        for number in range(1, 6)\n    }\n\n    print(squares)\n\n### Generator expressions\n\n    total = sum(number ** 2 for number in range(1, 1001))\n\nA generator expression produces values as they are needed rather than creating a complete list first. This can reduce memory use for large sequences.\n\nChoose readability over cleverness. If a comprehension becomes complicated, use a normal loop.\n\n---\n\n## 8. Sorting Collections with Custom Rules\n\nThe key parameter lets you define what Python should compare.\n\n### Sorting strings by length\n\n    names = [\"Ahmed\", \"Ali\", \"Muhammad\", \"Sara\"]\n\n    result = sorted(names, key=len)\n\n### Sorting dictionaries by marks\n\n    students = [\n        {\"name\": \"Ali\", \"marks\": 82},\n        {\"name\": \"Sara\", \"marks\": 95},\n        {\"name\": \"Ahmed\", \"marks\": 74}\n    ]\n\n    ranking = sorted(\n        students,\n        key=lambda student: student[\"marks\"],\n        reverse=True\n    )\n\n    for student in ranking:\n        print(student[\"name\"], student[\"marks\"])\n\nThis technique is useful for leaderboards, product prices, search results, and reports.\n\n### Sorting with multiple criteria\n\n    students = [\n        {\"name\": \"Ali\", \"marks\": 90},\n        {\"name\": \"Sara\", \"marks\": 90},\n        {\"name\": \"Ahmed\", \"marks\": 80}\n    ]\n\n    ranking = sorted(\n        students,\n        key=lambda student: (-student[\"marks\"], student[\"name\"])\n    )\n\nThis sorts by marks descending and then by name ascending.\n\n---\n\n## 9. Mutability, References, and Copying\n\nVariables refer to objects. Assigning a collection to another variable does not automatically duplicate the collection.\n\n### Aliasing\n\n    original = [10, 20, 30]\n    alias = original\n\n    alias.append(40)\n\n    print(original)\n\nBoth variables refer to the same list, so a mutation through either name is visible through the other.\n\n### Shallow copying\n\n    original = [10, 20, 30]\n    copied = original.copy()\n\n    copied.append(40)\n\n    print(original)\n    print(copied)\n\nThe top-level list is copied, so adding an element to the copy does not add it to the original.\n\nHowever, a shallow copy does not recursively copy nested objects.\n\n    original = [[1, 2], [3, 4]]\n    copied = original.copy()\n\n    copied[0].append(99)\n\n    print(original)\n\nThe inner lists are shared.\n\n### Deep copying\n\n    import copy\n\n    original = [[1, 2], [3, 4]]\n    copied = copy.deepcopy(original)\n\n    copied[0].append(99)\n\n    print(original)\n    print(copied)\n\nDeep copying recursively copies nested objects where supported. It is useful when independent nested data is required, but it may cost more time and memory.\n\n### Common mistake: modifying a list while iterating\n\nAvoid removing elements directly from the list being traversed.\n\n    numbers = [1, 2, 3, 4, 5, 6]\n\n    numbers = [\n        number for number in numbers\n        if number % 2 != 0\n    ]\n\nThis creates a new list containing only odd values and avoids skipped elements caused by shifting indexes.\n\n---\n\n## 10. Choosing the Right Collection\n\nUse a list when:\n\n- Order matters.\n- You need indexing or slicing.\n- Values may be added, removed, or changed.\n\nUse a tuple when:\n\n- The sequence represents a fixed record.\n- Reassignment through the collection should be prevented.\n\nUse a dictionary when:\n\n- You need to look up values by meaningful keys.\n- Each record has named attributes.\n- You need fast average-case key lookups.\n\nUse a set when:\n\n- Values must be unique.\n- You need membership tests or set comparisons.\n- You want to remove duplicates without preserving positional order.\n\nA collection should be chosen based on the problem, not just personal preference.\n\n---\n\n## 11. Performance Fundamentals\n\nTypical average-case behavior for built-in collections:\n\n| Operation | Typical performance |\n|---|---|\n| List indexing | O(1) |\n| List append | Amortized O(1) |\n| Search for a value in a list | O(n) |\n| Insert near the beginning of a list | O(n) |\n| Dictionary key lookup | O(1) average |\n| Set membership test | O(1) average |\n| Sort a list | O(n log n) |\n\nThese are typical complexity estimates, not guarantees for every possible input or implementation.\n\nUse a dictionary or set when repeated membership checks are important and the data can appropriately be represented by one.\n\nDo not optimize blindly. Write correct, readable code first, then measure real performance when necessary.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Given `a = {\"PY101\", \"JS101\"}` and `b = {\"JS101\", \"DB101\"}`, compute intersection `a & b` and union `a | b`.\n2. Build a dict `{s: len(s) for s in [\"cat\", \"python\"]}`.\n\nExpected Result:\nIntersection `{\"JS101\"}` and dict `{\"cat\": 3, \"python\": 6}`.",
+          "keyTakeaways": [
+            "Understand and apply 6. Sets — Unique Values and Set Operations",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "12. Practical Exercises",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 6: Python Collections — Lists, Tuples, Dictionaries, Sets & Advanced Data Operations: 12. Practical Exercises.",
+          "objectives": [
+            "Master 12. Practical Exercises",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 12. Practical Exercises\n\n### Beginner\n\n1. Create a list of ten numbers and print the first, middle, and last values.\n2. Add and remove elements using append(), insert(), pop(), and remove().\n3. Sort a list in ascending and descending order.\n4. Create a tuple of five subjects and unpack selected values.\n5. Build a dictionary containing a student's name, age, department, and marks.\n\n### Intermediate\n\n6. Count the frequency of each number in a list using a dictionary.\n7. Remove duplicates from a list using a set.\n8. Find the common skills between two students using set intersection.\n9. Use a list comprehension to extract all numbers divisible by three.\n10. Sort a list of student dictionaries by marks.\n\n### Advanced\n\n11. Group students by department using a dictionary.\n12. Find the top three students from a collection of records.\n13. Create a nested dictionary representing multiple courses and their enrolled students.\n14. Compare shallow copying and deep copying using nested lists.\n15. Build a searchable student records system with unique student IDs.\n\n---\n\n## 13. Mini Project: Student Records Manager\n\nBuild a command-line application that stores multiple student records.\n\nEach record should contain:\n\n- A unique student ID.\n- A student's name.\n- A department.\n- Marks for multiple subjects.\n- A calculated average.\n- A pass or fail status.\n\nRequired features:\n\n1. Add a new student.\n2. Display all students.\n3. Search for a student by ID.\n4. Update student marks.\n5. Delete a student.\n6. Display a ranking from highest to lowest average.\n7. Display the class average.\n8. Show the number of passing and failing students.\n9. Prevent duplicate student IDs.\n10. Validate marks and handle missing records safely.\n\nRecommended data structure:\n\n    students = {\n        \"SE001\": {\n            \"name\": \"Ali\",\n            \"department\": \"Software Engineering\",\n            \"marks\": {\n                \"Programming\": 85,\n                \"Mathematics\": 78,\n                \"English\": 90\n            }\n        }\n    }\n\nUse a dictionary for student IDs, nested dictionaries for records, and lists for ranking or report output.\n\nThis structure models a small real-world information system.\n\n---\n\n## 14. Professional Development Practices\n\n- Use descriptive variable names.\n- Avoid mixing unrelated data types in a collection without a clear reason.\n- Check whether a key or value exists before relying on it.\n- Handle missing dictionary keys deliberately.\n- Avoid mutating a collection while iterating over it.\n- Understand whether a function changes an object or returns a new one.\n- Use copies when independent data is needed.\n- Keep data-processing logic separate from user input and output.\n- Write tests for empty collections, duplicate values, missing keys, and boundary cases.\n- Prefer simple, readable operations over unnecessarily complicated comprehensions.\n\n---\n\n## 15. Module Summary\n\nYou have learned:\n\n- Lists are mutable ordered sequences.\n- Tuples are immutable ordered sequences.\n- Dictionaries map unique keys to values.\n- Sets store unique hashable elements.\n- Comprehensions create collections concisely.\n- Custom sorting supports real-world ranking.\n- Copying and references affect how changes propagate.\n- Collection choice influences readability, correctness, and performance.\n\nNext module: **Module 7 — Strings, Text Processing, File Handling & Data Persistence.**",
+          "codeExample": "from copy import deepcopy\n\nstudents = {\n    \"SE001\": {\n        \"name\": \"Ali\",\n        \"department\": \"Software Engineering\",\n        \"marks\": {\n            \"Programming\": 85,\n            \"Mathematics\": 78,\n            \"English\": 90\n        }\n    },\n    \"SE002\": {\n        \"name\": \"Sara\",\n        \"department\": \"Software Engineering\",\n        \"marks\": {\n            \"Programming\": 95,\n            \"Mathematics\": 91,\n            \"English\": 88\n        }\n    },\n    \"SE003\": {\n        \"name\": \"Ahmed\",\n        \"department\": \"Computer Science\",\n        \"marks\": {\n            \"Programming\": 72,\n            \"Mathematics\": 68,\n            \"English\": 75\n        }\n    }\n}\n\n\ndef calculate_average(marks):\n    if not marks:\n        return 0.0\n    return sum(marks.values()) / len(marks)\n\n\ndef find_student(student_id):\n    return students.get(student_id)\n\n\ndef add_student(student_id, name, department, marks):\n    if student_id in students:\n        print(\"Error: Student ID already exists.\")\n        return False\n\n    if not name.strip():\n        print(\"Error: Name cannot be empty.\")\n        return False\n\n    if not marks:\n        print(\"Error: At least one subject mark is required.\")\n        return False\n\n    for subject, mark in marks.items():\n        if not isinstance(mark, (int, float)) or isinstance(mark, bool):\n            print(f\"Error: Invalid mark for {subject}.\")\n            return False\n        if not 0 <= mark <= 100:\n            print(f\"Error: {subject} marks must be between 0 and 100.\")\n            return False\n\n    students[student_id] = {\n        \"name\": name.strip(),\n        \"department\": department.strip(),\n        \"marks\": dict(marks)\n    }\n    return True\n\n\ndef display_student(student_id, student):\n    average = calculate_average(student[\"marks\"])\n    status = \"PASS\" if average >= 50 else \"FAIL\"\n\n    print(f\"\\nID: {student_id}\")\n    print(f\"Name: {student[\"name\"]}\")\n    print(f\"Department: {student[\"department\"]}\")\n    print(\"Subject marks:\")\n\n    for subject, mark in student[\"marks\"].items():\n        print(f\"  {subject}: {mark}\")\n\n    print(f\"Average: {average:.2f}\")\n    print(f\"Status: {status}\")\n\n\ndef display_all_students():\n    if not students:\n        print(\"No student records available.\")\n        return\n\n    for student_id, student in students.items():\n        display_student(student_id, student)\n\n\ndef get_ranking():\n    return sorted(\n        students.items(),\n        key=lambda item: calculate_average(item[1][\"marks\"]),\n        reverse=True\n    )\n\n\ndef display_ranking():\n    if not students:\n        print(\"No records available for ranking.\")\n        return\n\n    print(\"\\nSTUDENT RANKING\")\n    print(\"-\" * 45)\n\n    for rank, (student_id, student) in enumerate(get_ranking(), start=1):\n        average = calculate_average(student[\"marks\"])\n        print(f\"{rank}. {student[\"name\"]} ({student_id}) - {average:.2f}\")\n\n\ndef update_marks(student_id, subject, new_mark):\n    student = find_student(student_id)\n\n    if student is None:\n        print(\"Error: Student not found.\")\n        return False\n\n    if not isinstance(new_mark, (int, float)) or isinstance(new_mark, bool):\n        print(\"Error: Mark must be numeric.\")\n        return False\n\n    if not 0 <= new_mark <= 100:\n        print(\"Error: Mark must be between 0 and 100.\")\n        return False\n\n    student[\"marks\"][subject] = new_mark\n    return True\n\n\ndef delete_student(student_id):\n    if students.pop(student_id, None) is None:\n        print(\"Student not found.\")\n        return False\n    return True\n\n\ndef display_class_report():\n    if not students:\n        print(\"No student records available.\")\n        return\n\n    averages = [\n        calculate_average(student[\"marks\"])\n        for student in students.values()\n    ]\n\n    passing = sum(average >= 50 for average in averages)\n    failing = len(averages) - passing\n\n    print(\"\\nCLASS REPORT\")\n    print(f\"Students: {len(students)}\")\n    print(f\"Class average: {sum(averages) / len(averages):.2f}\")\n    print(f\"Passing students: {passing}\")\n    print(f\"Failing students: {failing}\")\n\n\ndef main():\n    while True:\n        print(\"\\n===== STUDENT RECORDS MANAGER =====\")\n        print(\"1. Display all students\")\n        print(\"2. Search student\")\n        print(\"3. Add student\")\n        print(\"4. Update a subject mark\")\n        print(\"5. Delete student\")\n        print(\"6. Show ranking\")\n        print(\"7. Show class report\")\n        print(\"8. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            display_all_students()\n\n        elif choice == \"2\":\n            student_id = input(\"Enter student ID: \").strip()\n            student = find_student(student_id)\n            if student is None:\n                print(\"Student not found.\")\n            else:\n                display_student(student_id, student)\n\n        elif choice == \"3\":\n            student_id = input(\"New student ID: \").strip()\n            name = input(\"Student name: \").strip()\n            department = input(\"Department: \").strip()\n            marks = {}\n\n            try:\n                count = int(input(\"Number of subjects: \"))\n                if count <= 0:\n                    print(\"Enter at least one subject.\")\n                    continue\n\n                for _ in range(count):\n                    subject = input(\"Subject name: \").strip()\n                    if not subject or subject in marks:\n                        print(\"Subject name must be non-empty and unique.\")\n                        break\n\n                    mark = float(input(f\"Marks for {subject}: \"))\n                    marks[subject] = mark\n                else:\n                    if add_student(student_id, name, department, marks):\n                        print(\"Student added successfully.\")\n                    continue\n\n            except ValueError:\n                print(\"Please enter a valid number.\")\n\n        elif choice == \"4\":\n            student_id = input(\"Student ID: \").strip()\n            subject = input(\"Subject: \").strip()\n            try:\n                mark = float(input(\"New mark: \"))\n                if update_marks(student_id, subject, mark):\n                    print(\"Mark updated successfully.\")\n            except ValueError:\n                print(\"Please enter a valid numeric mark.\")\n\n        elif choice == \"5\":\n            student_id = input(\"Student ID to delete: \").strip()\n            if delete_student(student_id):\n                print(\"Student deleted successfully.\")\n\n        elif choice == \"6\":\n            display_ranking()\n\n        elif choice == \"7\":\n            display_class_report()\n\n        elif choice == \"8\":\n            print(\"Goodbye!\")\n            break\n\n        else:\n            print(\"Invalid choice. Select an option from 1 to 8.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. Stores student records in a dictionary keyed by ID (\"SE001\") for O(1) lookup, with nested subject marks dicts.\n2. Uses copy.deepcopy() when cloning nested student records so updating one cohort copy never mutates the original dictionary.\n\nHow to Run & Expected Output:\nSave as `directory.py` and run `python directory.py`. Prints student lookups, computed averages, and isolated deep-copied summaries.",
+          "practiceExercise": "Guided Exercise:\n1. Run `directory.py` and look up `\"SE001\"` in O(1) via `students.get(\"SE001\")`.\n\nIndependent Challenge:\nAdd a helper returning all student names whose average mark is `>= 80` using a list comprehension.\n\nExpected Result:\nAccurate student averages with zero mutation of the original dictionary.",
+          "keyTakeaways": [
+            "Understand and apply 12. Practical Exercises",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 6: Python Collections — Complete Masterclass",
+        "Apply Python best practices with clean, readable examples",
+        "Master 6. Sets — Unique Values and Set Operations",
+        "Master 12. Practical Exercises"
       ]
     },
     {
-      title: 'Module 7: Lists and Tuples',
-      duration: '3h 00m',
-      notes: `### Lists
-Lists are ordered, mutable collections that allow duplicates.
-
-### Common list methods
-- \`append()\`: adds one item.
-- \`extend()\`: adds items from an iterable.
-- \`insert()\`: inserts at an index.
-- \`remove()\`: removes a matching value.
-- \`pop()\`: removes and returns an item.
-- \`sort()\`: sorts the list in place.
-- \`reverse()\`: reverses the list in place.
-
-### Indexing and slicing
-Access elements using indexes or create a slice with \`items[start:stop]\`.
-
-### Tuples
-Tuples are ordered and immutable. They are useful for fixed collections of values and support unpacking.
-
-### Copying lists
-Assigning a list to another variable creates another reference to the same list. Use \`copy()\` for a shallow copy.
-
-### Common errors
-Invalid indexes raise IndexError. Removing a value that is not present raises ValueError.`,
-      codeExample: `tasks = ["Study", "Practice", "Review"]
-
-tasks.append("Build a project")
-tasks[1] = "Practice Python"
-
-print(tasks)
-print(tasks[0:2])
-
-task_copy = tasks.copy()
-task_copy.append("Write tests")
-
-print("Original:", tasks)
-print("Copy:", task_copy)
-
-coordinates = (10, 20)
-x, y = coordinates
-
-print(f"x = {x}, y = {y}")`,
-      quiz: [
+      "title": "Module 7: Strings, Text Processing, File Handling & Data Persistence",
+      "duration": "5h 00m",
+      "notes": "\n# Module 7: Strings, Text Processing, File Handling & Data Persistence\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand strings and their immutable nature.\n- Extract, search, replace, split, and format text.\n- Validate and clean user-provided text.\n- Read and write text files safely.\n- Work with file paths and directories.\n- Handle file-related exceptions.\n- Store structured data using JSON.\n- Understand CSV files and process tabular information.\n- Use context managers to manage resources safely.\n- Build a practical contact manager with persistent storage.\n\n---\n\n## 2. Understanding Strings\n\nA string is a sequence of Unicode characters used to represent text.\n\n    name = \"Anas\"\n    message = 'Welcome to Python'\n    multiline = \"\"\"This is a\n    multiline string.\"\"\"\n\nSingle quotes, double quotes, and triple quotes can all create strings.\n\n### Escape characters\n\nEscape sequences represent special characters.\n\n- \\\\n creates a new line.\n- \\\\t creates a tab.\n- \\\\\" represents a double quote.\n- \\\\' represents a single quote.\n- \\\\\\\\ represents a backslash.\n\nExample:\n\n    message = \"Hello\\\\nWorld\"\n    print(message)\n\nOutput:\n\n    Hello\n    World\n\nA raw string treats most backslashes as literal characters, making it useful for Windows paths and regular expressions.\n\n    path = r\"C:\\\\Users\\\\Student\\\\Documents\"\n    print(path)\n\nRaw strings still have some restrictions, including the rule that a raw string literal cannot end with an odd number of backslashes.\n\n### String indexing\n\n    language = \"Python\"\n\n    print(language[0])    # P\n    print(language[2])    # t\n    print(language[-1])   # n\n\nStrings use zero-based indexing, just like lists.\n\nAccessing an index outside the valid range raises IndexError.\n\n### String slicing\n\n    language = \"Python\"\n\n    print(language[0:2])   # Py\n    print(language[2:])   # thon\n    print(language[:4])   # Pyth\n    print(language[::-1]) # nohtyP\n\nThe ending index is excluded.\n\nSlicing is useful for extracting names, identifiers, prefixes, suffixes, and other text segments.\n\n---\n\n## 3. String Immutability\n\nStrings are immutable. You cannot replace an individual character directly.\n\n    language = \"Python\"\n\n    # language[0] = \"J\"\n    # This raises TypeError\n\nInstead, create a new string:\n\n    language = \"Python\"\n    language = \"J\" + language[1:]\n\n    print(language)  # Jython\n\nMethods such as upper(), lower(), replace(), and strip() return new strings rather than changing the original string.\n\n    original = \"  Python  \"\n    cleaned = original.strip()\n\n    print(original)\n    print(cleaned)\n\nThis distinction is important when processing data because the result must be assigned if you want to keep it.\n\n---\n\n## 4. Essential String Methods\n\n### Changing letter case\n\n    text = \"Welcome to Python\"\n\n    print(text.upper())\n    print(text.lower())\n    print(text.title())\n    print(text.capitalize())\n    print(\"PyTHON\".casefold())\n\ncasefold() is designed for caseless text comparisons and can be more appropriate than lower() for international text.\n\n### Removing surrounding whitespace\n\n    text = \"   Anas Manzoor   \"\n\n    print(text.strip())\n    print(text.lstrip())\n    print(text.rstrip())\n\nstrip() removes whitespace from both ends, not from the middle.\n\n### Replacing text\n\n    sentence = \"I like Java\"\n    updated = sentence.replace(\"Java\", \"Python\")\n\n    print(updated)\n\nYou can limit the number of replacements:\n\n    text = \"one one one\"\n    print(text.replace(\"one\", \"two\", 2))\n\n### Splitting text\n\n    sentence = \"Python is easy to learn\"\n    words = sentence.split()\n\n    print(words)\n\nSplitting without an explicit separator groups text using whitespace.\n\nFor comma-separated text:\n\n    data = \"Ali,Sara,Ahmed\"\n    names = data.split(\",\")\n\n### Joining text\n\n    words = [\"Python\", \"is\", \"powerful\"]\n    sentence = \" \".join(words)\n\n    print(sentence)\n\njoin() places the chosen separator between strings.\n\n### Searching and checking text\n\n    message = \"Learn Python programming\"\n\n    print(message.find(\"Python\"))\n    print(message.count(\"n\"))\n    print(message.startswith(\"Learn\"))\n    print(message.endswith(\"programming\"))\n    print(\"Python\" in message)\n\nfind() returns -1 when a substring is absent. index() raises ValueError instead.\n\n### Character validation\n\n    print(\"12345\".isdigit())\n    print(\"Python\".isalpha())\n    print(\"Python123\".isalnum())\n    print(\"   \".isspace())\n\nThese methods can help with simple validation, but they do not replace complete input-validation rules.\n\nFor example, isdigit() recognizes some Unicode digit characters as well as ordinary ASCII digits.\n\n---\n\n## 5. Formatting Strings Professionally\n\n### F-strings\n\nF-strings are a readable way to insert values into text.\n\n    name = \"Anas\"\n    age = 18\n\n    message = f\"My name is {name} and I am {age}.\"\n    print(message)\n\nExpressions can be evaluated inside braces:\n\n    price = 1250\n    quantity = 3\n\n    print(f\"Total: {price * quantity}\")\n\n### Formatting decimal values\n\n    percentage = 87.4567\n\n    print(f\"Result: {percentage:.2f}%\")\n\nThe .2f format displays two digits after the decimal point.\n\n### Alignment and padding\n\n    name = \"Python\"\n\n    print(f\"{name:<15}\")\n    print(f\"{name:>15}\")\n    print(f\"{name:^15}\")\n\nThe symbols mean left alignment, right alignment, and center alignment.\n\n### Thousands separators\n\n    population = 1250000\n\n    print(f\"{population:,}\")\n\nThis displays a more readable number with thousands separators.\n\n### Escaping braces in f-strings\n\n    language = \"Python\"\n    print(f\"{{language}} = {language}\")\n\nDouble braces display literal braces.\n\n### When to use f-strings\n\nUse f-strings for readable messages, reports, summaries, and formatted output.\n\nAvoid building complicated data formats manually when a standard serialization format such as JSON is more appropriate.\n\n---\n\n## 6. Introduction to Regular Expressions\n\nRegular expressions, commonly called regex, help identify patterns in text.\n\nPython provides the re module.\n\n    import re\n\n### Finding a pattern\n\n    text = \"Contact us at support@example.com\"\n    pattern = r\"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}\"\n\n    match = re.search(pattern, text)\n\n    if match:\n        print(match.group())\n\nThis is a basic example of finding an email-like string. It is not a complete validator for every valid email address.\n\n### Important regex functions\n\n- re.search() finds the first match anywhere in the text.\n- re.match() checks for a match at the beginning.\n- re.fullmatch() requires the entire string to match.\n- re.findall() returns all non-overlapping matches.\n- re.sub() replaces matching text.\n- re.split() splits text using a pattern.\n\nExample:\n\n    import re\n\n    text = \"Order 102, Order 205, Order 318\"\n    numbers = re.findall(r\"\\\\d+\", text)\n\n    print(numbers)\n\n### Cleaning repeated whitespace\n\n    import re\n\n    text = \"Python     is\\\\n\\\\t powerful\"\n    cleaned = re.sub(r\"\\\\s+\", \" \", text).strip()\n\n    print(cleaned)\n\n### Validating a simple student ID\n\n    import re\n\n    student_id = \"SE2026001\"\n\n    if re.fullmatch(r\"SE\\\\d{7}\", student_id):\n        print(\"Valid student ID format\")\n    else:\n        print(\"Invalid student ID format\")\n\nThis pattern expects SE followed by exactly seven digits.\n\nRegular expressions should be selected according to the actual rules of the application.\n\n---\n\n## 7. Working with File Paths\n\nFiles are commonly organized into directories and subdirectories.\n\nA file path identifies where a file is located.\n\nPython's pathlib module provides an object-oriented way to work with paths.\n\n    from pathlib import Path\n\n    current_folder = Path.cwd()\n    print(current_folder)\n\n### Creating paths\n\n    from pathlib import Path\n\n    data_folder = Path(\"data\")\n    file_path = data_folder / \"students.json\"\n\nThe slash operator joins path components correctly for the current operating system.\n\n### Creating directories\n\n    data_folder = Path(\"data\")\n    data_folder.mkdir(parents=True, exist_ok=True)\n\n- parents=True creates missing parent directories.\n- exist_ok=True avoids an error if the directory already exists.\n\n### Checking files\n\n    file_path = Path(\"students.json\")\n\n    print(file_path.exists())\n    print(file_path.is_file())\n    print(file_path.is_dir())\n\n### Absolute and relative paths\n\nA relative path is interpreted relative to the program's current working directory.\n\nAn absolute path identifies a location from the filesystem root or drive.\n\nAvoid assuming the current working directory will always be the folder containing your Python script. They can differ depending on how the program is launched.\n\n---\n\n## 8. Opening and Reading Text Files\n\nPython's built-in open() function opens files.\n\nThe most common modes are:\n\n- r: read an existing file.\n- w: write a file, replacing existing contents.\n- a: append to the end of a file.\n- x: create a new file and fail if it already exists.\n- b: binary mode.\n- t: text mode, which is the default.\n\n### Reading an entire file\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        content = file.read()\n\n    print(content)\n\nThe with statement ensures that the file is closed when the block exits, even if an exception occurs.\n\n### Reading lines\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        for line in file:\n            print(line.rstrip())\n\nIterating over the file is generally better than reading a very large file into memory all at once.\n\n### Reading a limited amount\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        first_part = file.read(100)\n\nThis reads up to 100 characters in text mode, not necessarily 100 bytes.\n\n### Reading all lines into a list\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        lines = file.readlines()\n\nThis is convenient for small files but can use considerable memory for large files.\n\n### What happens when a file is missing?\n\nOpening a nonexistent file in read mode raises FileNotFoundError.\n\nHandle this situation when a missing file is expected:\n\n    try:\n        with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n            content = file.read()\n    except FileNotFoundError:\n        print(\"The requested file does not exist.\")\n\n---\n\n## 9. Writing and Appending Files\n\n### Writing a new file\n\n    with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as file:\n        file.write(\"Learning Python\\n\")\n        file.write(\"Practicing file handling\\n\")\n\nMode w creates the file if necessary and truncates an existing file. Use it carefully.\n\n### Appending content\n\n    with open(\"notes.txt\", \"a\", encoding=\"utf-8\") as file:\n        file.write(\"A new line was added.\\n\")\n\nAppend mode keeps the existing content and adds new data at the end.\n\n### Writing multiple lines\n\n    lines = [\n        \"Python\",\n        \"JavaScript\",\n        \"C++\"\n    ]\n\n    with open(\"languages.txt\", \"w\", encoding=\"utf-8\") as file:\n        for language in lines:\n            file.write(language + \"\\n\")\n\nYou can also use writelines(), but it does not automatically insert newline characters between the supplied strings.\n\n### Choosing the right mode\n\nUse r for reading, w for intentionally replacing content, a for adding content, and x for creating a file only if it does not already exist.\n\nDo not use w when you need to preserve existing information.\n\n---\n\n## 10. File Handling and Exceptions\n\nFile operations may fail because of missing files, permissions, invalid data, or unavailable storage.\n\n### Handling common errors\n\n    try:\n        with open(\"data.txt\", \"r\", encoding=\"utf-8\") as file:\n            content = file.read()\n\n    except FileNotFoundError:\n        print(\"File not found.\")\n\n    except PermissionError:\n        print(\"You do not have permission to read this file.\")\n\n    except OSError as error:\n        print(f\"File operation failed: {error}\")\n\n    else:\n        print(\"File read successfully.\")\n\nThe else block runs only if the try block completes without an exception.\n\n### The finally block\n\n    file_status = \"Not started\"\n\n    try:\n        file_status = \"Processing\"\n        print(\"Working with the file\")\n\n    except OSError:\n        print(\"An operating-system error occurred.\")\n\n    finally:\n        print(\"Cleanup or final reporting goes here.\")\n\nThe finally block executes whether the operation succeeds or fails, subject to normal Python execution rules.\n\nWhen using with open(), Python already handles closing the file, so manually closing it in finally is generally unnecessary.\n\n### Avoid silently hiding errors\n\nThis is poor practice:\n\n    try:\n        process_file()\n    except Exception:\n        pass\n\nIt hides unexpected failures and makes debugging difficult.\n\nCatch specific exceptions when possible and provide useful error messages or recovery behavior.\n\n---\n\n## 11. JSON — Structured Data Persistence\n\nJSON stands for JavaScript Object Notation. It is a text-based format for exchanging and storing structured data.\n\nPython's json module can serialize and deserialize supported values.\n\n### Python values and JSON values\n\n| Python | JSON |\n|---|---|\n| dict | object |\n| list | array |\n| str | string |\n| int and finite float | number |\n| True and False | true and false |\n| None | null |\n\nTuples are normally serialized as JSON arrays. JSON does not directly represent every Python object, such as sets or custom class instances.\n\n### Serializing data\n\n    import json\n\n    student = {\n        \"name\": \"Ali\",\n        \"age\": 18,\n        \"marks\": [85, 90, 78],\n        \"active\": True\n    }\n\n    json_text = json.dumps(student, indent=4)\n    print(json_text)\n\ndumps() converts a Python object into a JSON string.\n\n### Deserializing data\n\n    import json\n\n    json_text = '{\"name\": \"Ali\", \"age\": 18}'\n    student = json.loads(json_text)\n\n    print(student[\"name\"])\n\nloads() parses a JSON string and returns the corresponding Python object.\n\n### Saving JSON to a file\n\n    import json\n\n    student = {\n        \"name\": \"Sara\",\n        \"department\": \"Software Engineering\",\n        \"marks\": [90, 94, 88]\n    }\n\n    with open(\"student.json\", \"w\", encoding=\"utf-8\") as file:\n        json.dump(student, file, indent=4)\n\ndump() writes JSON directly to an open file.\n\n### Loading JSON from a file\n\n    import json\n\n    with open(\"student.json\", \"r\", encoding=\"utf-8\") as file:\n        student = json.load(file)\n\n    print(student[\"department\"])\n\nload() reads and parses JSON from a file.\n\n### Handling invalid JSON\n\n    import json\n\n    try:\n        with open(\"student.json\", \"r\", encoding=\"utf-8\") as file:\n            student = json.load(file)\n\n    except FileNotFoundError:\n        print(\"No saved student file was found.\")\n\n    except json.JSONDecodeError:\n        print(\"The saved file contains invalid JSON.\")\n\n### Important security rule\n\nNever treat untrusted serialized data as automatically safe.\n\nJSON parsing does not execute Python code, which makes it a safer choice than evaluating arbitrary input with eval(). Still validate the structure and values before using them in your application.\n\n---\n\n## 12. CSV — Tabular Data Files\n\nCSV stands for Comma-Separated Values. It is commonly used for spreadsheets, student reports, and data exchange.\n\nPython provides the csv module.\n\n### Writing CSV data\n\n    import csv\n\n    students = [\n        [\"ID\", \"Name\", \"Marks\"],\n        [\"SE001\", \"Ali\", 85],\n        [\"SE002\", \"Sara\", 94],\n        [\"SE003\", \"Ahmed\", 76]\n    ]\n\n    with open(\"students.csv\", \"w\", newline=\"\", encoding=\"utf-8\") as file:\n        writer = csv.writer(file)\n        writer.writerows(students)\n\nThe newline=\"\" argument helps the csv module handle line endings correctly.\n\n### Reading CSV data\n\n    import csv\n\n    with open(\"students.csv\", \"r\", newline=\"\", encoding=\"utf-8\") as file:\n        reader = csv.reader(file)\n\n        for row in reader:\n            print(row)\n\nCSV rows are typically returned as lists of strings. Convert values such as marks to numbers when needed.\n\n### Using dictionary-based CSV operations\n\n    import csv\n\n    students = [\n        {\"id\": \"SE001\", \"name\": \"Ali\", \"marks\": 85},\n        {\"id\": \"SE002\", \"name\": \"Sara\", \"marks\": 94}\n    ]\n\n    with open(\"students.csv\", \"w\", newline=\"\", encoding=\"utf-8\") as file:\n        fieldnames = [\"id\", \"name\", \"marks\"]\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n\n        writer.writeheader()\n        writer.writerows(students)\n\nDictionary-based CSV operations make column names easier to understand and maintain.\n\n### JSON or CSV?\n\nChoose JSON when the data has nested objects, lists, or hierarchical relationships.\n\nChoose CSV when the data is mainly tabular and needs to be exchanged with spreadsheets or analytical tools.\n\nNeither format is a substitute for a database when an application needs concurrent updates, complex queries, transactions, or strong multi-user consistency.\n\n---\n\n## 13. Working with File Metadata and Directories\n\npathlib provides methods for common filesystem operations.\n\n    from pathlib import Path\n\n    folder = Path(\"reports\")\n    folder.mkdir(exist_ok=True)\n\n    report = folder / \"summary.txt\"\n    report.write_text(\"Monthly report\", encoding=\"utf-8\")\n\n    print(report.exists())\n    print(report.stat().st_size)\n\n### Listing files\n\n    from pathlib import Path\n\n    for path in Path(\".\").iterdir():\n        print(path.name)\n\n### Finding matching files\n\n    from pathlib import Path\n\n    for path in Path(\".\").glob(\"*.txt\"):\n        print(path)\n\n### Deleting a file\n\n    from pathlib import Path\n\n    path = Path(\"temporary.txt\")\n\n    if path.is_file():\n        path.unlink()\n\nDeletion is destructive. Verify the path before removing files, especially when building automation scripts.\n\n---\n\n## 14. Text Encoding and Unicode\n\nPython strings represent Unicode text, while files store bytes.\n\nEncoding converts text into bytes when writing. Decoding converts bytes back into text when reading.\n\nUTF-8 is a widely used encoding for text files.\n\n    text = \"Python — programming made accessible\"\n\n    with open(\"unicode.txt\", \"w\", encoding=\"utf-8\") as file:\n        file.write(text)\n\n    with open(\"unicode.txt\", \"r\", encoding=\"utf-8\") as file:\n        restored = file.read()\n\n    print(restored)\n\nAlways use an explicit encoding for ordinary text files when portability matters.\n\nIf a file was created with a different encoding, reading it as UTF-8 may raise UnicodeDecodeError.\n\nDo not assume that one visible character always equals one byte. Some Unicode characters require multiple bytes in UTF-8.\n\n---\n\n## 15. Building a Persistent Contact Manager\n\nA useful real-world exercise is to build a contact manager that saves contacts to a JSON file.\n\nEach contact contains:\n\n- A unique contact ID.\n- A name.\n- An email address.\n- A phone number.\n\nRequired operations:\n\n1. Add a contact.\n2. Display all contacts.\n3. Search for a contact.\n4. Update a contact.\n5. Delete a contact.\n6. Save changes to JSON.\n7. Load saved contacts when the program starts.\n8. Handle missing or malformed files.\n9. Reject duplicate contact IDs.\n10. Validate input before saving.\n\nSuggested data structure:\n\n    contacts = {\n        \"C001\": {\n            \"name\": \"Ali\",\n            \"email\": \"ali@example.com\",\n            \"phone\": \"03001234567\"\n        }\n    }\n\nThe dictionary provides a convenient lookup by contact ID. JSON provides persistence between program runs.\n\n---\n\n## 16. Practical Exercises\n\n### Beginner\n\n1. Reverse a string without using a loop.\n2. Count how many times a character appears in a sentence.\n3. Convert a sentence to title case.\n4. Split a sentence into words and join them with hyphens.\n5. Create a text file and write five lines into it.\n\n### Intermediate\n\n6. Read a text file and count its lines, words, and characters.\n7. Replace every occurrence of a chosen word in a file.\n8. Write a list of dictionaries to JSON and load it again.\n9. Read student marks from a CSV file and calculate the average.\n10. Handle a missing file without crashing the application.\n\n### Advanced\n\n11. Build a basic log-file analyzer that counts error messages.\n12. Use regular expressions to extract order IDs from text.\n13. Build a JSON-backed contact manager.\n14. Process a large text file one line at a time.\n15. Create a backup copy before overwriting important data.\n\n---\n\n## 17. Professional Development Practices\n\n- Use UTF-8 for ordinary text files when appropriate.\n- Prefer pathlib for readable, cross-platform path handling.\n- Use with statements to manage files safely.\n- Choose file modes carefully to prevent accidental data loss.\n- Validate data before saving it.\n- Handle missing files and malformed JSON explicitly.\n- Do not assume user input is valid.\n- Avoid loading huge files into memory when streaming is sufficient.\n- Separate file operations from business logic.\n- Use JSON for suitable structured data and CSV for tabular records.\n- Protect sensitive information and restrict access to stored files.\n- Remember that local JSON storage does not provide database transactions or multi-user synchronization.\n\n---\n\n## 18. Module Summary\n\nYou have learned how to:\n\n- Manipulate and format strings.\n- Search and validate text using regular expressions.\n- Read and write files using context managers.\n- Handle file-related exceptions.\n- Work with filesystem paths.\n- Store structured information in JSON.\n- Exchange tabular information using CSV.\n- Understand text encoding and Unicode.\n- Build programs that retain data after they exit.\n\nNext module: **Module 8 — Object-Oriented Programming: Classes, Objects, Inheritance, Encapsulation & Polymorphism.**\n",
+      "codeExample": "import json\nimport re\nfrom pathlib import Path\n\nDATA_FILE = Path(\"contacts.json\")\n\n\ndef load_contacts():\n    if not DATA_FILE.exists():\n        return {}\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            contacts = json.load(file)\n\n        if not isinstance(contacts, dict):\n            raise ValueError(\"Contact data must be a JSON object.\")\n\n        return contacts\n\n    except json.JSONDecodeError:\n        print(\"Warning: Contacts file contains invalid JSON.\")\n        return {}\n\n    except OSError as error:\n        print(f\"Could not read contacts: {error}\")\n        return {}\n\n    except ValueError as error:\n        print(f\"Invalid contact data: {error}\")\n        return {}\n\n\ndef save_contacts(contacts):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(contacts, file, indent=4, ensure_ascii=False)\n\n        temporary_file.replace(DATA_FILE)\n        return True\n\n    except OSError as error:\n        print(f\"Could not save contacts: {error}\")\n\n        try:\n            if temporary_file.exists():\n                temporary_file.unlink()\n        except OSError:\n            pass\n\n        return False\n\n\ndef valid_email(email):\n    pattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"\n    return re.fullmatch(pattern, email) is not None\n\n\ndef add_contact(contacts):\n    contact_id = input(\"Contact ID: \").strip().upper()\n\n    if not contact_id:\n        print(\"Contact ID cannot be empty.\")\n        return\n\n    if contact_id in contacts:\n        print(\"That contact ID already exists.\")\n        return\n\n    name = input(\"Name: \").strip()\n    email = input(\"Email: \").strip()\n    phone = input(\"Phone: \").strip()\n\n    if not name:\n        print(\"Name cannot be empty.\")\n        return\n\n    if not valid_email(email):\n        print(\"Please enter a valid email format.\")\n        return\n\n    if not phone:\n        print(\"Phone cannot be empty.\")\n        return\n\n    contacts[contact_id] = {\n        \"name\": name,\n        \"email\": email,\n        \"phone\": phone\n    }\n\n    if save_contacts(contacts):\n        print(\"Contact added and saved.\")\n    else:\n        print(\"Contact was added in memory but could not be saved.\")\n\n\ndef display_contacts(contacts):\n    if not contacts:\n        print(\"No contacts available.\")\n        return\n\n    print(\"\\nCONTACT DIRECTORY\")\n    print(\"-\" * 45)\n\n    for contact_id, contact in sorted(contacts.items()):\n        print(f\"ID: {contact_id}\")\n        print(f\"Name: {contact.get('name', 'Unknown')}\")\n        print(f\"Email: {contact.get('email', 'Unknown')}\")\n        print(f\"Phone: {contact.get('phone', 'Unknown')}\")\n        print(\"-\" * 45)\n\n\ndef search_contact(contacts):\n    contact_id = input(\"Enter contact ID: \").strip().upper()\n    contact = contacts.get(contact_id)\n\n    if contact is None:\n        print(\"Contact not found.\")\n        return\n\n    print(f\"Name: {contact.get('name', 'Unknown')}\")\n    print(f\"Email: {contact.get('email', 'Unknown')}\")\n    print(f\"Phone: {contact.get('phone', 'Unknown')}\")\n\n\ndef update_contact(contacts):\n    contact_id = input(\"Contact ID to update: \").strip().upper()\n    contact = contacts.get(contact_id)\n\n    if contact is None:\n        print(\"Contact not found.\")\n        return\n\n    print(\"Press Enter to keep the existing value.\")\n\n    name = input(f\"Name [{contact.get('name', '')}]: \").strip()\n    email = input(f\"Email [{contact.get('email', '')}]: \").strip()\n    phone = input(f\"Phone [{contact.get('phone', '')}]: \").strip()\n\n    updated = dict(contact)\n\n    if name:\n        updated[\"name\"] = name\n\n    if email:\n        if not valid_email(email):\n            print(\"Invalid email. No changes saved.\")\n            return\n        updated[\"email\"] = email\n\n    if phone:\n        updated[\"phone\"] = phone\n\n    contacts[contact_id] = updated\n\n    if save_contacts(contacts):\n        print(\"Contact updated and saved.\")\n    else:\n        print(\"Changes exist in memory but could not be saved.\")\n\n\ndef delete_contact(contacts):\n    contact_id = input(\"Contact ID to delete: \").strip().upper()\n\n    if contact_id not in contacts:\n        print(\"Contact not found.\")\n        return\n\n    confirmation = input(\n        f\"Delete {contacts[contact_id].get('name', contact_id)}? (yes/no): \"\n    ).strip().lower()\n\n    if confirmation != \"yes\":\n        print(\"Deletion cancelled.\")\n        return\n\n    removed = contacts.pop(contact_id)\n\n    if save_contacts(contacts):\n        print(\"Contact deleted.\")\n    else:\n        contacts[contact_id] = removed\n        print(\"Could not save deletion; restored the contact in memory.\")\n\n\ndef main():\n    contacts = load_contacts()\n\n    while True:\n        print(\"\\n===== PYTHON CONTACT MANAGER =====\")\n        print(\"1. Add contact\")\n        print(\"2. Display contacts\")\n        print(\"3. Search contact\")\n        print(\"4. Update contact\")\n        print(\"5. Delete contact\")\n        print(\"6. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            add_contact(contacts)\n\n        elif choice == \"2\":\n            display_contacts(contacts)\n\n        elif choice == \"3\":\n            search_contact(contacts)\n\n        elif choice == \"4\":\n            update_contact(contacts)\n\n        elif choice == \"5\":\n            delete_contact(contacts)\n\n        elif choice == \"6\":\n            print(\"Goodbye!\")\n            break\n\n        else:\n            print(\"Invalid choice. Select an option from 1 to 6.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'Which collection is immutable?',
-          options: ['List', 'Tuple', 'Set', 'Dictionary'],
-          correctAnswer: 1
+          "question": "Which statement about Python strings is correct?",
+          "options": [
+            "Strings are mutable sequences.",
+            "Strings are immutable sequences of Unicode characters.",
+            "Strings cannot contain spaces.",
+            "Strings only support ASCII characters."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Strings in Python 3 are immutable sequences of Unicode code points."
         },
         {
-          question: 'Which list method adds an item to the end?',
-          options: ['append()', 'remove()', 'clear()', 'index()'],
-          correctAnswer: 0
+          "question": "What does the strip() method normally remove?",
+          "options": [
+            "Every space in the string",
+            "Only numbers",
+            "Whitespace from the beginning and end",
+            "All punctuation marks"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`str.strip()` removes leading and trailing whitespace characters (spaces, tabs, newlines) by default."
+        },
+        {
+          "question": "Which method returns all non-overlapping matches of a regular expression?",
+          "options": [
+            "re.findall()",
+            "re.replace()",
+            "re.matchall()",
+            "re.fullmatch()"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`re.findall(pattern, text)` scans the entire string and returns a list of all non-overlapping matches."
+        },
+        {
+          "question": "What is the main benefit of using with open(...) as file?",
+          "options": [
+            "It automatically encrypts the file.",
+            "It automatically closes the file when the context exits.",
+            "It prevents all possible file errors.",
+            "It always creates a backup."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Using `with open(...)` guarantees the file handle is closed automatically when the block exits, even if an exception occurs."
+        },
+        {
+          "question": "Which file mode truncates an existing file before writing?",
+          "options": [
+            "r",
+            "a",
+            "x",
+            "w"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Mode `\"w\"` opens a file for writing and truncates (erases) any existing content first."
+        },
+        {
+          "question": "Which JSON function converts a Python object into a JSON string?",
+          "options": [
+            "json.loads()",
+            "json.dump()",
+            "json.dumps()",
+            "json.load()"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`json.dumps(obj)` serializes a Python dict/list into a JSON-formatted string (think \"dump string\")."
+        },
+        {
+          "question": "Which JSON function reads and parses JSON directly from an open file?",
+          "options": [
+            "json.load()",
+            "json.loads()",
+            "json.dumps()",
+            "json.encode()"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`json.load(file_obj)` reads JSON directly from an open file stream and parses it into Python objects."
+        },
+        {
+          "question": "Why is newline=\"\" commonly used when opening CSV files?",
+          "options": [
+            "To encrypt each row",
+            "To let the csv module handle newline processing correctly",
+            "To convert every value into a number",
+            "To sort rows automatically"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Opening CSV files with `newline=\"\"` prevents extra blank lines on Windows and lets Python’s csv module handle line endings properly."
+        },
+        {
+          "question": "Which exception commonly indicates that a requested file does not exist?",
+          "options": [
+            "IndexError",
+            "KeyError",
+            "FileNotFoundError",
+            "ZeroDivisionError"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Attempting to open a nonexistent file in read mode raises `FileNotFoundError`."
+        },
+        {
+          "question": "Which format is generally better suited to nested objects and lists?",
+          "options": [
+            "Plain fixed-width text only",
+            "JSON",
+            "A filename",
+            "A regular expression"
+          ],
+          "correctAnswer": 1,
+          "explanation": "JSON natively represents nested objects and arrays, whereas flat CSV is designed for tabular rows."
         }
+      ],
+      "assignment": "Problem Statement:\nImplement a JSON-backed Notes & Expense Tracker CLI that persists records safely to disk using pathlib.Path and context managers (with open(...)), and exports a clean CSV report.\n\nObjectives:\n- Read and write UTF-8 JSON files safely using with open(..., encoding=\"utf-8\").\n- Handle missing data files gracefully on first run (FileNotFoundError -> return []).\n- Write CSV exports using csv.writer with newline=\"\".\n\nRequirements:\n1. Store records in a pathlib.Path(\"data/expenses.json\") file (auto-creating parent folder with .parent.mkdir(parents=True, exist_ok=True)).\n2. load_expenses(path) catches FileNotFoundError and empty/corrupt JSONDecodeError cleanly.\n3. save_expenses(path, items) uses json.dump(..., indent=2).\n4. export_csv(path, items) opens with newline=\"\" and encoding=\"utf-8\" and writes header + rows.\n\nStep-by-Step Instructions:\n1. Create expense_tracker.py using pathlib.Path, json, and csv.\n2. Add 3 sample expenses, save to JSON, reload from disk, and export to expenses.csv.\n\nDeliverables:\n- expense_tracker.py and sample generated expenses.json / expenses.csv.\n\nEvaluation Criteria:\n- Every file operation uses with open(...) context manager and explicit encoding=\"utf-8\".\n- CSV file opened with newline=\"\".",
+      "lessons": [
+        {
+          "title": "Module 7: Strings, Text Processing, File Handling & Data Persistence",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 7: Strings, Text Processing, File Handling & Data Persistence: Module 7: Strings, Text Processing, File Handling & Data Persistence.",
+          "objectives": [
+            "Master Module 7: Strings, Text Processing, File Handling & Data Persistence",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 7: Strings, Text Processing, File Handling & Data Persistence\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand strings and their immutable nature.\n- Extract, search, replace, split, and format text.\n- Validate and clean user-provided text.\n- Read and write text files safely.\n- Work with file paths and directories.\n- Handle file-related exceptions.\n- Store structured data using JSON.\n- Understand CSV files and process tabular information.\n- Use context managers to manage resources safely.\n- Build a practical contact manager with persistent storage.\n\n---\n\n## 2. Understanding Strings\n\nA string is a sequence of Unicode characters used to represent text.\n\n    name = \"Anas\"\n    message = 'Welcome to Python'\n    multiline = \"\"\"This is a\n    multiline string.\"\"\"\n\nSingle quotes, double quotes, and triple quotes can all create strings.\n\n### Escape characters\n\nEscape sequences represent special characters.\n\n- \\\\n creates a new line.\n- \\\\t creates a tab.\n- \\\\\" represents a double quote.\n- \\\\' represents a single quote.\n- \\\\\\\\ represents a backslash.\n\nExample:\n\n    message = \"Hello\\\\nWorld\"\n    print(message)\n\nOutput:\n\n    Hello\n    World\n\nA raw string treats most backslashes as literal characters, making it useful for Windows paths and regular expressions.\n\n    path = r\"C:\\\\Users\\\\Student\\\\Documents\"\n    print(path)\n\nRaw strings still have some restrictions, including the rule that a raw string literal cannot end with an odd number of backslashes.\n\n### String indexing\n\n    language = \"Python\"\n\n    print(language[0])    # P\n    print(language[2])    # t\n    print(language[-1])   # n\n\nStrings use zero-based indexing, just like lists.\n\nAccessing an index outside the valid range raises IndexError.\n\n### String slicing\n\n    language = \"Python\"\n\n    print(language[0:2])   # Py\n    print(language[2:])   # thon\n    print(language[:4])   # Pyth\n    print(language[::-1]) # nohtyP\n\nThe ending index is excluded.\n\nSlicing is useful for extracting names, identifiers, prefixes, suffixes, and other text segments.\n\n---\n\n## 3. String Immutability\n\nStrings are immutable. You cannot replace an individual character directly.\n\n    language = \"Python\"\n\n    # language[0] = \"J\"\n    # This raises TypeError\n\nInstead, create a new string:\n\n    language = \"Python\"\n    language = \"J\" + language[1:]\n\n    print(language)  # Jython\n\nMethods such as upper(), lower(), replace(), and strip() return new strings rather than changing the original string.\n\n    original = \"  Python  \"\n    cleaned = original.strip()\n\n    print(original)\n    print(cleaned)\n\nThis distinction is important when processing data because the result must be assigned if you want to keep it.\n\n---\n\n## 4. Essential String Methods\n\n### Changing letter case\n\n    text = \"Welcome to Python\"\n\n    print(text.upper())\n    print(text.lower())\n    print(text.title())\n    print(text.capitalize())\n    print(\"PyTHON\".casefold())\n\ncasefold() is designed for caseless text comparisons and can be more appropriate than lower() for international text.\n\n### Removing surrounding whitespace\n\n    text = \"   Anas Manzoor   \"\n\n    print(text.strip())\n    print(text.lstrip())\n    print(text.rstrip())\n\nstrip() removes whitespace from both ends, not from the middle.\n\n### Replacing text\n\n    sentence = \"I like Java\"\n    updated = sentence.replace(\"Java\", \"Python\")\n\n    print(updated)\n\nYou can limit the number of replacements:\n\n    text = \"one one one\"\n    print(text.replace(\"one\", \"two\", 2))\n\n### Splitting text\n\n    sentence = \"Python is easy to learn\"\n    words = sentence.split()\n\n    print(words)\n\nSplitting without an explicit separator groups text using whitespace.\n\nFor comma-separated text:\n\n    data = \"Ali,Sara,Ahmed\"\n    names = data.split(\",\")\n\n### Joining text\n\n    words = [\"Python\", \"is\", \"powerful\"]\n    sentence = \" \".join(words)\n\n    print(sentence)\n\njoin() places the chosen separator between strings.\n\n### Searching and checking text\n\n    message = \"Learn Python programming\"\n\n    print(message.find(\"Python\"))\n    print(message.count(\"n\"))\n    print(message.startswith(\"Learn\"))\n    print(message.endswith(\"programming\"))\n    print(\"Python\" in message)\n\nfind() returns -1 when a substring is absent. index() raises ValueError instead.\n\n### Character validation\n\n    print(\"12345\".isdigit())\n    print(\"Python\".isalpha())\n    print(\"Python123\".isalnum())\n    print(\"   \".isspace())\n\nThese methods can help with simple validation, but they do not replace complete input-validation rules.\n\nFor example, isdigit() recognizes some Unicode digit characters as well as ordinary ASCII digits.\n\n---\n\n## 5. Formatting Strings Professionally\n\n### F-strings\n\nF-strings are a readable way to insert values into text.\n\n    name = \"Anas\"\n    age = 18\n\n    message = f\"My name is {name} and I am {age}.\"\n    print(message)\n\nExpressions can be evaluated inside braces:\n\n    price = 1250\n    quantity = 3\n\n    print(f\"Total: {price * quantity}\")\n\n### Formatting decimal values\n\n    percentage = 87.4567\n\n    print(f\"Result: {percentage:.2f}%\")\n\nThe .2f format displays two digits after the decimal point.\n\n### Alignment and padding\n\n    name = \"Python\"\n\n    print(f\"{name:<15}\")\n    print(f\"{name:>15}\")\n    print(f\"{name:^15}\")\n\nThe symbols mean left alignment, right alignment, and center alignment.\n\n### Thousands separators\n\n    population = 1250000\n\n    print(f\"{population:,}\")\n\nThis displays a more readable number with thousands separators.\n\n### Escaping braces in f-strings\n\n    language = \"Python\"\n    print(f\"{{language}} = {language}\")\n\nDouble braces display literal braces.\n\n### When to use f-strings\n\nUse f-strings for readable messages, reports, summaries, and formatted output.\n\nAvoid building complicated data formats manually when a standard serialization format such as JSON is more appropriate.\n\n---\n\n## 6. Introduction to Regular Expressions\n\nRegular expressions, commonly called regex, help identify patterns in text.\n\nPython provides the re module.\n\n    import re\n\n### Finding a pattern\n\n    text = \"Contact us at support@example.com\"\n    pattern = r\"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}\"\n\n    match = re.search(pattern, text)\n\n    if match:\n        print(match.group())\n\nThis is a basic example of finding an email-like string. It is not a complete validator for every valid email address.\n\n### Important regex functions\n\n- re.search() finds the first match anywhere in the text.\n- re.match() checks for a match at the beginning.\n- re.fullmatch() requires the entire string to match.\n- re.findall() returns all non-overlapping matches.\n- re.sub() replaces matching text.\n- re.split() splits text using a pattern.\n\nExample:\n\n    import re\n\n    text = \"Order 102, Order 205, Order 318\"\n    numbers = re.findall(r\"\\\\d+\", text)\n\n    print(numbers)\n\n### Cleaning repeated whitespace\n\n    import re\n\n    text = \"Python     is\\\\n\\\\t powerful\"\n    cleaned = re.sub(r\"\\\\s+\", \" \", text).strip()\n\n    print(cleaned)\n\n### Validating a simple student ID\n\n    import re\n\n    student_id = \"SE2026001\"\n\n    if re.fullmatch(r\"SE\\\\d{7}\", student_id):\n        print(\"Valid student ID format\")\n    else:\n        print(\"Invalid student ID format\")\n\nThis pattern expects SE followed by exactly seven digits.\n\nRegular expressions should be selected according to the actual rules of the application.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Normalize `\"  Alice.Smith@Example.COM  \"` using `.strip().lower()` and extract digits from `\"Order #4829\"` with `re.findall(r\"\\d+\", text)`.\n\nExpected Result:\nPrints `\"alice.smith@example.com\"` and `[\"4829\"]`.",
+          "keyTakeaways": [
+            "Understand and apply Module 7: Strings, Text Processing, File Handling & Data Persistence",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "7. Working with File Paths",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 7: Strings, Text Processing, File Handling & Data Persistence: 7. Working with File Paths.",
+          "objectives": [
+            "Master 7. Working with File Paths",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 7. Working with File Paths\n\nFiles are commonly organized into directories and subdirectories.\n\nA file path identifies where a file is located.\n\nPython's pathlib module provides an object-oriented way to work with paths.\n\n    from pathlib import Path\n\n    current_folder = Path.cwd()\n    print(current_folder)\n\n### Creating paths\n\n    from pathlib import Path\n\n    data_folder = Path(\"data\")\n    file_path = data_folder / \"students.json\"\n\nThe slash operator joins path components correctly for the current operating system.\n\n### Creating directories\n\n    data_folder = Path(\"data\")\n    data_folder.mkdir(parents=True, exist_ok=True)\n\n- parents=True creates missing parent directories.\n- exist_ok=True avoids an error if the directory already exists.\n\n### Checking files\n\n    file_path = Path(\"students.json\")\n\n    print(file_path.exists())\n    print(file_path.is_file())\n    print(file_path.is_dir())\n\n### Absolute and relative paths\n\nA relative path is interpreted relative to the program's current working directory.\n\nAn absolute path identifies a location from the filesystem root or drive.\n\nAvoid assuming the current working directory will always be the folder containing your Python script. They can differ depending on how the program is launched.\n\n---\n\n## 8. Opening and Reading Text Files\n\nPython's built-in open() function opens files.\n\nThe most common modes are:\n\n- r: read an existing file.\n- w: write a file, replacing existing contents.\n- a: append to the end of a file.\n- x: create a new file and fail if it already exists.\n- b: binary mode.\n- t: text mode, which is the default.\n\n### Reading an entire file\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        content = file.read()\n\n    print(content)\n\nThe with statement ensures that the file is closed when the block exits, even if an exception occurs.\n\n### Reading lines\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        for line in file:\n            print(line.rstrip())\n\nIterating over the file is generally better than reading a very large file into memory all at once.\n\n### Reading a limited amount\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        first_part = file.read(100)\n\nThis reads up to 100 characters in text mode, not necessarily 100 bytes.\n\n### Reading all lines into a list\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        lines = file.readlines()\n\nThis is convenient for small files but can use considerable memory for large files.\n\n### What happens when a file is missing?\n\nOpening a nonexistent file in read mode raises FileNotFoundError.\n\nHandle this situation when a missing file is expected:\n\n    try:\n        with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n            content = file.read()\n    except FileNotFoundError:\n        print(\"The requested file does not exist.\")\n\n---\n\n## 9. Writing and Appending Files\n\n### Writing a new file\n\n    with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as file:\n        file.write(\"Learning Python\\n\")\n        file.write(\"Practicing file handling\\n\")\n\nMode w creates the file if necessary and truncates an existing file. Use it carefully.\n\n### Appending content\n\n    with open(\"notes.txt\", \"a\", encoding=\"utf-8\") as file:\n        file.write(\"A new line was added.\\n\")\n\nAppend mode keeps the existing content and adds new data at the end.\n\n### Writing multiple lines\n\n    lines = [\n        \"Python\",\n        \"JavaScript\",\n        \"C++\"\n    ]\n\n    with open(\"languages.txt\", \"w\", encoding=\"utf-8\") as file:\n        for language in lines:\n            file.write(language + \"\\n\")\n\nYou can also use writelines(), but it does not automatically insert newline characters between the supplied strings.\n\n### Choosing the right mode\n\nUse r for reading, w for intentionally replacing content, a for adding content, and x for creating a file only if it does not already exist.\n\nDo not use w when you need to preserve existing information.\n\n---\n\n## 10. File Handling and Exceptions\n\nFile operations may fail because of missing files, permissions, invalid data, or unavailable storage.\n\n### Handling common errors\n\n    try:\n        with open(\"data.txt\", \"r\", encoding=\"utf-8\") as file:\n            content = file.read()\n\n    except FileNotFoundError:\n        print(\"File not found.\")\n\n    except PermissionError:\n        print(\"You do not have permission to read this file.\")\n\n    except OSError as error:\n        print(f\"File operation failed: {error}\")\n\n    else:\n        print(\"File read successfully.\")\n\nThe else block runs only if the try block completes without an exception.\n\n### The finally block\n\n    file_status = \"Not started\"\n\n    try:\n        file_status = \"Processing\"\n        print(\"Working with the file\")\n\n    except OSError:\n        print(\"An operating-system error occurred.\")\n\n    finally:\n        print(\"Cleanup or final reporting goes here.\")\n\nThe finally block executes whether the operation succeeds or fails, subject to normal Python execution rules.\n\nWhen using with open(), Python already handles closing the file, so manually closing it in finally is generally unnecessary.\n\n### Avoid silently hiding errors\n\nThis is poor practice:\n\n    try:\n        process_file()\n    except Exception:\n        pass\n\nIt hides unexpected failures and makes debugging difficult.\n\nCatch specific exceptions when possible and provide useful error messages or recovery behavior.\n\n---\n\n## 11. JSON — Structured Data Persistence\n\nJSON stands for JavaScript Object Notation. It is a text-based format for exchanging and storing structured data.\n\nPython's json module can serialize and deserialize supported values.\n\n### Python values and JSON values\n\n| Python | JSON |\n|---|---|\n| dict | object |\n| list | array |\n| str | string |\n| int and finite float | number |\n| True and False | true and false |\n| None | null |\n\nTuples are normally serialized as JSON arrays. JSON does not directly represent every Python object, such as sets or custom class instances.\n\n### Serializing data\n\n    import json\n\n    student = {\n        \"name\": \"Ali\",\n        \"age\": 18,\n        \"marks\": [85, 90, 78],\n        \"active\": True\n    }\n\n    json_text = json.dumps(student, indent=4)\n    print(json_text)\n\ndumps() converts a Python object into a JSON string.\n\n### Deserializing data\n\n    import json\n\n    json_text = '{\"name\": \"Ali\", \"age\": 18}'\n    student = json.loads(json_text)\n\n    print(student[\"name\"])\n\nloads() parses a JSON string and returns the corresponding Python object.\n\n### Saving JSON to a file\n\n    import json\n\n    student = {\n        \"name\": \"Sara\",\n        \"department\": \"Software Engineering\",\n        \"marks\": [90, 94, 88]\n    }\n\n    with open(\"student.json\", \"w\", encoding=\"utf-8\") as file:\n        json.dump(student, file, indent=4)\n\ndump() writes JSON directly to an open file.\n\n### Loading JSON from a file\n\n    import json\n\n    with open(\"student.json\", \"r\", encoding=\"utf-8\") as file:\n        student = json.load(file)\n\n    print(student[\"department\"])\n\nload() reads and parses JSON from a file.\n\n### Handling invalid JSON\n\n    import json\n\n    try:\n        with open(\"student.json\", \"r\", encoding=\"utf-8\") as file:\n            student = json.load(file)\n\n    except FileNotFoundError:\n        print(\"No saved student file was found.\")\n\n    except json.JSONDecodeError:\n        print(\"The saved file contains invalid JSON.\")\n\n### Important security rule\n\nNever treat untrusted serialized data as automatically safe.\n\nJSON parsing does not execute Python code, which makes it a safer choice than evaluating arbitrary input with eval(). Still validate the structure and values before using them in your application.\n\n---\n\n## 12. CSV — Tabular Data Files\n\nCSV stands for Comma-Separated Values. It is commonly used for spreadsheets, student reports, and data exchange.\n\nPython provides the csv module.\n\n### Writing CSV data\n\n    import csv\n\n    students = [\n        [\"ID\", \"Name\", \"Marks\"],\n        [\"SE001\", \"Ali\", 85],\n        [\"SE002\", \"Sara\", 94],\n        [\"SE003\", \"Ahmed\", 76]\n    ]\n\n    with open(\"students.csv\", \"w\", newline=\"\", encoding=\"utf-8\") as file:\n        writer = csv.writer(file)\n        writer.writerows(students)\n\nThe newline=\"\" argument helps the csv module handle line endings correctly.\n\n### Reading CSV data\n\n    import csv\n\n    with open(\"students.csv\", \"r\", newline=\"\", encoding=\"utf-8\") as file:\n        reader = csv.reader(file)\n\n        for row in reader:\n            print(row)\n\nCSV rows are typically returned as lists of strings. Convert values such as marks to numbers when needed.\n\n### Using dictionary-based CSV operations\n\n    import csv\n\n    students = [\n        {\"id\": \"SE001\", \"name\": \"Ali\", \"marks\": 85},\n        {\"id\": \"SE002\", \"name\": \"Sara\", \"marks\": 94}\n    ]\n\n    with open(\"students.csv\", \"w\", newline=\"\", encoding=\"utf-8\") as file:\n        fieldnames = [\"id\", \"name\", \"marks\"]\n        writer = csv.DictWriter(file, fieldnames=fieldnames)\n\n        writer.writeheader()\n        writer.writerows(students)\n\nDictionary-based CSV operations make column names easier to understand and maintain.\n\n### JSON or CSV?\n\nChoose JSON when the data has nested objects, lists, or hierarchical relationships.\n\nChoose CSV when the data is mainly tabular and needs to be exchanged with spreadsheets or analytical tools.\n\nNeither format is a substitute for a database when an application needs concurrent updates, complex queries, transactions, or strong multi-user consistency.\n\n---\n\n## 13. Working with File Metadata and Directories\n\npathlib provides methods for common filesystem operations.\n\n    from pathlib import Path\n\n    folder = Path(\"reports\")\n    folder.mkdir(exist_ok=True)\n\n    report = folder / \"summary.txt\"\n    report.write_text(\"Monthly report\", encoding=\"utf-8\")\n\n    print(report.exists())\n    print(report.stat().st_size)\n\n### Listing files\n\n    from pathlib import Path\n\n    for path in Path(\".\").iterdir():\n        print(path.name)\n\n### Finding matching files\n\n    from pathlib import Path\n\n    for path in Path(\".\").glob(\"*.txt\"):\n        print(path)\n\n### Deleting a file\n\n    from pathlib import Path\n\n    path = Path(\"temporary.txt\")\n\n    if path.is_file():\n        path.unlink()\n\nDeletion is destructive. Verify the path before removing files, especially when building automation scripts.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Save a dict to `data.json` with `with open(..., \"w\", encoding=\"utf-8\")` + `json.dump()` and read it back with `json.load()`.\n2. Write 2 CSV rows using `newline=\"\"`.\n\nExpected Result:\nValid UTF-8 JSON and clean CSV without extra blank lines on Windows.",
+          "keyTakeaways": [
+            "Understand and apply 7. Working with File Paths",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "14. Text Encoding and Unicode",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 7: Strings, Text Processing, File Handling & Data Persistence: 14. Text Encoding and Unicode.",
+          "objectives": [
+            "Master 14. Text Encoding and Unicode",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 14. Text Encoding and Unicode\n\nPython strings represent Unicode text, while files store bytes.\n\nEncoding converts text into bytes when writing. Decoding converts bytes back into text when reading.\n\nUTF-8 is a widely used encoding for text files.\n\n    text = \"Python — programming made accessible\"\n\n    with open(\"unicode.txt\", \"w\", encoding=\"utf-8\") as file:\n        file.write(text)\n\n    with open(\"unicode.txt\", \"r\", encoding=\"utf-8\") as file:\n        restored = file.read()\n\n    print(restored)\n\nAlways use an explicit encoding for ordinary text files when portability matters.\n\nIf a file was created with a different encoding, reading it as UTF-8 may raise UnicodeDecodeError.\n\nDo not assume that one visible character always equals one byte. Some Unicode characters require multiple bytes in UTF-8.\n\n---\n\n## 15. Building a Persistent Contact Manager\n\nA useful real-world exercise is to build a contact manager that saves contacts to a JSON file.\n\nEach contact contains:\n\n- A unique contact ID.\n- A name.\n- An email address.\n- A phone number.\n\nRequired operations:\n\n1. Add a contact.\n2. Display all contacts.\n3. Search for a contact.\n4. Update a contact.\n5. Delete a contact.\n6. Save changes to JSON.\n7. Load saved contacts when the program starts.\n8. Handle missing or malformed files.\n9. Reject duplicate contact IDs.\n10. Validate input before saving.\n\nSuggested data structure:\n\n    contacts = {\n        \"C001\": {\n            \"name\": \"Ali\",\n            \"email\": \"ali@example.com\",\n            \"phone\": \"03001234567\"\n        }\n    }\n\nThe dictionary provides a convenient lookup by contact ID. JSON provides persistence between program runs.\n\n---\n\n## 16. Practical Exercises\n\n### Beginner\n\n1. Reverse a string without using a loop.\n2. Count how many times a character appears in a sentence.\n3. Convert a sentence to title case.\n4. Split a sentence into words and join them with hyphens.\n5. Create a text file and write five lines into it.\n\n### Intermediate\n\n6. Read a text file and count its lines, words, and characters.\n7. Replace every occurrence of a chosen word in a file.\n8. Write a list of dictionaries to JSON and load it again.\n9. Read student marks from a CSV file and calculate the average.\n10. Handle a missing file without crashing the application.\n\n### Advanced\n\n11. Build a basic log-file analyzer that counts error messages.\n12. Use regular expressions to extract order IDs from text.\n13. Build a JSON-backed contact manager.\n14. Process a large text file one line at a time.\n15. Create a backup copy before overwriting important data.\n\n---\n\n## 17. Professional Development Practices\n\n- Use UTF-8 for ordinary text files when appropriate.\n- Prefer pathlib for readable, cross-platform path handling.\n- Use with statements to manage files safely.\n- Choose file modes carefully to prevent accidental data loss.\n- Validate data before saving it.\n- Handle missing files and malformed JSON explicitly.\n- Do not assume user input is valid.\n- Avoid loading huge files into memory when streaming is sufficient.\n- Separate file operations from business logic.\n- Use JSON for suitable structured data and CSV for tabular records.\n- Protect sensitive information and restrict access to stored files.\n- Remember that local JSON storage does not provide database transactions or multi-user synchronization.\n\n---\n\n## 18. Module Summary\n\nYou have learned how to:\n\n- Manipulate and format strings.\n- Search and validate text using regular expressions.\n- Read and write files using context managers.\n- Handle file-related exceptions.\n- Work with filesystem paths.\n- Store structured information in JSON.\n- Exchange tabular information using CSV.\n- Understand text encoding and Unicode.\n- Build programs that retain data after they exit.\n\nNext module: **Module 8 — Object-Oriented Programming: Classes, Objects, Inheritance, Encapsulation & Polymorphism.**",
+          "codeExample": "import json\nimport re\nfrom pathlib import Path\n\nDATA_FILE = Path(\"contacts.json\")\n\n\ndef load_contacts():\n    if not DATA_FILE.exists():\n        return {}\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            contacts = json.load(file)\n\n        if not isinstance(contacts, dict):\n            raise ValueError(\"Contact data must be a JSON object.\")\n\n        return contacts\n\n    except json.JSONDecodeError:\n        print(\"Warning: Contacts file contains invalid JSON.\")\n        return {}\n\n    except OSError as error:\n        print(f\"Could not read contacts: {error}\")\n        return {}\n\n    except ValueError as error:\n        print(f\"Invalid contact data: {error}\")\n        return {}\n\n\ndef save_contacts(contacts):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(contacts, file, indent=4, ensure_ascii=False)\n\n        temporary_file.replace(DATA_FILE)\n        return True\n\n    except OSError as error:\n        print(f\"Could not save contacts: {error}\")\n\n        try:\n            if temporary_file.exists():\n                temporary_file.unlink()\n        except OSError:\n            pass\n\n        return False\n\n\ndef valid_email(email):\n    pattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"\n    return re.fullmatch(pattern, email) is not None\n\n\ndef add_contact(contacts):\n    contact_id = input(\"Contact ID: \").strip().upper()\n\n    if not contact_id:\n        print(\"Contact ID cannot be empty.\")\n        return\n\n    if contact_id in contacts:\n        print(\"That contact ID already exists.\")\n        return\n\n    name = input(\"Name: \").strip()\n    email = input(\"Email: \").strip()\n    phone = input(\"Phone: \").strip()\n\n    if not name:\n        print(\"Name cannot be empty.\")\n        return\n\n    if not valid_email(email):\n        print(\"Please enter a valid email format.\")\n        return\n\n    if not phone:\n        print(\"Phone cannot be empty.\")\n        return\n\n    contacts[contact_id] = {\n        \"name\": name,\n        \"email\": email,\n        \"phone\": phone\n    }\n\n    if save_contacts(contacts):\n        print(\"Contact added and saved.\")\n    else:\n        print(\"Contact was added in memory but could not be saved.\")\n\n\ndef display_contacts(contacts):\n    if not contacts:\n        print(\"No contacts available.\")\n        return\n\n    print(\"\\nCONTACT DIRECTORY\")\n    print(\"-\" * 45)\n\n    for contact_id, contact in sorted(contacts.items()):\n        print(f\"ID: {contact_id}\")\n        print(f\"Name: {contact.get('name', 'Unknown')}\")\n        print(f\"Email: {contact.get('email', 'Unknown')}\")\n        print(f\"Phone: {contact.get('phone', 'Unknown')}\")\n        print(\"-\" * 45)\n\n\ndef search_contact(contacts):\n    contact_id = input(\"Enter contact ID: \").strip().upper()\n    contact = contacts.get(contact_id)\n\n    if contact is None:\n        print(\"Contact not found.\")\n        return\n\n    print(f\"Name: {contact.get('name', 'Unknown')}\")\n    print(f\"Email: {contact.get('email', 'Unknown')}\")\n    print(f\"Phone: {contact.get('phone', 'Unknown')}\")\n\n\ndef update_contact(contacts):\n    contact_id = input(\"Contact ID to update: \").strip().upper()\n    contact = contacts.get(contact_id)\n\n    if contact is None:\n        print(\"Contact not found.\")\n        return\n\n    print(\"Press Enter to keep the existing value.\")\n\n    name = input(f\"Name [{contact.get('name', '')}]: \").strip()\n    email = input(f\"Email [{contact.get('email', '')}]: \").strip()\n    phone = input(f\"Phone [{contact.get('phone', '')}]: \").strip()\n\n    updated = dict(contact)\n\n    if name:\n        updated[\"name\"] = name\n\n    if email:\n        if not valid_email(email):\n            print(\"Invalid email. No changes saved.\")\n            return\n        updated[\"email\"] = email\n\n    if phone:\n        updated[\"phone\"] = phone\n\n    contacts[contact_id] = updated\n\n    if save_contacts(contacts):\n        print(\"Contact updated and saved.\")\n    else:\n        print(\"Changes exist in memory but could not be saved.\")\n\n\ndef delete_contact(contacts):\n    contact_id = input(\"Contact ID to delete: \").strip().upper()\n\n    if contact_id not in contacts:\n        print(\"Contact not found.\")\n        return\n\n    confirmation = input(\n        f\"Delete {contacts[contact_id].get('name', contact_id)}? (yes/no): \"\n    ).strip().lower()\n\n    if confirmation != \"yes\":\n        print(\"Deletion cancelled.\")\n        return\n\n    removed = contacts.pop(contact_id)\n\n    if save_contacts(contacts):\n        print(\"Contact deleted.\")\n    else:\n        contacts[contact_id] = removed\n        print(\"Could not save deletion; restored the contact in memory.\")\n\n\ndef main():\n    contacts = load_contacts()\n\n    while True:\n        print(\"\\n===== PYTHON CONTACT MANAGER =====\")\n        print(\"1. Add contact\")\n        print(\"2. Display contacts\")\n        print(\"3. Search contact\")\n        print(\"4. Update contact\")\n        print(\"5. Delete contact\")\n        print(\"6. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            add_contact(contacts)\n\n        elif choice == \"2\":\n            display_contacts(contacts)\n\n        elif choice == \"3\":\n            search_contact(contacts)\n\n        elif choice == \"4\":\n            update_contact(contacts)\n\n        elif choice == \"5\":\n            delete_contact(contacts)\n\n        elif choice == \"6\":\n            print(\"Goodbye!\")\n            break\n\n        else:\n            print(\"Invalid choice. Select an option from 1 to 6.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. Uses pathlib.Path(\"contacts.json\") and checks DATA_FILE.exists() before reading to avoid crashing on first run.\n2. Wraps JSON file reads/writes in `with open(..., encoding=\"utf-8\")` and uses `re` patterns for input validation.\n\nHow to Run & Expected Output:\nSave as `contacts.py` and run `python contacts.py`. Creates `contacts.json` safely on disk and reloads saved contacts cleanly on subsequent runs.",
+          "practiceExercise": "Guided Exercise:\n1. Run `contacts.py` twice: once when `contacts.json` does not exist yet, and once after adding a contact.\n\nExpected Result:\nFirst run initializes cleanly without `FileNotFoundError`; second run loads persisted contacts.",
+          "keyTakeaways": [
+            "Understand and apply 14. Text Encoding and Unicode",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 7: Strings, Text Processing, File Handling & Data Persistence",
+        "Apply Python best practices with clean, readable examples",
+        "Master 7. Working with File Paths",
+        "Master 14. Text Encoding and Unicode"
       ]
     },
     {
-      title: 'Module 8: Dictionaries and Sets',
-      duration: '3h 00m',
-      notes: `### Dictionaries
-Dictionaries store key-value pairs. Keys must be hashable, and values can be any type.
-
-### Useful dictionary methods
-- \`.get()\`: reads a value with an optional fallback.
-- \`.items()\`: returns key-value pairs.
-- \`.keys()\`: returns keys.
-- \`.values()\`: returns values.
-- \`.update()\`: updates entries.
-- \`.pop()\`: removes a key and returns its value.
-
-### Sets
-Sets store unique hashable values. They are useful for removing duplicates and checking membership.
-
-### Set operations
-- Union: \`a | b\`
-- Intersection: \`a & b\`
-- Difference: \`a - b\`
-- Symmetric difference: \`a ^ b\`
-
-### Practical applications
-Dictionaries are useful for records and configurations. Sets are useful for unique tags, permissions, and membership checks.`,
-      codeExample: `student = {
-    "name": "Anas",
-    "course": "Software Engineering",
-    "semester": 1
-}
-
-print(student.get("name"))
-print(student.get("email", "Not provided"))
-
-student["semester"] = 2
-
-for key, value in student.items():
-    print(f"{key}: {value}")
-
-python_topics = {"variables", "loops", "functions"}
-completed_topics = {"variables", "functions", "files"}
-
-print("Completed:", python_topics & completed_topics)
-print("Remaining:", python_topics - completed_topics)`,
-      quiz: [
+      "title": "Module 8: Object-Oriented Programming — Classes, Objects, Inheritance, Encapsulation & Polymorphism",
+      "duration": "6h 00m",
+      "notes": "\n# Module 8: Object-Oriented Programming (OOP) — Complete Masterclass\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand procedural programming versus object-oriented programming.\n- Create classes and instantiate objects.\n- Define constructors, instance attributes, and methods.\n- Understand self, class attributes, and instance attributes.\n- Implement inheritance and method overriding.\n- Apply encapsulation and abstraction.\n- Understand polymorphism and duck typing.\n- Use class methods, static methods, properties, and special methods.\n- Understand composition and inheritance trade-offs.\n- Design reusable classes with clear responsibilities.\n- Build a practical University Management System.\n\n---\n\n## 2. What Is Object-Oriented Programming?\n\nObject-Oriented Programming, or OOP, is a programming approach that organizes related data and behavior into objects.\n\nImagine a university application. Every student has information such as:\n\n- Student ID\n- Name\n- Department\n- Semester\n\nA student can also perform actions:\n\n- Display a profile.\n- Enroll in a course.\n- View academic information.\n\nOOP lets us group this data and behavior into a single structure.\n\n### Procedural approach\n\n    student_name = \"Ali\"\n    student_id = \"SE001\"\n    department = \"Software Engineering\"\n\n    def display_student(name, student_id, department):\n        print(name, student_id, department)\n\n    display_student(student_name, student_id, department)\n\nThis works, but managing many students may require passing multiple values to many functions.\n\n### Object-oriented approach\n\n    class Student:\n        def __init__(self, student_id, name, department):\n            self.student_id = student_id\n            self.name = name\n            self.department = department\n\n        def display_profile(self):\n            print(self.student_id, self.name, self.department)\n\n\n    student = Student(\"SE001\", \"Ali\", \"Software Engineering\")\n    student.display_profile()\n\nNow the information and related behavior belong to the Student object.\n\nOOP is especially useful when an application contains many related entities, although small programs do not always need classes.\n\n---\n\n## 3. Classes and Objects\n\nA class defines a structure and behavior. An object is an instance created from that class.\n\n    class Car:\n        def start(self):\n            print(\"The car has started.\")\n\n\n    car_one = Car()\n    car_two = Car()\n\n    car_one.start()\n    car_two.start()\n\nHere:\n\n- Car is the class.\n- car_one and car_two are separate instances.\n- start() is an instance method.\n- The dot operator accesses an object's attributes and methods.\n\nBoth objects use the same class definition, but they can maintain different instance data.\n\n### Adding attributes\n\n    class Car:\n        def __init__(self, brand, color):\n            self.brand = brand\n            self.color = color\n\n        def describe(self):\n            print(f\"{self.color} {self.brand}\")\n\n\n    first_car = Car(\"Toyota\", \"White\")\n    second_car = Car(\"Honda\", \"Black\")\n\n    first_car.describe()\n    second_car.describe()\n\nThe constructor receives the information needed to initialize each object.\n\n### Inspecting an object\n\n    print(first_car.brand)\n    print(second_car.color)\n    print(type(first_car))\n\ntype() can help identify an object's class during learning and debugging.\n\n---\n\n## 4. Understanding __init__ and self\n\n### What is __init__?\n\n__init__ is an initializer method. Python calls it after a new instance has been created.\n\n    class Student:\n        def __init__(self, name, age):\n            self.name = name\n            self.age = age\n\n\n    student = Student(\"Sara\", 19)\n\nThe arguments \"Sara\" and 19 are passed into the initializer.\n\nTechnically, __new__ is responsible for creating an instance, while __init__ initializes it.\n\n### What is self?\n\nself refers to the current instance in an instance method. It is the conventional name for the first parameter, although Python does not enforce that particular spelling.\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n        def introduce(self):\n            print(f\"My name is {self.name}\")\n\n\n    student = Student(\"Ali\")\n    student.introduce()\n\nWhen you call student.introduce(), Python supplies the instance as the first argument automatically.\n\nConceptually, the call behaves like:\n\n    Student.introduce(student)\n\nYou normally write student.introduce() rather than calling the method manually through the class.\n\n### Instance attributes\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n\n    student_one = Student(\"Ali\")\n    student_two = Student(\"Sara\")\n\n    print(student_one.name)\n    print(student_two.name)\n\nEach instance has its own name attribute.\n\n### Constructor validation\n\n    class Product:\n        def __init__(self, name, price):\n            if not name.strip():\n                raise ValueError(\"Product name cannot be empty.\")\n\n            if price < 0:\n                raise ValueError(\"Price cannot be negative.\")\n\n            self.name = name.strip()\n            self.price = price\n\n\n    product = Product(\"Keyboard\", 2500)\n\nValidation inside a constructor can help prevent invalid objects from being created.\n\nFor production systems, validation rules should also account for types and other domain-specific constraints.\n\n---\n\n## 5. Instance Attributes Versus Class Attributes\n\nAn instance attribute belongs to a particular object. A class attribute is defined on the class and can be shared by its instances.\n\n    class Student:\n        university = \"Example University\"\n\n        def __init__(self, name):\n            self.name = name\n\n\n    student_one = Student(\"Ali\")\n    student_two = Student(\"Sara\")\n\n    print(student_one.university)\n    print(student_two.university)\n\nBoth instances can access the class attribute.\n\n### Changing a class attribute\n\n    class Student:\n        university = \"Example University\"\n\n\n    student_one = Student()\n    student_two = Student()\n\n    Student.university = \"New University\"\n\n    print(student_one.university)\n    print(student_two.university)\n\nChanging the class attribute affects lookup for instances that do not shadow it with their own attribute.\n\n### Shadowing a class attribute\n\n    class Student:\n        university = \"Example University\"\n\n\n    student = Student()\n    student.university = \"Personal Setting\"\n\n    print(student.university)\n    print(Student.university)\n\nThe assignment creates an instance attribute. It does not replace the class attribute.\n\n### Common mistake: mutable class attributes\n\n    class Classroom:\n        students = []\n\n    first = Classroom()\n    second = Classroom()\n\n    first.students.append(\"Ali\")\n\n    print(second.students)\n\nBoth objects access the same shared list.\n\nThis is often a bug when each object should have independent data.\n\nPrefer:\n\n    class Classroom:\n        def __init__(self):\n            self.students = []\n\n\n    first = Classroom()\n    second = Classroom()\n\n    first.students.append(\"Ali\")\n\n    print(first.students)\n    print(second.students)\n\nUse class attributes for data genuinely shared by the class, not for per-instance mutable state.\n\n---\n\n## 6. Instance Methods, Class Methods, and Static Methods\n\nPython supports different method types for different responsibilities.\n\n### Instance methods\n\nInstance methods receive self and usually read or modify one instance.\n\n    class BankAccount:\n        def __init__(self, owner, balance=0):\n            self.owner = owner\n            self.balance = balance\n\n        def deposit(self, amount):\n            if amount <= 0:\n                raise ValueError(\"Amount must be positive.\")\n\n            self.balance += amount\n\n\n    account = BankAccount(\"Ali\", 1000)\n    account.deposit(500)\n\n### Class methods\n\nClass methods receive cls, which refers to the class.\n\nThey are useful for alternative constructors and operations involving class-level state.\n\n    class Student:\n        university = \"Example University\"\n\n        def __init__(self, name, student_id):\n            self.name = name\n            self.student_id = student_id\n\n        @classmethod\n        def from_record(cls, record):\n            return cls(record[\"name\"], record[\"student_id\"])\n\n\n    record = {\n        \"name\": \"Sara\",\n        \"student_id\": \"SE002\"\n    }\n\n    student = Student.from_record(record)\n\nThe @classmethod decorator tells Python to bind the class as the first argument.\n\n### Static methods\n\nA static method does not automatically receive self or cls.\n\nIt is useful when a function is closely related to a class but does not need instance or class state.\n\n    class GradeCalculator:\n        @staticmethod\n        def is_passing(mark):\n            return mark >= 50\n\n\n    print(GradeCalculator.is_passing(75))\n    print(GradeCalculator.is_passing(35))\n\n### Choosing the right method\n\n- Use an instance method when the operation needs a particular object's state.\n- Use a class method when the operation needs class-level behavior or creates instances through an alternative constructor.\n- Use a static method for related utility logic that needs neither the instance nor the class itself.\n\nDo not use decorators merely because they exist. Choose the simplest method type that matches the responsibility.\n\n---\n\n## 7. Encapsulation and Access Conventions\n\nEncapsulation means keeping data and the operations that manage it together while controlling how internal state is accessed or changed.\n\nPython uses naming conventions rather than Java-style strict private fields.\n\n### Public attributes\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n\n    student = Student(\"Ali\")\n    print(student.name)\n\nPublic attributes are intended for normal access by other code.\n\n### Non-public convention: one underscore\n\n    class Student:\n        def __init__(self, name):\n            self._name = name\n\nA leading underscore indicates that an attribute is intended for internal use.\n\nIt does not prevent external code from accessing it.\n\n### Name mangling: two leading underscores\n\n    class Student:\n        def __init__(self, name):\n            self.__name = name\n\n\n    student = Student(\"Ali\")\n\nPython transforms the attribute name internally to reduce accidental name clashes in subclasses.\n\nThis is called name mangling. It is not a security boundary, and it should not be used to protect secrets.\n\n### Using properties\n\nProperties provide a convenient attribute-style interface while allowing validation.\n\n    class BankAccount:\n        def __init__(self, balance=0):\n            self.balance = balance\n\n        @property\n        def balance(self):\n            return self._balance\n\n        @balance.setter\n        def balance(self, amount):\n            if amount < 0:\n                raise ValueError(\"Balance cannot be negative.\")\n\n            self._balance = amount\n\n\n    account = BankAccount(1000)\n    print(account.balance)\n\n    account.balance = 1500\n\n    # account.balance = -100\n    # Raises ValueError\n\nThe property setter controls assignments made through account.balance.\n\n### Why encapsulation matters\n\n- It centralizes validation.\n- It prevents accidental invalid state changes through the intended interface.\n- It makes implementation details easier to change.\n- It clarifies how other code should interact with an object.\n\nIn real applications, sensitive operations must also be protected by appropriate authentication, authorization, and system-level controls. Properties alone are not a security system.\n\n---\n\n## 8. Inheritance\n\nInheritance lets a class reuse and extend behavior from another class.\n\nThe class being inherited from is commonly called the parent or base class. The class that inherits is called the child or derived class.\n\n### Basic inheritance\n\n    class Person:\n        def __init__(self, name):\n            self.name = name\n\n        def introduce(self):\n            print(f\"My name is {self.name}\")\n\n\n    class Student(Person):\n        def study(self):\n            print(f\"{self.name} is studying.\")\n\n\n    student = Student(\"Ali\")\n\n    student.introduce()\n    student.study()\n\nStudent inherits the initializer and introduce() method from Person.\n\n### Overriding methods\n\nA child class can provide its own implementation of an inherited method.\n\n    class Person:\n        def role(self):\n            return \"Person\"\n\n\n    class Student(Person):\n        def role(self):\n            return \"Student\"\n\n\n    student = Student()\n    print(student.role())\n\nStudent's method overrides the inherited implementation.\n\n### Using super()\n\nsuper() allows a subclass to call an implementation from its parent according to Python's method resolution order.\n\n    class Person:\n        def __init__(self, name):\n            self.name = name\n\n\n    class Student(Person):\n        def __init__(self, name, student_id):\n            super().__init__(name)\n            self.student_id = student_id\n\n\n    student = Student(\"Sara\", \"SE002\")\n\nThis avoids repeating the parent class's initialization logic.\n\n### Extending parent behavior\n\n    class Person:\n        def introduce(self):\n            print(\"I am a member of the university.\")\n\n\n    class Student(Person):\n        def introduce(self):\n            super().introduce()\n            print(\"I am a student.\")\n\n\n    student = Student()\n    student.introduce()\n\nThe subclass extends the parent's behavior rather than replacing it completely.\n\n### When to use inheritance\n\nUse inheritance when a child genuinely is a specialized form of its parent.\n\nFor example:\n\n- Student is a Person.\n- Instructor is a Person.\n- A savings account is a type of bank account.\n\nDo not use inheritance only to reuse a few lines of code. Composition may be a better choice when one object simply uses another object.\n\n---\n\n## 9. Multiple Inheritance and Method Resolution Order\n\nPython supports multiple inheritance, where a class inherits from more than one base class.\n\n    class Printable:\n        def print_info(self):\n            print(\"Printing information.\")\n\n\n    class Exportable:\n        def export_info(self):\n            print(\"Exporting information.\")\n\n\n    class Report(Printable, Exportable):\n        pass\n\n\n    report = Report()\n    report.print_info()\n    report.export_info()\n\nReport inherits behavior from both base classes.\n\n### Method Resolution Order (MRO)\n\nWhen multiple classes define the same method, Python follows a method resolution order to decide which implementation is found first.\n\n    class A:\n        def message(self):\n            print(\"A\")\n\n\n    class B(A):\n        def message(self):\n            print(\"B\")\n\n\n    class C(A):\n        def message(self):\n            print(\"C\")\n\n\n    class D(B, C):\n        pass\n\n\n    item = D()\n    item.message()\n\nYou can inspect the order with:\n\n    print(D.mro())\n\nPython uses the C3 method resolution order. Cooperative multiple inheritance often relies on classes calling super() consistently.\n\nFor beginners, single inheritance and small, clearly separated mixins are usually easier to reason about than complex inheritance trees.\n\n---\n\n## 10. Polymorphism\n\nPolymorphism means that different objects can respond to the same operation in different ways.\n\n### Method overriding\n\n    class Student:\n        def get_role(self):\n            return \"Student\"\n\n\n    class Instructor:\n        def get_role(self):\n            return \"Instructor\"\n\n\n    people = [Student(), Instructor()]\n\n    for person in people:\n        print(person.get_role())\n\nThe same method call produces different results depending on the object.\n\n### Duck typing\n\nPython often cares about what an object can do rather than requiring it to belong to a specific class.\n\n    class PDFReport:\n        def export(self):\n            print(\"Exporting PDF\")\n\n\n    class CSVReport:\n        def export(self):\n            print(\"Exporting CSV\")\n\n\n    def export_report(report):\n        report.export()\n\n\n    export_report(PDFReport())\n    export_report(CSVReport())\n\nBoth objects work because they provide the expected export() method.\n\n### Operator overloading\n\nPython classes can define special methods to customize how operators behave.\n\n    class Vector:\n        def __init__(self, x, y):\n            self.x = x\n            self.y = y\n\n        def __add__(self, other):\n            if not isinstance(other, Vector):\n                return NotImplemented\n\n            return Vector(self.x + other.x, self.y + other.y)\n\n        def __repr__(self):\n            return f\"Vector({self.x}, {self.y})\"\n\n\n    first = Vector(2, 3)\n    second = Vector(4, 5)\n\n    print(first + second)\n\nThe + operator invokes the class's addition behavior through __add__.\n\nReturn NotImplemented for unsupported operand types when appropriate, allowing Python to try other supported operations.\n\n---\n\n## 11. Abstraction and Abstract Base Classes\n\nAbstraction exposes what an object can do while hiding unnecessary implementation details.\n\nPython's abc module supports formal abstract base classes.\n\n    from abc import ABC, abstractmethod\n\n\n    class PaymentMethod(ABC):\n        @abstractmethod\n        def pay(self, amount):\n            pass\n\n\n    class CardPayment(PaymentMethod):\n        def pay(self, amount):\n            print(f\"Processing card payment: {amount}\")\n\n\n    class BankTransfer(PaymentMethod):\n        def pay(self, amount):\n            print(f\"Processing bank transfer: {amount}\")\n\n\n    payment = CardPayment()\n    payment.pay(500)\n\nA class with unimplemented abstract methods cannot normally be instantiated.\n\nConcrete subclasses must implement the required abstract methods before they can be instantiated.\n\n### Why abstraction is useful\n\nImagine an online store that supports several payment methods.\n\nThe checkout process can call pay() without needing to know every implementation detail of card payments or bank transfers.\n\nThis makes it easier to add new payment methods without rewriting the entire checkout workflow.\n\nAn abstract class defines an interface-like contract, but it does not automatically provide security, payment processing, or external integrations.\n\n---\n\n## 12. Composition — Building Objects from Other Objects\n\nComposition means one object contains or uses other objects.\n\nInstead of making every relationship an inheritance relationship, build larger systems by combining smaller components.\n\n    class Engine:\n        def start(self):\n            print(\"Engine started.\")\n\n\n    class Car:\n        def __init__(self, engine):\n            self.engine = engine\n\n        def start(self):\n            self.engine.start()\n            print(\"Car is ready.\")\n\n\n    engine = Engine()\n    car = Car(engine)\n\n    car.start()\n\nA Car has an Engine. A Car is not an Engine, so composition expresses the relationship more naturally than inheritance.\n\n### Composition versus inheritance\n\nUse inheritance for an \"is-a\" relationship.\n\nUse composition for a \"has-a\" or \"uses-a\" relationship.\n\nExamples:\n\n- Student is a Person: inheritance may be suitable.\n- Car has an Engine: composition is suitable.\n- University has Departments: composition can model the relationship.\n- Course uses a GradeCalculator: composition or a simple function may be suitable.\n\nPrefer the simplest design that clearly represents the domain.\n\n---\n\n## 13. Special Methods and Object Representation\n\nSpecial methods, often called dunder methods, use double underscores at both ends.\n\nExamples include:\n\n- __init__: initialize an instance.\n- __str__: provide a user-friendly string representation.\n- __repr__: provide a developer-oriented representation.\n- __len__: support len(object).\n- __eq__: define equality behavior.\n- __add__: customize addition.\n- __iter__: support iteration.\n\n### __str__ and __repr__\n\n    class Student:\n        def __init__(self, name, student_id):\n            self.name = name\n            self.student_id = student_id\n\n        def __str__(self):\n            return f\"{self.name} ({self.student_id})\"\n\n        def __repr__(self):\n            return (\n                f\"Student(name={self.name!r}, \"\n                f\"student_id={self.student_id!r})\"\n            )\n\n\n    student = Student(\"Ali\", \"SE001\")\n\n    print(str(student))\n    print(repr(student))\n\n__str__ is intended to be readable for users. __repr__ should provide a useful representation for debugging.\n\n### Equality with __eq__\n\nBy default, custom objects generally compare using identity unless equality behavior is customized.\n\n    class Product:\n        def __init__(self, product_id):\n            self.product_id = product_id\n\n        def __eq__(self, other):\n            if not isinstance(other, Product):\n                return NotImplemented\n\n            return self.product_id == other.product_id\n\n\n    first = Product(\"P001\")\n    second = Product(\"P001\")\n\n    print(first == second)\n\nHere equality is based on product ID rather than whether the objects are the same instance.\n\nIf you define custom equality for objects intended to be hashable, carefully consider the corresponding __hash__ behavior as well.\n\n---\n\n## 14. Dataclasses for Data-Focused Classes\n\nThe dataclasses module can generate common class methods automatically.\n\n    from dataclasses import dataclass\n\n\n    @dataclass\n    class Student:\n        student_id: str\n        name: str\n        semester: int\n\n\n    student = Student(\"SE001\", \"Ali\", 1)\n\n    print(student)\n    print(student.name)\n\nDataclasses commonly generate an initializer, representation, and equality behavior.\n\n### Immutable dataclasses\n\n    from dataclasses import dataclass\n\n\n    @dataclass(frozen=True)\n    class Coordinates:\n        x: float\n        y: float\n\n\n    point = Coordinates(10.5, 20.5)\n\nA frozen dataclass prevents ordinary reassignment of its fields. It does not guarantee deep immutability if a field refers to a mutable object.\n\n### When to use dataclasses\n\nDataclasses are useful for:\n\n- Student records.\n- Configuration objects.\n- Simple domain models.\n- Data-transfer objects.\n- Values with a clear set of fields.\n\nFor complex business behavior, normal classes may offer a clearer design.\n\n---\n\n## 15. Type Hints and OOP Design\n\nType hints document the kinds of values a class expects.\n\n    class Product:\n        def __init__(self, name: str, price: float) -> None:\n            self.name = name\n            self.price = price\n\n        def discounted_price(self, percentage: float) -> float:\n            return self.price * (1 - percentage / 100)\n\n\n    product = Product(\"Keyboard\", 2500.0)\n    print(product.discounted_price(10))\n\nType hints help editors and static analysis tools. Python does not automatically enforce every annotation at runtime.\n\nFor stronger runtime validation, implement explicit checks or use an appropriate validation library.\n\n### Single responsibility\n\nA class should have a clear purpose.\n\nFor example, a Student class should represent student-related data and behavior. File persistence, email delivery, and report generation may be better placed in separate components when the application grows.\n\nSeparating responsibilities makes testing and maintenance easier.\n\n---\n\n## 16. Common OOP Mistakes\n\n### Mistake 1: Forgetting self\n\nIncorrect:\n\n    class Student:\n        def introduce():\n            print(\"Hello\")\n\nCalling introduce() through an instance normally supplies the instance, causing an argument mismatch.\n\nCorrect:\n\n    class Student:\n        def introduce(self):\n            print(\"Hello\")\n\n### Mistake 2: Confusing class and instance attributes\n\nA mutable list declared directly in a class body is shared unless overridden. Initialize per-instance lists inside __init__.\n\n### Mistake 3: Overusing inheritance\n\nNot every shared feature needs a parent class. Functions, composition, and small utility objects may be simpler.\n\n### Mistake 4: Modifying internal state without validation\n\nIf an account balance or student mark has constraints, enforce those constraints through the intended public interface.\n\n### Mistake 5: Making one enormous class\n\nA class that manages students, sends emails, saves files, calculates grades, and handles menus has too many responsibilities.\n\nSplit complex applications into focused components.\n\n### Mistake 6: Assuming double underscores make data secure\n\nName mangling prevents some accidental naming conflicts; it is not access control or encryption.\n\n### Mistake 7: Ignoring equality and hashing\n\nIf objects are used as dictionary keys or set elements, their equality and hash behavior must be compatible.\n\n---\n\n## 17. Practical Exercises\n\n### Beginner\n\n1. Create a Student class with name, student ID, and department.\n2. Add a method that displays a student profile.\n3. Create a BankAccount class with deposit and withdrawal methods.\n4. Add a class attribute representing a university name.\n5. Create a Product class that validates its name and price.\n\n### Intermediate\n\n6. Create a Person base class and Student and Instructor subclasses.\n7. Override a method in each subclass to display its role.\n8. Use a class method to create a student from a dictionary.\n9. Create a property that prevents a product price from becoming negative.\n10. Implement __str__ for a Course class.\n\n### Advanced\n\n11. Build an abstract notification interface with email and SMS implementations.\n12. Implement a Vector class with __add__ and __repr__.\n13. Create a Course class that manages enrolled student IDs.\n14. Use composition to build a university containing departments.\n15. Design and test a small application with separate model and service classes.\n\n---\n\n## 18. Mini Project: University Management System\n\nBuild a command-line university management system using OOP.\n\n### Required classes\n\nPerson:\n- name\n- email\n- a method to display basic information\n\nStudent:\n- inherits from Person\n- student ID\n- department\n- semester\n- enrolled course IDs\n\nInstructor:\n- inherits from Person\n- instructor ID\n- department\n- assigned course IDs\n\nCourse:\n- course ID\n- title\n- instructor ID\n- enrolled student IDs\n\nUniversity:\n- stores student, instructor, and course records\n- registers students\n- registers instructors\n- creates courses\n- enrolls students\n- assigns instructors\n- displays records and summaries\n\n### Required functionality\n\n1. Add a student.\n2. Add an instructor.\n3. Create a course.\n4. Enroll a student in a course.\n5. Assign an instructor to a course.\n6. Search for a student or course.\n7. Display course enrollment.\n8. Prevent duplicate IDs.\n9. Validate missing records and invalid input.\n10. Separate entity classes from management operations.\n\n### Design requirements\n\n- Use inheritance for Person, Student, and Instructor.\n- Use encapsulation conventions and validation.\n- Use composition to let University manage its entities.\n- Use polymorphism where different entity types share an operation.\n- Use type hints where they improve clarity.\n- Keep methods focused and readable.\n\n### Extension challenge\n\nAdd JSON persistence from Module 7 so that students, instructors, and courses remain available after the program exits.\n\nFor this extension, convert objects into JSON-compatible dictionaries and reconstruct the objects when loading data. Do not try to serialize arbitrary Python objects directly without designing a safe and deliberate format.\n\n---\n\n## 19. Professional OOP Checklist\n\nBefore considering a class design complete, ask:\n\n- Does the class have one clear responsibility?\n- Are instance attributes initialized correctly?\n- Are shared attributes genuinely intended to be shared?\n- Are invalid values rejected appropriately?\n- Is inheritance expressing a real specialization?\n- Would composition be simpler?\n- Are public methods easy to understand?\n- Are special methods implemented only when needed?\n- Can the class be tested independently?\n- Are type hints accurate?\n- Are sensitive operations protected outside the class where necessary?\n- Can the design be extended without rewriting unrelated code?\n\n---\n\n## 20. Module Summary\n\nIn this module, you learned:\n\n- Classes define structures and behavior; objects are their instances.\n- __init__ initializes objects and self refers to the current instance.\n- Class and instance attributes have different purposes.\n- Instance, class, and static methods serve different roles.\n- Encapsulation organizes access to object state.\n- Inheritance supports specialization and method overriding.\n- Polymorphism allows different objects to support the same interface.\n- Abstract base classes define required behavior.\n- Composition combines objects into larger systems.\n- Special methods customize standard Python operations.\n- Dataclasses reduce boilerplate for data-focused models.\n- Good OOP design emphasizes clear responsibilities and testability.\n\nNext module: **Module 9 — Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming.**\n",
+      "codeExample": "from dataclasses import dataclass, field\n\n\n@dataclass\nclass Person:\n    name: str\n    email: str\n\n    def __post_init__(self):\n        self.name = self.name.strip()\n        self.email = self.email.strip()\n\n        if not self.name:\n            raise ValueError(\"Name cannot be empty.\")\n\n        if \"@\" not in self.email:\n            raise ValueError(\"Email must contain @.\")\n\n    def display_info(self):\n        print(f\"Name: {self.name}\")\n        print(f\"Email: {self.email}\")\n\n\n@dataclass\nclass Student(Person):\n    student_id: str\n    department: str\n    semester: int = 1\n    enrolled_courses: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        super().__post_init__()\n        self.student_id = self.student_id.strip().upper()\n        self.department = self.department.strip()\n\n        if not self.student_id:\n            raise ValueError(\"Student ID cannot be empty.\")\n\n        if not self.department:\n            raise ValueError(\"Department cannot be empty.\")\n\n        if self.semester < 1:\n            raise ValueError(\"Semester must be at least 1.\")\n\n    def enroll(self, course_id):\n        course_id = course_id.strip().upper()\n\n        if not course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if course_id not in self.enrolled_courses:\n            self.enrolled_courses.append(course_id)\n\n    def display_info(self):\n        super().display_info()\n        print(f\"Student ID: {self.student_id}\")\n        print(f\"Department: {self.department}\")\n        print(f\"Semester: {self.semester}\")\n        print(f\"Courses: {self.enrolled_courses or 'None'}\")\n\n\n@dataclass\nclass Instructor(Person):\n    instructor_id: str\n    department: str\n    assigned_courses: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        super().__post_init__()\n        self.instructor_id = self.instructor_id.strip().upper()\n        self.department = self.department.strip()\n\n        if not self.instructor_id:\n            raise ValueError(\"Instructor ID cannot be empty.\")\n\n        if not self.department:\n            raise ValueError(\"Department cannot be empty.\")\n\n    def assign_course(self, course_id):\n        course_id = course_id.strip().upper()\n\n        if not course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if course_id not in self.assigned_courses:\n            self.assigned_courses.append(course_id)\n\n    def display_info(self):\n        super().display_info()\n        print(f\"Instructor ID: {self.instructor_id}\")\n        print(f\"Department: {self.department}\")\n        print(f\"Assigned courses: {self.assigned_courses or 'None'}\")\n\n\n@dataclass\nclass Course:\n    course_id: str\n    title: str\n    instructor_id: str | None = None\n    enrolled_student_ids: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        self.course_id = self.course_id.strip().upper()\n        self.title = self.title.strip()\n\n        if not self.course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if not self.title:\n            raise ValueError(\"Course title cannot be empty.\")\n\n    def enroll_student(self, student_id):\n        if student_id not in self.enrolled_student_ids:\n            self.enrolled_student_ids.append(student_id)\n\n    def display_info(self):\n        print(f\"Course ID: {self.course_id}\")\n        print(f\"Title: {self.title}\")\n        print(f\"Instructor: {self.instructor_id or 'Not assigned'}\")\n        print(f\"Students: {self.enrolled_student_ids or 'None'}\")\n\n\nclass University:\n    def __init__(self, name):\n        self.name = name.strip()\n\n        if not self.name:\n            raise ValueError(\"University name cannot be empty.\")\n\n        self.students: dict[str, Student] = {}\n        self.instructors: dict[str, Instructor] = {}\n        self.courses: dict[str, Course] = {}\n\n    def add_student(self, student):\n        if student.student_id in self.students:\n            raise ValueError(\"Student ID already exists.\")\n\n        self.students[student.student_id] = student\n\n    def add_instructor(self, instructor):\n        if instructor.instructor_id in self.instructors:\n            raise ValueError(\"Instructor ID already exists.\")\n\n        self.instructors[instructor.instructor_id] = instructor\n\n    def add_course(self, course):\n        if course.course_id in self.courses:\n            raise ValueError(\"Course ID already exists.\")\n\n        self.courses[course.course_id] = course\n\n    def enroll_student(self, student_id, course_id):\n        student_id = student_id.strip().upper()\n        course_id = course_id.strip().upper()\n\n        student = self.students.get(student_id)\n        course = self.courses.get(course_id)\n\n        if student is None:\n            raise ValueError(\"Student not found.\")\n\n        if course is None:\n            raise ValueError(\"Course not found.\")\n\n        student.enroll(course_id)\n        course.enroll_student(student_id)\n\n    def assign_instructor(self, instructor_id, course_id):\n        instructor_id = instructor_id.strip().upper()\n        course_id = course_id.strip().upper()\n\n        instructor = self.instructors.get(instructor_id)\n        course = self.courses.get(course_id)\n\n        if instructor is None:\n            raise ValueError(\"Instructor not found.\")\n\n        if course is None:\n            raise ValueError(\"Course not found.\")\n\n        if course.instructor_id is not None:\n            previous = self.instructors.get(course.instructor_id)\n            if previous is not None:\n                previous.assigned_courses.remove(course_id)\n\n        course.instructor_id = instructor_id\n        instructor.assign_course(course_id)\n\n    def search_student(self, student_id):\n        return self.students.get(student_id.strip().upper())\n\n    def display_all_people(self):\n        print(f\"\\n===== {self.name.upper()} =====\")\n\n        people = list(self.students.values())\n        people.extend(self.instructors.values())\n\n        if not people:\n            print(\"No people registered.\")\n            return\n\n        for person in people:\n            print(\"\\n\" + \"-\" * 35)\n            person.display_info()\n\n    def display_courses(self):\n        if not self.courses:\n            print(\"No courses created.\")\n            return\n\n        for course in self.courses.values():\n            print(\"\\n\" + \"-\" * 35)\n            course.display_info()\n\n\ndef create_demo_university():\n    university = University(\"Example University\")\n\n    student_one = Student(\n        name=\"Ali\",\n        email=\"ali@example.com\",\n        student_id=\"SE001\",\n        department=\"Software Engineering\",\n        semester=1\n    )\n\n    student_two = Student(\n        name=\"Sara\",\n        email=\"sara@example.com\",\n        student_id=\"SE002\",\n        department=\"Software Engineering\",\n        semester=1\n    )\n\n    instructor = Instructor(\n        name=\"Dr. Ahmed\",\n        email=\"ahmed@example.com\",\n        instructor_id=\"INS001\",\n        department=\"Computer Science\"\n    )\n\n    course = Course(\n        course_id=\"PY101\",\n        title=\"Python Programming\"\n    )\n\n    university.add_student(student_one)\n    university.add_student(student_two)\n    university.add_instructor(instructor)\n    university.add_course(course)\n\n    university.enroll_student(\"SE001\", \"PY101\")\n    university.enroll_student(\"SE002\", \"PY101\")\n    university.assign_instructor(\"INS001\", \"PY101\")\n\n    return university\n\n\ndef main():\n    university = create_demo_university()\n\n    while True:\n        print(\"\\n===== UNIVERSITY MANAGEMENT SYSTEM =====\")\n        print(\"1. Display students and instructors\")\n        print(\"2. Display courses\")\n        print(\"3. Search for a student\")\n        print(\"4. Enroll a student in a course\")\n        print(\"5. Assign an instructor to a course\")\n        print(\"6. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        try:\n            if choice == \"1\":\n                university.display_all_people()\n\n            elif choice == \"2\":\n                university.display_courses()\n\n            elif choice == \"3\":\n                student_id = input(\"Student ID: \")\n                student = university.search_student(student_id)\n\n                if student is None:\n                    print(\"Student not found.\")\n                else:\n                    student.display_info()\n\n            elif choice == \"4\":\n                student_id = input(\"Student ID: \")\n                course_id = input(\"Course ID: \")\n\n                university.enroll_student(student_id, course_id)\n                print(\"Student enrolled successfully.\")\n\n            elif choice == \"5\":\n                instructor_id = input(\"Instructor ID: \")\n                course_id = input(\"Course ID: \")\n\n                university.assign_instructor(instructor_id, course_id)\n                print(\"Instructor assigned successfully.\")\n\n            elif choice == \"6\":\n                print(\"Goodbye!\")\n                break\n\n            else:\n                print(\"Invalid choice. Select an option from 1 to 6.\")\n\n        except ValueError as error:\n            print(f\"Operation failed: {error}\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'Which dictionary method provides a fallback for a missing key?',
-          options: ['find()', 'get()', 'search()', 'locate()'],
-          correctAnswer: 1
+          "question": "What is a class in Python?",
+          "options": [
+            "A loop that repeats instructions",
+            "A blueprint defining attributes and behavior for objects",
+            "A file format for saving data",
+            "A special type of list"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A class acts as a blueprint defining attributes (data) and methods (behavior) for creating object instances."
         },
         {
-          question: 'Which collection automatically stores unique values?',
-          options: ['List', 'Tuple', 'Set', 'String'],
-          correctAnswer: 2
+          "question": "What does self usually refer to in an instance method?",
+          "options": [
+            "The parent class only",
+            "The Python interpreter",
+            "The current instance",
+            "The current module"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`self` refers to the specific object instance on which the method was called."
+        },
+        {
+          "question": "What is the primary role of __init__?",
+          "options": [
+            "Initialize a newly created instance",
+            "Delete an object automatically",
+            "Import another module",
+            "Make all attributes private"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`__init__` initializes a newly created instance’s attributes right after memory allocation."
+        },
+        {
+          "question": "Where should a separate mutable list for each object normally be initialized?",
+          "options": [
+            "As a shared list in the class body",
+            "Inside the instance initializer using self",
+            "Inside every method that reads it",
+            "Only inside a static method"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Initializing mutable lists on `self` inside `__init__` ensures each instance gets its own separate list instead of sharing a class attribute."
+        },
+        {
+          "question": "What does super() help a subclass do?",
+          "options": [
+            "Convert every attribute to a private attribute",
+            "Prevent method overriding",
+            "Access a parent implementation according to the method resolution order",
+            "Turn an instance method into a static method"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`super()` delegates to the next class in the Method Resolution Order (MRO), letting subclasses extend parent behavior cleanly."
+        },
+        {
+          "question": "What is method overriding?",
+          "options": [
+            "Defining a subclass method that replaces an inherited implementation",
+            "Deleting a parent class",
+            "Creating multiple unrelated objects",
+            "Changing a string to uppercase"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Method overriding lets a subclass provide its own implementation of a method already defined on its parent class."
+        },
+        {
+          "question": "Which decorator defines a class method?",
+          "options": [
+            "@staticmethod",
+            "@property",
+            "@classmethod",
+            "@abstractmethod"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The `@classmethod` decorator binds the first parameter to the class (`cls`) rather than an instance (`self`)."
+        },
+        {
+          "question": "Which relationship is best represented by composition?",
+          "options": [
+            "A Student is a Person",
+            "A Car has an Engine",
+            "An Instructor is a Person",
+            "A SavingsAccount is a BankAccount"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Composition (\"has-a\", like a Car having an Engine) models component ownership more flexibly than deep inheritance."
+        },
+        {
+          "question": "What does duck typing emphasize?",
+          "options": [
+            "An object must always inherit from one specific base class",
+            "Every attribute must be private",
+            "Objects are compatible when they provide the required behavior",
+            "Only built-in objects can be used"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Duck typing focuses on whether an object implements the required methods/behavior rather than its explicit class hierarchy."
+        },
+        {
+          "question": "What is the purpose of an abstract method?",
+          "options": [
+            "To automatically save objects to JSON",
+            "To define behavior that concrete subclasses are expected to implement",
+            "To make a class inherit from every other class",
+            "To encrypt an object’s attributes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An abstract method (via `abc.ABC`) defines a required interface contract that concrete subclasses must implement."
         }
+      ],
+      "assignment": "Problem Statement:\nDesign an Object-Oriented Library Management System with Book, Member, and Library classes demonstrating encapsulation, inheritance/polymorphism (or dataclasses), and proper instance attributes.\n\nObjectives:\n- Initialize mutable instance attributes inside __init__ (never as shared class attributes!).\n- Enforce domain invariants via properties/methods (e.g., cannot borrow an already checked-out book).\n\nRequirements:\n1. Create Book(isbn, title, author, available=True) (may use @dataclass).\n2. Create Member(member_id, name) with self.borrowed_books = [] initialized in __init__.\n3. Create Specialised subclasses or polymorphic LoanPolicy (e.g., StudentMember max 3 books vs FacultyMember max 10 books) overriding max_loans().\n4. Create Library with borrow_book(member_id, isbn) and return_book(member_id, isbn) enforcing loan limits and availability.\n\nStep-by-Step Instructions:\n1. Create library_oop.py.\n2. Implement Book, Member, StudentMember, FacultyMember, and Library.\n3. Write a demo script testing borrowing up to limit, rejecting a 4th student loan, and returning a book.\n\nDeliverables:\n- library_oop.py.\n\nEvaluation Criteria:\n- Zero shared mutable class attributes across instances.\n- Clean super().__init__() calls and polymorphic max_loans() override.",
+      "lessons": [
+        {
+          "title": "Module 8: Object-Oriented Programming (OOP) — Complete Masterclass",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Module 8: Object-Oriented Programming — Classes, Objects, Inheritance, Encapsulation & Polymorphism: Module 8: Object-Oriented Programming (OOP) — Complete Masterclass.",
+          "objectives": [
+            "Master Module 8: Object-Oriented Programming (OOP) — Complete Masterclass",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 8: Object-Oriented Programming (OOP) — Complete Masterclass\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand procedural programming versus object-oriented programming.\n- Create classes and instantiate objects.\n- Define constructors, instance attributes, and methods.\n- Understand self, class attributes, and instance attributes.\n- Implement inheritance and method overriding.\n- Apply encapsulation and abstraction.\n- Understand polymorphism and duck typing.\n- Use class methods, static methods, properties, and special methods.\n- Understand composition and inheritance trade-offs.\n- Design reusable classes with clear responsibilities.\n- Build a practical University Management System.\n\n---\n\n## 2. What Is Object-Oriented Programming?\n\nObject-Oriented Programming, or OOP, is a programming approach that organizes related data and behavior into objects.\n\nImagine a university application. Every student has information such as:\n\n- Student ID\n- Name\n- Department\n- Semester\n\nA student can also perform actions:\n\n- Display a profile.\n- Enroll in a course.\n- View academic information.\n\nOOP lets us group this data and behavior into a single structure.\n\n### Procedural approach\n\n    student_name = \"Ali\"\n    student_id = \"SE001\"\n    department = \"Software Engineering\"\n\n    def display_student(name, student_id, department):\n        print(name, student_id, department)\n\n    display_student(student_name, student_id, department)\n\nThis works, but managing many students may require passing multiple values to many functions.\n\n### Object-oriented approach\n\n    class Student:\n        def __init__(self, student_id, name, department):\n            self.student_id = student_id\n            self.name = name\n            self.department = department\n\n        def display_profile(self):\n            print(self.student_id, self.name, self.department)\n\n\n    student = Student(\"SE001\", \"Ali\", \"Software Engineering\")\n    student.display_profile()\n\nNow the information and related behavior belong to the Student object.\n\nOOP is especially useful when an application contains many related entities, although small programs do not always need classes.\n\n---\n\n## 3. Classes and Objects\n\nA class defines a structure and behavior. An object is an instance created from that class.\n\n    class Car:\n        def start(self):\n            print(\"The car has started.\")\n\n\n    car_one = Car()\n    car_two = Car()\n\n    car_one.start()\n    car_two.start()\n\nHere:\n\n- Car is the class.\n- car_one and car_two are separate instances.\n- start() is an instance method.\n- The dot operator accesses an object's attributes and methods.\n\nBoth objects use the same class definition, but they can maintain different instance data.\n\n### Adding attributes\n\n    class Car:\n        def __init__(self, brand, color):\n            self.brand = brand\n            self.color = color\n\n        def describe(self):\n            print(f\"{self.color} {self.brand}\")\n\n\n    first_car = Car(\"Toyota\", \"White\")\n    second_car = Car(\"Honda\", \"Black\")\n\n    first_car.describe()\n    second_car.describe()\n\nThe constructor receives the information needed to initialize each object.\n\n### Inspecting an object\n\n    print(first_car.brand)\n    print(second_car.color)\n    print(type(first_car))\n\ntype() can help identify an object's class during learning and debugging.\n\n---\n\n## 4. Understanding __init__ and self\n\n### What is __init__?\n\n__init__ is an initializer method. Python calls it after a new instance has been created.\n\n    class Student:\n        def __init__(self, name, age):\n            self.name = name\n            self.age = age\n\n\n    student = Student(\"Sara\", 19)\n\nThe arguments \"Sara\" and 19 are passed into the initializer.\n\nTechnically, __new__ is responsible for creating an instance, while __init__ initializes it.\n\n### What is self?\n\nself refers to the current instance in an instance method. It is the conventional name for the first parameter, although Python does not enforce that particular spelling.\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n        def introduce(self):\n            print(f\"My name is {self.name}\")\n\n\n    student = Student(\"Ali\")\n    student.introduce()\n\nWhen you call student.introduce(), Python supplies the instance as the first argument automatically.\n\nConceptually, the call behaves like:\n\n    Student.introduce(student)\n\nYou normally write student.introduce() rather than calling the method manually through the class.\n\n### Instance attributes\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n\n    student_one = Student(\"Ali\")\n    student_two = Student(\"Sara\")\n\n    print(student_one.name)\n    print(student_two.name)\n\nEach instance has its own name attribute.\n\n### Constructor validation\n\n    class Product:\n        def __init__(self, name, price):\n            if not name.strip():\n                raise ValueError(\"Product name cannot be empty.\")\n\n            if price < 0:\n                raise ValueError(\"Price cannot be negative.\")\n\n            self.name = name.strip()\n            self.price = price\n\n\n    product = Product(\"Keyboard\", 2500)\n\nValidation inside a constructor can help prevent invalid objects from being created.\n\nFor production systems, validation rules should also account for types and other domain-specific constraints.\n\n---\n\n## 5. Instance Attributes Versus Class Attributes\n\nAn instance attribute belongs to a particular object. A class attribute is defined on the class and can be shared by its instances.\n\n    class Student:\n        university = \"Example University\"\n\n        def __init__(self, name):\n            self.name = name\n\n\n    student_one = Student(\"Ali\")\n    student_two = Student(\"Sara\")\n\n    print(student_one.university)\n    print(student_two.university)\n\nBoth instances can access the class attribute.\n\n### Changing a class attribute\n\n    class Student:\n        university = \"Example University\"\n\n\n    student_one = Student()\n    student_two = Student()\n\n    Student.university = \"New University\"\n\n    print(student_one.university)\n    print(student_two.university)\n\nChanging the class attribute affects lookup for instances that do not shadow it with their own attribute.\n\n### Shadowing a class attribute\n\n    class Student:\n        university = \"Example University\"\n\n\n    student = Student()\n    student.university = \"Personal Setting\"\n\n    print(student.university)\n    print(Student.university)\n\nThe assignment creates an instance attribute. It does not replace the class attribute.\n\n### Common mistake: mutable class attributes\n\n    class Classroom:\n        students = []\n\n    first = Classroom()\n    second = Classroom()\n\n    first.students.append(\"Ali\")\n\n    print(second.students)\n\nBoth objects access the same shared list.\n\nThis is often a bug when each object should have independent data.\n\nPrefer:\n\n    class Classroom:\n        def __init__(self):\n            self.students = []\n\n\n    first = Classroom()\n    second = Classroom()\n\n    first.students.append(\"Ali\")\n\n    print(first.students)\n    print(second.students)\n\nUse class attributes for data genuinely shared by the class, not for per-instance mutable state.\n\n---\n\n## 6. Instance Methods, Class Methods, and Static Methods\n\nPython supports different method types for different responsibilities.\n\n### Instance methods\n\nInstance methods receive self and usually read or modify one instance.\n\n    class BankAccount:\n        def __init__(self, owner, balance=0):\n            self.owner = owner\n            self.balance = balance\n\n        def deposit(self, amount):\n            if amount <= 0:\n                raise ValueError(\"Amount must be positive.\")\n\n            self.balance += amount\n\n\n    account = BankAccount(\"Ali\", 1000)\n    account.deposit(500)\n\n### Class methods\n\nClass methods receive cls, which refers to the class.\n\nThey are useful for alternative constructors and operations involving class-level state.\n\n    class Student:\n        university = \"Example University\"\n\n        def __init__(self, name, student_id):\n            self.name = name\n            self.student_id = student_id\n\n        @classmethod\n        def from_record(cls, record):\n            return cls(record[\"name\"], record[\"student_id\"])\n\n\n    record = {\n        \"name\": \"Sara\",\n        \"student_id\": \"SE002\"\n    }\n\n    student = Student.from_record(record)\n\nThe @classmethod decorator tells Python to bind the class as the first argument.\n\n### Static methods\n\nA static method does not automatically receive self or cls.\n\nIt is useful when a function is closely related to a class but does not need instance or class state.\n\n    class GradeCalculator:\n        @staticmethod\n        def is_passing(mark):\n            return mark >= 50\n\n\n    print(GradeCalculator.is_passing(75))\n    print(GradeCalculator.is_passing(35))\n\n### Choosing the right method\n\n- Use an instance method when the operation needs a particular object's state.\n- Use a class method when the operation needs class-level behavior or creates instances through an alternative constructor.\n- Use a static method for related utility logic that needs neither the instance nor the class itself.\n\nDo not use decorators merely because they exist. Choose the simplest method type that matches the responsibility.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Define a `Course` class initializing `self.modules = []` inside `__init__` (not as a class attribute), create two instances, and append a module to only the first.\n\nExpected Result:\nSecond instance keeps an empty `modules` list.",
+          "keyTakeaways": [
+            "Understand and apply Module 8: Object-Oriented Programming (OOP) — Complete Masterclass",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "7. Encapsulation and Access Conventions",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Module 8: Object-Oriented Programming — Classes, Objects, Inheritance, Encapsulation & Polymorphism: 7. Encapsulation and Access Conventions.",
+          "objectives": [
+            "Master 7. Encapsulation and Access Conventions",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 7. Encapsulation and Access Conventions\n\nEncapsulation means keeping data and the operations that manage it together while controlling how internal state is accessed or changed.\n\nPython uses naming conventions rather than Java-style strict private fields.\n\n### Public attributes\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\n\n    student = Student(\"Ali\")\n    print(student.name)\n\nPublic attributes are intended for normal access by other code.\n\n### Non-public convention: one underscore\n\n    class Student:\n        def __init__(self, name):\n            self._name = name\n\nA leading underscore indicates that an attribute is intended for internal use.\n\nIt does not prevent external code from accessing it.\n\n### Name mangling: two leading underscores\n\n    class Student:\n        def __init__(self, name):\n            self.__name = name\n\n\n    student = Student(\"Ali\")\n\nPython transforms the attribute name internally to reduce accidental name clashes in subclasses.\n\nThis is called name mangling. It is not a security boundary, and it should not be used to protect secrets.\n\n### Using properties\n\nProperties provide a convenient attribute-style interface while allowing validation.\n\n    class BankAccount:\n        def __init__(self, balance=0):\n            self.balance = balance\n\n        @property\n        def balance(self):\n            return self._balance\n\n        @balance.setter\n        def balance(self, amount):\n            if amount < 0:\n                raise ValueError(\"Balance cannot be negative.\")\n\n            self._balance = amount\n\n\n    account = BankAccount(1000)\n    print(account.balance)\n\n    account.balance = 1500\n\n    # account.balance = -100\n    # Raises ValueError\n\nThe property setter controls assignments made through account.balance.\n\n### Why encapsulation matters\n\n- It centralizes validation.\n- It prevents accidental invalid state changes through the intended interface.\n- It makes implementation details easier to change.\n- It clarifies how other code should interact with an object.\n\nIn real applications, sensitive operations must also be protected by appropriate authentication, authorization, and system-level controls. Properties alone are not a security system.\n\n---\n\n## 8. Inheritance\n\nInheritance lets a class reuse and extend behavior from another class.\n\nThe class being inherited from is commonly called the parent or base class. The class that inherits is called the child or derived class.\n\n### Basic inheritance\n\n    class Person:\n        def __init__(self, name):\n            self.name = name\n\n        def introduce(self):\n            print(f\"My name is {self.name}\")\n\n\n    class Student(Person):\n        def study(self):\n            print(f\"{self.name} is studying.\")\n\n\n    student = Student(\"Ali\")\n\n    student.introduce()\n    student.study()\n\nStudent inherits the initializer and introduce() method from Person.\n\n### Overriding methods\n\nA child class can provide its own implementation of an inherited method.\n\n    class Person:\n        def role(self):\n            return \"Person\"\n\n\n    class Student(Person):\n        def role(self):\n            return \"Student\"\n\n\n    student = Student()\n    print(student.role())\n\nStudent's method overrides the inherited implementation.\n\n### Using super()\n\nsuper() allows a subclass to call an implementation from its parent according to Python's method resolution order.\n\n    class Person:\n        def __init__(self, name):\n            self.name = name\n\n\n    class Student(Person):\n        def __init__(self, name, student_id):\n            super().__init__(name)\n            self.student_id = student_id\n\n\n    student = Student(\"Sara\", \"SE002\")\n\nThis avoids repeating the parent class's initialization logic.\n\n### Extending parent behavior\n\n    class Person:\n        def introduce(self):\n            print(\"I am a member of the university.\")\n\n\n    class Student(Person):\n        def introduce(self):\n            super().introduce()\n            print(\"I am a student.\")\n\n\n    student = Student()\n    student.introduce()\n\nThe subclass extends the parent's behavior rather than replacing it completely.\n\n### When to use inheritance\n\nUse inheritance when a child genuinely is a specialized form of its parent.\n\nFor example:\n\n- Student is a Person.\n- Instructor is a Person.\n- A savings account is a type of bank account.\n\nDo not use inheritance only to reuse a few lines of code. Composition may be a better choice when one object simply uses another object.\n\n---\n\n## 9. Multiple Inheritance and Method Resolution Order\n\nPython supports multiple inheritance, where a class inherits from more than one base class.\n\n    class Printable:\n        def print_info(self):\n            print(\"Printing information.\")\n\n\n    class Exportable:\n        def export_info(self):\n            print(\"Exporting information.\")\n\n\n    class Report(Printable, Exportable):\n        pass\n\n\n    report = Report()\n    report.print_info()\n    report.export_info()\n\nReport inherits behavior from both base classes.\n\n### Method Resolution Order (MRO)\n\nWhen multiple classes define the same method, Python follows a method resolution order to decide which implementation is found first.\n\n    class A:\n        def message(self):\n            print(\"A\")\n\n\n    class B(A):\n        def message(self):\n            print(\"B\")\n\n\n    class C(A):\n        def message(self):\n            print(\"C\")\n\n\n    class D(B, C):\n        pass\n\n\n    item = D()\n    item.message()\n\nYou can inspect the order with:\n\n    print(D.mro())\n\nPython uses the C3 method resolution order. Cooperative multiple inheritance often relies on classes calling super() consistently.\n\nFor beginners, single inheritance and small, clearly separated mixins are usually easier to reason about than complex inheritance trees.\n\n---\n\n## 10. Polymorphism\n\nPolymorphism means that different objects can respond to the same operation in different ways.\n\n### Method overriding\n\n    class Student:\n        def get_role(self):\n            return \"Student\"\n\n\n    class Instructor:\n        def get_role(self):\n            return \"Instructor\"\n\n\n    people = [Student(), Instructor()]\n\n    for person in people:\n        print(person.get_role())\n\nThe same method call produces different results depending on the object.\n\n### Duck typing\n\nPython often cares about what an object can do rather than requiring it to belong to a specific class.\n\n    class PDFReport:\n        def export(self):\n            print(\"Exporting PDF\")\n\n\n    class CSVReport:\n        def export(self):\n            print(\"Exporting CSV\")\n\n\n    def export_report(report):\n        report.export()\n\n\n    export_report(PDFReport())\n    export_report(CSVReport())\n\nBoth objects work because they provide the expected export() method.\n\n### Operator overloading\n\nPython classes can define special methods to customize how operators behave.\n\n    class Vector:\n        def __init__(self, x, y):\n            self.x = x\n            self.y = y\n\n        def __add__(self, other):\n            if not isinstance(other, Vector):\n                return NotImplemented\n\n            return Vector(self.x + other.x, self.y + other.y)\n\n        def __repr__(self):\n            return f\"Vector({self.x}, {self.y})\"\n\n\n    first = Vector(2, 3)\n    second = Vector(4, 5)\n\n    print(first + second)\n\nThe + operator invokes the class's addition behavior through __add__.\n\nReturn NotImplemented for unsupported operand types when appropriate, allowing Python to try other supported operations.\n\n---\n\n## 11. Abstraction and Abstract Base Classes\n\nAbstraction exposes what an object can do while hiding unnecessary implementation details.\n\nPython's abc module supports formal abstract base classes.\n\n    from abc import ABC, abstractmethod\n\n\n    class PaymentMethod(ABC):\n        @abstractmethod\n        def pay(self, amount):\n            pass\n\n\n    class CardPayment(PaymentMethod):\n        def pay(self, amount):\n            print(f\"Processing card payment: {amount}\")\n\n\n    class BankTransfer(PaymentMethod):\n        def pay(self, amount):\n            print(f\"Processing bank transfer: {amount}\")\n\n\n    payment = CardPayment()\n    payment.pay(500)\n\nA class with unimplemented abstract methods cannot normally be instantiated.\n\nConcrete subclasses must implement the required abstract methods before they can be instantiated.\n\n### Why abstraction is useful\n\nImagine an online store that supports several payment methods.\n\nThe checkout process can call pay() without needing to know every implementation detail of card payments or bank transfers.\n\nThis makes it easier to add new payment methods without rewriting the entire checkout workflow.\n\nAn abstract class defines an interface-like contract, but it does not automatically provide security, payment processing, or external integrations.\n\n---\n\n## 12. Composition — Building Objects from Other Objects\n\nComposition means one object contains or uses other objects.\n\nInstead of making every relationship an inheritance relationship, build larger systems by combining smaller components.\n\n    class Engine:\n        def start(self):\n            print(\"Engine started.\")\n\n\n    class Car:\n        def __init__(self, engine):\n            self.engine = engine\n\n        def start(self):\n            self.engine.start()\n            print(\"Car is ready.\")\n\n\n    engine = Engine()\n    car = Car(engine)\n\n    car.start()\n\nA Car has an Engine. A Car is not an Engine, so composition expresses the relationship more naturally than inheritance.\n\n### Composition versus inheritance\n\nUse inheritance for an \"is-a\" relationship.\n\nUse composition for a \"has-a\" or \"uses-a\" relationship.\n\nExamples:\n\n- Student is a Person: inheritance may be suitable.\n- Car has an Engine: composition is suitable.\n- University has Departments: composition can model the relationship.\n- Course uses a GradeCalculator: composition or a simple function may be suitable.\n\nPrefer the simplest design that clearly represents the domain.\n\n---\n\n## 13. Special Methods and Object Representation\n\nSpecial methods, often called dunder methods, use double underscores at both ends.\n\nExamples include:\n\n- __init__: initialize an instance.\n- __str__: provide a user-friendly string representation.\n- __repr__: provide a developer-oriented representation.\n- __len__: support len(object).\n- __eq__: define equality behavior.\n- __add__: customize addition.\n- __iter__: support iteration.\n\n### __str__ and __repr__\n\n    class Student:\n        def __init__(self, name, student_id):\n            self.name = name\n            self.student_id = student_id\n\n        def __str__(self):\n            return f\"{self.name} ({self.student_id})\"\n\n        def __repr__(self):\n            return (\n                f\"Student(name={self.name!r}, \"\n                f\"student_id={self.student_id!r})\"\n            )\n\n\n    student = Student(\"Ali\", \"SE001\")\n\n    print(str(student))\n    print(repr(student))\n\n__str__ is intended to be readable for users. __repr__ should provide a useful representation for debugging.\n\n### Equality with __eq__\n\nBy default, custom objects generally compare using identity unless equality behavior is customized.\n\n    class Product:\n        def __init__(self, product_id):\n            self.product_id = product_id\n\n        def __eq__(self, other):\n            if not isinstance(other, Product):\n                return NotImplemented\n\n            return self.product_id == other.product_id\n\n\n    first = Product(\"P001\")\n    second = Product(\"P001\")\n\n    print(first == second)\n\nHere equality is based on product ID rather than whether the objects are the same instance.\n\nIf you define custom equality for objects intended to be hashable, carefully consider the corresponding __hash__ behavior as well.\n\n---",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Create a base `Notification` class and two subclasses (`EmailNotification`, `SmsNotification`) overriding `send(msg)`, calling `super().__init__()`.\n\nExpected Result:\nCalling `[n.send(\"Hi\") for n in notifications]` dispatches polymorphically.",
+          "keyTakeaways": [
+            "Understand and apply 7. Encapsulation and Access Conventions",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "14. Dataclasses for Data-Focused Classes",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Module 8: Object-Oriented Programming — Classes, Objects, Inheritance, Encapsulation & Polymorphism: 14. Dataclasses for Data-Focused Classes.",
+          "objectives": [
+            "Master 14. Dataclasses for Data-Focused Classes",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 14. Dataclasses for Data-Focused Classes\n\nThe dataclasses module can generate common class methods automatically.\n\n    from dataclasses import dataclass\n\n\n    @dataclass\n    class Student:\n        student_id: str\n        name: str\n        semester: int\n\n\n    student = Student(\"SE001\", \"Ali\", 1)\n\n    print(student)\n    print(student.name)\n\nDataclasses commonly generate an initializer, representation, and equality behavior.\n\n### Immutable dataclasses\n\n    from dataclasses import dataclass\n\n\n    @dataclass(frozen=True)\n    class Coordinates:\n        x: float\n        y: float\n\n\n    point = Coordinates(10.5, 20.5)\n\nA frozen dataclass prevents ordinary reassignment of its fields. It does not guarantee deep immutability if a field refers to a mutable object.\n\n### When to use dataclasses\n\nDataclasses are useful for:\n\n- Student records.\n- Configuration objects.\n- Simple domain models.\n- Data-transfer objects.\n- Values with a clear set of fields.\n\nFor complex business behavior, normal classes may offer a clearer design.\n\n---\n\n## 15. Type Hints and OOP Design\n\nType hints document the kinds of values a class expects.\n\n    class Product:\n        def __init__(self, name: str, price: float) -> None:\n            self.name = name\n            self.price = price\n\n        def discounted_price(self, percentage: float) -> float:\n            return self.price * (1 - percentage / 100)\n\n\n    product = Product(\"Keyboard\", 2500.0)\n    print(product.discounted_price(10))\n\nType hints help editors and static analysis tools. Python does not automatically enforce every annotation at runtime.\n\nFor stronger runtime validation, implement explicit checks or use an appropriate validation library.\n\n### Single responsibility\n\nA class should have a clear purpose.\n\nFor example, a Student class should represent student-related data and behavior. File persistence, email delivery, and report generation may be better placed in separate components when the application grows.\n\nSeparating responsibilities makes testing and maintenance easier.\n\n---\n\n## 16. Common OOP Mistakes\n\n### Mistake 1: Forgetting self\n\nIncorrect:\n\n    class Student:\n        def introduce():\n            print(\"Hello\")\n\nCalling introduce() through an instance normally supplies the instance, causing an argument mismatch.\n\nCorrect:\n\n    class Student:\n        def introduce(self):\n            print(\"Hello\")\n\n### Mistake 2: Confusing class and instance attributes\n\nA mutable list declared directly in a class body is shared unless overridden. Initialize per-instance lists inside __init__.\n\n### Mistake 3: Overusing inheritance\n\nNot every shared feature needs a parent class. Functions, composition, and small utility objects may be simpler.\n\n### Mistake 4: Modifying internal state without validation\n\nIf an account balance or student mark has constraints, enforce those constraints through the intended public interface.\n\n### Mistake 5: Making one enormous class\n\nA class that manages students, sends emails, saves files, calculates grades, and handles menus has too many responsibilities.\n\nSplit complex applications into focused components.\n\n### Mistake 6: Assuming double underscores make data secure\n\nName mangling prevents some accidental naming conflicts; it is not access control or encryption.\n\n### Mistake 7: Ignoring equality and hashing\n\nIf objects are used as dictionary keys or set elements, their equality and hash behavior must be compatible.\n\n---\n\n## 17. Practical Exercises\n\n### Beginner\n\n1. Create a Student class with name, student ID, and department.\n2. Add a method that displays a student profile.\n3. Create a BankAccount class with deposit and withdrawal methods.\n4. Add a class attribute representing a university name.\n5. Create a Product class that validates its name and price.\n\n### Intermediate\n\n6. Create a Person base class and Student and Instructor subclasses.\n7. Override a method in each subclass to display its role.\n8. Use a class method to create a student from a dictionary.\n9. Create a property that prevents a product price from becoming negative.\n10. Implement __str__ for a Course class.\n\n### Advanced\n\n11. Build an abstract notification interface with email and SMS implementations.\n12. Implement a Vector class with __add__ and __repr__.\n13. Create a Course class that manages enrolled student IDs.\n14. Use composition to build a university containing departments.\n15. Design and test a small application with separate model and service classes.\n\n---\n\n## 18. Mini Project: University Management System\n\nBuild a command-line university management system using OOP.\n\n### Required classes\n\nPerson:\n- name\n- email\n- a method to display basic information\n\nStudent:\n- inherits from Person\n- student ID\n- department\n- semester\n- enrolled course IDs\n\nInstructor:\n- inherits from Person\n- instructor ID\n- department\n- assigned course IDs\n\nCourse:\n- course ID\n- title\n- instructor ID\n- enrolled student IDs\n\nUniversity:\n- stores student, instructor, and course records\n- registers students\n- registers instructors\n- creates courses\n- enrolls students\n- assigns instructors\n- displays records and summaries\n\n### Required functionality\n\n1. Add a student.\n2. Add an instructor.\n3. Create a course.\n4. Enroll a student in a course.\n5. Assign an instructor to a course.\n6. Search for a student or course.\n7. Display course enrollment.\n8. Prevent duplicate IDs.\n9. Validate missing records and invalid input.\n10. Separate entity classes from management operations.\n\n### Design requirements\n\n- Use inheritance for Person, Student, and Instructor.\n- Use encapsulation conventions and validation.\n- Use composition to let University manage its entities.\n- Use polymorphism where different entity types share an operation.\n- Use type hints where they improve clarity.\n- Keep methods focused and readable.\n\n### Extension challenge\n\nAdd JSON persistence from Module 7 so that students, instructors, and courses remain available after the program exits.\n\nFor this extension, convert objects into JSON-compatible dictionaries and reconstruct the objects when loading data. Do not try to serialize arbitrary Python objects directly without designing a safe and deliberate format.\n\n---\n\n## 19. Professional OOP Checklist\n\nBefore considering a class design complete, ask:\n\n- Does the class have one clear responsibility?\n- Are instance attributes initialized correctly?\n- Are shared attributes genuinely intended to be shared?\n- Are invalid values rejected appropriately?\n- Is inheritance expressing a real specialization?\n- Would composition be simpler?\n- Are public methods easy to understand?\n- Are special methods implemented only when needed?\n- Can the class be tested independently?\n- Are type hints accurate?\n- Are sensitive operations protected outside the class where necessary?\n- Can the design be extended without rewriting unrelated code?\n\n---\n\n## 20. Module Summary\n\nIn this module, you learned:\n\n- Classes define structures and behavior; objects are their instances.\n- __init__ initializes objects and self refers to the current instance.\n- Class and instance attributes have different purposes.\n- Instance, class, and static methods serve different roles.\n- Encapsulation organizes access to object state.\n- Inheritance supports specialization and method overriding.\n- Polymorphism allows different objects to support the same interface.\n- Abstract base classes define required behavior.\n- Composition combines objects into larger systems.\n- Special methods customize standard Python operations.\n- Dataclasses reduce boilerplate for data-focused models.\n- Good OOP design emphasizes clear responsibilities and testability.\n\nNext module: **Module 9 — Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming.**",
+          "codeExample": "from dataclasses import dataclass, field\n\n\n@dataclass\nclass Person:\n    name: str\n    email: str\n\n    def __post_init__(self):\n        self.name = self.name.strip()\n        self.email = self.email.strip()\n\n        if not self.name:\n            raise ValueError(\"Name cannot be empty.\")\n\n        if \"@\" not in self.email:\n            raise ValueError(\"Email must contain @.\")\n\n    def display_info(self):\n        print(f\"Name: {self.name}\")\n        print(f\"Email: {self.email}\")\n\n\n@dataclass\nclass Student(Person):\n    student_id: str\n    department: str\n    semester: int = 1\n    enrolled_courses: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        super().__post_init__()\n        self.student_id = self.student_id.strip().upper()\n        self.department = self.department.strip()\n\n        if not self.student_id:\n            raise ValueError(\"Student ID cannot be empty.\")\n\n        if not self.department:\n            raise ValueError(\"Department cannot be empty.\")\n\n        if self.semester < 1:\n            raise ValueError(\"Semester must be at least 1.\")\n\n    def enroll(self, course_id):\n        course_id = course_id.strip().upper()\n\n        if not course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if course_id not in self.enrolled_courses:\n            self.enrolled_courses.append(course_id)\n\n    def display_info(self):\n        super().display_info()\n        print(f\"Student ID: {self.student_id}\")\n        print(f\"Department: {self.department}\")\n        print(f\"Semester: {self.semester}\")\n        print(f\"Courses: {self.enrolled_courses or 'None'}\")\n\n\n@dataclass\nclass Instructor(Person):\n    instructor_id: str\n    department: str\n    assigned_courses: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        super().__post_init__()\n        self.instructor_id = self.instructor_id.strip().upper()\n        self.department = self.department.strip()\n\n        if not self.instructor_id:\n            raise ValueError(\"Instructor ID cannot be empty.\")\n\n        if not self.department:\n            raise ValueError(\"Department cannot be empty.\")\n\n    def assign_course(self, course_id):\n        course_id = course_id.strip().upper()\n\n        if not course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if course_id not in self.assigned_courses:\n            self.assigned_courses.append(course_id)\n\n    def display_info(self):\n        super().display_info()\n        print(f\"Instructor ID: {self.instructor_id}\")\n        print(f\"Department: {self.department}\")\n        print(f\"Assigned courses: {self.assigned_courses or 'None'}\")\n\n\n@dataclass\nclass Course:\n    course_id: str\n    title: str\n    instructor_id: str | None = None\n    enrolled_student_ids: list[str] = field(default_factory=list)\n\n    def __post_init__(self):\n        self.course_id = self.course_id.strip().upper()\n        self.title = self.title.strip()\n\n        if not self.course_id:\n            raise ValueError(\"Course ID cannot be empty.\")\n\n        if not self.title:\n            raise ValueError(\"Course title cannot be empty.\")\n\n    def enroll_student(self, student_id):\n        if student_id not in self.enrolled_student_ids:\n            self.enrolled_student_ids.append(student_id)\n\n    def display_info(self):\n        print(f\"Course ID: {self.course_id}\")\n        print(f\"Title: {self.title}\")\n        print(f\"Instructor: {self.instructor_id or 'Not assigned'}\")\n        print(f\"Students: {self.enrolled_student_ids or 'None'}\")\n\n\nclass University:\n    def __init__(self, name):\n        self.name = name.strip()\n\n        if not self.name:\n            raise ValueError(\"University name cannot be empty.\")\n\n        self.students: dict[str, Student] = {}\n        self.instructors: dict[str, Instructor] = {}\n        self.courses: dict[str, Course] = {}\n\n    def add_student(self, student):\n        if student.student_id in self.students:\n            raise ValueError(\"Student ID already exists.\")\n\n        self.students[student.student_id] = student\n\n    def add_instructor(self, instructor):\n        if instructor.instructor_id in self.instructors:\n            raise ValueError(\"Instructor ID already exists.\")\n\n        self.instructors[instructor.instructor_id] = instructor\n\n    def add_course(self, course):\n        if course.course_id in self.courses:\n            raise ValueError(\"Course ID already exists.\")\n\n        self.courses[course.course_id] = course\n\n    def enroll_student(self, student_id, course_id):\n        student_id = student_id.strip().upper()\n        course_id = course_id.strip().upper()\n\n        student = self.students.get(student_id)\n        course = self.courses.get(course_id)\n\n        if student is None:\n            raise ValueError(\"Student not found.\")\n\n        if course is None:\n            raise ValueError(\"Course not found.\")\n\n        student.enroll(course_id)\n        course.enroll_student(student_id)\n\n    def assign_instructor(self, instructor_id, course_id):\n        instructor_id = instructor_id.strip().upper()\n        course_id = course_id.strip().upper()\n\n        instructor = self.instructors.get(instructor_id)\n        course = self.courses.get(course_id)\n\n        if instructor is None:\n            raise ValueError(\"Instructor not found.\")\n\n        if course is None:\n            raise ValueError(\"Course not found.\")\n\n        if course.instructor_id is not None:\n            previous = self.instructors.get(course.instructor_id)\n            if previous is not None:\n                previous.assigned_courses.remove(course_id)\n\n        course.instructor_id = instructor_id\n        instructor.assign_course(course_id)\n\n    def search_student(self, student_id):\n        return self.students.get(student_id.strip().upper())\n\n    def display_all_people(self):\n        print(f\"\\n===== {self.name.upper()} =====\")\n\n        people = list(self.students.values())\n        people.extend(self.instructors.values())\n\n        if not people:\n            print(\"No people registered.\")\n            return\n\n        for person in people:\n            print(\"\\n\" + \"-\" * 35)\n            person.display_info()\n\n    def display_courses(self):\n        if not self.courses:\n            print(\"No courses created.\")\n            return\n\n        for course in self.courses.values():\n            print(\"\\n\" + \"-\" * 35)\n            course.display_info()\n\n\ndef create_demo_university():\n    university = University(\"Example University\")\n\n    student_one = Student(\n        name=\"Ali\",\n        email=\"ali@example.com\",\n        student_id=\"SE001\",\n        department=\"Software Engineering\",\n        semester=1\n    )\n\n    student_two = Student(\n        name=\"Sara\",\n        email=\"sara@example.com\",\n        student_id=\"SE002\",\n        department=\"Software Engineering\",\n        semester=1\n    )\n\n    instructor = Instructor(\n        name=\"Dr. Ahmed\",\n        email=\"ahmed@example.com\",\n        instructor_id=\"INS001\",\n        department=\"Computer Science\"\n    )\n\n    course = Course(\n        course_id=\"PY101\",\n        title=\"Python Programming\"\n    )\n\n    university.add_student(student_one)\n    university.add_student(student_two)\n    university.add_instructor(instructor)\n    university.add_course(course)\n\n    university.enroll_student(\"SE001\", \"PY101\")\n    university.enroll_student(\"SE002\", \"PY101\")\n    university.assign_instructor(\"INS001\", \"PY101\")\n\n    return university\n\n\ndef main():\n    university = create_demo_university()\n\n    while True:\n        print(\"\\n===== UNIVERSITY MANAGEMENT SYSTEM =====\")\n        print(\"1. Display students and instructors\")\n        print(\"2. Display courses\")\n        print(\"3. Search for a student\")\n        print(\"4. Enroll a student in a course\")\n        print(\"5. Assign an instructor to a course\")\n        print(\"6. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        try:\n            if choice == \"1\":\n                university.display_all_people()\n\n            elif choice == \"2\":\n                university.display_courses()\n\n            elif choice == \"3\":\n                student_id = input(\"Student ID: \")\n                student = university.search_student(student_id)\n\n                if student is None:\n                    print(\"Student not found.\")\n                else:\n                    student.display_info()\n\n            elif choice == \"4\":\n                student_id = input(\"Student ID: \")\n                course_id = input(\"Course ID: \")\n\n                university.enroll_student(student_id, course_id)\n                print(\"Student enrolled successfully.\")\n\n            elif choice == \"5\":\n                instructor_id = input(\"Instructor ID: \")\n                course_id = input(\"Course ID: \")\n\n                university.assign_instructor(instructor_id, course_id)\n                print(\"Instructor assigned successfully.\")\n\n            elif choice == \"6\":\n                print(\"Goodbye!\")\n                break\n\n            else:\n                print(\"Invalid choice. Select an option from 1 to 6.\")\n\n        except ValueError as error:\n            print(f\"Operation failed: {error}\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. @dataclass automatically generates __init__, __repr__, and __eq__ for Person while __post_init__ normalizes name and email whitespace.\n2. Subclasses and composed classes reuse dataclass fields cleanly without boilerplate.\n\nHow to Run & Expected Output:\nSave as `models.py` and run `python models.py`. Prints clean dataclass representations with stripped name/email fields.",
+          "practiceExercise": "Guided Exercise:\n1. Create two `Person(\"  Ada  \", \"ada@dev  \")` dataclass instances and print them.\n\nIndependent Challenge:\nAdd `courses: list[str] = field(default_factory=list)` to a `Student(Person)` dataclass.\n\nExpected Result:\nWhitespace is stripped in `__post_init__` and each instance gets an independent `courses` list.",
+          "keyTakeaways": [
+            "Understand and apply 14. Dataclasses for Data-Focused Classes",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 8: Object-Oriented Programming (OOP) — Complete Masterclass",
+        "Apply Python best practices with clean, readable examples",
+        "Master 7. Encapsulation and Access Conventions",
+        "Master 14. Dataclasses for Data-Focused Classes"
       ]
     },
     {
-      title: 'Module 9: Functions and Scope',
-      duration: '3h 00m',
-      notes: `### Defining functions
-Use \`def\` to define reusable blocks of code. Parameters receive inputs, and return sends a result back to the caller.
-
-### Parameters
-Python supports positional arguments, keyword arguments, default parameters, and keyword-only parameters.
-
-### Return values
-A function without an explicit return statement returns None.
-
-### Scope
-Python uses the LEGB lookup order: Local, Enclosing, Global, and Built-in. Avoid unnecessary global state.
-
-### Type hints and docstrings
-Type hints document expected types and help development tools. They are not automatically enforced at runtime. Docstrings explain a function's purpose.
-
-### Mutable default argument pitfall
-Do not use a mutable list or dictionary as a default parameter unless shared state is intentional. Use None and create the collection inside the function instead.
-
-### Reusability
-Keep functions focused on one responsibility and give them meaningful names.`,
-      codeExample: `def calculate_total(prices: list[float], tax_rate: float = 0.0) -> float:
-    """Calculate the total after tax."""
-    subtotal = sum(prices)
-    return subtotal * (1 + tax_rate)
-
-print(calculate_total([100.0, 50.0]))
-print(calculate_total([100.0, 50.0], tax_rate=0.05))
-
-def add_item(item, items=None):
-    if items is None:
-        items = []
-
-    items.append(item)
-    return items
-
-print(add_item("Book"))
-print(add_item("Pen"))`,
-      quiz: [
+      "title": "Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming",
+      "duration": "5h 00m",
+      "notes": "\n# Module 9: Error Handling, Debugging, Logging & Defensive Programming\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand syntax errors, runtime errors, and logical errors.\n- Handle exceptions using try, except, else, and finally.\n- Catch specific exceptions instead of hiding every error.\n- Raise exceptions intentionally with raise.\n- Create custom exception classes for business rules.\n- Validate input and build defensive functions.\n- Read tracebacks and locate the source of a problem.\n- Use Python's built-in debugger and assertions.\n- Record application events with the logging module.\n- Handle file and JSON errors safely.\n- Design programs that recover gracefully from expected failures.\n- Build a robust command-line expense tracker.\n\n## 2. Why Error Handling Matters\n\nEvery program can encounter unexpected situations. A user might enter letters where a number is required, a file might not exist, a network connection might fail, or a database might become unavailable.\n\nProfessional software does not assume that everything will always work. It anticipates expected failures, communicates problems clearly, protects important data, and records enough information to diagnose unexpected failures.\n\nConsider this example:\n\n    age = int(input(\"Enter your age: \"))\n    print(age)\n\nIf the user enters \"hello\", Python raises a ValueError and stops the program.\n\nA safer version handles the invalid input:\n\n    try:\n        age = int(input(\"Enter your age: \"))\n        print(f\"Your age is {age}\")\n    except ValueError:\n        print(\"Please enter a valid whole number.\")\n\nThe program now handles one expected failure gracefully.\n\n## 3. Three Main Categories of Errors\n\n### 3.1 Syntax Errors\n\nSyntax errors occur when Python cannot understand the program's structure.\n\nExample:\n\n    if 10 > 5\n        print(\"Ten is greater\")\n\nThe colon after the condition is missing. Python cannot execute the program until the syntax is corrected.\n\n### 3.2 Runtime Errors\n\nRuntime errors happen while a program is executing.\n\nExamples:\n\n    print(10 / 0)\n\n    number = int(\"hello\")\n\n    items = [10, 20]\n    print(items[5])\n\nThese examples produce ZeroDivisionError, ValueError, and IndexError respectively.\n\n### 3.3 Logical Errors\n\nLogical errors occur when a program runs but produces the wrong result.\n\nExample:\n\n    price = 100\n    discount = 20\n    final_price = price + discount\n\nThe code executes, but the calculation is incorrect if the intention is to subtract a discount.\n\nCorrect version:\n\n    final_price = price - discount\n\nLogical errors are often harder to discover because Python may not display an exception.\n\n## 4. Understanding Exceptions\n\nAn exception is an object that represents an error or unusual condition during execution.\n\nCommon built-in exceptions include:\n\n- ValueError: a value has the wrong format or is unsuitable for an operation.\n- TypeError: an operation receives an incompatible type.\n- ZeroDivisionError: division or modulo uses zero as the divisor.\n- IndexError: a sequence index is outside its valid range.\n- KeyError: a dictionary key does not exist.\n- FileNotFoundError: a requested file cannot be found.\n- PermissionError: the operating system denies access.\n- ImportError: an import operation fails.\n- AttributeError: an object does not have the requested attribute.\n- NameError: a variable or name is not defined.\n- RuntimeError: a general runtime problem not covered by a more specific exception.\n- OSError: an operating-system operation fails.\n\nUnderstanding the exception type helps you choose an appropriate recovery strategy.\n\n## 5. The try and except Blocks\n\nUse try for code that might fail and except for handling a specific exception.\n\n    try:\n        number = int(input(\"Enter a number: \"))\n        result = 100 / number\n        print(result)\n    except ValueError:\n        print(\"Enter a whole number.\")\n    except ZeroDivisionError:\n        print(\"The number cannot be zero.\")\n\nSeparate except blocks let you provide useful messages for different failures.\n\n### 5.1 Catch Specific Exceptions\n\nAvoid this pattern in ordinary application logic:\n\n    try:\n        perform_operation()\n    except:\n        print(\"Something went wrong\")\n\nA bare except catches almost every exception, including signals that normally should not be swallowed, such as KeyboardInterrupt and SystemExit.\n\nThis can hide programming defects and make debugging difficult.\n\nPrefer:\n\n    try:\n        perform_operation()\n    except FileNotFoundError:\n        print(\"The requested file does not exist.\")\n    except PermissionError:\n        print(\"You do not have permission to access this file.\")\n\nA broad except Exception can be appropriate at a carefully chosen application boundary, such as logging an unexpected failure before returning a generic error response. It should not replace targeted handling throughout the program.\n\n### 5.2 Handling Multiple Exception Types\n\nWhen the same response is appropriate for multiple exceptions, group them:\n\n    try:\n        number = int(input(\"Enter a number: \"))\n        print(100 / number)\n    except (ValueError, ZeroDivisionError) as error:\n        print(f\"Invalid operation: {error}\")\n\nThe variable error contains the exception object. Its message is useful for debugging, but user-facing applications should avoid exposing sensitive internal details.\n\n## 6. The else Block\n\nThe else block executes only when the try block completes without raising an exception.\n\n    try:\n        number = int(input(\"Enter a number: \"))\n    except ValueError:\n        print(\"Invalid number.\")\n    else:\n        print(f\"Accepted number: {number}\")\n\nKeep the try block as small as practical. If unrelated code is included in it, an exception from that code may be mistaken for an input-conversion failure.\n\n## 7. The finally Block\n\nThe finally block executes whether an exception occurs or not, making it useful for cleanup.\n\n    file = None\n\n    try:\n        file = open(\"notes.txt\", \"r\", encoding=\"utf-8\")\n        print(file.read())\n    except FileNotFoundError:\n        print(\"File not found.\")\n    finally:\n        if file is not None:\n            file.close()\n\nFor files, Python's context manager is generally preferable because it handles cleanup automatically.\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        content = file.read()\n\nThe file is closed when the with block finishes, even if an exception occurs.\n\n## 8. Raising Exceptions Intentionally\n\nThe raise statement allows a program to reject invalid operations explicitly.\n\n    def withdraw(balance, amount):\n        if amount <= 0:\n            raise ValueError(\"Withdrawal must be positive.\")\n\n        if amount > balance:\n            raise ValueError(\"Insufficient funds.\")\n\n        return balance - amount\n\nThe function does not silently accept an invalid request.\n\nUse built-in exceptions when they accurately describe the problem. ValueError is appropriate when a value is invalid; TypeError may be appropriate when an argument has an inappropriate type.\n\n## 9. Creating Custom Exceptions\n\nCustom exceptions make application-specific failures easier to understand and handle.\n\n    class InsufficientFundsError(Exception):\n        pass\n\n    def withdraw(balance, amount):\n        if amount > balance:\n            raise InsufficientFundsError(\n                \"The account does not have enough funds.\"\n            )\n\n        return balance - amount\n\n    try:\n        new_balance = withdraw(500, 800)\n    except InsufficientFundsError as error:\n        print(error)\n\nCustom exception classes should normally inherit from Exception or a suitable existing exception subclass.\n\n### 9.1 When Should You Create a Custom Exception?\n\nCreate a custom exception when a meaningful business rule needs its own error type.\n\nExamples:\n\n- CourseAlreadyEnrolledError\n- InvalidCouponError\n- InsufficientFundsError\n- DuplicateUsernameError\n- ProductOutOfStockError\n\nDo not create a separate exception class for every minor condition. Use a clear and maintainable exception hierarchy.\n\n## 10. Exception Chaining\n\nSometimes one failure occurs because another operation failed. Python supports exception chaining with raise ... from ....\n\n    def load_configuration():\n        try:\n            with open(\"config.json\", encoding=\"utf-8\") as file:\n                return file.read()\n        except OSError as error:\n            raise RuntimeError(\n                \"The application configuration could not be loaded.\"\n            ) from error\n\nThe original exception remains connected to the new exception, helping developers understand the root cause.\n\nUse raise by itself inside an except block when you want to re-raise the same exception:\n\n    try:\n        risky_operation()\n    except ValueError:\n        print(\"Recording invalid input.\")\n        raise\n\nThis preserves the original exception and traceback.\n\n## 11. Defensive Programming and Input Validation\n\nDefensive programming means checking assumptions before they cause damage.\n\n    def calculate_average(numbers):\n        if not numbers:\n            raise ValueError(\"At least one number is required.\")\n\n        return sum(numbers) / len(numbers)\n\nWithout the empty-list check, division by zero would occur.\n\n### 11.1 Validate Types and Values\n\n    def calculate_total(price, quantity):\n        if isinstance(price, bool) or not isinstance(price, (int, float)):\n            raise TypeError(\"Price must be numeric.\")\n\n        if isinstance(quantity, bool) or not isinstance(quantity, int):\n            raise TypeError(\"Quantity must be an integer.\")\n\n        if price < 0:\n            raise ValueError(\"Price cannot be negative.\")\n\n        if quantity < 0:\n            raise ValueError(\"Quantity cannot be negative.\")\n\n        return price * quantity\n\nNotice that bool is a subclass of int in Python. Explicitly rejecting booleans can prevent True from being accepted as quantity 1.\n\nFor financial software, use Decimal rather than binary floating-point values when exact decimal arithmetic is required.\n\n### 11.2 Validate at the Correct Boundary\n\nValidate data where it enters the application:\n\n- User input: verify format and acceptable ranges.\n- API requests: validate payload structure and authorization.\n- File imports: verify the format and required fields.\n- Database operations: enforce data integrity and uniqueness.\n- Internal functions: maintain important invariants when they cannot safely assume valid inputs.\n\nValidation is not a replacement for authorization. A value can be correctly formatted while still being an unauthorized request.\n\n## 12. Assertions\n\nAssertions check assumptions during development.\n\n    def calculate_square_root_input(number):\n        assert number >= 0, \"Number must be non-negative.\"\n        return number\n\nAssertions are useful for catching programmer mistakes and verifying internal invariants.\n\nImportant: do not use assert for validating untrusted user input or enforcing security requirements. Python can disable assertions when optimization is enabled. Use explicit if statements and raise exceptions for mandatory validation.\n\n## 13. Reading a Traceback\n\nA traceback describes the path Python followed before an exception occurred.\n\nExample:\n\n    Traceback (most recent call last):\n      File \"app.py\", line 8, in <module>\n        total = calculate_total(100, 0)\n      File \"app.py\", line 4, in calculate_total\n        return price / quantity\n    ZeroDivisionError: division by zero\n\nHow to read it:\n\n1. Start at the bottom to identify the exception type and message.\n2. Read the stack frames to see which functions were called.\n3. Find the relevant file and line number.\n4. Inspect the variables and assumptions at that point.\n5. Reproduce the issue with a small test.\n6. Correct the cause instead of merely hiding the error.\n\nThe final frame is often where the exception was raised, but the underlying cause may be earlier in the call chain.\n\n## 14. Debugging with print and breakpoint\n\nA simple print statement can reveal variable values:\n\n    total = 150\n    quantity = 0\n\n    print(\"total =\", total)\n    print(\"quantity =\", quantity)\n\nFor more structured debugging, use breakpoint():\n\n    def divide(a, b):\n        breakpoint()\n        return a / b\n\n    print(divide(10, 2))\n\nWhen execution reaches breakpoint(), Python starts its interactive debugger unless debugger behavior has been customized.\n\nUseful debugger commands include:\n\n- n: execute the next line.\n- s: step into a called function.\n- c: continue execution.\n- p variable_name: print a variable.\n- q: quit the debugger.\n\nIn VS Code, you can also set breakpoints by clicking beside a line number and run the program using the Run and Debug panel. Inspect variables, step through statements, and review the call stack.\n\n## 15. Logging with the logging Module\n\nLogging records events that help developers understand what an application is doing.\n\n    import logging\n\n    logging.basicConfig(\n        level=logging.INFO,\n        format=\"%(asctime)s %(levelname)s %(name)s: %(message)s\"\n    )\n\n    logger = logging.getLogger(__name__)\n\n    logger.debug(\"Detailed diagnostic information\")\n    logger.info(\"Application started\")\n    logger.warning(\"A retry may be required\")\n    logger.error(\"An operation failed\")\n\nLogging levels, from least to most severe, are:\n\n- DEBUG: detailed diagnostic information.\n- INFO: normal application events.\n- WARNING: an unexpected situation that may need attention.\n- ERROR: an operation failed.\n- CRITICAL: a severe failure that may prevent continued operation.\n\nThe default logging threshold may hide DEBUG and INFO messages unless configured. Configure logging once at the application entry point rather than repeatedly in every module.\n\n### 15.1 Logging Exceptions\n\nUse logger.exception inside an except block when you want to record the exception traceback:\n\n    try:\n        total = 10 / 0\n    except ZeroDivisionError:\n        logger.exception(\"Could not calculate the total\")\n\nlogger.exception automatically includes exception information. Do not expose raw tracebacks to ordinary users.\n\n### 15.2 Avoid Logging Sensitive Data\n\nNever casually log passwords, authentication tokens, session cookies, private keys, or complete payment details. Logs may be stored for a long time and accessed by multiple people.\n\nPrefer a safe message such as \"Login failed for account identifier ending in 42\" only when that identifier is appropriate to retain and your privacy policy permits it.\n\n## 16. File and JSON Error Handling\n\nFiles and external data can fail for several reasons: missing files, incorrect permissions, invalid JSON, or unexpected data structures.\n\n    import json\n    from pathlib import Path\n\n    path = Path(\"settings.json\")\n\n    try:\n        with path.open(\"r\", encoding=\"utf-8\") as file:\n            settings = json.load(file)\n    except FileNotFoundError:\n        print(\"Settings file does not exist.\")\n    except json.JSONDecodeError:\n        print(\"Settings file contains invalid JSON.\")\n    except OSError:\n        print(\"The settings file could not be read.\")\n\nJSON decoding success does not guarantee that the data has the structure your application expects. Validate required keys and value types after parsing.\n\nWhen writing important files, consider writing to a temporary file and replacing the original only after the write succeeds. This can reduce the risk of leaving partially written data, although durability and concurrency still require careful design.\n\n## 17. Retry Logic and Recovery\n\nSome failures are temporary, such as a brief network timeout. A retry may help, but retrying every failure is dangerous.\n\nGood retry policies generally:\n\n- Retry only errors that are likely to be temporary.\n- Limit the number of attempts.\n- Use a delay between attempts, often increasing it after repeated failures.\n- Respect timeouts and cancellation.\n- Avoid repeating operations that could charge or create duplicate records unless they are designed to be idempotent.\n\nExample:\n\n    import time\n\n    def retry_three_times(operation):\n        for attempt in range(3):\n            try:\n                return operation()\n            except TimeoutError:\n                if attempt == 2:\n                    raise\n                time.sleep(1 + attempt)\n\nThis example retries a TimeoutError up to three times. In real systems, use an established retry policy appropriate to the library and operation.\n\n## 18. Best Practices\n\n1. Catch exceptions you know how to handle.\n2. Keep try blocks small and focused.\n3. Never silently ignore important failures.\n4. Do not use exceptions as a substitute for ordinary conditions when a clear conditional is simpler.\n5. Raise meaningful exceptions when an operation cannot safely continue.\n6. Use custom exceptions for meaningful domain-specific failures.\n7. Preserve original causes when wrapping exceptions.\n8. Use context managers for files and other managed resources.\n9. Use logging for diagnostics instead of relying entirely on print.\n10. Avoid exposing sensitive implementation details to users.\n11. Test both successful paths and failure paths.\n12. Do not use assert for security checks or mandatory input validation.\n13. Design recovery behavior before adding automatic retries.\n14. Keep error messages actionable without revealing secrets.\n15. Fix the root cause rather than suppressing symptoms.\n\n## 19. Practical Project: Reliable Expense Tracker\n\nBuild a command-line expense tracker that can:\n\n- Add an expense with a description and positive amount.\n- List saved expenses.\n- Calculate the total spending.\n- Save records to a JSON file.\n- Load existing records when the program starts.\n- Handle invalid amounts and malformed JSON.\n- Record errors in a log file.\n- Recover from expected input mistakes without exiting unexpectedly.\n\n### Suggested Project Structure\n\n    expense_tracker/\n        main.py\n        expenses.json\n        app.log\n\n### Development Plan\n\n1. Define a function that validates expense descriptions and amounts.\n2. Represent each expense as a dictionary with description and amount fields.\n3. Create a function to load existing JSON data safely.\n4. Create a function to save the expense list.\n5. Add a menu loop for adding, listing, and calculating expenses.\n6. Use targeted exception handling for user input and file operations.\n7. Configure logging at application startup.\n8. Test invalid input, a missing file, invalid JSON, and valid transactions.\n9. Ensure that a failed save does not falsely report that the data was saved.\n10. Document known limitations and test the application again.\n\n## 20. Testing Checklist\n\nBefore considering the project complete, verify:\n\n- A valid expense can be added.\n- An empty description is rejected.\n- Zero and negative amounts are rejected.\n- Non-numeric amounts are handled.\n- Existing expense records load correctly.\n- A missing data file is handled appropriately.\n- Malformed JSON produces a useful message.\n- A failed save is reported honestly.\n- Listing expenses works when the list is empty.\n- Total spending is calculated correctly.\n- The program does not expose unnecessary technical details to users.\n- Logs do not contain passwords or other secrets.\n\n## 21. Module Summary\n\nYou have learned how to recognize common Python errors, handle exceptions, create custom exceptions, validate data, inspect tracebacks, debug with breakpoints, record application events, and recover from expected failures.\n\nThe key professional principle is simple: reliable software does not pretend errors never happen. It detects failures, responds appropriately, protects important data, and gives developers enough information to fix the underlying cause.\n\nIn the next module, you will move toward more advanced Python engineering topics, including modules, packages, imports, virtual environments, dependency management, and project organization.\n",
+      "codeExample": "\nimport json\nimport logging\nfrom pathlib import Path\n\nDATA_FILE = Path(\"expenses.json\")\n\nlogging.basicConfig(\n    filename=\"app.log\",\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s %(name)s: %(message)s\"\n)\n\nlogger = logging.getLogger(__name__)\n\n\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense does not meet validation rules.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be greater than zero.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef load_expenses():\n    if not DATA_FILE.exists():\n        return []\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            data = json.load(file)\n\n        if not isinstance(data, list):\n            raise ValueError(\"Expense data must be a JSON list.\")\n\n        validated = []\n\n        for item in data:\n            if not isinstance(item, dict):\n                raise ValueError(\"Each expense must be an object.\")\n\n            validated.append(\n                validate_expense(\n                    item.get(\"description\"),\n                    item.get(\"amount\")\n                )\n            )\n\n        return validated\n\n    except (json.JSONDecodeError, OSError, ValueError) as error:\n        logger.exception(\"Could not load expense data\")\n        print(f\"Could not load expenses: {error}\")\n        return []\n\n\ndef save_expenses(expenses):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_file.replace(DATA_FILE)\n        logger.info(\"Saved %d expense records\", len(expenses))\n        return True\n\n    except OSError:\n        logger.exception(\"Could not save expense data\")\n        print(\"Error: expenses could not be saved.\")\n        return False\n\n\ndef add_expense(expenses):\n    description = input(\"Expense description: \").strip()\n    raw_amount = input(\"Expense amount: \").strip()\n\n    try:\n        amount = float(raw_amount)\n        expense = validate_expense(description, amount)\n    except (ValueError, InvalidExpenseError) as error:\n        print(f\"Invalid expense: {error}\")\n        return\n\n    expenses.append(expense)\n\n    if save_expenses(expenses):\n        print(\"Expense saved successfully.\")\n    else:\n        expenses.pop()\n        print(\"The new expense was not retained in memory.\")\n\n\ndef list_expenses(expenses):\n    if not expenses:\n        print(\"No expenses recorded.\")\n        return\n\n    print(\"\\n--- Expense Records ---\")\n\n    for index, expense in enumerate(expenses, start=1):\n        print(\n            f\"{index}. {expense['description']} \"\n            f\"- Rs. {expense['amount']:.2f}\"\n        )\n\n\ndef show_total(expenses):\n    total = sum(expense[\"amount\"] for expense in expenses)\n    print(f\"Total spending: Rs. {total:.2f}\")\n\n\ndef main():\n    expenses = load_expenses()\n\n    while True:\n        print(\"\\n=== Expense Tracker ===\")\n        print(\"1. Add expense\")\n        print(\"2. List expenses\")\n        print(\"3. Show total\")\n        print(\"4. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        try:\n            if choice == \"1\":\n                add_expense(expenses)\n            elif choice == \"2\":\n                list_expenses(expenses)\n            elif choice == \"3\":\n                show_total(expenses)\n            elif choice == \"4\":\n                print(\"Goodbye.\")\n                break\n            else:\n                print(\"Choose an option from 1 to 4.\")\n        except KeyboardInterrupt:\n            print(\"\\nOperation cancelled.\")\n            break\n        except Exception:\n            logger.exception(\"Unexpected application error\")\n            print(\"An unexpected error occurred. Check the application log.\")\n\n    logger.info(\"Expense tracker closed\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'What does a function return if it has no return statement?',
-          options: ['0', 'False', 'None', 'An empty list'],
-          correctAnswer: 2
+          "question": "Which exception is normally raised when converting the string \"hello\" to an integer?",
+          "options": [
+            "TypeError",
+            "ValueError",
+            "IndexError",
+            "KeyError"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Passing a non-numeric string like \"hello\" to `int()` raises a `ValueError`."
         },
         {
-          question: 'What does **kwargs collect?',
-          options: [
-            'Positional arguments in a list',
-            'Keyword arguments in a dictionary',
-            'Only integers',
-            'Function return values'
+          "question": "What is the primary purpose of a finally block?",
+          "options": [
+            "It runs only when an exception occurs.",
+            "It replaces every exception automatically.",
+            "It runs when leaving the try statement, whether or not an exception occurred.",
+            "It prevents the program from encountering errors."
           ],
-          correctAnswer: 1
+          "correctAnswer": 2,
+          "explanation": "A `finally` block always executes upon leaving `try`, whether an exception occurred or not — ideal for cleanup."
+        },
+        {
+          "question": "Which approach is generally best when you expect a missing file?",
+          "options": [
+            "Catch every possible exception without distinction.",
+            "Use a targeted FileNotFoundError handler.",
+            "Disable Python error messages.",
+            "Use assert to confirm the file exists."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Catching specific exceptions like `FileNotFoundError` handles expected failures cleanly without masking unrelated bugs."
+        },
+        {
+          "question": "Which keyword raises an exception intentionally?",
+          "options": [
+            "throw",
+            "error",
+            "raise",
+            "except"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The `raise` keyword intentionally triggers an exception (or re-raises the current one)."
+        },
+        {
+          "question": "What is a key advantage of a custom exception?",
+          "options": [
+            "It makes all errors disappear.",
+            "It automatically repairs invalid data.",
+            "It provides a meaningful error type for an application-specific condition.",
+            "It prevents functions from returning values."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Custom exception classes communicate domain-specific failure reasons clearly and allow callers to catch them selectively."
+        },
+        {
+          "question": "Which logging level is intended for detailed diagnostic messages?",
+          "options": [
+            "CRITICAL",
+            "ERROR",
+            "DEBUG",
+            "WARNING"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`logging.DEBUG` records fine-grained diagnostic details useful during troubleshooting and hidden in normal production info logs."
+        },
+        {
+          "question": "Why should assert not be used for mandatory security validation?",
+          "options": [
+            "Assertions can be disabled when Python runs in optimized mode.",
+            "Assertions cannot contain messages.",
+            "Assertions only work with strings.",
+            "Assertions automatically expose passwords."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Running Python with `-O` (optimized mode) strips all `assert` statements completely, making `assert` unsafe for security/input validation."
+        },
+        {
+          "question": "What does logger.exception() normally include when called inside an except block?",
+          "options": [
+            "Only the current date.",
+            "The exception information and traceback.",
+            "The entire contents of every file.",
+            "A replacement for the original exception."
+          ],
+          "correctAnswer": 1,
+          "explanation": "`logger.exception()` logs an ERROR message together with the full exception type, message, and stack traceback."
+        },
+        {
+          "question": "What should a retry policy generally do?",
+          "options": [
+            "Retry every error forever.",
+            "Ignore all timeouts.",
+            "Retry suitable temporary failures a limited number of times.",
+            "Repeat every payment until it succeeds."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Retries should only target transient failures (like network timeouts) and enforce a strict maximum retry count (with backoff)."
+        },
+        {
+          "question": "What is the best general strategy for handling an unexpected programming error?",
+          "options": [
+            "Silently ignore it.",
+            "Hide the error and continue regardless of application state.",
+            "Log useful diagnostic information, protect sensitive details, and handle the failure at an appropriate boundary.",
+            "Catch BaseException everywhere."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Log full diagnostics internally for developers, protect secrets/PII, and return a clean, safe failure response at the boundary."
         }
+      ],
+      "assignment": "Problem Statement:\nHarden a CSV/JSON Student Roster Importer with custom domain Exceptions, Python's logging module, and defensive validation so one malformed row is logged and skipped rather than crashing the entire batch.\n\nObjectives:\n- Define custom exception subclasses (InvalidRowError, MissingColumnError).\n- Use logging (INFO, WARNING, ERROR, logger.exception) instead of bare print() statements.\n- Never use assert for runtime input validation (since python -O strips asserts!).\n\nRequirements:\n1. Define class ImporterError(Exception) and class InvalidRowError(ImporterError).\n2. Configure logging.basicConfig(level=logging.INFO, format=\"%(levelname)s:%(name)s:%(message)s\").\n3. Process a list of raw row dicts (some missing email or with non-numeric age):\n   - Validate with explicit if ...: raise InvalidRowError(...) (NOT assert!).\n   - Catch InvalidRowError per row, log a warning with row number, and continue processing valid rows.\n4. Return { \"imported\": [...], \"skipped\": [...] }.\n\nStep-by-Step Instructions:\n1. Create roster_importer.py.\n2. Test with 5 rows (3 valid, 2 malformed) and inspect structured log output.\n\nDeliverables:\n- roster_importer.py.\n\nEvaluation Criteria:\n- Custom exception hierarchy and targeted except InvalidRowError (never bare except:).\n- Uses logging instead of print() for diagnostics.",
+      "lessons": [
+        {
+          "title": "Module 9: Error Handling, Debugging, Logging & Defensive Programming",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming: Module 9: Error Handling, Debugging, Logging & Defensive Programming.",
+          "objectives": [
+            "Master Module 9: Error Handling, Debugging, Logging & Defensive Programming",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 9: Error Handling, Debugging, Logging & Defensive Programming\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Understand syntax errors, runtime errors, and logical errors.\n- Handle exceptions using try, except, else, and finally.\n- Catch specific exceptions instead of hiding every error.\n- Raise exceptions intentionally with raise.\n- Create custom exception classes for business rules.\n- Validate input and build defensive functions.\n- Read tracebacks and locate the source of a problem.\n- Use Python's built-in debugger and assertions.\n- Record application events with the logging module.\n- Handle file and JSON errors safely.\n- Design programs that recover gracefully from expected failures.\n- Build a robust command-line expense tracker.\n\n## 2. Why Error Handling Matters\n\nEvery program can encounter unexpected situations. A user might enter letters where a number is required, a file might not exist, a network connection might fail, or a database might become unavailable.\n\nProfessional software does not assume that everything will always work. It anticipates expected failures, communicates problems clearly, protects important data, and records enough information to diagnose unexpected failures.\n\nConsider this example:\n\n    age = int(input(\"Enter your age: \"))\n    print(age)\n\nIf the user enters \"hello\", Python raises a ValueError and stops the program.\n\nA safer version handles the invalid input:\n\n    try:\n        age = int(input(\"Enter your age: \"))\n        print(f\"Your age is {age}\")\n    except ValueError:\n        print(\"Please enter a valid whole number.\")\n\nThe program now handles one expected failure gracefully.\n\n## 3. Three Main Categories of Errors\n\n### 3.1 Syntax Errors\n\nSyntax errors occur when Python cannot understand the program's structure.\n\nExample:\n\n    if 10 > 5\n        print(\"Ten is greater\")\n\nThe colon after the condition is missing. Python cannot execute the program until the syntax is corrected.\n\n### 3.2 Runtime Errors\n\nRuntime errors happen while a program is executing.\n\nExamples:\n\n    print(10 / 0)\n\n    number = int(\"hello\")\n\n    items = [10, 20]\n    print(items[5])\n\nThese examples produce ZeroDivisionError, ValueError, and IndexError respectively.\n\n### 3.3 Logical Errors\n\nLogical errors occur when a program runs but produces the wrong result.\n\nExample:\n\n    price = 100\n    discount = 20\n    final_price = price + discount\n\nThe code executes, but the calculation is incorrect if the intention is to subtract a discount.\n\nCorrect version:\n\n    final_price = price - discount\n\nLogical errors are often harder to discover because Python may not display an exception.\n\n## 4. Understanding Exceptions\n\nAn exception is an object that represents an error or unusual condition during execution.\n\nCommon built-in exceptions include:\n\n- ValueError: a value has the wrong format or is unsuitable for an operation.\n- TypeError: an operation receives an incompatible type.\n- ZeroDivisionError: division or modulo uses zero as the divisor.\n- IndexError: a sequence index is outside its valid range.\n- KeyError: a dictionary key does not exist.\n- FileNotFoundError: a requested file cannot be found.\n- PermissionError: the operating system denies access.\n- ImportError: an import operation fails.\n- AttributeError: an object does not have the requested attribute.\n- NameError: a variable or name is not defined.\n- RuntimeError: a general runtime problem not covered by a more specific exception.\n- OSError: an operating-system operation fails.\n\nUnderstanding the exception type helps you choose an appropriate recovery strategy.\n\n## 5. The try and except Blocks\n\nUse try for code that might fail and except for handling a specific exception.\n\n    try:\n        number = int(input(\"Enter a number: \"))\n        result = 100 / number\n        print(result)\n    except ValueError:\n        print(\"Enter a whole number.\")\n    except ZeroDivisionError:\n        print(\"The number cannot be zero.\")\n\nSeparate except blocks let you provide useful messages for different failures.\n\n### 5.1 Catch Specific Exceptions\n\nAvoid this pattern in ordinary application logic:\n\n    try:\n        perform_operation()\n    except:\n        print(\"Something went wrong\")\n\nA bare except catches almost every exception, including signals that normally should not be swallowed, such as KeyboardInterrupt and SystemExit.\n\nThis can hide programming defects and make debugging difficult.\n\nPrefer:\n\n    try:\n        perform_operation()\n    except FileNotFoundError:\n        print(\"The requested file does not exist.\")\n    except PermissionError:\n        print(\"You do not have permission to access this file.\")\n\nA broad except Exception can be appropriate at a carefully chosen application boundary, such as logging an unexpected failure before returning a generic error response. It should not replace targeted handling throughout the program.\n\n### 5.2 Handling Multiple Exception Types\n\nWhen the same response is appropriate for multiple exceptions, group them:\n\n    try:\n        number = int(input(\"Enter a number: \"))\n        print(100 / number)\n    except (ValueError, ZeroDivisionError) as error:\n        print(f\"Invalid operation: {error}\")\n\nThe variable error contains the exception object. Its message is useful for debugging, but user-facing applications should avoid exposing sensitive internal details.\n\n## 6. The else Block\n\nThe else block executes only when the try block completes without raising an exception.\n\n    try:\n        number = int(input(\"Enter a number: \"))\n    except ValueError:\n        print(\"Invalid number.\")\n    else:\n        print(f\"Accepted number: {number}\")\n\nKeep the try block as small as practical. If unrelated code is included in it, an exception from that code may be mistaken for an input-conversion failure.\n\n## 7. The finally Block\n\nThe finally block executes whether an exception occurs or not, making it useful for cleanup.\n\n    file = None\n\n    try:\n        file = open(\"notes.txt\", \"r\", encoding=\"utf-8\")\n        print(file.read())\n    except FileNotFoundError:\n        print(\"File not found.\")\n    finally:\n        if file is not None:\n            file.close()\n\nFor files, Python's context manager is generally preferable because it handles cleanup automatically.\n\n    with open(\"notes.txt\", \"r\", encoding=\"utf-8\") as file:\n        content = file.read()\n\nThe file is closed when the with block finishes, even if an exception occurs.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Wrap `int(raw)` in `try / except ValueError / else / finally` and test both `\"42\"` and `\"bad\"`.\n\nExpected Result:\n`else` runs only on `\"42\"`; `finally` runs in both cases.",
+          "keyTakeaways": [
+            "Understand and apply Module 9: Error Handling, Debugging, Logging & Defensive Programming",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "8. Raising Exceptions Intentionally",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming: 8. Raising Exceptions Intentionally.",
+          "objectives": [
+            "Master 8. Raising Exceptions Intentionally",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 8. Raising Exceptions Intentionally\n\nThe raise statement allows a program to reject invalid operations explicitly.\n\n    def withdraw(balance, amount):\n        if amount <= 0:\n            raise ValueError(\"Withdrawal must be positive.\")\n\n        if amount > balance:\n            raise ValueError(\"Insufficient funds.\")\n\n        return balance - amount\n\nThe function does not silently accept an invalid request.\n\nUse built-in exceptions when they accurately describe the problem. ValueError is appropriate when a value is invalid; TypeError may be appropriate when an argument has an inappropriate type.\n\n## 9. Creating Custom Exceptions\n\nCustom exceptions make application-specific failures easier to understand and handle.\n\n    class InsufficientFundsError(Exception):\n        pass\n\n    def withdraw(balance, amount):\n        if amount > balance:\n            raise InsufficientFundsError(\n                \"The account does not have enough funds.\"\n            )\n\n        return balance - amount\n\n    try:\n        new_balance = withdraw(500, 800)\n    except InsufficientFundsError as error:\n        print(error)\n\nCustom exception classes should normally inherit from Exception or a suitable existing exception subclass.\n\n### 9.1 When Should You Create a Custom Exception?\n\nCreate a custom exception when a meaningful business rule needs its own error type.\n\nExamples:\n\n- CourseAlreadyEnrolledError\n- InvalidCouponError\n- InsufficientFundsError\n- DuplicateUsernameError\n- ProductOutOfStockError\n\nDo not create a separate exception class for every minor condition. Use a clear and maintainable exception hierarchy.\n\n## 10. Exception Chaining\n\nSometimes one failure occurs because another operation failed. Python supports exception chaining with raise ... from ....\n\n    def load_configuration():\n        try:\n            with open(\"config.json\", encoding=\"utf-8\") as file:\n                return file.read()\n        except OSError as error:\n            raise RuntimeError(\n                \"The application configuration could not be loaded.\"\n            ) from error\n\nThe original exception remains connected to the new exception, helping developers understand the root cause.\n\nUse raise by itself inside an except block when you want to re-raise the same exception:\n\n    try:\n        risky_operation()\n    except ValueError:\n        print(\"Recording invalid input.\")\n        raise\n\nThis preserves the original exception and traceback.\n\n## 11. Defensive Programming and Input Validation\n\nDefensive programming means checking assumptions before they cause damage.\n\n    def calculate_average(numbers):\n        if not numbers:\n            raise ValueError(\"At least one number is required.\")\n\n        return sum(numbers) / len(numbers)\n\nWithout the empty-list check, division by zero would occur.\n\n### 11.1 Validate Types and Values\n\n    def calculate_total(price, quantity):\n        if isinstance(price, bool) or not isinstance(price, (int, float)):\n            raise TypeError(\"Price must be numeric.\")\n\n        if isinstance(quantity, bool) or not isinstance(quantity, int):\n            raise TypeError(\"Quantity must be an integer.\")\n\n        if price < 0:\n            raise ValueError(\"Price cannot be negative.\")\n\n        if quantity < 0:\n            raise ValueError(\"Quantity cannot be negative.\")\n\n        return price * quantity\n\nNotice that bool is a subclass of int in Python. Explicitly rejecting booleans can prevent True from being accepted as quantity 1.\n\nFor financial software, use Decimal rather than binary floating-point values when exact decimal arithmetic is required.\n\n### 11.2 Validate at the Correct Boundary\n\nValidate data where it enters the application:\n\n- User input: verify format and acceptable ranges.\n- API requests: validate payload structure and authorization.\n- File imports: verify the format and required fields.\n- Database operations: enforce data integrity and uniqueness.\n- Internal functions: maintain important invariants when they cannot safely assume valid inputs.\n\nValidation is not a replacement for authorization. A value can be correctly formatted while still being an unauthorized request.\n\n## 12. Assertions\n\nAssertions check assumptions during development.\n\n    def calculate_square_root_input(number):\n        assert number >= 0, \"Number must be non-negative.\"\n        return number\n\nAssertions are useful for catching programmer mistakes and verifying internal invariants.\n\nImportant: do not use assert for validating untrusted user input or enforcing security requirements. Python can disable assertions when optimization is enabled. Use explicit if statements and raise exceptions for mandatory validation.\n\n## 13. Reading a Traceback\n\nA traceback describes the path Python followed before an exception occurred.\n\nExample:\n\n    Traceback (most recent call last):\n      File \"app.py\", line 8, in <module>\n        total = calculate_total(100, 0)\n      File \"app.py\", line 4, in calculate_total\n        return price / quantity\n    ZeroDivisionError: division by zero\n\nHow to read it:\n\n1. Start at the bottom to identify the exception type and message.\n2. Read the stack frames to see which functions were called.\n3. Find the relevant file and line number.\n4. Inspect the variables and assumptions at that point.\n5. Reproduce the issue with a small test.\n6. Correct the cause instead of merely hiding the error.\n\nThe final frame is often where the exception was raised, but the underlying cause may be earlier in the call chain.\n\n## 14. Debugging with print and breakpoint\n\nA simple print statement can reveal variable values:\n\n    total = 150\n    quantity = 0\n\n    print(\"total =\", total)\n    print(\"quantity =\", quantity)\n\nFor more structured debugging, use breakpoint():\n\n    def divide(a, b):\n        breakpoint()\n        return a / b\n\n    print(divide(10, 2))\n\nWhen execution reaches breakpoint(), Python starts its interactive debugger unless debugger behavior has been customized.\n\nUseful debugger commands include:\n\n- n: execute the next line.\n- s: step into a called function.\n- c: continue execution.\n- p variable_name: print a variable.\n- q: quit the debugger.\n\nIn VS Code, you can also set breakpoints by clicking beside a line number and run the program using the Run and Debug panel. Inspect variables, step through statements, and review the call stack.\n\n## 15. Logging with the logging Module\n\nLogging records events that help developers understand what an application is doing.\n\n    import logging\n\n    logging.basicConfig(\n        level=logging.INFO,\n        format=\"%(asctime)s %(levelname)s %(name)s: %(message)s\"\n    )\n\n    logger = logging.getLogger(__name__)\n\n    logger.debug(\"Detailed diagnostic information\")\n    logger.info(\"Application started\")\n    logger.warning(\"A retry may be required\")\n    logger.error(\"An operation failed\")\n\nLogging levels, from least to most severe, are:\n\n- DEBUG: detailed diagnostic information.\n- INFO: normal application events.\n- WARNING: an unexpected situation that may need attention.\n- ERROR: an operation failed.\n- CRITICAL: a severe failure that may prevent continued operation.\n\nThe default logging threshold may hide DEBUG and INFO messages unless configured. Configure logging once at the application entry point rather than repeatedly in every module.\n\n### 15.1 Logging Exceptions\n\nUse logger.exception inside an except block when you want to record the exception traceback:\n\n    try:\n        total = 10 / 0\n    except ZeroDivisionError:\n        logger.exception(\"Could not calculate the total\")\n\nlogger.exception automatically includes exception information. Do not expose raw tracebacks to ordinary users.\n\n### 15.2 Avoid Logging Sensitive Data\n\nNever casually log passwords, authentication tokens, session cookies, private keys, or complete payment details. Logs may be stored for a long time and accessed by multiple people.\n\nPrefer a safe message such as \"Login failed for account identifier ending in 42\" only when that identifier is appropriate to retain and your privacy policy permits it.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Define `class InsufficientFundsError(Exception): pass` and configure `logging.basicConfig(level=logging.INFO)`.\n2. Log an exception inside `except` using `logger.exception(...)`.\n\nExpected Result:\nStructured log output including traceback.",
+          "keyTakeaways": [
+            "Understand and apply 8. Raising Exceptions Intentionally",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "16. File and JSON Error Handling",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Error Handling, Custom Exceptions, Debugging, Logging & Defensive Programming: 16. File and JSON Error Handling.",
+          "objectives": [
+            "Master 16. File and JSON Error Handling",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 16. File and JSON Error Handling\n\nFiles and external data can fail for several reasons: missing files, incorrect permissions, invalid JSON, or unexpected data structures.\n\n    import json\n    from pathlib import Path\n\n    path = Path(\"settings.json\")\n\n    try:\n        with path.open(\"r\", encoding=\"utf-8\") as file:\n            settings = json.load(file)\n    except FileNotFoundError:\n        print(\"Settings file does not exist.\")\n    except json.JSONDecodeError:\n        print(\"Settings file contains invalid JSON.\")\n    except OSError:\n        print(\"The settings file could not be read.\")\n\nJSON decoding success does not guarantee that the data has the structure your application expects. Validate required keys and value types after parsing.\n\nWhen writing important files, consider writing to a temporary file and replacing the original only after the write succeeds. This can reduce the risk of leaving partially written data, although durability and concurrency still require careful design.\n\n## 17. Retry Logic and Recovery\n\nSome failures are temporary, such as a brief network timeout. A retry may help, but retrying every failure is dangerous.\n\nGood retry policies generally:\n\n- Retry only errors that are likely to be temporary.\n- Limit the number of attempts.\n- Use a delay between attempts, often increasing it after repeated failures.\n- Respect timeouts and cancellation.\n- Avoid repeating operations that could charge or create duplicate records unless they are designed to be idempotent.\n\nExample:\n\n    import time\n\n    def retry_three_times(operation):\n        for attempt in range(3):\n            try:\n                return operation()\n            except TimeoutError:\n                if attempt == 2:\n                    raise\n                time.sleep(1 + attempt)\n\nThis example retries a TimeoutError up to three times. In real systems, use an established retry policy appropriate to the library and operation.\n\n## 18. Best Practices\n\n1. Catch exceptions you know how to handle.\n2. Keep try blocks small and focused.\n3. Never silently ignore important failures.\n4. Do not use exceptions as a substitute for ordinary conditions when a clear conditional is simpler.\n5. Raise meaningful exceptions when an operation cannot safely continue.\n6. Use custom exceptions for meaningful domain-specific failures.\n7. Preserve original causes when wrapping exceptions.\n8. Use context managers for files and other managed resources.\n9. Use logging for diagnostics instead of relying entirely on print.\n10. Avoid exposing sensitive implementation details to users.\n11. Test both successful paths and failure paths.\n12. Do not use assert for security checks or mandatory input validation.\n13. Design recovery behavior before adding automatic retries.\n14. Keep error messages actionable without revealing secrets.\n15. Fix the root cause rather than suppressing symptoms.\n\n## 19. Practical Project: Reliable Expense Tracker\n\nBuild a command-line expense tracker that can:\n\n- Add an expense with a description and positive amount.\n- List saved expenses.\n- Calculate the total spending.\n- Save records to a JSON file.\n- Load existing records when the program starts.\n- Handle invalid amounts and malformed JSON.\n- Record errors in a log file.\n- Recover from expected input mistakes without exiting unexpectedly.\n\n### Suggested Project Structure\n\n    expense_tracker/\n        main.py\n        expenses.json\n        app.log\n\n### Development Plan\n\n1. Define a function that validates expense descriptions and amounts.\n2. Represent each expense as a dictionary with description and amount fields.\n3. Create a function to load existing JSON data safely.\n4. Create a function to save the expense list.\n5. Add a menu loop for adding, listing, and calculating expenses.\n6. Use targeted exception handling for user input and file operations.\n7. Configure logging at application startup.\n8. Test invalid input, a missing file, invalid JSON, and valid transactions.\n9. Ensure that a failed save does not falsely report that the data was saved.\n10. Document known limitations and test the application again.\n\n## 20. Testing Checklist\n\nBefore considering the project complete, verify:\n\n- A valid expense can be added.\n- An empty description is rejected.\n- Zero and negative amounts are rejected.\n- Non-numeric amounts are handled.\n- Existing expense records load correctly.\n- A missing data file is handled appropriately.\n- Malformed JSON produces a useful message.\n- A failed save is reported honestly.\n- Listing expenses works when the list is empty.\n- Total spending is calculated correctly.\n- The program does not expose unnecessary technical details to users.\n- Logs do not contain passwords or other secrets.\n\n## 21. Module Summary\n\nYou have learned how to recognize common Python errors, handle exceptions, create custom exceptions, validate data, inspect tracebacks, debug with breakpoints, record application events, and recover from expected failures.\n\nThe key professional principle is simple: reliable software does not pretend errors never happen. It detects failures, responds appropriately, protects important data, and gives developers enough information to fix the underlying cause.\n\nIn the next module, you will move toward more advanced Python engineering topics, including modules, packages, imports, virtual environments, dependency management, and project organization.",
+          "codeExample": "\nimport json\nimport logging\nfrom pathlib import Path\n\nDATA_FILE = Path(\"expenses.json\")\n\nlogging.basicConfig(\n    filename=\"app.log\",\n    level=logging.INFO,\n    format=\"%(asctime)s %(levelname)s %(name)s: %(message)s\"\n)\n\nlogger = logging.getLogger(__name__)\n\n\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense does not meet validation rules.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be greater than zero.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef load_expenses():\n    if not DATA_FILE.exists():\n        return []\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            data = json.load(file)\n\n        if not isinstance(data, list):\n            raise ValueError(\"Expense data must be a JSON list.\")\n\n        validated = []\n\n        for item in data:\n            if not isinstance(item, dict):\n                raise ValueError(\"Each expense must be an object.\")\n\n            validated.append(\n                validate_expense(\n                    item.get(\"description\"),\n                    item.get(\"amount\")\n                )\n            )\n\n        return validated\n\n    except (json.JSONDecodeError, OSError, ValueError) as error:\n        logger.exception(\"Could not load expense data\")\n        print(f\"Could not load expenses: {error}\")\n        return []\n\n\ndef save_expenses(expenses):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_file.replace(DATA_FILE)\n        logger.info(\"Saved %d expense records\", len(expenses))\n        return True\n\n    except OSError:\n        logger.exception(\"Could not save expense data\")\n        print(\"Error: expenses could not be saved.\")\n        return False\n\n\ndef add_expense(expenses):\n    description = input(\"Expense description: \").strip()\n    raw_amount = input(\"Expense amount: \").strip()\n\n    try:\n        amount = float(raw_amount)\n        expense = validate_expense(description, amount)\n    except (ValueError, InvalidExpenseError) as error:\n        print(f\"Invalid expense: {error}\")\n        return\n\n    expenses.append(expense)\n\n    if save_expenses(expenses):\n        print(\"Expense saved successfully.\")\n    else:\n        expenses.pop()\n        print(\"The new expense was not retained in memory.\")\n\n\ndef list_expenses(expenses):\n    if not expenses:\n        print(\"No expenses recorded.\")\n        return\n\n    print(\"\\n--- Expense Records ---\")\n\n    for index, expense in enumerate(expenses, start=1):\n        print(\n            f\"{index}. {expense['description']} \"\n            f\"- Rs. {expense['amount']:.2f}\"\n        )\n\n\ndef show_total(expenses):\n    total = sum(expense[\"amount\"] for expense in expenses)\n    print(f\"Total spending: Rs. {total:.2f}\")\n\n\ndef main():\n    expenses = load_expenses()\n\n    while True:\n        print(\"\\n=== Expense Tracker ===\")\n        print(\"1. Add expense\")\n        print(\"2. List expenses\")\n        print(\"3. Show total\")\n        print(\"4. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        try:\n            if choice == \"1\":\n                add_expense(expenses)\n            elif choice == \"2\":\n                list_expenses(expenses)\n            elif choice == \"3\":\n                show_total(expenses)\n            elif choice == \"4\":\n                print(\"Goodbye.\")\n                break\n            else:\n                print(\"Choose an option from 1 to 4.\")\n        except KeyboardInterrupt:\n            print(\"\\nOperation cancelled.\")\n            break\n        except Exception:\n            logger.exception(\"Unexpected application error\")\n            print(\"An unexpected error occurred. Check the application log.\")\n\n    logger.info(\"Expense tracker closed\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. Configures `logging.basicConfig(filename=\"app.log\", level=logging.INFO, ...)` to record structured timestamps and severity levels.\n2. Wraps JSON file loading in targeted try/except blocks (FileNotFoundError, json.JSONDecodeError) while logging diagnostics safely.\n\nHow to Run & Expected Output:\nSave as `expenses_logged.py` and run `python expenses_logged.py`. Creates `expenses.json` and writes structured INFO/ERROR entries to `app.log`.",
+          "practiceExercise": "Guided Exercise:\n1. Corrupt `expenses.json` with `\"{bad json\"` temporarily and run `expenses_logged.py` to verify `JSONDecodeError` is caught and logged to `app.log`.\n\nExpected Result:\nGraceful recovery without crashing and diagnostic entry written to `app.log`.",
+          "keyTakeaways": [
+            "Understand and apply 16. File and JSON Error Handling",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 9: Error Handling, Debugging, Logging & Defensive Programming",
+        "Apply Python best practices with clean, readable examples",
+        "Master 8. Raising Exceptions Intentionally",
+        "Master 16. File and JSON Error Handling"
       ]
     },
     {
-      title: 'Module 10: Comprehensions and Functional Tools',
-      duration: '2h 30m',
-      notes: `### List comprehensions
-List comprehensions provide a concise way to create lists from iterables.
-
-### Set and dictionary comprehensions
-Use set comprehensions for unique results and dictionary comprehensions for key-value mappings.
-
-### Lambda functions
-A lambda is a small anonymous function containing one expression. Use def for complex logic.
-
-### map() and filter()
-map applies a function to items in an iterable. filter keeps items that pass a condition. Both return iterators in Python 3.
-
-### Sorting
-Use sorted() to create a new sorted list. Use a key function when sorting objects or dictionaries.
-
-### reduce()
-The functools.reduce function combines items into a single result. Prefer built-ins such as sum(), min(), and max() when they communicate the intention more clearly.`,
-      codeExample: `numbers = [1, 2, 3, 4, 5, 6]
-
-squares = [number ** 2 for number in numbers]
-evens = [number for number in numbers if number % 2 == 0]
-
-students = [
-    {"name": "Sara", "score": 88},
-    {"name": "Ali", "score": 74},
-    {"name": "Mina", "score": 95}
-]
-
-ranked = sorted(
-    students,
-    key=lambda student: student["score"],
-    reverse=True
-)
-
-print("Squares:", squares)
-print("Even numbers:", evens)
-
-for student in ranked:
-    print(student["name"], student["score"])`,
-      quiz: [
+      "title": "Python Modules, Packages, Imports, Virtual Environments & Professional Project Structure",
+      "duration": "5h 00m",
+      "notes": "\n# Module 10: Python Modules, Packages, Imports & Project Organization\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why Python projects use modules and packages.\n- Create and import custom Python modules.\n- Understand absolute imports and relative imports.\n- Use the standard library effectively.\n- Prevent accidental code execution during imports.\n- Organize a project into multiple files and directories.\n- Create and activate virtual environments.\n- Install and manage third-party dependencies using pip.\n- Generate and use requirements.txt.\n- Understand the purpose of pyproject.toml.\n- Diagnose common import and dependency errors.\n- Build a reusable command-line application with a professional directory structure.\n\n## 2. Why Project Organization Matters\n\nImagine building an application containing 2,000 lines of Python in one file. Finding a function, testing one feature, or fixing a bug could become difficult.\n\nProfessional applications divide responsibilities into smaller files and packages.\n\nFor example, an expense tracker might have:\n\n- main.py — starts the application.\n- expenses.py — validates and manages expenses.\n- storage.py — reads and writes expense data.\n- reports.py — calculates totals and summaries.\n- tests/ — contains automated tests.\n\nEach file has a clear responsibility. This makes the project easier to maintain, test, reuse, and extend.\n\n## 3. What Is a Python Module?\n\nA module is a Python file that can contain functions, classes, variables, and executable statements.\n\nFor example, create a file named calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def subtract(a, b):\n        return a - b\n\n    PI = 3.141592653589793\n\nYou can now reuse this code in another file.\n\nCreate main.py in the same directory:\n\n    import calculator\n\n    print(calculator.add(10, 5))\n    print(calculator.subtract(10, 5))\n    print(calculator.PI)\n\nOutput:\n\n    15\n    5\n    3.141592653589793\n\nThe import statement makes the module available. The dot operator accesses its members.\n\n### 3.1 Why Not Put Everything in One File?\n\nModules provide:\n\n- Reusability: the same functions can be imported into multiple files.\n- Separation of concerns: each module handles a related set of responsibilities.\n- Easier testing: individual components can be tested independently.\n- Readability: developers can locate code more quickly.\n- Collaboration: different developers can work on different modules.\n- Maintainability: changes can be made in one place rather than duplicated.\n\nAvoid creating an excessive number of tiny modules without a meaningful purpose. Organization should make a project clearer, not more complicated.\n\n## 4. Different Ways to Import Code\n\n### 4.1 Import the Entire Module\n\n    import math\n\n    print(math.sqrt(81))\n    print(math.pi)\n\nThis approach makes the origin of each function clear.\n\n### 4.2 Import Specific Members\n\n    from math import sqrt, pi\n\n    print(sqrt(81))\n    print(pi)\n\nThis can be convenient when you need only a few members.\n\n### 4.3 Import with an Alias\n\n    import statistics as stats\n\n    values = [10, 20, 30, 40]\n\n    print(stats.mean(values))\n\nAn alias gives an imported module a shorter or more convenient name.\n\n### 4.4 Avoid Wildcard Imports\n\n    from math import *\n\nWildcard imports place many names into the current namespace. This can cause naming conflicts and make it harder to understand where a function came from.\n\nPrefer explicit imports.\n\n### 4.5 Importing Your Own Module\n\nSuppose your directory contains:\n\n    project/\n        main.py\n        helpers.py\n\nInside helpers.py:\n\n    def greet(name):\n        return f\"Hello, {name}!\"\n\nInside main.py:\n\n    from helpers import greet\n\n    print(greet(\"Ayesha\"))\n\nRun main.py from the project directory:\n\n    python main.py\n\nPython searches for modules using its import system, including the script directory in ordinary script execution. Import behavior can change with execution mode and package layout, so use a consistent project structure.\n\n## 5. Understanding the Standard Library\n\nPython includes a large standard library. These modules are available without installing separate packages.\n\n### 5.1 math\n\n    import math\n\n    print(math.sqrt(144))\n    print(math.ceil(4.2))\n    print(math.floor(4.8))\n\n### 5.2 random\n\n    import random\n\n    print(random.randint(1, 6))\n    print(random.choice([\"red\", \"blue\", \"green\"]))\n\nThe random module is suitable for simulations and ordinary random selection. It is not suitable for generating security tokens or passwords; use the secrets module for security-sensitive randomness.\n\n### 5.3 datetime\n\n    from datetime import datetime\n\n    current_time = datetime.now()\n    print(current_time)\n\nFor applications that work across time zones, learn about timezone-aware datetimes instead of assuming every timestamp is local time.\n\n### 5.4 pathlib\n\n    from pathlib import Path\n\n    project_folder = Path(\"data\")\n    project_folder.mkdir(exist_ok=True)\n\n    file_path = project_folder / \"notes.txt\"\n    file_path.write_text(\"Python project\", encoding=\"utf-8\")\n\npathlib provides an object-oriented way to work with filesystem paths.\n\n### 5.5 os\n\n    import os\n\n    print(os.getcwd())\n\nThis displays the current working directory. The working directory is not necessarily the same as the directory containing the Python file.\n\n### 5.6 json\n\n    import json\n\n    student = {\n        \"name\": \"Ali\",\n        \"semester\": 1\n    }\n\n    text_data = json.dumps(student, indent=4)\n    print(text_data)\n\nOther useful standard-library modules include csv, collections, itertools, functools, logging, unittest, argparse, sqlite3, and subprocess.\n\n## 6. The __name__ Variable\n\nWhen Python loads a module, it assigns a value to its special __name__ variable.\n\nWhen a file is executed as the main program, its __name__ is normally \"__main__\".\n\nWhen a file is imported as a module, its __name__ is usually the module's import name.\n\nExample:\n\n    print(__name__)\n\nRun the file directly:\n\n    python example.py\n\nOutput:\n\n    __main__\n\nNow import it from another file:\n\n    import example\n\nThe imported module prints its module name, usually \"example\", because the top-level print statement executes during import.\n\nThis demonstrates why module-level code should be designed carefully.\n\n## 7. The if __name__ == \"__main__\" Pattern\n\nUse this pattern to separate reusable definitions from code that should run only when the file is executed directly.\n\n    def add(a, b):\n        return a + b\n\n    def main():\n        print(add(10, 20))\n\n    if __name__ == \"__main__\":\n        main()\n\nNow another file can import add without automatically running the demonstration.\n\nThis pattern is especially useful for:\n\n- Command-line applications.\n- Small demonstration scripts.\n- Development utilities.\n- Modules that can be executed for testing.\n- Programs with a clear entry point.\n\nKeep import-time side effects to a minimum. Importing a module should not unexpectedly delete files, start a server, send emails, or perform expensive operations.\n\n## 8. What Is a Python Package?\n\nA package organizes related modules in a directory hierarchy.\n\nExample:\n\n    university/\n        __init__.py\n        students.py\n        courses.py\n        instructors.py\n\nstudents.py:\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\ncourses.py:\n\n    class Course:\n        def __init__(self, title):\n            self.title = title\n\nA package lets related code live together under a meaningful namespace.\n\n### 8.1 The Purpose of __init__.py\n\nA package can contain an __init__.py file to mark and initialize the package in the traditional package model.\n\nIt can also expose selected public members:\n\n    from .students import Student\n    from .courses import Course\n\nHowever, __init__.py should not become a place for complex application startup logic.\n\nPython also supports namespace packages without __init__.py in suitable circumstances. For beginner projects, a conventional package with __init__.py is often easier to understand.\n\n### 8.2 Importing from a Package\n\nFor this structure:\n\n    project/\n        main.py\n        university/\n            __init__.py\n            students.py\n            courses.py\n\nIn main.py:\n\n    from university.students import Student\n    from university.courses import Course\n\n    student = Student(\"Ali\")\n    course = Course(\"Python\")\n\n    print(student.name)\n    print(course.title)\n\nThis makes the origin of each class explicit.\n\n## 9. Absolute and Relative Imports\n\nAn absolute import starts from the package's importable name.\n\n    from university.students import Student\n\nA relative import uses dots to refer to the current package hierarchy.\n\nInside a module in the university package:\n\n    from .students import Student\n\nOne dot refers to the current package. Two dots refer to its parent package.\n\nRelative imports are useful inside packages but depend on the module being imported as part of a package. Executing a package file directly can break its relative imports.\n\nFor a package application, a common approach is to execute its entry point with the -m option from the appropriate project directory.\n\nFor example:\n\n    python -m myapp\n\nThe exact command depends on the package structure.\n\n## 10. Understanding Python's Import Search\n\nPython uses an import system to locate modules. The search locations are represented in sys.path.\n\n    import sys\n\n    for location in sys.path:\n        print(location)\n\nThe search process considers built-in modules, import finders, package paths, and other configured mechanisms.\n\nImportant concepts:\n\n- The current script's location may be placed on the import path.\n- The working directory can affect module discovery.\n- Installed packages are typically available through the active Python environment.\n- PYTHONPATH can add additional import locations.\n- A local file can accidentally shadow a standard-library or third-party module.\n\nFor example, naming your own file random.py can interfere with importing Python's random module.\n\nAvoid naming files after common standard-library modules such as json.py, random.py, logging.py, or statistics.py.\n\nIf an import behaves unexpectedly, inspect sys.path and the imported module's __file__ attribute where available.\n\n## 11. What Is a Virtual Environment?\n\nA virtual environment is an isolated Python environment for a project.\n\nSuppose project A requires version 1 of a library while project B requires version 2. Installing both dependencies into one shared environment may create conflicts.\n\nVirtual environments help each project maintain its own installed dependencies.\n\nA virtual environment generally includes:\n\n- A Python interpreter or reference to one.\n- Its own package installation location.\n- Scripts for activating or using the environment.\n- Environment-specific configuration.\n\nThe standard library's venv module can create these environments.\n\n## 12. Creating a Virtual Environment in VS Code\n\nOpen the terminal in your project directory.\n\n### Windows\n\nCreate the environment:\n\n    py -m venv .venv\n\nIf the py launcher is unavailable but python works, use:\n\n    python -m venv .venv\n\nActivate it in PowerShell:\n\n    .\\.venv\\Scripts\\Activate.ps1\n\nActivate it in Command Prompt:\n\n    .venv\\Scripts\\activate.bat\n\nWhen activation succeeds, the terminal often displays (.venv) at the beginning of the prompt.\n\nVerify the active interpreter:\n\n    python --version\n    python -m pip --version\n\nIn VS Code:\n\n1. Open the project folder.\n2. Press Ctrl+Shift+P.\n3. Search for Python: Select Interpreter.\n4. Choose the interpreter inside your project's .venv directory.\n5. Open a new terminal if necessary.\n6. Verify the selected Python version.\n\nIf PowerShell blocks activation because of its execution policy, do not immediately change system-wide security settings. You can use Command Prompt, select the environment's interpreter directly, or follow your organization's approved PowerShell policy.\n\n### 12.1 Deactivating the Environment\n\nWhen finished, run:\n\n    deactivate\n\nThis returns the terminal to its previous environment context.\n\nA virtual environment is not a security sandbox. It isolates Python package installations; it does not safely isolate untrusted code from your computer.\n\n## 13. Installing Packages with pip\n\npip is the standard tool commonly used to install Python packages from package indexes.\n\nAfter activating the correct environment, check pip:\n\n    python -m pip --version\n\nUpgrade pip when appropriate:\n\n    python -m pip install --upgrade pip\n\nInstall a third-party package:\n\n    python -m pip install requests\n\nTest it:\n\n    python -c \"import requests; print(requests.__version__)\"\n\nPrefer python -m pip over an ambiguous pip command because it ties package installation to the selected Python interpreter.\n\n### 13.1 Check Installed Packages\n\n    python -m pip list\n\nShow details about a package:\n\n    python -m pip show requests\n\nUninstall a package:\n\n    python -m pip uninstall requests\n\nAlways verify that the terminal is using the intended environment before installing or removing packages.\n\n## 14. requirements.txt\n\nA requirements.txt file records project dependencies so another developer can recreate the environment.\n\nGenerate a list of installed packages:\n\n    python -m pip freeze > requirements.txt\n\nInstall those listed dependencies in another environment:\n\n    python -m pip install -r requirements.txt\n\nFor example, a small file might contain:\n\n    requests==2.32.0\n\nThe version above is illustrative; use versions that are appropriate and actually tested for your project.\n\n### 14.1 What Does Version Pinning Mean?\n\nA pinned dependency specifies a particular version.\n\n    requests==2.32.0\n\nA version range expresses a permitted set of versions.\n\n    requests>=2.30,<3.0\n\nPinning can improve reproducibility, but a generated freeze file may contain development tools and indirect dependencies as well as the packages your application directly uses.\n\nFor small projects, requirements.txt is convenient. For larger applications, teams may use dependency groups, lock files, and dedicated dependency-management tools.\n\nDo not copy arbitrary dependency versions from another project without checking compatibility.\n\n## 15. Understanding pyproject.toml\n\npyproject.toml is a standardized configuration file used by Python projects and build tools.\n\nIt can contain:\n\n- Project metadata.\n- Build-system requirements.\n- Dependency declarations.\n- Tool configuration.\n- Formatting and linting settings.\n- Test configuration.\n\nA simplified example:\n\n    [project]\n    name = \"expense-tracker\"\n    version = \"0.1.0\"\n    description = \"A command-line expense tracker\"\n    requires-python = \">=3.10\"\n    dependencies = []\n\n    [build-system]\n    requires = [\"setuptools>=68\"]\n    build-backend = \"setuptools.build_meta\"\n\nThis example illustrates a possible configuration. Actual requirements depend on the project and its build backend.\n\nrequirements.txt and pyproject.toml can coexist. They serve related but different workflows: requirements.txt is commonly used to install a set of dependencies, while pyproject.toml can declare project metadata and dependencies in a standardized format.\n\n## 16. Common Import and Environment Errors\n\n### ModuleNotFoundError\n\nPossible causes:\n\n- The package is not installed in the active environment.\n- The wrong interpreter is selected.\n- The module name is misspelled.\n- The project directory is not structured or executed as expected.\n\nTroubleshooting:\n\n    python -c \"import sys; print(sys.executable)\"\n    python -m pip list\n\nCheck the interpreter path, installation, spelling, and project structure before installing anything new.\n\n### ImportError\n\nThe module may exist, but a requested member cannot be imported. Check whether the member exists and whether your installed package version supports it.\n\n### Circular Imports\n\nA circular import occurs when two or more modules depend on one another in a way that interferes with initialization.\n\nFor example, module A imports B while B imports A.\n\nPossible solutions:\n\n- Move shared functionality into a third module.\n- Reduce unnecessary dependencies between modules.\n- Pass objects or functions into components instead of importing everything globally.\n- Move an import inside a function only when that design is justified.\n\n### Wrong Python Interpreter\n\nA package may be installed successfully but remain unavailable because VS Code or the terminal uses a different interpreter.\n\nCheck:\n\n    python -c \"import sys; print(sys.executable)\"\n    python -m pip --version\n\nSelect the correct interpreter and install dependencies into that environment.\n\n### Naming Conflicts\n\nA local file named requests.py may prevent Python from importing the installed requests package correctly.\n\nRename the conflicting file, remove stale local bytecode caches if needed, and retry the import.\n\n## 17. Designing a Professional Project Structure\n\nA small application can start with:\n\n    expense_tracker/\n        main.py\n        expenses.py\n        storage.py\n        reports.py\n        tests/\n            test_expenses.py\n        requirements.txt\n        README.md\n        .gitignore\n\nAs the project grows, you may choose a package structure:\n\n    expense_tracker/\n        pyproject.toml\n        README.md\n        .gitignore\n        src/\n            expense_tracker/\n                __init__.py\n                __main__.py\n                expenses.py\n                storage.py\n                reports.py\n        tests/\n            test_expenses.py\n\nThe src layout helps distinguish the importable package from the repository's root directory. It can also help catch packaging and import assumptions during development.\n\n### 17.1 Responsibility of Each File\n\n- __main__.py: enables execution with python -m expense_tracker.\n- expenses.py: contains expense validation and business rules.\n- storage.py: handles file persistence.\n- reports.py: calculates totals and summaries.\n- tests/: contains automated tests.\n- pyproject.toml: stores project metadata and tool configuration.\n- README.md: explains installation, execution, and usage.\n- .gitignore: identifies files that Git should ignore.\n\nAvoid placing all business logic in main.py. Keep the entry point small and delegate work to reusable modules.\n\n## 18. The .gitignore File\n\nA .gitignore file tells Git which untracked files and directories should normally be excluded from version control.\n\nExample:\n\n    .venv/\n    __pycache__/\n    *.py[cod]\n    .env\n    .pytest_cache/\n    build/\n    dist/\n\nDo not commit virtual environments or secret environment files.\n\nA .gitignore rule does not remove a file that Git is already tracking. If a secret has already been committed, removing it from the latest commit alone may not remove it from history. Rotate the exposed secret and follow an appropriate history-cleanup process.\n\n## 19. Practical Project: Modular Expense Tracker\n\nBuild a reusable expense tracker using multiple modules.\n\n### File 1: expenses.py\n\nResponsibilities:\n\n- Validate expense descriptions.\n- Validate positive numeric amounts.\n- Add expense records.\n- Calculate total spending.\n\n### File 2: storage.py\n\nResponsibilities:\n\n- Load JSON records.\n- Handle a missing data file.\n- Validate loaded structures.\n- Save records safely.\n- Report file errors.\n\n### File 3: reports.py\n\nResponsibilities:\n\n- Display expense records.\n- Calculate summaries.\n- Format monetary values consistently.\n\n### File 4: main.py\n\nResponsibilities:\n\n- Display the menu.\n- Read user choices.\n- Call functions from other modules.\n- Handle user-facing errors.\n- Start the application using the main guard.\n\n### File 5: tests/test_expenses.py\n\nResponsibilities:\n\n- Test valid expenses.\n- Reject empty descriptions.\n- Reject invalid amounts.\n- Verify total calculations.\n- Test edge cases.\n\n### Required Features\n\n1. Add expenses.\n2. List expenses.\n3. Calculate total spending.\n4. Save and reload data.\n5. Recover from invalid user input.\n6. Keep responsibilities separated across modules.\n7. Use a virtual environment.\n8. Record dependencies appropriately.\n9. Include a README with setup instructions.\n10. Test the project from a fresh environment.\n\n## 20. Professional Development Workflow\n\nUse this workflow when starting a new Python project:\n\n1. Create a project directory.\n2. Open the directory in VS Code.\n3. Create a virtual environment.\n4. Select the correct interpreter.\n5. Create a sensible package and file structure.\n6. Implement small, reusable modules.\n7. Install only the dependencies you need.\n8. Record dependency information.\n9. Write tests for important behavior.\n10. Add a README and .gitignore.\n11. Run the application and tests.\n12. Recreate the environment to confirm the setup instructions work.\n13. Commit the source code, tests, and configuration to Git.\n14. Keep secrets, generated data, and environment-specific files out of version control when appropriate.\n\n## 21. Module Summary\n\nYou now understand how Python modules and packages make code reusable, how imports work, why the __name__ guard matters, and how virtual environments separate project dependencies.\n\nYou have also learned to use pip, requirements.txt, pyproject.toml, and .gitignore to organize and maintain projects.\n\nThe central principle is that professional Python development is not only about writing correct functions. It is also about making the entire project understandable, reproducible, testable, and maintainable.\n\nIn the next module, you will study automated testing with unittest and pytest concepts, test design, fixtures, mocking, and test-driven development.\n",
+      "codeExample": "\nfrom pathlib import Path\nimport json\n\nDATA_FILE = Path(\"expenses.json\")\n\n\n# expenses.py functionality\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense is invalid.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be positive.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef calculate_total(expenses):\n    return sum(item[\"amount\"] for item in expenses)\n\n\n# storage.py functionality\ndef load_expenses():\n    if not DATA_FILE.exists():\n        return []\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            data = json.load(file)\n\n        if not isinstance(data, list):\n            raise ValueError(\"Stored data must be a list.\")\n\n        return [\n            validate_expense(item[\"description\"], item[\"amount\"])\n            for item in data\n        ]\n\n    except (json.JSONDecodeError, OSError, ValueError, KeyError, TypeError) as error:\n        print(f\"Could not load expense data: {error}\")\n        return []\n\n\ndef save_expenses(expenses):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_file.replace(DATA_FILE)\n        return True\n\n    except OSError as error:\n        print(f\"Could not save expense data: {error}\")\n        return False\n\n\n# main.py functionality\ndef main():\n    expenses = load_expenses()\n\n    while True:\n        print(\"\\n=== Modular Expense Tracker ===\")\n        print(\"1. Add expense\")\n        print(\"2. List expenses\")\n        print(\"3. Show total\")\n        print(\"4. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            description = input(\"Description: \").strip()\n            raw_amount = input(\"Amount: \").strip()\n\n            try:\n                expense = validate_expense(description, float(raw_amount))\n            except (ValueError, TypeError) as error:\n                print(f\"Invalid expense: {error}\")\n                continue\n\n            expenses.append(expense)\n\n            if save_expenses(expenses):\n                print(\"Expense saved.\")\n            else:\n                expenses.pop()\n                print(\"Expense was not saved.\")\n\n        elif choice == \"2\":\n            if not expenses:\n                print(\"No expenses recorded.\")\n            else:\n                for index, expense in enumerate(expenses, start=1):\n                    print(\n                        f\"{index}. {expense['description']} \"\n                        f\"- Rs. {expense['amount']:.2f}\"\n                    )\n\n        elif choice == \"3\":\n            print(f\"Total: Rs. {calculate_total(expenses):.2f}\")\n\n        elif choice == \"4\":\n            print(\"Goodbye.\")\n            break\n\n        else:\n            print(\"Please choose an option from 1 to 4.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'Which function returns a new sorted list?',
-          options: ['sort()', 'sorted()', 'order()', 'rank()'],
-          correctAnswer: 1
+          "question": "What is a Python module?",
+          "options": [
+            "A Python file containing reusable definitions and statements",
+            "A special type of database",
+            "A virtual machine used only for web development",
+            "A folder that must contain hundreds of files"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Any `.py` file containing reusable functions, classes, and variables is a Python module."
         },
         {
-          question: 'How many expressions can a lambda function contain?',
-          options: [
-            'Exactly one expression',
-            'Unlimited statements',
-            'No expressions',
-            'Only a return statement'
+          "question": "What is the purpose of the if __name__ == \"__main__\" guard?",
+          "options": [
+            "It installs dependencies automatically.",
+            "It ensures guarded code runs when the file is executed as the main program.",
+            "It prevents every import from working.",
+            "It converts a module into a database."
           ],
-          correctAnswer: 0
+          "correctAnswer": 1,
+          "explanation": "`if __name__ == \"__main__\":` runs script-only entry code when executed directly while staying silent when imported as a module."
+        },
+        {
+          "question": "Which command creates a virtual environment named .venv on Windows?",
+          "options": [
+            "python --install .venv",
+            "pip create .venv",
+            "py -m venv .venv",
+            "python -m package .venv"
+          ],
+          "correctAnswer": 2,
+          "explanation": "On Windows, `py -m venv .venv` creates an isolated project virtual environment in `.venv`."
+        },
+        {
+          "question": "Why is python -m pip commonly recommended?",
+          "options": [
+            "It connects pip to the Python interpreter invoked by that command.",
+            "It disables dependency checks.",
+            "It installs every available package.",
+            "It removes the need for virtual environments."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Running `python -m pip` guarantees packages install into the exact Python interpreter you are running, avoiding PATH mismatches."
+        },
+        {
+          "question": "What is a Python package?",
+          "options": [
+            "A single integer variable",
+            "A collection of related modules organized under a package namespace",
+            "A replacement for Python syntax",
+            "A file containing only comments"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A package is a directory of related modules (typically containing `__init__.py`) organized under a shared namespace."
+        },
+        {
+          "question": "What is a common purpose of requirements.txt?",
+          "options": [
+            "To store user passwords",
+            "To define Python language syntax",
+            "To list dependencies that can be installed with pip",
+            "To replace all application source files"
+          ],
+          "correctAnswer": 2,
+          "explanation": "`requirements.txt` pins/lists third-party packages so teammates or CI can reproduce the environment with `pip install -r requirements.txt`."
+        },
+        {
+          "question": "What can pyproject.toml contain?",
+          "options": [
+            "Only image files",
+            "Project metadata, dependency declarations, and tool configuration",
+            "Only compiled machine code",
+            "Only database records"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`pyproject.toml` is the modern standard configuration file for Python project metadata, dependencies, and tools like pytest/ruff."
+        },
+        {
+          "question": "What is a circular import?",
+          "options": [
+            "A function that returns a circle",
+            "A package without a version number",
+            "A situation where modules depend on each other through imports",
+            "A Python loop that always terminates"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Circular imports occur when Module A imports Module B at top level while Module B imports Module A, causing partially initialized module errors."
+        },
+        {
+          "question": "Why should .venv usually be excluded from Git?",
+          "options": [
+            "It contains the only copy of the source code.",
+            "It is a local environment that can be recreated from dependency information.",
+            "Python cannot run code when .venv exists.",
+            "Git requires every dependency to be deleted."
+          ],
+          "correctAnswer": 1,
+          "explanation": "`.venv` contains machine-specific binaries and thousands of library files; commit `requirements.txt` / `pyproject.toml` instead."
+        },
+        {
+          "question": "Which command runs a package using its module entry point?",
+          "options": [
+            "python -m package_name",
+            "pip --run package_name",
+            "python --delete package_name",
+            "import package_name --execute"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`python -m package_name` executes the package’s `__main__.py` entry point directly."
         }
+      ],
+      "assignment": "Problem Statement:\nOrganize a single messy script into a clean, installable-style Python package structure with __init__.py, separated modules, a virtual environment (.venv), requirements.txt, and a python -m package_name entry point.\n\nObjectives:\n- Structure a multi-file Python package with __main__.py for python -m execution.\n- Guard executable script logic with if __name__ == \"__main__\":.\n- Manage dependencies cleanly with .venv and requirements.txt (excluding .venv from Git).\n\nRequirements:\n1. Create package folder cortex_cli/ containing:\n   - __init__.py (exporting version/public helpers)\n   - calculator.py (pure functions + if __name__ == \"__main__\": self-test)\n   - formatter.py (clean output helpers)\n   - __main__.py (entry point parsing sys.argv or running demo).\n2. Create .gitignore ignoring .venv/, __pycache__/, *.pyc.\n3. Create requirements.txt (or pyproject.toml) documenting dependencies.\n\nStep-by-Step Instructions:\n1. Create virtual environment: py -m venv .venv (Windows) or python3 -m venv .venv (macOS/Linux).\n2. Build the cortex_cli/ package files.\n3. Run python -m cortex_cli from the parent directory to verify clean package execution.\n\nDeliverables:\n- cortex_cli/ package directory, .gitignore, and requirements.txt.\n\nEvaluation Criteria:\n- Importing cortex_cli.calculator does NOT trigger CLI side effects.\n- python -m cortex_cli runs cleanly.",
+      "lessons": [
+        {
+          "title": "Module 10: Python Modules, Packages, Imports & Project Organization",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Python Modules, Packages, Imports, Virtual Environments & Professional Project Structure: Module 10: Python Modules, Packages, Imports & Project Organization.",
+          "objectives": [
+            "Master Module 10: Python Modules, Packages, Imports & Project Organization",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 10: Python Modules, Packages, Imports & Project Organization\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why Python projects use modules and packages.\n- Create and import custom Python modules.\n- Understand absolute imports and relative imports.\n- Use the standard library effectively.\n- Prevent accidental code execution during imports.\n- Organize a project into multiple files and directories.\n- Create and activate virtual environments.\n- Install and manage third-party dependencies using pip.\n- Generate and use requirements.txt.\n- Understand the purpose of pyproject.toml.\n- Diagnose common import and dependency errors.\n- Build a reusable command-line application with a professional directory structure.\n\n## 2. Why Project Organization Matters\n\nImagine building an application containing 2,000 lines of Python in one file. Finding a function, testing one feature, or fixing a bug could become difficult.\n\nProfessional applications divide responsibilities into smaller files and packages.\n\nFor example, an expense tracker might have:\n\n- main.py — starts the application.\n- expenses.py — validates and manages expenses.\n- storage.py — reads and writes expense data.\n- reports.py — calculates totals and summaries.\n- tests/ — contains automated tests.\n\nEach file has a clear responsibility. This makes the project easier to maintain, test, reuse, and extend.\n\n## 3. What Is a Python Module?\n\nA module is a Python file that can contain functions, classes, variables, and executable statements.\n\nFor example, create a file named calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def subtract(a, b):\n        return a - b\n\n    PI = 3.141592653589793\n\nYou can now reuse this code in another file.\n\nCreate main.py in the same directory:\n\n    import calculator\n\n    print(calculator.add(10, 5))\n    print(calculator.subtract(10, 5))\n    print(calculator.PI)\n\nOutput:\n\n    15\n    5\n    3.141592653589793\n\nThe import statement makes the module available. The dot operator accesses its members.\n\n### 3.1 Why Not Put Everything in One File?\n\nModules provide:\n\n- Reusability: the same functions can be imported into multiple files.\n- Separation of concerns: each module handles a related set of responsibilities.\n- Easier testing: individual components can be tested independently.\n- Readability: developers can locate code more quickly.\n- Collaboration: different developers can work on different modules.\n- Maintainability: changes can be made in one place rather than duplicated.\n\nAvoid creating an excessive number of tiny modules without a meaningful purpose. Organization should make a project clearer, not more complicated.\n\n## 4. Different Ways to Import Code\n\n### 4.1 Import the Entire Module\n\n    import math\n\n    print(math.sqrt(81))\n    print(math.pi)\n\nThis approach makes the origin of each function clear.\n\n### 4.2 Import Specific Members\n\n    from math import sqrt, pi\n\n    print(sqrt(81))\n    print(pi)\n\nThis can be convenient when you need only a few members.\n\n### 4.3 Import with an Alias\n\n    import statistics as stats\n\n    values = [10, 20, 30, 40]\n\n    print(stats.mean(values))\n\nAn alias gives an imported module a shorter or more convenient name.\n\n### 4.4 Avoid Wildcard Imports\n\n    from math import *\n\nWildcard imports place many names into the current namespace. This can cause naming conflicts and make it harder to understand where a function came from.\n\nPrefer explicit imports.\n\n### 4.5 Importing Your Own Module\n\nSuppose your directory contains:\n\n    project/\n        main.py\n        helpers.py\n\nInside helpers.py:\n\n    def greet(name):\n        return f\"Hello, {name}!\"\n\nInside main.py:\n\n    from helpers import greet\n\n    print(greet(\"Ayesha\"))\n\nRun main.py from the project directory:\n\n    python main.py\n\nPython searches for modules using its import system, including the script directory in ordinary script execution. Import behavior can change with execution mode and package layout, so use a consistent project structure.\n\n## 5. Understanding the Standard Library\n\nPython includes a large standard library. These modules are available without installing separate packages.\n\n### 5.1 math\n\n    import math\n\n    print(math.sqrt(144))\n    print(math.ceil(4.2))\n    print(math.floor(4.8))\n\n### 5.2 random\n\n    import random\n\n    print(random.randint(1, 6))\n    print(random.choice([\"red\", \"blue\", \"green\"]))\n\nThe random module is suitable for simulations and ordinary random selection. It is not suitable for generating security tokens or passwords; use the secrets module for security-sensitive randomness.\n\n### 5.3 datetime\n\n    from datetime import datetime\n\n    current_time = datetime.now()\n    print(current_time)\n\nFor applications that work across time zones, learn about timezone-aware datetimes instead of assuming every timestamp is local time.\n\n### 5.4 pathlib\n\n    from pathlib import Path\n\n    project_folder = Path(\"data\")\n    project_folder.mkdir(exist_ok=True)\n\n    file_path = project_folder / \"notes.txt\"\n    file_path.write_text(\"Python project\", encoding=\"utf-8\")\n\npathlib provides an object-oriented way to work with filesystem paths.\n\n### 5.5 os\n\n    import os\n\n    print(os.getcwd())\n\nThis displays the current working directory. The working directory is not necessarily the same as the directory containing the Python file.\n\n### 5.6 json\n\n    import json\n\n    student = {\n        \"name\": \"Ali\",\n        \"semester\": 1\n    }\n\n    text_data = json.dumps(student, indent=4)\n    print(text_data)\n\nOther useful standard-library modules include csv, collections, itertools, functools, logging, unittest, argparse, sqlite3, and subprocess.\n\n## 6. The __name__ Variable\n\nWhen Python loads a module, it assigns a value to its special __name__ variable.\n\nWhen a file is executed as the main program, its __name__ is normally \"__main__\".\n\nWhen a file is imported as a module, its __name__ is usually the module's import name.\n\nExample:\n\n    print(__name__)\n\nRun the file directly:\n\n    python example.py\n\nOutput:\n\n    __main__\n\nNow import it from another file:\n\n    import example\n\nThe imported module prints its module name, usually \"example\", because the top-level print statement executes during import.\n\nThis demonstrates why module-level code should be designed carefully.\n\n## 7. The if __name__ == \"__main__\" Pattern\n\nUse this pattern to separate reusable definitions from code that should run only when the file is executed directly.\n\n    def add(a, b):\n        return a + b\n\n    def main():\n        print(add(10, 20))\n\n    if __name__ == \"__main__\":\n        main()\n\nNow another file can import add without automatically running the demonstration.\n\nThis pattern is especially useful for:\n\n- Command-line applications.\n- Small demonstration scripts.\n- Development utilities.\n- Modules that can be executed for testing.\n- Programs with a clear entry point.\n\nKeep import-time side effects to a minimum. Importing a module should not unexpectedly delete files, start a server, send emails, or perform expensive operations.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Create a helper module `math_utils.py` with `if __name__ == \"__main__\": print(\"Self-test\")`, then `import math_utils` from another file.\n\nExpected Result:\n`\"Self-test\"` prints when run directly, and stays silent when imported.",
+          "keyTakeaways": [
+            "Understand and apply Module 10: Python Modules, Packages, Imports & Project Organization",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "8. What Is a Python Package?",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Python Modules, Packages, Imports, Virtual Environments & Professional Project Structure: 8. What Is a Python Package?.",
+          "objectives": [
+            "Master 8. What Is a Python Package?",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 8. What Is a Python Package?\n\nA package organizes related modules in a directory hierarchy.\n\nExample:\n\n    university/\n        __init__.py\n        students.py\n        courses.py\n        instructors.py\n\nstudents.py:\n\n    class Student:\n        def __init__(self, name):\n            self.name = name\n\ncourses.py:\n\n    class Course:\n        def __init__(self, title):\n            self.title = title\n\nA package lets related code live together under a meaningful namespace.\n\n### 8.1 The Purpose of __init__.py\n\nA package can contain an __init__.py file to mark and initialize the package in the traditional package model.\n\nIt can also expose selected public members:\n\n    from .students import Student\n    from .courses import Course\n\nHowever, __init__.py should not become a place for complex application startup logic.\n\nPython also supports namespace packages without __init__.py in suitable circumstances. For beginner projects, a conventional package with __init__.py is often easier to understand.\n\n### 8.2 Importing from a Package\n\nFor this structure:\n\n    project/\n        main.py\n        university/\n            __init__.py\n            students.py\n            courses.py\n\nIn main.py:\n\n    from university.students import Student\n    from university.courses import Course\n\n    student = Student(\"Ali\")\n    course = Course(\"Python\")\n\n    print(student.name)\n    print(course.title)\n\nThis makes the origin of each class explicit.\n\n## 9. Absolute and Relative Imports\n\nAn absolute import starts from the package's importable name.\n\n    from university.students import Student\n\nA relative import uses dots to refer to the current package hierarchy.\n\nInside a module in the university package:\n\n    from .students import Student\n\nOne dot refers to the current package. Two dots refer to its parent package.\n\nRelative imports are useful inside packages but depend on the module being imported as part of a package. Executing a package file directly can break its relative imports.\n\nFor a package application, a common approach is to execute its entry point with the -m option from the appropriate project directory.\n\nFor example:\n\n    python -m myapp\n\nThe exact command depends on the package structure.\n\n## 10. Understanding Python's Import Search\n\nPython uses an import system to locate modules. The search locations are represented in sys.path.\n\n    import sys\n\n    for location in sys.path:\n        print(location)\n\nThe search process considers built-in modules, import finders, package paths, and other configured mechanisms.\n\nImportant concepts:\n\n- The current script's location may be placed on the import path.\n- The working directory can affect module discovery.\n- Installed packages are typically available through the active Python environment.\n- PYTHONPATH can add additional import locations.\n- A local file can accidentally shadow a standard-library or third-party module.\n\nFor example, naming your own file random.py can interfere with importing Python's random module.\n\nAvoid naming files after common standard-library modules such as json.py, random.py, logging.py, or statistics.py.\n\nIf an import behaves unexpectedly, inspect sys.path and the imported module's __file__ attribute where available.\n\n## 11. What Is a Virtual Environment?\n\nA virtual environment is an isolated Python environment for a project.\n\nSuppose project A requires version 1 of a library while project B requires version 2. Installing both dependencies into one shared environment may create conflicts.\n\nVirtual environments help each project maintain its own installed dependencies.\n\nA virtual environment generally includes:\n\n- A Python interpreter or reference to one.\n- Its own package installation location.\n- Scripts for activating or using the environment.\n- Environment-specific configuration.\n\nThe standard library's venv module can create these environments.\n\n## 12. Creating a Virtual Environment in VS Code\n\nOpen the terminal in your project directory.\n\n### Windows\n\nCreate the environment:\n\n    py -m venv .venv\n\nIf the py launcher is unavailable but python works, use:\n\n    python -m venv .venv\n\nActivate it in PowerShell:\n\n    .\\.venv\\Scripts\\Activate.ps1\n\nActivate it in Command Prompt:\n\n    .venv\\Scripts\\activate.bat\n\nWhen activation succeeds, the terminal often displays (.venv) at the beginning of the prompt.\n\nVerify the active interpreter:\n\n    python --version\n    python -m pip --version\n\nIn VS Code:\n\n1. Open the project folder.\n2. Press Ctrl+Shift+P.\n3. Search for Python: Select Interpreter.\n4. Choose the interpreter inside your project's .venv directory.\n5. Open a new terminal if necessary.\n6. Verify the selected Python version.\n\nIf PowerShell blocks activation because of its execution policy, do not immediately change system-wide security settings. You can use Command Prompt, select the environment's interpreter directly, or follow your organization's approved PowerShell policy.\n\n### 12.1 Deactivating the Environment\n\nWhen finished, run:\n\n    deactivate\n\nThis returns the terminal to its previous environment context.\n\nA virtual environment is not a security sandbox. It isolates Python package installations; it does not safely isolate untrusted code from your computer.\n\n## 13. Installing Packages with pip\n\npip is the standard tool commonly used to install Python packages from package indexes.\n\nAfter activating the correct environment, check pip:\n\n    python -m pip --version\n\nUpgrade pip when appropriate:\n\n    python -m pip install --upgrade pip\n\nInstall a third-party package:\n\n    python -m pip install requests\n\nTest it:\n\n    python -c \"import requests; print(requests.__version__)\"\n\nPrefer python -m pip over an ambiguous pip command because it ties package installation to the selected Python interpreter.\n\n### 13.1 Check Installed Packages\n\n    python -m pip list\n\nShow details about a package:\n\n    python -m pip show requests\n\nUninstall a package:\n\n    python -m pip uninstall requests\n\nAlways verify that the terminal is using the intended environment before installing or removing packages.\n\n## 14. requirements.txt\n\nA requirements.txt file records project dependencies so another developer can recreate the environment.\n\nGenerate a list of installed packages:\n\n    python -m pip freeze > requirements.txt\n\nInstall those listed dependencies in another environment:\n\n    python -m pip install -r requirements.txt\n\nFor example, a small file might contain:\n\n    requests==2.32.0\n\nThe version above is illustrative; use versions that are appropriate and actually tested for your project.\n\n### 14.1 What Does Version Pinning Mean?\n\nA pinned dependency specifies a particular version.\n\n    requests==2.32.0\n\nA version range expresses a permitted set of versions.\n\n    requests>=2.30,<3.0\n\nPinning can improve reproducibility, but a generated freeze file may contain development tools and indirect dependencies as well as the packages your application directly uses.\n\nFor small projects, requirements.txt is convenient. For larger applications, teams may use dependency groups, lock files, and dedicated dependency-management tools.\n\nDo not copy arbitrary dependency versions from another project without checking compatibility.\n\n## 15. Understanding pyproject.toml\n\npyproject.toml is a standardized configuration file used by Python projects and build tools.\n\nIt can contain:\n\n- Project metadata.\n- Build-system requirements.\n- Dependency declarations.\n- Tool configuration.\n- Formatting and linting settings.\n- Test configuration.\n\nA simplified example:\n\n    [project]\n    name = \"expense-tracker\"\n    version = \"0.1.0\"\n    description = \"A command-line expense tracker\"\n    requires-python = \">=3.10\"\n    dependencies = []\n\n    [build-system]\n    requires = [\"setuptools>=68\"]\n    build-backend = \"setuptools.build_meta\"\n\nThis example illustrates a possible configuration. Actual requirements depend on the project and its build backend.\n\nrequirements.txt and pyproject.toml can coexist. They serve related but different workflows: requirements.txt is commonly used to install a set of dependencies, while pyproject.toml can declare project metadata and dependencies in a standardized format.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Create a `.venv` (`py -m venv .venv` on Windows or `python3 -m venv .venv` on macOS/Linux) and verify `.venv/` is listed in `.gitignore`.\n\nExpected Result:\nIsolated virtual environment ready and ignored by Git.",
+          "keyTakeaways": [
+            "Understand and apply 8. What Is a Python Package?",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "16. Common Import and Environment Errors",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Python Modules, Packages, Imports, Virtual Environments & Professional Project Structure: 16. Common Import and Environment Errors.",
+          "objectives": [
+            "Master 16. Common Import and Environment Errors",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 16. Common Import and Environment Errors\n\n### ModuleNotFoundError\n\nPossible causes:\n\n- The package is not installed in the active environment.\n- The wrong interpreter is selected.\n- The module name is misspelled.\n- The project directory is not structured or executed as expected.\n\nTroubleshooting:\n\n    python -c \"import sys; print(sys.executable)\"\n    python -m pip list\n\nCheck the interpreter path, installation, spelling, and project structure before installing anything new.\n\n### ImportError\n\nThe module may exist, but a requested member cannot be imported. Check whether the member exists and whether your installed package version supports it.\n\n### Circular Imports\n\nA circular import occurs when two or more modules depend on one another in a way that interferes with initialization.\n\nFor example, module A imports B while B imports A.\n\nPossible solutions:\n\n- Move shared functionality into a third module.\n- Reduce unnecessary dependencies between modules.\n- Pass objects or functions into components instead of importing everything globally.\n- Move an import inside a function only when that design is justified.\n\n### Wrong Python Interpreter\n\nA package may be installed successfully but remain unavailable because VS Code or the terminal uses a different interpreter.\n\nCheck:\n\n    python -c \"import sys; print(sys.executable)\"\n    python -m pip --version\n\nSelect the correct interpreter and install dependencies into that environment.\n\n### Naming Conflicts\n\nA local file named requests.py may prevent Python from importing the installed requests package correctly.\n\nRename the conflicting file, remove stale local bytecode caches if needed, and retry the import.\n\n## 17. Designing a Professional Project Structure\n\nA small application can start with:\n\n    expense_tracker/\n        main.py\n        expenses.py\n        storage.py\n        reports.py\n        tests/\n            test_expenses.py\n        requirements.txt\n        README.md\n        .gitignore\n\nAs the project grows, you may choose a package structure:\n\n    expense_tracker/\n        pyproject.toml\n        README.md\n        .gitignore\n        src/\n            expense_tracker/\n                __init__.py\n                __main__.py\n                expenses.py\n                storage.py\n                reports.py\n        tests/\n            test_expenses.py\n\nThe src layout helps distinguish the importable package from the repository's root directory. It can also help catch packaging and import assumptions during development.\n\n### 17.1 Responsibility of Each File\n\n- __main__.py: enables execution with python -m expense_tracker.\n- expenses.py: contains expense validation and business rules.\n- storage.py: handles file persistence.\n- reports.py: calculates totals and summaries.\n- tests/: contains automated tests.\n- pyproject.toml: stores project metadata and tool configuration.\n- README.md: explains installation, execution, and usage.\n- .gitignore: identifies files that Git should ignore.\n\nAvoid placing all business logic in main.py. Keep the entry point small and delegate work to reusable modules.\n\n## 18. The .gitignore File\n\nA .gitignore file tells Git which untracked files and directories should normally be excluded from version control.\n\nExample:\n\n    .venv/\n    __pycache__/\n    *.py[cod]\n    .env\n    .pytest_cache/\n    build/\n    dist/\n\nDo not commit virtual environments or secret environment files.\n\nA .gitignore rule does not remove a file that Git is already tracking. If a secret has already been committed, removing it from the latest commit alone may not remove it from history. Rotate the exposed secret and follow an appropriate history-cleanup process.\n\n## 19. Practical Project: Modular Expense Tracker\n\nBuild a reusable expense tracker using multiple modules.\n\n### File 1: expenses.py\n\nResponsibilities:\n\n- Validate expense descriptions.\n- Validate positive numeric amounts.\n- Add expense records.\n- Calculate total spending.\n\n### File 2: storage.py\n\nResponsibilities:\n\n- Load JSON records.\n- Handle a missing data file.\n- Validate loaded structures.\n- Save records safely.\n- Report file errors.\n\n### File 3: reports.py\n\nResponsibilities:\n\n- Display expense records.\n- Calculate summaries.\n- Format monetary values consistently.\n\n### File 4: main.py\n\nResponsibilities:\n\n- Display the menu.\n- Read user choices.\n- Call functions from other modules.\n- Handle user-facing errors.\n- Start the application using the main guard.\n\n### File 5: tests/test_expenses.py\n\nResponsibilities:\n\n- Test valid expenses.\n- Reject empty descriptions.\n- Reject invalid amounts.\n- Verify total calculations.\n- Test edge cases.\n\n### Required Features\n\n1. Add expenses.\n2. List expenses.\n3. Calculate total spending.\n4. Save and reload data.\n5. Recover from invalid user input.\n6. Keep responsibilities separated across modules.\n7. Use a virtual environment.\n8. Record dependencies appropriately.\n9. Include a README with setup instructions.\n10. Test the project from a fresh environment.\n\n## 20. Professional Development Workflow\n\nUse this workflow when starting a new Python project:\n\n1. Create a project directory.\n2. Open the directory in VS Code.\n3. Create a virtual environment.\n4. Select the correct interpreter.\n5. Create a sensible package and file structure.\n6. Implement small, reusable modules.\n7. Install only the dependencies you need.\n8. Record dependency information.\n9. Write tests for important behavior.\n10. Add a README and .gitignore.\n11. Run the application and tests.\n12. Recreate the environment to confirm the setup instructions work.\n13. Commit the source code, tests, and configuration to Git.\n14. Keep secrets, generated data, and environment-specific files out of version control when appropriate.\n\n## 21. Module Summary\n\nYou now understand how Python modules and packages make code reusable, how imports work, why the __name__ guard matters, and how virtual environments separate project dependencies.\n\nYou have also learned to use pip, requirements.txt, pyproject.toml, and .gitignore to organize and maintain projects.\n\nThe central principle is that professional Python development is not only about writing correct functions. It is also about making the entire project understandable, reproducible, testable, and maintainable.\n\nIn the next module, you will study automated testing with unittest and pytest concepts, test design, fixtures, mocking, and test-driven development.",
+          "codeExample": "\nfrom pathlib import Path\nimport json\n\nDATA_FILE = Path(\"expenses.json\")\n\n\n# expenses.py functionality\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense is invalid.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be positive.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef calculate_total(expenses):\n    return sum(item[\"amount\"] for item in expenses)\n\n\n# storage.py functionality\ndef load_expenses():\n    if not DATA_FILE.exists():\n        return []\n\n    try:\n        with DATA_FILE.open(\"r\", encoding=\"utf-8\") as file:\n            data = json.load(file)\n\n        if not isinstance(data, list):\n            raise ValueError(\"Stored data must be a list.\")\n\n        return [\n            validate_expense(item[\"description\"], item[\"amount\"])\n            for item in data\n        ]\n\n    except (json.JSONDecodeError, OSError, ValueError, KeyError, TypeError) as error:\n        print(f\"Could not load expense data: {error}\")\n        return []\n\n\ndef save_expenses(expenses):\n    temporary_file = DATA_FILE.with_suffix(\".tmp\")\n\n    try:\n        with temporary_file.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_file.replace(DATA_FILE)\n        return True\n\n    except OSError as error:\n        print(f\"Could not save expense data: {error}\")\n        return False\n\n\n# main.py functionality\ndef main():\n    expenses = load_expenses()\n\n    while True:\n        print(\"\\n=== Modular Expense Tracker ===\")\n        print(\"1. Add expense\")\n        print(\"2. List expenses\")\n        print(\"3. Show total\")\n        print(\"4. Exit\")\n\n        choice = input(\"Choose an option: \").strip()\n\n        if choice == \"1\":\n            description = input(\"Description: \").strip()\n            raw_amount = input(\"Amount: \").strip()\n\n            try:\n                expense = validate_expense(description, float(raw_amount))\n            except (ValueError, TypeError) as error:\n                print(f\"Invalid expense: {error}\")\n                continue\n\n            expenses.append(expense)\n\n            if save_expenses(expenses):\n                print(\"Expense saved.\")\n            else:\n                expenses.pop()\n                print(\"Expense was not saved.\")\n\n        elif choice == \"2\":\n            if not expenses:\n                print(\"No expenses recorded.\")\n            else:\n                for index, expense in enumerate(expenses, start=1):\n                    print(\n                        f\"{index}. {expense['description']} \"\n                        f\"- Rs. {expense['amount']:.2f}\"\n                    )\n\n        elif choice == \"3\":\n            print(f\"Total: Rs. {calculate_total(expenses):.2f}\")\n\n        elif choice == \"4\":\n            print(\"Goodbye.\")\n            break\n\n        else:\n            print(\"Please choose an option from 1 to 4.\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. Defines custom domain exception InvalidExpenseError(ValueError) and uses pathlib.Path for OS-independent file paths.\n2. Organizes reusable validation and persistence helpers cleanly so they can be imported as a module or executed via `if __name__ == \"__main__\":`.\n\nHow to Run & Expected Output:\nSave as `expenses.py` and run `python expenses.py`. Validates and stores expenses cleanly without import side effects.",
+          "practiceExercise": "Guided Exercise:\n1. Package `expenses.py` inside a folder `finance_app/` with `__init__.py` and `__main__.py` and run `python -m finance_app`.\n\nExpected Result:\nClean package execution with zero `ImportError` or circular import issues.",
+          "keyTakeaways": [
+            "Understand and apply 16. Common Import and Environment Errors",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 10: Python Modules, Packages, Imports & Project Organization",
+        "Apply Python best practices with clean, readable examples",
+        "Master 8. What Is a Python Package?",
+        "Master 16. Common Import and Environment Errors"
       ]
     },
     {
-      title: '11. Modules, Packages, and Virtual Environments',
-      duration: '1h 15m',
-      notes: `
-# Modules, Packages, and Virtual Environments
-
-## 1. What is a module?
-
-A module is a Python file containing reusable code. Instead of writing everything in one file, you can divide your program into smaller files.
-
-For example, create a file named \`calculator.py\`:
-
-\`\`\`python
-def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-\`\`\`
-
-Create another file named \`main.py\` in the same directory:
-
-\`\`\`python
-import calculator
-
-print(calculator.add(10, 5))
-print(calculator.subtract(10, 5))
-\`\`\`
-
-Output:
-
-\`\`\`text
-15
-5
-\`\`\`
-
-## 2. Importing specific functions
-
-You can import only the functions you need.
-
-\`\`\`python
-from calculator import add
-
-print(add(4, 6))
-\`\`\`
-
-Avoid importing everything with \`from module import *\` in professional projects because it can make names confusing.
-
-## 3. Built-in modules
-
-Python includes many useful modules.
-
-\`\`\`python
-import math
-import random
-from datetime import date
-
-print(math.sqrt(81))
-print(random.randint(1, 10))
-print(date.today())
-\`\`\`
-
-- \`math\`: mathematical operations.
-- \`random\`: pseudo-random values.
-- \`datetime\`: dates and times.
-- \`pathlib\`: filesystem paths.
-- \`json\`: JSON data processing.
-
-## 4. Packages
-
-A package groups related Python modules into a directory. A typical project might look like this:
-
-\`\`\`text
-my_project/
-    main.py
-    utilities/
-        __init__.py
-        calculator.py
-        formatting.py
-\`\`\`
-
-You can import a function using:
-
-\`\`\`python
-from utilities.calculator import add
-\`\`\`
-
-The \`__init__.py\` file is commonly used to mark a directory as a regular Python package.
-
-## 5. Installing third-party packages
-
-Python packages can be installed using pip.
-
-\`\`\`bash
-python -m pip install requests
-\`\`\`
-
-Check installed packages:
-
-\`\`\`bash
-python -m pip list
-\`\`\`
-
-## 6. Virtual environments
-
-A virtual environment isolates project dependencies so that different projects can use different package versions.
-
-Create one:
-
-\`\`\`bash
-python -m venv .venv
-\`\`\`
-
-Activate it on Windows PowerShell:
-
-\`\`\`powershell
-.\\.venv\\Scripts\\Activate.ps1
-\`\`\`
-
-On Windows Command Prompt:
-
-\`\`\`bat
-.venv\\Scripts\\activate.bat
-\`\`\`
-
-Install a package inside the environment:
-
-\`\`\`bash
-python -m pip install requests
-\`\`\`
-
-Save dependencies:
-
-\`\`\`bash
-python -m pip freeze > requirements.txt
-\`\`\`
-
-Install them later:
-
-\`\`\`bash
-python -m pip install -r requirements.txt
-\`\`\`
-
-Deactivate the environment with:
-
-\`\`\`bash
-deactivate
-\`\`\`
-
-## 7. Professional practices
-
-- Use descriptive module names in lowercase.
-- Keep each module focused on a clear responsibility.
-- Avoid naming your files after standard-library modules, such as \`random.py\` or \`json.py\`.
-- Keep virtual environments out of Git; add \`.venv/\` to \`.gitignore\`.
-- Keep dependency information in \`requirements.txt\` when appropriate.
-
-## Summary
-
-Modules help you reuse code, packages organize related modules, pip installs external dependencies, and virtual environments isolate project requirements.
-`,
-      codeExample: `# Example: a reusable module
-
-# calculator.py
-def multiply(a, b):
-    return a * b
-
-# main.py
-from calculator import multiply
-
-result = multiply(7, 8)
-print("Result:", result)
-
-# Output:
-# Result: 56`,
-      quiz: [
+      "title": "Automated Testing with unittest, pytest, Fixtures, Mocking, Coverage & Test-Driven Development",
+      "duration": "5h 00m",
+      "notes": "\n# Module 11: Automated Testing & Test-Driven Development\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why software testing is essential.\n- Understand unit, integration, system, and regression testing.\n- Write automated tests using Python's unittest framework.\n- Understand pytest and its simpler testing syntax.\n- Use assertions to verify expected results.\n- Test valid inputs, invalid inputs, and edge cases.\n- Organize test files in a professional project.\n- Use fixtures to prepare repeatable test data.\n- Mock external dependencies such as APIs and email services.\n- Understand test coverage and its limitations.\n- Apply the Red-Green-Refactor cycle of test-driven development.\n- Test a small expense-management application.\n\n## 2. What Is Software Testing?\n\nSoftware testing checks whether a program behaves as expected.\n\nImagine your Cortex learning platform calculates a student's course progress. If a student completes 4 out of 10 modules, the expected progress is 40%.\n\nIf the application displays 400%, the code may still execute without crashing, but the result is incorrect.\n\nA test can detect the problem automatically:\n\n    def test_course_progress():\n        assert calculate_progress(4, 10) == 40\n\nIf the function returns 400 instead of 40, the test fails.\n\nTesting helps developers discover defects before users encounter them. It also makes future changes safer because existing behavior can be checked again automatically.\n\n## 3. Main Types of Testing\n\n### 3.1 Unit Testing\n\nUnit tests check small components, usually individual functions or methods, in isolation.\n\nExamples:\n- Testing a function that calculates course progress.\n- Testing a function that validates an expense.\n- Testing whether an invalid amount raises ValueError.\n\nUnit tests are usually fast and easy to run frequently.\n\n### 3.2 Integration Testing\n\nIntegration tests verify that multiple components work together.\n\nExamples:\n- Checking whether an expense service correctly saves records through the storage module.\n- Verifying that an API endpoint interacts correctly with a database.\n- Testing whether a registration service calls the email-verification component correctly.\n\n### 3.3 System or End-to-End Testing\n\nThese tests evaluate a larger application workflow.\n\nExamples:\n- A student registers, logs in, enrolls in a course, and completes a quiz.\n- A customer adds products to a cart and completes checkout.\n- An instructor creates a course and publishes a module.\n\nEnd-to-end tests provide valuable confidence but usually require more setup and run more slowly than unit tests.\n\n### 3.4 Regression Testing\n\nRegression tests check that previously working functionality remains correct after a change.\n\nSuppose you modify the login system in Cortex. Existing tests should still verify password validation, session behavior, and relevant authorization rules.\n\nA new feature should not silently break an older one.\n\n### 3.5 Manual and Automated Testing\n\nManual testing involves a person checking an application directly.\n\nAutomated testing uses code to perform checks repeatedly.\n\nBoth are useful. Automated tests are particularly valuable for repeated checks, while exploratory manual testing can uncover usability issues and unexpected workflows.\n\n## 4. Assertions: The Foundation of Testing\n\nAn assertion compares an actual result with an expected condition.\n\n    actual = 2 + 3\n    expected = 5\n\n    assert actual == expected\n\nIf the condition is false, Python raises AssertionError.\n\nCommon assertions include:\n\n    assert result == expected\n    assert result != unexpected\n    assert value is None\n    assert \"python\" in course_name\n    assert len(items) == 3\n\nUse assertions inside tests to verify expected behavior. Do not confuse test assertions with application input validation: mandatory runtime validation should use explicit conditions and appropriate exceptions.\n\n## 5. Testing with unittest\n\nunittest is included in Python's standard library, so no third-party installation is required.\n\nCreate a file named calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Divisor cannot be zero.\")\n        return a / b\n\nNow create test_calculator.py:\n\n    import unittest\n    from calculator import add, divide\n\n    class TestCalculator(unittest.TestCase):\n\n        def test_add(self):\n            self.assertEqual(add(2, 3), 5)\n\n        def test_divide(self):\n            self.assertEqual(divide(10, 2), 5)\n\n        def test_division_by_zero(self):\n            with self.assertRaises(ValueError):\n                divide(10, 0)\n\n    if __name__ == \"__main__\":\n        unittest.main()\n\nRun the tests:\n\n    python -m unittest -v\n\nThe unittest discovery mechanism recognizes test files following its naming conventions. You can also run a specific file:\n\n    python -m unittest -v test_calculator\n\n### 5.1 Common unittest Assertions\n\n- assertEqual(a, b): verifies that a equals b.\n- assertNotEqual(a, b): verifies that values differ.\n- assertTrue(condition): verifies that a condition is true.\n- assertFalse(condition): verifies that a condition is false.\n- assertIsNone(value): verifies that a value is None.\n- assertIn(item, collection): verifies membership.\n- assertRaises(ErrorType): verifies that an expected exception is raised.\n- assertAlmostEqual(a, b): compares numeric values within a tolerance.\n\nUse the assertion that best expresses the intended behavior. Clear test names and meaningful failure messages make test results easier to understand.\n\n## 6. Testing Exceptions\n\nA good test suite checks failures as well as successful results.\n\nSuppose a function must reject negative prices:\n\n    def calculate_total(price, quantity):\n        if price < 0:\n            raise ValueError(\"Price cannot be negative.\")\n\n        if quantity < 0:\n            raise ValueError(\"Quantity cannot be negative.\")\n\n        return price * quantity\n\nTest it:\n\n    import unittest\n\n    class TestTotals(unittest.TestCase):\n\n        def test_valid_total(self):\n            self.assertEqual(calculate_total(10, 3), 30)\n\n        def test_negative_price(self):\n            with self.assertRaises(ValueError):\n                calculate_total(-10, 3)\n\n        def test_negative_quantity(self):\n            with self.assertRaises(ValueError):\n                calculate_total(10, -3)\n\nThe tests verify that invalid operations are rejected rather than producing misleading results.\n\nYou can also inspect an exception's message when the exact message is part of the intended contract:\n\n    with self.assertRaisesRegex(ValueError, \"negative\"):\n        calculate_total(-10, 3)\n\nAvoid making tests depend on incidental wording when the exact message is not important.\n\n## 7. Introducing pytest\n\npytest is a popular third-party testing framework. It supports ordinary assert statements, fixtures, parameterized tests, and a rich plugin ecosystem.\n\nInstall it inside your project's active virtual environment:\n\n    python -m pip install pytest\n\nCreate calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Divisor cannot be zero.\")\n        return a / b\n\nCreate test_calculator.py:\n\n    import pytest\n    from calculator import add, divide\n\n    def test_add():\n        assert add(2, 3) == 5\n\n    def test_divide():\n        assert divide(10, 2) == 5\n\n    def test_division_by_zero():\n        with pytest.raises(ValueError):\n            divide(10, 0)\n\nRun pytest:\n\n    python -m pytest -v\n\npytest automatically discovers many tests whose files and function names follow its conventions.\n\n### 7.1 Why Many Developers Like pytest\n\n- Simple assert syntax.\n- Helpful failure output.\n- Parameterized testing.\n- Reusable fixtures.\n- Extensive plugin support.\n- Convenient support for testing exceptions.\n\nunittest remains valuable, especially when working without external dependencies or within projects that already use it. Both frameworks can produce reliable tests.\n\n## 8. Testing Multiple Inputs with Parameterization\n\nSometimes the same rule needs to be tested against many values.\n\nWithout parameterization, you might duplicate several similar test functions.\n\npytest allows this:\n\n    import pytest\n\n    @pytest.mark.parametrize(\n        \"number, expected\",\n        [\n            (2, 4),\n            (3, 9),\n            (5, 25),\n            (10, 100)\n        ]\n    )\n    def test_square(number, expected):\n        assert number * number == expected\n\nEach parameter set becomes a separate test case.\n\nParameterization is especially useful for:\n- Input validation.\n- Mathematical functions.\n- Boundary conditions.\n- Discount calculations.\n- Course progress calculations.\n- Different authentication failure cases.\n\nKeep each test case easy to understand. If a parameterized test becomes complicated, separate it into more focused tests.\n\n## 9. Fixtures: Reusable Test Setup\n\nA fixture prepares objects or resources that tests need.\n\nFor example, multiple expense tests may need the same sample data.\n\n    import pytest\n\n    @pytest.fixture\n    def sample_expenses():\n        return [\n            {\"description\": \"Book\", \"amount\": 500.0},\n            {\"description\": \"Pen\", \"amount\": 100.0}\n        ]\n\n    def test_total(sample_expenses):\n        total = sum(item[\"amount\"] for item in sample_expenses)\n        assert total == 600.0\n\npytest creates the fixture value and passes it to the test that requests it.\n\nFixtures reduce duplication and make tests easier to maintain.\n\n### 9.1 Fixture Scope\n\npytest supports several fixture scopes:\n\n- function: a fresh fixture for each test function; this is the default.\n- class: shared within a test class.\n- module: shared within a test module.\n- package: shared within a package.\n- session: shared during a test session.\n\nChoose the narrowest scope that meets your needs. Shared mutable state can make tests influence one another and produce unreliable results.\n\n### 9.2 Cleanup with yield Fixtures\n\nSome tests need to create temporary resources and clean them up afterward.\n\n    import pytest\n\n    @pytest.fixture\n    def temporary_resource():\n        resource = create_resource()\n        yield resource\n        resource.close()\n\nThe code before yield performs setup. The code after yield performs cleanup.\n\nThe create_resource function is illustrative; replace it with the actual resource constructor in a real project.\n\nUse context managers or appropriate fixture cleanup for files, database connections, temporary directories, and other managed resources.\n\n## 10. Mocking External Dependencies\n\nA unit test should usually avoid sending real emails, making paid API calls, or modifying production data.\n\nMocking replaces a dependency with a controlled test double.\n\nSuppose a notification service sends an email:\n\n    def notify_user(email_service, address, message):\n        return email_service.send(address, message)\n\nYou can test it without a real email provider:\n\n    from unittest.mock import Mock\n\n    def test_notification():\n        email_service = Mock()\n        email_service.send.return_value = True\n\n        result = notify_user(\n            email_service,\n            \"student@example.com\",\n            \"Welcome!\"\n        )\n\n        assert result is True\n        email_service.send.assert_called_once_with(\n            \"student@example.com\",\n            \"Welcome!\"\n        )\n\nThe test verifies that the correct call was made without sending an actual email.\n\n### 10.1 What Should Be Mocked?\n\nMocking is useful for external boundaries such as:\n\n- Email delivery.\n- Payment gateways.\n- Remote APIs.\n- System clocks.\n- Expensive services.\n- Unreliable external dependencies.\n\nDo not mock every internal function. Excessive mocking can make tests pass even when the real components do not work together. Use integration tests to verify important component interactions.\n\n### 10.2 Mocking with patch\n\nPython provides unittest.mock.patch for replacing objects during a test.\n\n    from unittest.mock import patch\n\n    def get_username():\n        return \"real-user\"\n\n    def test_username():\n        with patch(\n            \"__main__.get_username\",\n            return_value=\"test-user\"\n        ):\n            assert get_username() == \"test-user\"\n\nIn real projects, patch the name where the code under test looks it up, not necessarily where the original function was defined. This detail is important when testing imported dependencies.\n\n## 11. Testing Files with Temporary Directories\n\nTests should not depend on a developer's personal files or overwrite real application data.\n\npytest provides tmp_path:\n\n    import json\n\n    def test_json_file(tmp_path):\n        file_path = tmp_path / \"data.json\"\n\n        file_path.write_text(\n            json.dumps({\"name\": \"Ali\"}),\n            encoding=\"utf-8\"\n        )\n\n        loaded = json.loads(\n            file_path.read_text(encoding=\"utf-8\")\n        )\n\n        assert loaded[\"name\"] == \"Ali\"\n\ntmp_path provides a temporary directory for a test. It keeps test data separate from ordinary project files and makes cleanup easier.\n\nUse temporary databases or isolated test databases when testing persistence. Never point destructive tests at a production database.\n\n## 12. Edge Cases and Boundary Testing\n\nAn edge case is an unusual or boundary situation that may reveal a defect.\n\nSuppose course progress is calculated as:\n\n    def calculate_progress(completed, total):\n        if total <= 0:\n            raise ValueError(\"Total modules must be positive.\")\n\n        if completed < 0 or completed > total:\n            raise ValueError(\"Completed modules are out of range.\")\n\n        return round((completed / total) * 100, 2)\n\nUseful tests include:\n\n- Zero completed modules.\n- All modules completed.\n- One module completed out of one.\n- No modules in the course.\n- A negative completed count.\n- More completed modules than the total.\n- Non-integer input, if the function's contract requires integers.\n\nExample:\n\n    def test_zero_progress():\n        assert calculate_progress(0, 10) == 0\n\n    def test_full_progress():\n        assert calculate_progress(10, 10) == 100\n\n    def test_invalid_total():\n        import pytest\n\n        with pytest.raises(ValueError):\n            calculate_progress(0, 0)\n\nBoundary tests are important because bugs often appear at minimum values, maximum values, empty collections, and transitions between valid and invalid input.\n\n## 13. Test Coverage\n\nTest coverage measures which parts of the code are exercised during tests.\n\nA common metric is line coverage:\n\n    coverage percentage =\n        executed executable lines / total executable lines * 100\n\nYou can use coverage.py with pytest.\n\nInstall the tools:\n\n    python -m pip install pytest coverage\n\nRun the tests while measuring coverage:\n\n    python -m coverage run -m pytest\n\nDisplay a summary:\n\n    python -m coverage report -m\n\nGenerate an HTML report:\n\n    python -m coverage html\n\nThe report is commonly written to htmlcov/index.html.\n\n### 13.1 Does 100% Coverage Mean No Bugs?\n\nNo. Coverage only indicates that code was executed according to the measured metric. A test may execute a line without checking whether its result is correct.\n\nHigh coverage is useful when paired with meaningful assertions, boundary tests, and appropriate integration tests.\n\nFocus on testing important behavior and risky code paths rather than chasing a percentage without considering test quality.\n\n## 14. Test-Driven Development (TDD)\n\nTest-driven development is an approach where tests guide implementation.\n\nThe standard cycle is called Red-Green-Refactor.\n\n### Red\n\nWrite a test for behavior that has not been implemented. The test should fail for the expected reason.\n\n### Green\n\nWrite the simplest implementation that makes the test pass.\n\n### Refactor\n\nImprove the code structure while keeping all tests passing.\n\nExample: implement a discount calculator.\n\nFirst write the test:\n\n    def test_discount():\n        assert calculate_price(100, 20) == 80\n\nInitially, calculate_price may not exist, so the test cannot pass.\n\nThen implement:\n\n    def calculate_price(price, discount_percent):\n        return price * (1 - discount_percent / 100)\n\nFinally, improve the function with validation and add tests for invalid discounts and prices.\n\nTDD is a workflow, not a guarantee of correctness. Poor tests can still allow defects, so tests must express meaningful requirements.\n\n## 15. Testing a Real Application\n\nFor your Cortex learning platform, consider these examples.\n\n### Student Progress\n\n- A student completing zero modules has zero progress.\n- Completing half the modules gives 50%.\n- Completing all modules gives 100%.\n- Invalid completion counts are rejected.\n\n### Registration\n\n- A valid registration creates the expected account.\n- Invalid email formats are rejected according to the application's policy.\n- Duplicate account creation is handled.\n- Passwords are never stored as plaintext.\n- Email delivery failure is handled without incorrectly claiming verification succeeded.\n\n### Course Management\n\n- An instructor can create a valid course.\n- Invalid course data is rejected.\n- An unauthorized user cannot perform instructor-only operations.\n- Deleting a course follows the application's defined rules.\n\n### Security Testing\n\n- Users cannot access another student's private records by changing an identifier.\n- Protected endpoints reject missing or invalid authentication.\n- Inputs are validated before being used.\n- Error responses do not expose secrets or stack traces.\n\nSecurity tests must verify the actual server-side authorization logic, not merely whether a button is hidden in the frontend.\n\n## 16. Common Testing Mistakes\n\n### Testing Only the Happy Path\n\nA function may work for ordinary values but fail with empty strings, missing records, or invalid amounts.\n\nSolution: include success cases, failure cases, and boundary cases.\n\n### Tests Depend on Execution Order\n\nA test changes shared data and another test relies on that change.\n\nSolution: isolate test state and use fixtures or fresh test records.\n\n### Using Real External Services Unnecessarily\n\nA test sends real emails or changes live records.\n\nSolution: mock external services for unit tests and use isolated resources for integration tests.\n\n### Assertions Are Too Weak\n\nA test merely checks that a function runs without raising an error when it should verify a specific result.\n\nSolution: assert exact outcomes and important side effects.\n\n### Tests Are Too Coupled to Implementation\n\nA harmless internal refactor breaks many tests even though the public behavior has not changed.\n\nSolution: focus on observable behavior and public contracts.\n\n### Ignoring Failed Tests\n\nA failing test is disabled without understanding the reason.\n\nSolution: investigate the failure, fix the implementation or correct the test requirement, and document legitimate limitations.\n\n## 17. Practical Project: Expense Tracker Test Suite\n\nCreate an expense tracker with separate business logic and automated tests.\n\nSuggested structure:\n\n    expense_tracker/\n        expenses.py\n        storage.py\n        main.py\n        tests/\n            test_expenses.py\n            test_storage.py\n        requirements.txt\n        README.md\n\nRequired behavior:\n\n1. Accept valid expense descriptions.\n2. Reject empty descriptions.\n3. Accept positive numeric amounts.\n4. Reject zero and negative amounts.\n5. Calculate the total correctly.\n6. Load valid JSON records.\n7. Handle missing files.\n8. Reject malformed records.\n9. Save data without reporting success when writing fails.\n10. Avoid modifying production data during tests.\n\nSuggested test cases:\n\n- Add one valid expense.\n- Calculate a total from multiple expenses.\n- Calculate a total for an empty list.\n- Reject an invalid amount.\n- Reject an empty description.\n- Load valid records from a temporary file.\n- Handle invalid JSON.\n- Simulate a storage failure with a mock.\n- Verify that a failed save is reported correctly.\n- Confirm that tests do not depend on a particular execution order.\n\n## 18. Running Tests in VS Code\n\n1. Open your project directory.\n2. Select the project's virtual environment.\n3. Install pytest if you choose to use it.\n4. Create a tests directory.\n5. Name test files using the test_ prefix.\n6. Open the terminal.\n7. Run python -m pytest -v.\n8. Review failed tests and their tracebacks.\n9. Fix the implementation or correct the test if its expected behavior is wrong.\n10. Run the complete test suite again.\n\nFor a larger project, VS Code's Python testing interface can discover and run tests directly from the editor.\n\n## 19. Professional Testing Checklist\n\nBefore shipping a Python application:\n\n- Important business rules have automated tests.\n- Invalid inputs and boundary conditions are covered.\n- Expected exceptions are tested.\n- File and database operations have failure tests.\n- External services are isolated appropriately.\n- Test data is separated from production data.\n- Tests can run from a clean environment.\n- Tests do not depend on their execution order.\n- Coverage is reviewed without treating it as proof of correctness.\n- Security-sensitive behavior is tested at the server boundary.\n- The full test suite passes after changes.\n- Setup and testing instructions are documented.\n\n## 20. Module Summary\n\nYou have learned why automated testing matters, how to write tests with unittest and pytest, how fixtures and mocks work, and how to test exceptions, edge cases, and file operations.\n\nYou have also explored coverage and test-driven development.\n\nThe most important lesson is that testing is not simply checking whether code runs. It is verifying that the application produces correct results, rejects invalid operations, and continues to behave correctly as the code evolves.\n\nIn the next module, you will study advanced Python data handling, including iterators, iterables, generators, yield, lazy evaluation, and memory-efficient processing.\n",
+      "codeExample": "\nfrom pathlib import Path\nimport json\n\n\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense does not satisfy validation rules.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be positive.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef calculate_total(expenses):\n    return round(sum(item[\"amount\"] for item in expenses), 2)\n\n\ndef save_expenses(expenses, file_path):\n    path = Path(file_path)\n    temporary_path = path.with_suffix(path.suffix + \".tmp\")\n\n    try:\n        with temporary_path.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_path.replace(path)\n        return True\n\n    except OSError:\n        if temporary_path.exists():\n            try:\n                temporary_path.unlink()\n            except OSError:\n                pass\n        return False\n\n\ndef load_expenses(file_path):\n    path = Path(file_path)\n\n    if not path.exists():\n        return []\n\n    try:\n        with path.open(\"r\", encoding=\"utf-8\") as file:\n            records = json.load(file)\n\n        if not isinstance(records, list):\n            raise ValueError(\"Expense data must be a list.\")\n\n        return [\n            validate_expense(\n                record[\"description\"],\n                record[\"amount\"]\n            )\n            for record in records\n        ]\n\n    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:\n        raise ValueError(\"Expense data could not be loaded.\") from error\n\n\n# Demonstration\ndef main():\n    expenses = []\n\n    try:\n        expenses.append(validate_expense(\"Python book\", 1200))\n        expenses.append(validate_expense(\"Notebook\", 250))\n\n        print(\"Expenses:\", expenses)\n        print(\"Total:\", calculate_total(expenses))\n\n        output_file = Path(\"demo_expenses.json\")\n\n        if save_expenses(expenses, output_file):\n            print(\"Saved successfully.\")\n\n            loaded = load_expenses(output_file)\n            print(\"Loaded:\", loaded)\n        else:\n            print(\"The expenses could not be saved.\")\n\n    except (InvalidExpenseError, ValueError) as error:\n        print(f\"Operation failed: {error}\")\n\n\nif __name__ == \"__main__\":\n    main()\n\n\n# Example pytest tests can be placed in tests/test_expenses.py:\n#\n# import pytest\n# from your_module import validate_expense, calculate_total\n#\n# def test_valid_expense():\n#     assert validate_expense(\"Book\", 100) == {\n#         \"description\": \"Book\",\n#         \"amount\": 100.0\n#     }\n#\n# def test_empty_description():\n#     with pytest.raises(ValueError):\n#         validate_expense(\"\", 100)\n#\n# def test_zero_amount():\n#     with pytest.raises(ValueError):\n#         validate_expense(\"Book\", 0)\n#\n# def test_calculate_total():\n#     expenses = [\n#         {\"description\": \"Book\", \"amount\": 100.0},\n#         {\"description\": \"Pen\", \"amount\": 50.0}\n#     ]\n#     assert calculate_total(expenses) == 150.0\n",
+      "quiz": [
         {
-          question: 'What is a Python module?',
-          options: [
-            'A Python file containing reusable code',
-            'A type of loop',
-            'A database table',
-            'A browser extension'
+          "question": "What is the primary purpose of a unit test?",
+          "options": [
+            "To test a small component or unit of behavior",
+            "To replace all application documentation",
+            "To deploy an application to production",
+            "To install third-party dependencies"
           ],
-          correctAnswer: 0
+          "correctAnswer": 0,
+          "explanation": "A unit test verifies a small, isolated piece of behavior (like one function or class method) quickly and deterministically."
         },
         {
-          question: 'Which command creates a virtual environment named .venv?',
-          options: [
-            'pip create .venv',
-            'python -m venv .venv',
-            'python install venv',
-            'venv --remove'
+          "question": "Which command runs pytest with verbose output?",
+          "options": [
+            "python --test pytest",
+            "python -m pytest -v",
+            "pip --run-tests",
+            "python -m unittest --install"
           ],
-          correctAnswer: 1
+          "correctAnswer": 1,
+          "explanation": "`python -m pytest -v` runs pytest in verbose mode, printing every individual test case name and PASS/FAIL status."
         },
         {
-          question: 'Which command saves installed package versions to requirements.txt?',
-          options: [
-            'python --save requirements.txt',
-            'pip list > install',
-            'python -m pip freeze > requirements.txt',
-            'python -m requirements save'
+          "question": "Which unittest method checks that an expected exception is raised?",
+          "options": [
+            "assertEqual",
+            "assertIn",
+            "assertRaises",
+            "assertIsNone"
           ],
-          correctAnswer: 2
+          "correctAnswer": 2,
+          "explanation": "In `unittest`, `with self.assertRaises(ValueError):` verifies that the tested code raises the expected exception."
+        },
+        {
+          "question": "What is the main purpose of a pytest fixture?",
+          "options": [
+            "To prepare reusable data or resources for tests",
+            "To disable all assertions",
+            "To install Python itself",
+            "To replace every unit test with a manual test"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pytest fixtures (`@pytest.fixture`) provide clean, reusable setup/teardown state injected into tests by parameter name."
+        },
+        {
+          "question": "Why would you mock an email service during a unit test?",
+          "options": [
+            "To guarantee the email reaches a real inbox",
+            "To avoid making a real external call while verifying expected behavior",
+            "To remove the need to test the application",
+            "To encrypt the email automatically"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Mocking external services (like SMTP/APIs) keeps unit tests fast, deterministic, offline-safe, and free of real side effects."
+        },
+        {
+          "question": "What does line coverage measure?",
+          "options": [
+            "How many developers wrote the code",
+            "How many bugs exist with certainty",
+            "Which executable lines were exercised during the measured tests",
+            "How quickly the application loads"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Line coverage tracks which executable lines of source code were run during your test suite."
+        },
+        {
+          "question": "What is the correct order of the TDD cycle?",
+          "options": [
+            "Refactor, deploy, delete",
+            "Green, Red, ignore",
+            "Install, compile, publish",
+            "Red, Green, Refactor"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Test-Driven Development follows Red (write failing test), Green (make it pass simply), Refactor (clean up while tests stay green)."
+        },
+        {
+          "question": "Why are edge-case tests important?",
+          "options": [
+            "They check unusual and boundary conditions where defects often occur.",
+            "They guarantee that no future bug can exist.",
+            "They eliminate the need for input validation.",
+            "They only test application colors."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Bugs cluster around boundary/edge cases (empty lists, 0, None, negative values), so testing them explicitly prevents regressions."
+        },
+        {
+          "question": "What is a common advantage of tmp_path in pytest?",
+          "options": [
+            "It modifies production files automatically.",
+            "It provides a temporary directory for isolated file tests.",
+            "It disables filesystem permissions.",
+            "It stores passwords for all tests."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Pytest’s built-in `tmp_path` fixture creates a fresh temporary `pathlib.Path` directory per test and cleans it up automatically."
+        },
+        {
+          "question": "Does 100% line coverage guarantee that a program is bug-free?",
+          "options": [
+            "Yes, always.",
+            "Yes, if the tests are fast.",
+            "No, because executing every line does not guarantee that every behavior is checked correctly.",
+            "No, because coverage cannot be measured in Python."
+          ],
+          "correctAnswer": 2,
+          "explanation": "100% line coverage only proves every line executed — it cannot catch missing assertions or unhandled logical edge cases."
         }
+      ],
+      "assignment": "Problem Statement:\nWrite a comprehensive pytest test suite for a BankAccount / Cart service module using fixtures, parametrized edge-case tests, exception assertions (pytest.raises), and monkeypatch mocking for an external email notifier.\n\nObjectives:\n- Write isolated unit tests with pytest fixtures and @pytest.mark.parametrize.\n- Verify exception paths with pytest.raises(ValueError).\n- Mock external side effects (email/network calls) using monkeypatch.\n\nRequirements:\n1. Create bank.py with BankAccount(owner, balance=0) supporting deposit(amount), withdraw(amount) (raising ValueError on insufficient funds or <=0), and notify_receipt(notifier, msg).\n2. Create test_bank.py with:\n   - A @pytest.fixture providing a fresh BankAccount(owner=\"Ada\", balance=100).\n   - @pytest.mark.parametrize tests for multiple invalid deposit amounts (0, -10, -0.01).\n   - A pytest.raises(ValueError) test for overdraft withdrawal.\n   - A monkeypatch test verifying notify_receipt calls the notifier without sending any real email!\n3. Run python -m pytest -v (and optionally pytest --cov=bank if pytest-cov is installed).\n\nStep-by-Step Instructions:\n1. Implement bank.py and test_bank.py inside a clean folder.\n2. Run python -m pytest -v and confirm all tests pass.\n\nDeliverables:\n- bank.py and test_bank.py.\n\nEvaluation Criteria:\n- Zero real network/email calls during tests.\n- Covers happy paths, boundary values, and exception paths.",
+      "lessons": [
+        {
+          "title": "Module 11: Automated Testing & Test-Driven Development",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Automated Testing with unittest, pytest, Fixtures, Mocking, Coverage & Test-Driven Development: Module 11: Automated Testing & Test-Driven Development.",
+          "objectives": [
+            "Master Module 11: Automated Testing & Test-Driven Development",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "# Module 11: Automated Testing & Test-Driven Development\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain why software testing is essential.\n- Understand unit, integration, system, and regression testing.\n- Write automated tests using Python's unittest framework.\n- Understand pytest and its simpler testing syntax.\n- Use assertions to verify expected results.\n- Test valid inputs, invalid inputs, and edge cases.\n- Organize test files in a professional project.\n- Use fixtures to prepare repeatable test data.\n- Mock external dependencies such as APIs and email services.\n- Understand test coverage and its limitations.\n- Apply the Red-Green-Refactor cycle of test-driven development.\n- Test a small expense-management application.\n\n## 2. What Is Software Testing?\n\nSoftware testing checks whether a program behaves as expected.\n\nImagine your Cortex learning platform calculates a student's course progress. If a student completes 4 out of 10 modules, the expected progress is 40%.\n\nIf the application displays 400%, the code may still execute without crashing, but the result is incorrect.\n\nA test can detect the problem automatically:\n\n    def test_course_progress():\n        assert calculate_progress(4, 10) == 40\n\nIf the function returns 400 instead of 40, the test fails.\n\nTesting helps developers discover defects before users encounter them. It also makes future changes safer because existing behavior can be checked again automatically.\n\n## 3. Main Types of Testing\n\n### 3.1 Unit Testing\n\nUnit tests check small components, usually individual functions or methods, in isolation.\n\nExamples:\n- Testing a function that calculates course progress.\n- Testing a function that validates an expense.\n- Testing whether an invalid amount raises ValueError.\n\nUnit tests are usually fast and easy to run frequently.\n\n### 3.2 Integration Testing\n\nIntegration tests verify that multiple components work together.\n\nExamples:\n- Checking whether an expense service correctly saves records through the storage module.\n- Verifying that an API endpoint interacts correctly with a database.\n- Testing whether a registration service calls the email-verification component correctly.\n\n### 3.3 System or End-to-End Testing\n\nThese tests evaluate a larger application workflow.\n\nExamples:\n- A student registers, logs in, enrolls in a course, and completes a quiz.\n- A customer adds products to a cart and completes checkout.\n- An instructor creates a course and publishes a module.\n\nEnd-to-end tests provide valuable confidence but usually require more setup and run more slowly than unit tests.\n\n### 3.4 Regression Testing\n\nRegression tests check that previously working functionality remains correct after a change.\n\nSuppose you modify the login system in Cortex. Existing tests should still verify password validation, session behavior, and relevant authorization rules.\n\nA new feature should not silently break an older one.\n\n### 3.5 Manual and Automated Testing\n\nManual testing involves a person checking an application directly.\n\nAutomated testing uses code to perform checks repeatedly.\n\nBoth are useful. Automated tests are particularly valuable for repeated checks, while exploratory manual testing can uncover usability issues and unexpected workflows.\n\n## 4. Assertions: The Foundation of Testing\n\nAn assertion compares an actual result with an expected condition.\n\n    actual = 2 + 3\n    expected = 5\n\n    assert actual == expected\n\nIf the condition is false, Python raises AssertionError.\n\nCommon assertions include:\n\n    assert result == expected\n    assert result != unexpected\n    assert value is None\n    assert \"python\" in course_name\n    assert len(items) == 3\n\nUse assertions inside tests to verify expected behavior. Do not confuse test assertions with application input validation: mandatory runtime validation should use explicit conditions and appropriate exceptions.\n\n## 5. Testing with unittest\n\nunittest is included in Python's standard library, so no third-party installation is required.\n\nCreate a file named calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Divisor cannot be zero.\")\n        return a / b\n\nNow create test_calculator.py:\n\n    import unittest\n    from calculator import add, divide\n\n    class TestCalculator(unittest.TestCase):\n\n        def test_add(self):\n            self.assertEqual(add(2, 3), 5)\n\n        def test_divide(self):\n            self.assertEqual(divide(10, 2), 5)\n\n        def test_division_by_zero(self):\n            with self.assertRaises(ValueError):\n                divide(10, 0)\n\n    if __name__ == \"__main__\":\n        unittest.main()\n\nRun the tests:\n\n    python -m unittest -v\n\nThe unittest discovery mechanism recognizes test files following its naming conventions. You can also run a specific file:\n\n    python -m unittest -v test_calculator\n\n### 5.1 Common unittest Assertions\n\n- assertEqual(a, b): verifies that a equals b.\n- assertNotEqual(a, b): verifies that values differ.\n- assertTrue(condition): verifies that a condition is true.\n- assertFalse(condition): verifies that a condition is false.\n- assertIsNone(value): verifies that a value is None.\n- assertIn(item, collection): verifies membership.\n- assertRaises(ErrorType): verifies that an expected exception is raised.\n- assertAlmostEqual(a, b): compares numeric values within a tolerance.\n\nUse the assertion that best expresses the intended behavior. Clear test names and meaningful failure messages make test results easier to understand.\n\n## 6. Testing Exceptions\n\nA good test suite checks failures as well as successful results.\n\nSuppose a function must reject negative prices:\n\n    def calculate_total(price, quantity):\n        if price < 0:\n            raise ValueError(\"Price cannot be negative.\")\n\n        if quantity < 0:\n            raise ValueError(\"Quantity cannot be negative.\")\n\n        return price * quantity\n\nTest it:\n\n    import unittest\n\n    class TestTotals(unittest.TestCase):\n\n        def test_valid_total(self):\n            self.assertEqual(calculate_total(10, 3), 30)\n\n        def test_negative_price(self):\n            with self.assertRaises(ValueError):\n                calculate_total(-10, 3)\n\n        def test_negative_quantity(self):\n            with self.assertRaises(ValueError):\n                calculate_total(10, -3)\n\nThe tests verify that invalid operations are rejected rather than producing misleading results.\n\nYou can also inspect an exception's message when the exact message is part of the intended contract:\n\n    with self.assertRaisesRegex(ValueError, \"negative\"):\n        calculate_total(-10, 3)\n\nAvoid making tests depend on incidental wording when the exact message is not important.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write 2 unit tests using `unittest.TestCase` (including `with self.assertRaises(ValueError):`) and run `python -m unittest -v`.\n\nExpected Result:\nBoth tests report `ok`.",
+          "keyTakeaways": [
+            "Understand and apply Module 11: Automated Testing & Test-Driven Development",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "7. Introducing pytest",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Automated Testing with unittest, pytest, Fixtures, Mocking, Coverage & Test-Driven Development: 7. Introducing pytest.",
+          "objectives": [
+            "Master 7. Introducing pytest",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 7. Introducing pytest\n\npytest is a popular third-party testing framework. It supports ordinary assert statements, fixtures, parameterized tests, and a rich plugin ecosystem.\n\nInstall it inside your project's active virtual environment:\n\n    python -m pip install pytest\n\nCreate calculator.py:\n\n    def add(a, b):\n        return a + b\n\n    def divide(a, b):\n        if b == 0:\n            raise ValueError(\"Divisor cannot be zero.\")\n        return a / b\n\nCreate test_calculator.py:\n\n    import pytest\n    from calculator import add, divide\n\n    def test_add():\n        assert add(2, 3) == 5\n\n    def test_divide():\n        assert divide(10, 2) == 5\n\n    def test_division_by_zero():\n        with pytest.raises(ValueError):\n            divide(10, 0)\n\nRun pytest:\n\n    python -m pytest -v\n\npytest automatically discovers many tests whose files and function names follow its conventions.\n\n### 7.1 Why Many Developers Like pytest\n\n- Simple assert syntax.\n- Helpful failure output.\n- Parameterized testing.\n- Reusable fixtures.\n- Extensive plugin support.\n- Convenient support for testing exceptions.\n\nunittest remains valuable, especially when working without external dependencies or within projects that already use it. Both frameworks can produce reliable tests.\n\n## 8. Testing Multiple Inputs with Parameterization\n\nSometimes the same rule needs to be tested against many values.\n\nWithout parameterization, you might duplicate several similar test functions.\n\npytest allows this:\n\n    import pytest\n\n    @pytest.mark.parametrize(\n        \"number, expected\",\n        [\n            (2, 4),\n            (3, 9),\n            (5, 25),\n            (10, 100)\n        ]\n    )\n    def test_square(number, expected):\n        assert number * number == expected\n\nEach parameter set becomes a separate test case.\n\nParameterization is especially useful for:\n- Input validation.\n- Mathematical functions.\n- Boundary conditions.\n- Discount calculations.\n- Course progress calculations.\n- Different authentication failure cases.\n\nKeep each test case easy to understand. If a parameterized test becomes complicated, separate it into more focused tests.\n\n## 9. Fixtures: Reusable Test Setup\n\nA fixture prepares objects or resources that tests need.\n\nFor example, multiple expense tests may need the same sample data.\n\n    import pytest\n\n    @pytest.fixture\n    def sample_expenses():\n        return [\n            {\"description\": \"Book\", \"amount\": 500.0},\n            {\"description\": \"Pen\", \"amount\": 100.0}\n        ]\n\n    def test_total(sample_expenses):\n        total = sum(item[\"amount\"] for item in sample_expenses)\n        assert total == 600.0\n\npytest creates the fixture value and passes it to the test that requests it.\n\nFixtures reduce duplication and make tests easier to maintain.\n\n### 9.1 Fixture Scope\n\npytest supports several fixture scopes:\n\n- function: a fresh fixture for each test function; this is the default.\n- class: shared within a test class.\n- module: shared within a test module.\n- package: shared within a package.\n- session: shared during a test session.\n\nChoose the narrowest scope that meets your needs. Shared mutable state can make tests influence one another and produce unreliable results.\n\n### 9.2 Cleanup with yield Fixtures\n\nSome tests need to create temporary resources and clean them up afterward.\n\n    import pytest\n\n    @pytest.fixture\n    def temporary_resource():\n        resource = create_resource()\n        yield resource\n        resource.close()\n\nThe code before yield performs setup. The code after yield performs cleanup.\n\nThe create_resource function is illustrative; replace it with the actual resource constructor in a real project.\n\nUse context managers or appropriate fixture cleanup for files, database connections, temporary directories, and other managed resources.\n\n## 10. Mocking External Dependencies\n\nA unit test should usually avoid sending real emails, making paid API calls, or modifying production data.\n\nMocking replaces a dependency with a controlled test double.\n\nSuppose a notification service sends an email:\n\n    def notify_user(email_service, address, message):\n        return email_service.send(address, message)\n\nYou can test it without a real email provider:\n\n    from unittest.mock import Mock\n\n    def test_notification():\n        email_service = Mock()\n        email_service.send.return_value = True\n\n        result = notify_user(\n            email_service,\n            \"student@example.com\",\n            \"Welcome!\"\n        )\n\n        assert result is True\n        email_service.send.assert_called_once_with(\n            \"student@example.com\",\n            \"Welcome!\"\n        )\n\nThe test verifies that the correct call was made without sending an actual email.\n\n### 10.1 What Should Be Mocked?\n\nMocking is useful for external boundaries such as:\n\n- Email delivery.\n- Payment gateways.\n- Remote APIs.\n- System clocks.\n- Expensive services.\n- Unreliable external dependencies.\n\nDo not mock every internal function. Excessive mocking can make tests pass even when the real components do not work together. Use integration tests to verify important component interactions.\n\n### 10.2 Mocking with patch\n\nPython provides unittest.mock.patch for replacing objects during a test.\n\n    from unittest.mock import patch\n\n    def get_username():\n        return \"real-user\"\n\n    def test_username():\n        with patch(\n            \"__main__.get_username\",\n            return_value=\"test-user\"\n        ):\n            assert get_username() == \"test-user\"\n\nIn real projects, patch the name where the code under test looks it up, not necessarily where the original function was defined. This detail is important when testing imported dependencies.\n\n## 11. Testing Files with Temporary Directories\n\nTests should not depend on a developer's personal files or overwrite real application data.\n\npytest provides tmp_path:\n\n    import json\n\n    def test_json_file(tmp_path):\n        file_path = tmp_path / \"data.json\"\n\n        file_path.write_text(\n            json.dumps({\"name\": \"Ali\"}),\n            encoding=\"utf-8\"\n        )\n\n        loaded = json.loads(\n            file_path.read_text(encoding=\"utf-8\")\n        )\n\n        assert loaded[\"name\"] == \"Ali\"\n\ntmp_path provides a temporary directory for a test. It keeps test data separate from ordinary project files and makes cleanup easier.\n\nUse temporary databases or isolated test databases when testing persistence. Never point destructive tests at a production database.\n\n## 12. Edge Cases and Boundary Testing\n\nAn edge case is an unusual or boundary situation that may reveal a defect.\n\nSuppose course progress is calculated as:\n\n    def calculate_progress(completed, total):\n        if total <= 0:\n            raise ValueError(\"Total modules must be positive.\")\n\n        if completed < 0 or completed > total:\n            raise ValueError(\"Completed modules are out of range.\")\n\n        return round((completed / total) * 100, 2)\n\nUseful tests include:\n\n- Zero completed modules.\n- All modules completed.\n- One module completed out of one.\n- No modules in the course.\n- A negative completed count.\n- More completed modules than the total.\n- Non-integer input, if the function's contract requires integers.\n\nExample:\n\n    def test_zero_progress():\n        assert calculate_progress(0, 10) == 0\n\n    def test_full_progress():\n        assert calculate_progress(10, 10) == 100\n\n    def test_invalid_total():\n        import pytest\n\n        with pytest.raises(ValueError):\n            calculate_progress(0, 0)\n\nBoundary tests are important because bugs often appear at minimum values, maximum values, empty collections, and transitions between valid and invalid input.\n\n## 13. Test Coverage\n\nTest coverage measures which parts of the code are exercised during tests.\n\nA common metric is line coverage:\n\n    coverage percentage =\n        executed executable lines / total executable lines * 100\n\nYou can use coverage.py with pytest.\n\nInstall the tools:\n\n    python -m pip install pytest coverage\n\nRun the tests while measuring coverage:\n\n    python -m coverage run -m pytest\n\nDisplay a summary:\n\n    python -m coverage report -m\n\nGenerate an HTML report:\n\n    python -m coverage html\n\nThe report is commonly written to htmlcov/index.html.\n\n### 13.1 Does 100% Coverage Mean No Bugs?\n\nNo. Coverage only indicates that code was executed according to the measured metric. A test may execute a line without checking whether its result is correct.\n\nHigh coverage is useful when paired with meaningful assertions, boundary tests, and appropriate integration tests.\n\nFocus on testing important behavior and risky code paths rather than chasing a percentage without considering test quality.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write a `@pytest.fixture` returning a fresh sample list and use `tmp_path` to test writing/reading a temporary file without touching your real directory.\n\nExpected Result:\nIsolated tests pass via `python -m pytest -v`.",
+          "keyTakeaways": [
+            "Understand and apply 7. Introducing pytest",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        },
+        {
+          "title": "14. Test-Driven Development (TDD)",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Automated Testing with unittest, pytest, Fixtures, Mocking, Coverage & Test-Driven Development: 14. Test-Driven Development (TDD).",
+          "objectives": [
+            "Master 14. Test-Driven Development (TDD)",
+            "Apply Python best practices with clean, readable examples"
+          ],
+          "notes": "## 14. Test-Driven Development (TDD)\n\nTest-driven development is an approach where tests guide implementation.\n\nThe standard cycle is called Red-Green-Refactor.\n\n### Red\n\nWrite a test for behavior that has not been implemented. The test should fail for the expected reason.\n\n### Green\n\nWrite the simplest implementation that makes the test pass.\n\n### Refactor\n\nImprove the code structure while keeping all tests passing.\n\nExample: implement a discount calculator.\n\nFirst write the test:\n\n    def test_discount():\n        assert calculate_price(100, 20) == 80\n\nInitially, calculate_price may not exist, so the test cannot pass.\n\nThen implement:\n\n    def calculate_price(price, discount_percent):\n        return price * (1 - discount_percent / 100)\n\nFinally, improve the function with validation and add tests for invalid discounts and prices.\n\nTDD is a workflow, not a guarantee of correctness. Poor tests can still allow defects, so tests must express meaningful requirements.\n\n## 15. Testing a Real Application\n\nFor your Cortex learning platform, consider these examples.\n\n### Student Progress\n\n- A student completing zero modules has zero progress.\n- Completing half the modules gives 50%.\n- Completing all modules gives 100%.\n- Invalid completion counts are rejected.\n\n### Registration\n\n- A valid registration creates the expected account.\n- Invalid email formats are rejected according to the application's policy.\n- Duplicate account creation is handled.\n- Passwords are never stored as plaintext.\n- Email delivery failure is handled without incorrectly claiming verification succeeded.\n\n### Course Management\n\n- An instructor can create a valid course.\n- Invalid course data is rejected.\n- An unauthorized user cannot perform instructor-only operations.\n- Deleting a course follows the application's defined rules.\n\n### Security Testing\n\n- Users cannot access another student's private records by changing an identifier.\n- Protected endpoints reject missing or invalid authentication.\n- Inputs are validated before being used.\n- Error responses do not expose secrets or stack traces.\n\nSecurity tests must verify the actual server-side authorization logic, not merely whether a button is hidden in the frontend.\n\n## 16. Common Testing Mistakes\n\n### Testing Only the Happy Path\n\nA function may work for ordinary values but fail with empty strings, missing records, or invalid amounts.\n\nSolution: include success cases, failure cases, and boundary cases.\n\n### Tests Depend on Execution Order\n\nA test changes shared data and another test relies on that change.\n\nSolution: isolate test state and use fixtures or fresh test records.\n\n### Using Real External Services Unnecessarily\n\nA test sends real emails or changes live records.\n\nSolution: mock external services for unit tests and use isolated resources for integration tests.\n\n### Assertions Are Too Weak\n\nA test merely checks that a function runs without raising an error when it should verify a specific result.\n\nSolution: assert exact outcomes and important side effects.\n\n### Tests Are Too Coupled to Implementation\n\nA harmless internal refactor breaks many tests even though the public behavior has not changed.\n\nSolution: focus on observable behavior and public contracts.\n\n### Ignoring Failed Tests\n\nA failing test is disabled without understanding the reason.\n\nSolution: investigate the failure, fix the implementation or correct the test requirement, and document legitimate limitations.\n\n## 17. Practical Project: Expense Tracker Test Suite\n\nCreate an expense tracker with separate business logic and automated tests.\n\nSuggested structure:\n\n    expense_tracker/\n        expenses.py\n        storage.py\n        main.py\n        tests/\n            test_expenses.py\n            test_storage.py\n        requirements.txt\n        README.md\n\nRequired behavior:\n\n1. Accept valid expense descriptions.\n2. Reject empty descriptions.\n3. Accept positive numeric amounts.\n4. Reject zero and negative amounts.\n5. Calculate the total correctly.\n6. Load valid JSON records.\n7. Handle missing files.\n8. Reject malformed records.\n9. Save data without reporting success when writing fails.\n10. Avoid modifying production data during tests.\n\nSuggested test cases:\n\n- Add one valid expense.\n- Calculate a total from multiple expenses.\n- Calculate a total for an empty list.\n- Reject an invalid amount.\n- Reject an empty description.\n- Load valid records from a temporary file.\n- Handle invalid JSON.\n- Simulate a storage failure with a mock.\n- Verify that a failed save is reported correctly.\n- Confirm that tests do not depend on a particular execution order.\n\n## 18. Running Tests in VS Code\n\n1. Open your project directory.\n2. Select the project's virtual environment.\n3. Install pytest if you choose to use it.\n4. Create a tests directory.\n5. Name test files using the test_ prefix.\n6. Open the terminal.\n7. Run python -m pytest -v.\n8. Review failed tests and their tracebacks.\n9. Fix the implementation or correct the test if its expected behavior is wrong.\n10. Run the complete test suite again.\n\nFor a larger project, VS Code's Python testing interface can discover and run tests directly from the editor.\n\n## 19. Professional Testing Checklist\n\nBefore shipping a Python application:\n\n- Important business rules have automated tests.\n- Invalid inputs and boundary conditions are covered.\n- Expected exceptions are tested.\n- File and database operations have failure tests.\n- External services are isolated appropriately.\n- Test data is separated from production data.\n- Tests can run from a clean environment.\n- Tests do not depend on their execution order.\n- Coverage is reviewed without treating it as proof of correctness.\n- Security-sensitive behavior is tested at the server boundary.\n- The full test suite passes after changes.\n- Setup and testing instructions are documented.\n\n## 20. Module Summary\n\nYou have learned why automated testing matters, how to write tests with unittest and pytest, how fixtures and mocks work, and how to test exceptions, edge cases, and file operations.\n\nYou have also explored coverage and test-driven development.\n\nThe most important lesson is that testing is not simply checking whether code runs. It is verifying that the application produces correct results, rejects invalid operations, and continues to behave correctly as the code evolves.\n\nIn the next module, you will study advanced Python data handling, including iterators, iterables, generators, yield, lazy evaluation, and memory-efficient processing.",
+          "codeExample": "\nfrom pathlib import Path\nimport json\n\n\nclass InvalidExpenseError(ValueError):\n    \"\"\"Raised when an expense does not satisfy validation rules.\"\"\"\n\n\ndef validate_expense(description, amount):\n    if not isinstance(description, str) or not description.strip():\n        raise InvalidExpenseError(\"Description cannot be empty.\")\n\n    if isinstance(amount, bool) or not isinstance(amount, (int, float)):\n        raise InvalidExpenseError(\"Amount must be numeric.\")\n\n    if amount <= 0:\n        raise InvalidExpenseError(\"Amount must be positive.\")\n\n    return {\n        \"description\": description.strip(),\n        \"amount\": round(float(amount), 2)\n    }\n\n\ndef calculate_total(expenses):\n    return round(sum(item[\"amount\"] for item in expenses), 2)\n\n\ndef save_expenses(expenses, file_path):\n    path = Path(file_path)\n    temporary_path = path.with_suffix(path.suffix + \".tmp\")\n\n    try:\n        with temporary_path.open(\"w\", encoding=\"utf-8\") as file:\n            json.dump(expenses, file, indent=4)\n\n        temporary_path.replace(path)\n        return True\n\n    except OSError:\n        if temporary_path.exists():\n            try:\n                temporary_path.unlink()\n            except OSError:\n                pass\n        return False\n\n\ndef load_expenses(file_path):\n    path = Path(file_path)\n\n    if not path.exists():\n        return []\n\n    try:\n        with path.open(\"r\", encoding=\"utf-8\") as file:\n            records = json.load(file)\n\n        if not isinstance(records, list):\n            raise ValueError(\"Expense data must be a list.\")\n\n        return [\n            validate_expense(\n                record[\"description\"],\n                record[\"amount\"]\n            )\n            for record in records\n        ]\n\n    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as error:\n        raise ValueError(\"Expense data could not be loaded.\") from error\n\n\n# Demonstration\ndef main():\n    expenses = []\n\n    try:\n        expenses.append(validate_expense(\"Python book\", 1200))\n        expenses.append(validate_expense(\"Notebook\", 250))\n\n        print(\"Expenses:\", expenses)\n        print(\"Total:\", calculate_total(expenses))\n\n        output_file = Path(\"demo_expenses.json\")\n\n        if save_expenses(expenses, output_file):\n            print(\"Saved successfully.\")\n\n            loaded = load_expenses(output_file)\n            print(\"Loaded:\", loaded)\n        else:\n            print(\"The expenses could not be saved.\")\n\n    except (InvalidExpenseError, ValueError) as error:\n        print(f\"Operation failed: {error}\")\n\n\nif __name__ == \"__main__\":\n    main()\n\n\n# Example pytest tests can be placed in tests/test_expenses.py:\n#\n# import pytest\n# from your_module import validate_expense, calculate_total\n#\n# def test_valid_expense():\n#     assert validate_expense(\"Book\", 100) == {\n#         \"description\": \"Book\",\n#         \"amount\": 100.0\n#     }\n#\n# def test_empty_description():\n#     with pytest.raises(ValueError):\n#         validate_expense(\"\", 100)\n#\n# def test_zero_amount():\n#     with pytest.raises(ValueError):\n#         validate_expense(\"Book\", 0)\n#\n# def test_calculate_total():\n#     expenses = [\n#         {\"description\": \"Book\", \"amount\": 100.0},\n#         {\"description\": \"Pen\", \"amount\": 50.0}\n#     ]\n#     assert calculate_total(expenses) == 150.0\n",
+          "codeExplanation": "1. Separates pure validation logic (validate_expense) from file persistence so unit tests can test validation directly without disk I/O.\n2. Raises specific InvalidExpenseError on blank descriptions or non-positive amounts, ideal for `pytest.raises(InvalidExpenseError)` / `assertRaises`.\n\nHow to Run & Expected Output:\nRun `python -m pytest -v` (or `python -m unittest`) against the module. All validation and persistence tests pass cleanly.",
+          "practiceExercise": "Guided Exercise:\n1. Follow Red -> Green -> Refactor: write a failing pytest for `validate_expense(\"\", 10)` raising `InvalidExpenseError`, run pytest (Red), confirm implementation passes (Green).\n\nExpected Result:\nAll validation tests pass cleanly.",
+          "keyTakeaways": [
+            "Understand and apply 14. Test-Driven Development (TDD)",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
+        }
+      ],
+      "objectives": [
+        "Master Module 11: Automated Testing & Test-Driven Development",
+        "Apply Python best practices with clean, readable examples",
+        "Master 7. Introducing pytest",
+        "Master 14. Test-Driven Development (TDD)"
       ]
     },
     {
-      title: '12. Exception Handling and Debugging',
-      duration: '1h 20m',
-      notes: `
-# Exception Handling and Debugging
-
-## 1. Errors and exceptions
-
-Errors can stop a program from running correctly. Common examples include:
-
-- \`SyntaxError\`: invalid Python syntax.
-- \`NameError\`: using a name that has not been defined.
-- \`TypeError\`: using an operation with an incompatible type.
-- \`ValueError\`: a value has the wrong form.
-- \`ZeroDivisionError\`: dividing a number by zero.
-- \`FileNotFoundError\`: attempting to open a file that does not exist.
-
-Example:
-
-\`\`\`python
-number = int("hello")
-\`\`\`
-
-This raises a \`ValueError\` because "hello" cannot be converted into an integer.
-
-## 2. Using try and except
-
-Use \`try\` to run code that might fail and \`except\` to handle a specific exception.
-
-\`\`\`python
-try:
-    age = int(input("Enter your age: "))
-    print("Next year:", age + 1)
-except ValueError:
-    print("Please enter a valid whole number.")
-\`\`\`
-
-If the user enters \`eighteen\`, the program handles the invalid input instead of terminating with an unhandled exception.
-
-## 3. Handling multiple exception types
-
-You can handle different exceptions separately.
-
-\`\`\`python
-try:
-    number = int(input("Enter a number: "))
-    result = 100 / number
-except ValueError:
-    print("Enter a valid integer.")
-except ZeroDivisionError:
-    print("The number cannot be zero.")
-else:
-    print("Result:", result)
-finally:
-    print("Operation finished.")
-\`\`\`
-
-- \`else\` runs when the \`try\` block completes without an exception.
-- \`finally\` runs whether an exception occurred or not.
-
-## 4. Raising exceptions
-
-Use \`raise\` when your program detects an invalid situation.
-
-\`\`\`python
-def withdraw(balance, amount):
-    if amount <= 0:
-        raise ValueError("Amount must be positive.")
-
-    if amount > balance:
-        raise ValueError("Insufficient balance.")
-
-    return balance - amount
-
-print(withdraw(1000, 250))
-\`\`\`
-
-The function rejects invalid withdrawals rather than silently returning an incorrect result.
-
-## 5. Custom exceptions
-
-You can define an exception for a specific application rule.
-
-\`\`\`python
-class InsufficientBalanceError(Exception):
-    pass
-
-def withdraw(balance, amount):
-    if amount > balance:
-        raise InsufficientBalanceError(
-            "Not enough money in the account."
-        )
-
-    return balance - amount
-\`\`\`
-
-Custom exceptions are useful when built-in exception types do not clearly communicate a business rule.
-
-## 6. Debugging with print and logging
-
-A quick way to inspect a value is to print it.
-
-\`\`\`python
-total = 25 * 4
-print("Debug total:", total)
-\`\`\`
-
-For larger programs, use the logging module:
-
-\`\`\`python
-import logging
-
-logging.basicConfig(level=logging.INFO)
-
-logging.info("Application started")
-logging.warning("A recoverable problem occurred")
-\`\`\`
-
-Logging supports severity levels, filtering, and configurable output.
-
-## 7. Debugging in VS Code
-
-1. Open your Python project folder.
-2. Select the Python interpreter.
-3. Set a breakpoint by clicking beside a line number.
-4. Start debugging with the Run and Debug panel.
-5. Step through statements and inspect variables.
-6. Read the traceback to identify where the exception originated.
-
-A traceback is often the fastest way to locate a failure. Start with the last relevant line and follow the call chain when necessary.
-
-## 8. Professional exception-handling rules
-
-- Catch specific exceptions instead of using a bare \`except:\`.
-- Do not silently ignore failures.
-- Provide useful messages without exposing passwords, tokens, or internal secrets.
-- Avoid using exceptions as a replacement for ordinary conditional logic.
-- Log enough information to diagnose problems while protecting sensitive data.
-
-## Summary
-
-Exception handling allows applications to respond safely to expected failures. Debugging tools, tracebacks, logging, and meaningful exception types help you diagnose problems and maintain reliable software.
-`,
-      codeExample: `def divide_numbers(a, b):
-    try:
-        return a / b
-    except ZeroDivisionError:
-        print("Error: division by zero is not allowed.")
-        return None
-
-print(divide_numbers(10, 2))
-print(divide_numbers(10, 0))
-
-# Output:
-# 5.0
-# Error: division by zero is not allowed.
-# None`,
-      quiz: [
+      "title": "Iterators, Generators, Yield, Lazy Evaluation & Memory-Efficient Data Processing",
+      "duration": "5h 00m",
+      "notes": "\n# Module 12: Iterators, Generators & Lazy Evaluation\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain the difference between iterable and iterator objects.\n- Use iter() and next() to control iteration.\n- Understand the Iterator protocol.\n- Explain how Python's for loop works internally.\n- Create custom iterator classes.\n- Write generator functions using yield.\n- Understand generator expressions.\n- Use lazy evaluation to avoid unnecessary work.\n- Process large files and data streams efficiently.\n- Chain generators into data-processing pipelines.\n- Handle StopIteration correctly.\n- Understand common iterator and generator mistakes.\n- Build a memory-efficient student-record processing application.\n\n## 2. Why Iteration Matters\n\nPython applications frequently process collections of data.\n\nExamples include:\n- Displaying students enrolled in a course.\n- Reading a large CSV file.\n- Processing millions of transaction records.\n- Fetching paginated API results.\n- Filtering event logs.\n- Processing a stream of incoming data.\n\nA simple approach is to load all data into a list:\n\n    numbers = [1, 2, 3, 4, 5]\n\n    for number in numbers:\n        print(number)\n\nThis is suitable for small collections. However, creating a complete list of millions of records may consume substantial memory.\n\nPython provides iteration tools that allow values to be produced and consumed one at a time.\n\n## 3. What Is an Iterable?\n\nAn iterable is an object that Python can iterate over.\n\nCommon examples include:\n- Lists\n- Tuples\n- Strings\n- Dictionaries\n- Sets\n- Files\n- Generators\n- Many objects provided by third-party libraries\n\nExample:\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    for student in students:\n        print(student)\n\nThe list is iterable because Python can obtain an iterator from it.\n\nYou can check this by calling iter():\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    student_iterator = iter(students)\n\n    print(next(student_iterator))\n    print(next(student_iterator))\n    print(next(student_iterator))\n\nOutput:\n\n    Ali\n    Ayesha\n    Hamza\n\nNotice that iter(students) creates an iterator that tracks the current position in the list.\n\n## 4. What Is an Iterator?\n\nAn iterator is an object that produces values one at a time.\n\nAn iterator follows two important rules:\n\n1. It provides __iter__(), which returns the iterator itself.\n2. It provides __next__(), which returns the next value or raises StopIteration when no values remain.\n\nA list is iterable, but a list is not itself a typical iterator.\n\nExample:\n\n    values = [10, 20, 30]\n\n    print(iter(values) is values)  # False\n\n    iterator = iter(values)\n\n    print(iter(iterator) is iterator)  # True\n\nThe iterator maintains its own iteration state.\n\n## 5. Understanding next()\n\nThe next() function requests the next item from an iterator.\n\n    numbers = iter([100, 200, 300])\n\n    print(next(numbers))\n    print(next(numbers))\n    print(next(numbers))\n\nOutput:\n\n    100\n    200\n    300\n\nA further call raises StopIteration because the iterator is exhausted.\n\n    numbers = iter([10])\n\n    print(next(numbers))\n    print(next(numbers))  # Raises StopIteration\n\nYou can provide a default value to avoid the exception when the iterator is exhausted:\n\n    numbers = iter([10])\n\n    print(next(numbers, \"Finished\"))\n    print(next(numbers, \"Finished\"))\n\nOutput:\n\n    10\n    Finished\n\nThe default is returned only when the iterator has no next value.\n\n## 6. How a for Loop Works\n\nA for loop automatically obtains an iterator, requests values, and stops when iteration finishes.\n\nConceptually:\n\n    values = [10, 20, 30]\n    iterator = iter(values)\n\n    while True:\n        try:\n            value = next(iterator)\n        except StopIteration:\n            break\n\n        print(value)\n\nThis is a simplified explanation of the iteration protocol.\n\nYou normally should not manually implement this loop for ordinary collections. Python's for loop already handles iterator exhaustion correctly.\n\nThe important concept is that a for loop can process any compatible iterable, not only lists.\n\n## 7. Iterators Are Usually Stateful\n\nConsider:\n\n    numbers = iter([1, 2, 3, 4])\n\n    print(next(numbers))\n    print(list(numbers))\n\nOutput:\n\n    1\n    [2, 3, 4]\n\nThe first value has already been consumed. The iterator continues from its current position.\n\nOnce an ordinary iterator is exhausted, it generally stays exhausted.\n\n    iterator = iter([7, 8])\n\n    print(list(iterator))\n    print(list(iterator))\n\nOutput:\n\n    [7, 8]\n    []\n\nIf you need to iterate over the same data again, obtain a fresh iterator from a reusable collection, or create a new iterator according to the data source's behavior.\n\n## 8. Dictionaries and Iteration\n\nDictionaries support iteration over their keys by default.\n\n    student = {\n        \"name\": \"Ali\",\n        \"semester\": 1,\n        \"department\": \"Software Engineering\"\n    }\n\n    for key in student:\n        print(key)\n\nTo access key-value pairs:\n\n    for key, value in student.items():\n        print(key, value)\n\nTo iterate over values only:\n\n    for value in student.values():\n        print(value)\n\nThis is useful for processing structured records, application configuration, and API responses.\n\n## 9. Creating a Custom Iterator Class\n\nYou can implement the iterator protocol to control how an object produces values.\n\nExample: a countdown iterator.\n\n    class Countdown:\n        def __init__(self, start):\n            self.current = start\n\n        def __iter__(self):\n            return self\n\n        def __next__(self):\n            if self.current <= 0:\n                raise StopIteration\n\n            value = self.current\n            self.current -= 1\n            return value\n\n    for number in Countdown(5):\n        print(number)\n\nOutput:\n\n    5\n    4\n    3\n    2\n    1\n\n### 9.1 How This Class Works\n\n- __init__ stores the initial state.\n- __iter__ returns the iterator itself.\n- __next__ decides whether another value exists.\n- When the countdown finishes, __next__ raises StopIteration.\n- The for loop handles the termination automatically.\n\nCustom iterator classes are useful when iteration requires persistent state or a specialized traversal algorithm.\n\nHowever, for many simple cases, a generator function is shorter and easier to maintain.\n\n## 10. What Is a Generator?\n\nA generator is a special kind of iterator that produces values incrementally.\n\nGenerator functions use yield instead of relying only on return.\n\nExample:\n\n    def generate_numbers():\n        yield 10\n        yield 20\n        yield 30\n\n    for number in generate_numbers():\n        print(number)\n\nOutput:\n\n    10\n    20\n    30\n\nCalling generate_numbers() creates a generator object. The function body does not run through all its statements immediately.\n\nEach request for a value resumes execution until the next yield, a return, or the end of the function.\n\n## 11. Understanding yield\n\nThe yield statement produces a value while preserving the generator's execution state.\n\n    def countdown(start):\n        while start > 0:\n            yield start\n            start -= 1\n\n    counter = countdown(3)\n\n    print(next(counter))\n    print(next(counter))\n    print(next(counter))\n\nOutput:\n\n    3\n    2\n    1\n\nWhen execution reaches yield, the current value is returned and the generator pauses.\n\nWhen the next value is requested, execution resumes after the previous yield.\n\nThis makes generators useful for processing data without constructing an entire output collection first.\n\n### 11.1 yield Versus return\n\nreturn ends a function and sends back its result.\n\nyield produces a value and pauses a generator so it can resume later.\n\nExample:\n\n    def return_example():\n        return 10\n\n    def yield_example():\n        yield 10\n        yield 20\n\n    print(return_example())\n    print(list(yield_example()))\n\nOutput:\n\n    10\n    [10, 20]\n\nThe first function returns an integer. The second produces a sequence of values through a generator.\n\nA generator can also use return to signal that it has finished. Any return value is available through the StopIteration exception's value attribute in the generator protocol, but ordinary iteration does not yield that return value as an item.\n\n## 12. Generator Expressions\n\nA generator expression resembles a list comprehension but uses parentheses.\n\nList comprehension:\n\n    squares = [number * number for number in range(10)]\n\nGenerator expression:\n\n    squares = (number * number for number in range(10))\n\nThe list comprehension constructs a list immediately. The generator expression produces values on demand.\n\nExample:\n\n    squares = (number * number for number in range(5))\n\n    print(next(squares))\n    print(next(squares))\n\nOutput:\n\n    0\n    1\n\nA generator expression is useful when values will be consumed incrementally or aggregated without needing the complete result collection.\n\n## 13. Memory Efficiency and Lazy Evaluation\n\nLazy evaluation means delaying computation until a result is actually requested.\n\nConsider:\n\n    numbers = [number * number for number in range(1_000_000)]\n\nThis creates a list containing one million calculated values.\n\nAlternatively:\n\n    numbers = (number * number for number in range(1_000_000))\n\nThis creates a generator expression. The individual squares are calculated as values are requested.\n\nFor example:\n\n    numbers = (number * number for number in range(1_000_000))\n\n    for number in numbers:\n        if number > 100:\n            print(number)\n            break\n\nThe program stops requesting values once the condition is met.\n\nThis can save substantial memory and unnecessary computation when only part of a sequence is needed.\n\nHowever, generators are not automatically faster for every workload. Small lists can be simpler and sometimes faster when the complete collection is required repeatedly.\n\n## 14. Generators for Large Files\n\nReading an entire file into memory:\n\n    with open(\"large.log\", encoding=\"utf-8\") as file:\n        contents = file.readlines()\n\nThis creates a list containing all lines.\n\nA memory-efficient approach processes lines as they are read:\n\n    with open(\"large.log\", encoding=\"utf-8\") as file:\n        for line in file:\n            print(line.rstrip())\n\nFile objects are iterable, so they naturally support line-by-line processing.\n\nYou can also write a generator that filters lines:\n\n    def error_lines(file_path):\n        with open(file_path, encoding=\"utf-8\") as file:\n            for line in file:\n                if \"ERROR\" in line:\n                    yield line.rstrip()\n\n    for line in error_lines(\"application.log\"):\n        print(line)\n\nThis approach avoids storing every line or every matching result in a separate list.\n\n## 15. Building Generator Pipelines\n\nGenerators can be combined to process data through multiple stages.\n\nSuppose you have expense records:\n\n    expenses = [\n        {\"description\": \"Books\", \"amount\": 1200},\n        {\"description\": \"Food\", \"amount\": 800},\n        {\"description\": \"Transport\", \"amount\": 300},\n        {\"description\": \"Laptop\", \"amount\": 50000}\n    ]\n\nCreate a generator that filters large expenses:\n\n    def large_expenses(records, minimum):\n        for record in records:\n            if record[\"amount\"] >= minimum:\n                yield record\n\nCreate another generator that formats them:\n\n    def format_expenses(records):\n        for record in records:\n            yield (\n                f\"{record['description']}: \"\n                f\"Rs. {record['amount']:.2f}\"\n            )\n\nCombine the stages:\n\n    selected = large_expenses(expenses, 1000)\n    formatted = format_expenses(selected)\n\n    for item in formatted:\n        print(item)\n\nThe records flow through the pipeline one at a time. Each stage requests the next value from the stage before it.\n\nGenerator pipelines help separate responsibilities and avoid creating unnecessary intermediate lists.\n\n## 16. Useful Built-in Functions for Iteration\n\n### enumerate()\n\nenumerate() provides both an index and an item.\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    for index, student in enumerate(students, start=1):\n        print(index, student)\n\n### zip()\n\nzip() combines corresponding values from multiple iterables.\n\n    names = [\"Ali\", \"Ayesha\"]\n    scores = [85, 92]\n\n    for name, score in zip(names, scores):\n        print(name, score)\n\nBy default, zip stops when the shortest iterable is exhausted. If you need to detect unequal lengths, consider strict=True where supported by your Python version.\n\n### map()\n\nmap() applies a function to each item lazily.\n\n    numbers = [1, 2, 3, 4]\n\n    squares = map(lambda number: number * number, numbers)\n\n    print(list(squares))\n\n### filter()\n\nfilter() lazily selects items for which a function returns a truthy result.\n\n    numbers = [1, 2, 3, 4, 5, 6]\n\n    even_numbers = filter(\n        lambda number: number % 2 == 0,\n        numbers\n    )\n\n    print(list(even_numbers))\n\nmap() and filter() are useful tools, although generator expressions and comprehensions may be clearer for many straightforward transformations.\n\n## 17. Infinite Generators\n\nGenerators can produce values indefinitely.\n\n    def natural_numbers():\n        number = 1\n\n        while True:\n            yield number\n            number += 1\n\n    numbers = natural_numbers()\n\n    for _ in range(5):\n        print(next(numbers))\n\nOutput:\n\n    1\n    2\n    3\n    4\n    5\n\nThis generator has no natural stopping condition. The consumer controls how many values it requests.\n\nInfinite generators are useful for simulations, sequences, and streams, but consumers must avoid accidentally converting an infinite generator into a list.\n\n## 18. Sending Values into a Generator\n\nGenerators can receive values through the send() method.\n\n    def running_total():\n        total = 0\n\n        while True:\n            value = yield total\n            total += value\n\n    totals = running_total()\n\n    print(next(totals))\n    print(totals.send(10))\n    print(totals.send(5))\n\nOutput:\n\n    0\n    10\n    15\n\nThe initial next() advances the generator to its first yield. Subsequent send(value) calls resume it and make value available as the result of the yield expression.\n\nCalling send() with a non-None value before the generator has started raises TypeError.\n\nThis is an advanced feature. Most data-processing generators only need ordinary yield.\n\n## 19. Generator Cleanup\n\nA generator can use try and finally to release resources when it is closed or its execution finishes.\n\n    def read_lines(file_path):\n        file = open(file_path, encoding=\"utf-8\")\n\n        try:\n            for line in file:\n                yield line.rstrip()\n        finally:\n            file.close()\n\nA generator may not finish if its consumer stops early. If it owns an external resource, make sure it is closed reliably.\n\nA simpler option is often to keep the file context manager outside the generator:\n\n    def read_lines(file_path):\n        with open(file_path, encoding=\"utf-8\") as file:\n            for line in file:\n                yield line.rstrip()\n\nIn this design, the file remains open while the generator is being consumed. If iteration ends early, close the generator explicitly when immediate cleanup matters, or use a context-managed design that clearly owns the resource lifetime.\n\n## 20. Common Mistakes\n\n### Mistake 1: Consuming a Generator Twice\n\n    numbers = (number for number in range(3))\n\n    print(list(numbers))\n    print(list(numbers))\n\nThe second list is empty because the generator has already been exhausted.\n\n### Mistake 2: Expecting a Generator to Store All Results\n\n    values = (number * 2 for number in range(5))\n\n    print(values)\n\nThis displays a generator object representation, not all its values.\n\nUse list(values) when you intentionally want to materialize the complete sequence.\n\n### Mistake 3: Accidentally Creating an Infinite Loop\n\nAn infinite generator is safe when consumption is bounded. Converting it directly to a list can never finish under ordinary conditions.\n\n### Mistake 4: Modifying a Collection During Iteration\n\nChanging a collection while iterating over it can cause skipped values or unpredictable application behavior.\n\nPrefer constructing a new collection, or use an approach explicitly designed for the mutation.\n\n### Mistake 5: Assuming Every Iterable Is Reusable\n\nA list can usually provide a fresh iterator repeatedly. A generator object is normally a one-pass iterator.\n\nUnderstand whether your data source can be restarted or whether it represents a one-time stream.\n\n## 21. Practical Project: Memory-Efficient Student Record Processor\n\nBuild an application that processes student records without creating unnecessary intermediate lists.\n\nRequired features:\n\n1. Generate sample student records.\n2. Filter students by minimum score.\n3. Convert scores into letter grades.\n4. Format selected records for display.\n5. Calculate aggregate statistics.\n6. Process a large CSV file one row at a time.\n7. Support early termination when a target student is found.\n8. Demonstrate that generators are generally consumed once.\n9. Handle malformed records appropriately.\n10. Compare a list-based approach with a generator-based approach.\n\nSuggested processing pipeline:\n\n    CSV file\n        -> Read rows\n        -> Validate records\n        -> Filter by score\n        -> Calculate grades\n        -> Format output\n\nEach stage should have a single responsibility. Keep the data lazy until the application actually needs a complete collection.\n\n## 22. Module Summary\n\nYou have learned the difference between iterables and iterators, how next() and StopIteration work, and how Python's for loop consumes iterators.\n\nYou have also learned how generator functions, yield, generator expressions, lazy evaluation, and pipeline composition can reduce unnecessary memory use.\n\nThe main principle is to choose the right tool for the amount and lifecycle of your data. Lists are convenient when you need a complete collection; generators are valuable when you want to produce and process values incrementally.\n\nIn the next module, you will learn decorators, closures, higher-order functions, and advanced function behavior.\n",
+      "codeExample": "\nimport csv\nfrom pathlib import Path\n\n\ndef generate_students(count):\n    \"\"\"Generate sample student records one at a time.\"\"\"\n    names = [\"Ali\", \"Ayesha\", \"Hamza\", \"Sara\", \"Usman\"]\n\n    for index in range(count):\n        yield {\n            \"id\": index + 1,\n            \"name\": names[index % len(names)],\n            \"score\": (index * 7 + 53) % 101\n        }\n\n\ndef validate_student(student):\n    if not isinstance(student, dict):\n        raise ValueError(\"Student record must be a dictionary.\")\n\n    student_id = student.get(\"id\")\n    name = student.get(\"name\")\n    score = student.get(\"score\")\n\n    if isinstance(student_id, bool) or not isinstance(student_id, int):\n        raise ValueError(\"Student ID must be an integer.\")\n\n    if not isinstance(name, str) or not name.strip():\n        raise ValueError(\"Student name cannot be empty.\")\n\n    if isinstance(score, bool) or not isinstance(score, (int, float)):\n        raise ValueError(\"Student score must be numeric.\")\n\n    if not 0 <= score <= 100:\n        raise ValueError(\"Student score must be between 0 and 100.\")\n\n    return {\n        \"id\": student_id,\n        \"name\": name.strip(),\n        \"score\": score\n    }\n\n\ndef filter_students(students, minimum_score):\n    for student in students:\n        valid_student = validate_student(student)\n\n        if valid_student[\"score\"] >= minimum_score:\n            yield valid_student\n\n\ndef add_grades(students):\n    for student in students:\n        score = student[\"score\"]\n\n        if score >= 90:\n            grade = \"A\"\n        elif score >= 80:\n            grade = \"B\"\n        elif score >= 70:\n            grade = \"C\"\n        elif score >= 60:\n            grade = \"D\"\n        else:\n            grade = \"F\"\n\n        yield {**student, \"grade\": grade}\n\n\ndef format_students(students):\n    for student in students:\n        yield (\n            f\"ID: {student['id']} | \"\n            f\"Name: {student['name']} | \"\n            f\"Score: {student['score']} | \"\n            f\"Grade: {student['grade']}\"\n        )\n\n\ndef read_students_csv(file_path):\n    \"\"\"Read CSV rows incrementally rather than loading the whole file.\"\"\"\n    path = Path(file_path)\n\n    with path.open(\"r\", newline=\"\", encoding=\"utf-8\") as file:\n        reader = csv.DictReader(file)\n\n        required_columns = {\"id\", \"name\", \"score\"}\n\n        if not required_columns.issubset(set(reader.fieldnames or [])):\n            raise ValueError(\"CSV must contain id, name, and score columns.\")\n\n        for row in reader:\n            try:\n                student = {\n                    \"id\": int(row[\"id\"]),\n                    \"name\": row[\"name\"],\n                    \"score\": float(row[\"score\"])\n                }\n\n                yield validate_student(student)\n\n            except (ValueError, TypeError) as error:\n                raise ValueError(\n                    f\"Invalid student record near CSV line {reader.line_num}: {error}\"\n                ) from error\n\n\ndef calculate_average(students):\n    total = 0\n    count = 0\n\n    for student in students:\n        total += student[\"score\"]\n        count += 1\n\n    if count == 0:\n        return None\n\n    return total / count\n\n\ndef find_student(students, target_id):\n    for student in students:\n        if student[\"id\"] == target_id:\n            return student\n\n    return None\n\n\ndef main():\n    print(\"=== Student Record Processor ===\")\n\n    # A generator produces records only as they are requested.\n    students = generate_students(20)\n\n    selected = filter_students(students, 70)\n    graded = add_grades(selected)\n    formatted = format_students(graded)\n\n    print(\"\\nStudents scoring at least 70:\")\n\n    for line in formatted:\n        print(line)\n\n    # Create a fresh generator because the previous one was consumed.\n    average = calculate_average(\n        generate_students(20)\n    )\n\n    if average is not None:\n        print(f\"\\nAverage score: {average:.2f}\")\n\n    # Demonstrate early termination.\n    target = find_student(generate_students(100), 5)\n    print(\"\\nStudent with ID 5:\", target)\n\n\nif __name__ == \"__main__\":\n    main()\n",
+      "quiz": [
         {
-          question: 'Which exception commonly occurs when int("hello") is evaluated?',
-          options: [
-            'TypeError',
-            'ValueError',
-            'KeyError',
-            'IndexError'
+          "question": "What is the main difference between an iterable and an iterator?",
+          "options": [
+            "An iterable can provide an iterator, while an iterator produces successive values.",
+            "An iterator can contain only strings.",
+            "An iterable must always be a dictionary.",
+            "There is no difference between the two."
           ],
-          correctAnswer: 1
+          "correctAnswer": 0,
+          "explanation": "An iterable (like a list) can produce an iterator via `iter()`, while an iterator tracks position and produces values via `next()`."
         },
         {
-          question: 'When does a finally block normally execute?',
-          options: [
-            'Only when an exception occurs',
-            'Only when no exception occurs',
-            'Whether or not an exception occurs',
-            'Only when the program starts'
+          "question": "Which exception signals that an iterator has no more values?",
+          "options": [
+            "ValueError",
+            "StopIteration",
+            "IndexError",
+            "ImportError"
           ],
-          correctAnswer: 2
+          "correctAnswer": 1,
+          "explanation": "Iterators raise `StopIteration` when all elements have been consumed (which `for` loops handle automatically)."
         },
         {
-          question: 'Which keyword is used to deliberately raise an exception?',
-          options: [
-            'throw',
-            'error',
-            'catch',
-            'raise'
+          "question": "What does yield do inside a generator function?",
+          "options": [
+            "Deletes the generator state.",
+            "Converts every value into a list.",
+            "Produces a value and suspends execution so the generator can resume.",
+            "Immediately terminates the entire Python application."
           ],
-          correctAnswer: 3
+          "correctAnswer": 2,
+          "explanation": "`yield` emits a value and pauses the generator’s local state, resuming from that exact line on the next `next()` call."
+        },
+        {
+          "question": "Which expression creates a generator expression?",
+          "options": [
+            "[x * 2 for x in range(5)]",
+            "{x * 2 for x in range(5)}",
+            "{\"x\": 2}",
+            "(x * 2 for x in range(5))"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Parentheses `(x * 2 for x in range(5))` create a lazy generator expression instead of building a full list in memory."
+        },
+        {
+          "question": "Why can generators be useful for large datasets?",
+          "options": [
+            "They always store every value permanently.",
+            "They can produce and process values incrementally.",
+            "They automatically save data to a database.",
+            "They prevent all possible runtime errors."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Generators compute one item at a time on demand, keeping memory usage near O(1) even on multi-gigabyte files."
+        },
+        {
+          "question": "What usually happens when an exhausted generator is iterated again?",
+          "options": [
+            "It automatically starts from the beginning.",
+            "It raises SyntaxError.",
+            "It produces no additional values.",
+            "It converts itself into a list."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Generators are single-pass iterators; once exhausted, iterating again yields zero items unless you create a new generator."
+        },
+        {
+          "question": "What is a major advantage of generator pipelines?",
+          "options": [
+            "They allow stages to process values incrementally.",
+            "They guarantee zero execution time.",
+            "They remove the need for validation.",
+            "They require every result to be stored in memory."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Chaining generators processes items stage-by-stage lazily without allocating intermediate lists in RAM."
+        },
+        {
+          "question": "What does enumerate() provide during iteration?",
+          "options": [
+            "Only the last item.",
+            "A database connection.",
+            "A sorted copy of the collection.",
+            "An index and the corresponding item."
+          ],
+          "correctAnswer": 3,
+          "explanation": "`enumerate()` is a lazy iterator yielding `(index, item)` pairs as you iterate."
+        },
+        {
+          "question": "What must normally happen before sending a non-None value into a new generator using send()?",
+          "options": [
+            "The generator must be advanced to its first yield.",
+            "The generator must be converted into a list.",
+            "The generator must be imported from a package.",
+            "The generator must be closed."
+          ],
+          "correctAnswer": 0,
+          "explanation": "A freshly created generator must be primed with `next(gen)` (or `gen.send(None)`) up to its first `yield` before `.send(value)` works."
+        },
+        {
+          "question": "When is a list often more appropriate than a generator?",
+          "options": [
+            "When the data must never be stored.",
+            "When the complete collection is small and needs repeated access.",
+            "When the data source is infinite and unbounded.",
+            "When every result must be discarded immediately."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Use a list when the dataset is small and you need random indexing (`items[3]`), `len()`, or multiple passes over the data."
         }
-      ]
-    },
-    {
-      title: '13. File Handling and Filesystem Paths',
-      duration: '1h 25m',
-      notes: `
-# File Handling and Filesystem Paths
-
-## 1. Why files matter
-
-Programs often need to save information after they stop running. Files can store reports, settings, text, logs, and exported data.
-
-Python's built-in \`open()\` function opens a file.
-
-## 2. Writing a text file
-
-\`\`\`python
-with open("notes.txt", "w", encoding="utf-8") as file:
-    file.write("Learning Python\\n")
-    file.write("Practicing file handling\\n")
-\`\`\`
-
-The \`w\` mode creates a file if it does not exist and replaces its existing contents if it does.
-
-## 3. Reading a file
-
-\`\`\`python
-with open("notes.txt", "r", encoding="utf-8") as file:
-    content = file.read()
-
-print(content)
-\`\`\`
-
-Other useful reading methods include:
-
-- \`read()\`: reads the remaining contents as one string.
-- \`readline()\`: reads one line.
-- \`readlines()\`: returns the remaining lines as a list.
-- Iterating over the file: processes it one line at a time.
-
-\`\`\`python
-with open("notes.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        print(line.strip())
-\`\`\`
-
-## 4. File modes
-
-| Mode | Meaning |
-| --- | --- |
-| \`r\` | Read an existing file |
-| \`w\` | Write, replacing existing contents |
-| \`a\` | Append to the end |
-| \`x\` | Create a new file; fail if it exists |
-| \`b\` | Binary mode modifier |
-| \`+\` | Read and write modifier |
-
-For example, append a new line:
-
-\`\`\`python
-with open("notes.txt", "a", encoding="utf-8") as file:
-    file.write("New topic added\\n")
-\`\`\`
-
-## 5. Why use with?
-
-The \`with\` statement manages the file's lifetime and closes it automatically, including when an exception occurs.
-
-Prefer this:
-
-\`\`\`python
-with open("notes.txt", encoding="utf-8") as file:
-    print(file.read())
-\`\`\`
-
-over manually opening a file and remembering to close it.
-
-## 6. Filesystem paths with pathlib
-
-The \`pathlib\` module provides an object-oriented way to work with paths.
-
-\`\`\`python
-from pathlib import Path
-
-path = Path("data") / "report.txt"
-
-print(path.name)
-print(path.suffix)
-print(path.exists())
-\`\`\`
-
-Create a directory:
-
-\`\`\`python
-Path("data").mkdir(parents=True, exist_ok=True)
-\`\`\`
-
-Write and read text:
-
-\`\`\`python
-path = Path("data") / "report.txt"
-path.write_text("Monthly report", encoding="utf-8")
-
-content = path.read_text(encoding="utf-8")
-print(content)
-\`\`\`
-
-## 7. Handling file errors
-
-A file may be missing, inaccessible, or located somewhere unexpected.
-
-\`\`\`from pathlib import Path
-
-path = Path("notes.txt")
-
-try:
-    content = path.read_text(encoding="utf-8")
-except FileNotFoundError:
-    print("The requested file does not exist.")
-except PermissionError:
-    print("You do not have permission to read this file.")
-else:
-    print(content)
-\`\`\`
-
-## 8. Working with binary files
-
-Use binary mode for images, PDFs, and other non-text data.
-
-\`\`\`python
-with open("source.bin", "rb") as source:
-    data = source.read()
-
-with open("copy.bin", "wb") as destination:
-    destination.write(data)
-\`\`\`
-
-Do not assume binary files can be decoded as UTF-8 text.
-
-## 9. Safe and professional file handling
-
-- Specify an encoding such as UTF-8 when working with text.
-- Use \`with\` to manage file handles.
-- Validate filenames and paths when accepting user input.
-- Avoid overwriting important files unintentionally.
-- Handle expected filesystem exceptions.
-- Do not store passwords or API secrets in plain-text files committed to a public repository.
-
-## Summary
-
-File handling lets applications persist information. Understanding file modes, context managers, exceptions, and \`pathlib\` prepares you to build useful command-line tools and data-driven applications.
-`,
-      codeExample: `from pathlib import Path
-
-folder = Path("data")
-folder.mkdir(exist_ok=True)
-
-file_path = folder / "student.txt"
-file_path.write_text(
-    "Student: Anas\\nCourse: Python",
-    encoding="utf-8"
-)
-
-content = file_path.read_text(encoding="utf-8")
-print(content)
-
-# Output:
-# Student: Anas
-# Course: Python`,
-      quiz: [
+      ],
+      "assignment": "Problem Statement:\nBuild a memory-efficient Log File Analyzer using Python generator functions (yield) and generator expressions to stream, filter, and aggregate multi-megabyte log files line by line without loading the entire file into RAM.\n\nObjectives:\n- Build composable generator pipelines (read_lines -> filter_errors -> extract_status).\n- Contrast O(1) memory generator streaming against loading full lists into RAM.\n\nRequirements:\n1. Write read_log_lines(filepath) generator opening the file with with open(...) and yielding stripped non-empty lines one at a time.\n2. Write filter_level(lines, level=\"ERROR\") generator yielding only matching lines.\n3. Write summarize_errors(lines) counting error categories using a dict/Counter without ever calling list(lines) on the whole stream!\n4. Demonstrate handling an exhausted generator safely (explaining why a second loop prints nothing unless recreated).\n\nStep-by-Step Instructions:\n1. Create log_stream.py and generate a sample 10,000-line dummy log file.\n2. Chain read_log_lines -> filter_level -> summarize_errors lazily.\n3. Verify accurate error counts with minimal memory footprint.\n\nDeliverables:\n- log_stream.py.\n\nEvaluation Criteria:\n- Streaming pipeline uses yield and generator expressions rather than .readlines().\n- Context manager closes file cleanly when generator finishes or exits.",
+      "lessons": [
         {
-          question: 'Which file mode replaces existing file contents?',
-          options: [
-            'r',
-            'a',
-            'w',
-            'x'
+          "title": "Module 12: Iterators, Generators & Lazy Evaluation",
+          "duration": "1h 30m",
+          "introduction": "Part 1 of Iterators, Generators, Yield, Lazy Evaluation & Memory-Efficient Data Processing: Module 12: Iterators, Generators & Lazy Evaluation.",
+          "objectives": [
+            "Master Module 12: Iterators, Generators & Lazy Evaluation",
+            "Apply Python best practices with clean, readable examples"
           ],
-          correctAnswer: 2
+          "notes": "# Module 12: Iterators, Generators & Lazy Evaluation\n\n## 1. Learning Objectives\n\nBy the end of this module, students will be able to:\n\n- Explain the difference between iterable and iterator objects.\n- Use iter() and next() to control iteration.\n- Understand the Iterator protocol.\n- Explain how Python's for loop works internally.\n- Create custom iterator classes.\n- Write generator functions using yield.\n- Understand generator expressions.\n- Use lazy evaluation to avoid unnecessary work.\n- Process large files and data streams efficiently.\n- Chain generators into data-processing pipelines.\n- Handle StopIteration correctly.\n- Understand common iterator and generator mistakes.\n- Build a memory-efficient student-record processing application.\n\n## 2. Why Iteration Matters\n\nPython applications frequently process collections of data.\n\nExamples include:\n- Displaying students enrolled in a course.\n- Reading a large CSV file.\n- Processing millions of transaction records.\n- Fetching paginated API results.\n- Filtering event logs.\n- Processing a stream of incoming data.\n\nA simple approach is to load all data into a list:\n\n    numbers = [1, 2, 3, 4, 5]\n\n    for number in numbers:\n        print(number)\n\nThis is suitable for small collections. However, creating a complete list of millions of records may consume substantial memory.\n\nPython provides iteration tools that allow values to be produced and consumed one at a time.\n\n## 3. What Is an Iterable?\n\nAn iterable is an object that Python can iterate over.\n\nCommon examples include:\n- Lists\n- Tuples\n- Strings\n- Dictionaries\n- Sets\n- Files\n- Generators\n- Many objects provided by third-party libraries\n\nExample:\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    for student in students:\n        print(student)\n\nThe list is iterable because Python can obtain an iterator from it.\n\nYou can check this by calling iter():\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    student_iterator = iter(students)\n\n    print(next(student_iterator))\n    print(next(student_iterator))\n    print(next(student_iterator))\n\nOutput:\n\n    Ali\n    Ayesha\n    Hamza\n\nNotice that iter(students) creates an iterator that tracks the current position in the list.\n\n## 4. What Is an Iterator?\n\nAn iterator is an object that produces values one at a time.\n\nAn iterator follows two important rules:\n\n1. It provides __iter__(), which returns the iterator itself.\n2. It provides __next__(), which returns the next value or raises StopIteration when no values remain.\n\nA list is iterable, but a list is not itself a typical iterator.\n\nExample:\n\n    values = [10, 20, 30]\n\n    print(iter(values) is values)  # False\n\n    iterator = iter(values)\n\n    print(iter(iterator) is iterator)  # True\n\nThe iterator maintains its own iteration state.\n\n## 5. Understanding next()\n\nThe next() function requests the next item from an iterator.\n\n    numbers = iter([100, 200, 300])\n\n    print(next(numbers))\n    print(next(numbers))\n    print(next(numbers))\n\nOutput:\n\n    100\n    200\n    300\n\nA further call raises StopIteration because the iterator is exhausted.\n\n    numbers = iter([10])\n\n    print(next(numbers))\n    print(next(numbers))  # Raises StopIteration\n\nYou can provide a default value to avoid the exception when the iterator is exhausted:\n\n    numbers = iter([10])\n\n    print(next(numbers, \"Finished\"))\n    print(next(numbers, \"Finished\"))\n\nOutput:\n\n    10\n    Finished\n\nThe default is returned only when the iterator has no next value.\n\n## 6. How a for Loop Works\n\nA for loop automatically obtains an iterator, requests values, and stops when iteration finishes.\n\nConceptually:\n\n    values = [10, 20, 30]\n    iterator = iter(values)\n\n    while True:\n        try:\n            value = next(iterator)\n        except StopIteration:\n            break\n\n        print(value)\n\nThis is a simplified explanation of the iteration protocol.\n\nYou normally should not manually implement this loop for ordinary collections. Python's for loop already handles iterator exhaustion correctly.\n\nThe important concept is that a for loop can process any compatible iterable, not only lists.\n\n## 7. Iterators Are Usually Stateful\n\nConsider:\n\n    numbers = iter([1, 2, 3, 4])\n\n    print(next(numbers))\n    print(list(numbers))\n\nOutput:\n\n    1\n    [2, 3, 4]\n\nThe first value has already been consumed. The iterator continues from its current position.\n\nOnce an ordinary iterator is exhausted, it generally stays exhausted.\n\n    iterator = iter([7, 8])\n\n    print(list(iterator))\n    print(list(iterator))\n\nOutput:\n\n    [7, 8]\n    []\n\nIf you need to iterate over the same data again, obtain a fresh iterator from a reusable collection, or create a new iterator according to the data source's behavior.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Write `countdown(n)` using `yield`, wrap it with `iter()`, and advance twice manually with `next(gen)` until `StopIteration`.\n\nExpected Result:\nYields values lazily one at a time and raises `StopIteration` when exhausted.",
+          "keyTakeaways": [
+            "Understand and apply Module 12: Iterators, Generators & Lazy Evaluation",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
         },
         {
-          question: 'What is the main benefit of using with open(...)?',
-          options: [
-            'It automatically closes the file when the block exits',
-            'It encrypts every file',
-            'It prevents all possible file errors',
-            'It converts every file into JSON'
+          "title": "8. Dictionaries and Iteration",
+          "duration": "1h 30m",
+          "introduction": "Part 2 of Iterators, Generators, Yield, Lazy Evaluation & Memory-Efficient Data Processing: 8. Dictionaries and Iteration.",
+          "objectives": [
+            "Master 8. Dictionaries and Iteration",
+            "Apply Python best practices with clean, readable examples"
           ],
-          correctAnswer: 0
+          "notes": "## 8. Dictionaries and Iteration\n\nDictionaries support iteration over their keys by default.\n\n    student = {\n        \"name\": \"Ali\",\n        \"semester\": 1,\n        \"department\": \"Software Engineering\"\n    }\n\n    for key in student:\n        print(key)\n\nTo access key-value pairs:\n\n    for key, value in student.items():\n        print(key, value)\n\nTo iterate over values only:\n\n    for value in student.values():\n        print(value)\n\nThis is useful for processing structured records, application configuration, and API responses.\n\n## 9. Creating a Custom Iterator Class\n\nYou can implement the iterator protocol to control how an object produces values.\n\nExample: a countdown iterator.\n\n    class Countdown:\n        def __init__(self, start):\n            self.current = start\n\n        def __iter__(self):\n            return self\n\n        def __next__(self):\n            if self.current <= 0:\n                raise StopIteration\n\n            value = self.current\n            self.current -= 1\n            return value\n\n    for number in Countdown(5):\n        print(number)\n\nOutput:\n\n    5\n    4\n    3\n    2\n    1\n\n### 9.1 How This Class Works\n\n- __init__ stores the initial state.\n- __iter__ returns the iterator itself.\n- __next__ decides whether another value exists.\n- When the countdown finishes, __next__ raises StopIteration.\n- The for loop handles the termination automatically.\n\nCustom iterator classes are useful when iteration requires persistent state or a specialized traversal algorithm.\n\nHowever, for many simple cases, a generator function is shorter and easier to maintain.\n\n## 10. What Is a Generator?\n\nA generator is a special kind of iterator that produces values incrementally.\n\nGenerator functions use yield instead of relying only on return.\n\nExample:\n\n    def generate_numbers():\n        yield 10\n        yield 20\n        yield 30\n\n    for number in generate_numbers():\n        print(number)\n\nOutput:\n\n    10\n    20\n    30\n\nCalling generate_numbers() creates a generator object. The function body does not run through all its statements immediately.\n\nEach request for a value resumes execution until the next yield, a return, or the end of the function.\n\n## 11. Understanding yield\n\nThe yield statement produces a value while preserving the generator's execution state.\n\n    def countdown(start):\n        while start > 0:\n            yield start\n            start -= 1\n\n    counter = countdown(3)\n\n    print(next(counter))\n    print(next(counter))\n    print(next(counter))\n\nOutput:\n\n    3\n    2\n    1\n\nWhen execution reaches yield, the current value is returned and the generator pauses.\n\nWhen the next value is requested, execution resumes after the previous yield.\n\nThis makes generators useful for processing data without constructing an entire output collection first.\n\n### 11.1 yield Versus return\n\nreturn ends a function and sends back its result.\n\nyield produces a value and pauses a generator so it can resume later.\n\nExample:\n\n    def return_example():\n        return 10\n\n    def yield_example():\n        yield 10\n        yield 20\n\n    print(return_example())\n    print(list(yield_example()))\n\nOutput:\n\n    10\n    [10, 20]\n\nThe first function returns an integer. The second produces a sequence of values through a generator.\n\nA generator can also use return to signal that it has finished. Any return value is available through the StopIteration exception's value attribute in the generator protocol, but ordinary iteration does not yield that return value as an item.\n\n## 12. Generator Expressions\n\nA generator expression resembles a list comprehension but uses parentheses.\n\nList comprehension:\n\n    squares = [number * number for number in range(10)]\n\nGenerator expression:\n\n    squares = (number * number for number in range(10))\n\nThe list comprehension constructs a list immediately. The generator expression produces values on demand.\n\nExample:\n\n    squares = (number * number for number in range(5))\n\n    print(next(squares))\n    print(next(squares))\n\nOutput:\n\n    0\n    1\n\nA generator expression is useful when values will be consumed incrementally or aggregated without needing the complete result collection.\n\n## 13. Memory Efficiency and Lazy Evaluation\n\nLazy evaluation means delaying computation until a result is actually requested.\n\nConsider:\n\n    numbers = [number * number for number in range(1_000_000)]\n\nThis creates a list containing one million calculated values.\n\nAlternatively:\n\n    numbers = (number * number for number in range(1_000_000))\n\nThis creates a generator expression. The individual squares are calculated as values are requested.\n\nFor example:\n\n    numbers = (number * number for number in range(1_000_000))\n\n    for number in numbers:\n        if number > 100:\n            print(number)\n            break\n\nThe program stops requesting values once the condition is met.\n\nThis can save substantial memory and unnecessary computation when only part of a sequence is needed.\n\nHowever, generators are not automatically faster for every workload. Small lists can be simpler and sometimes faster when the complete collection is required repeatedly.\n\n## 14. Generators for Large Files\n\nReading an entire file into memory:\n\n    with open(\"large.log\", encoding=\"utf-8\") as file:\n        contents = file.readlines()\n\nThis creates a list containing all lines.\n\nA memory-efficient approach processes lines as they are read:\n\n    with open(\"large.log\", encoding=\"utf-8\") as file:\n        for line in file:\n            print(line.rstrip())\n\nFile objects are iterable, so they naturally support line-by-line processing.\n\nYou can also write a generator that filters lines:\n\n    def error_lines(file_path):\n        with open(file_path, encoding=\"utf-8\") as file:\n            for line in file:\n                if \"ERROR\" in line:\n                    yield line.rstrip()\n\n    for line in error_lines(\"application.log\"):\n        print(line)\n\nThis approach avoids storing every line or every matching result in a separate list.\n\n## 15. Building Generator Pipelines\n\nGenerators can be combined to process data through multiple stages.\n\nSuppose you have expense records:\n\n    expenses = [\n        {\"description\": \"Books\", \"amount\": 1200},\n        {\"description\": \"Food\", \"amount\": 800},\n        {\"description\": \"Transport\", \"amount\": 300},\n        {\"description\": \"Laptop\", \"amount\": 50000}\n    ]\n\nCreate a generator that filters large expenses:\n\n    def large_expenses(records, minimum):\n        for record in records:\n            if record[\"amount\"] >= minimum:\n                yield record\n\nCreate another generator that formats them:\n\n    def format_expenses(records):\n        for record in records:\n            yield (\n                f\"{record['description']}: \"\n                f\"Rs. {record['amount']:.2f}\"\n            )\n\nCombine the stages:\n\n    selected = large_expenses(expenses, 1000)\n    formatted = format_expenses(selected)\n\n    for item in formatted:\n        print(item)\n\nThe records flow through the pipeline one at a time. Each stage requests the next value from the stage before it.\n\nGenerator pipelines help separate responsibilities and avoid creating unnecessary intermediate lists.",
+          "codeExample": "",
+          "codeExplanation": "",
+          "practiceExercise": "Guided Exercise:\n1. Compare memory/behavior of `[x * x for x in range(10)]` vs `(x * x for x in range(10))` and iterate the generator twice to observe exhaustion.\n\nExpected Result:\nSecond loop over the same generator prints nothing.",
+          "keyTakeaways": [
+            "Understand and apply 8. Dictionaries and Iteration",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
         },
         {
-          question: 'Which module provides the Path class?',
-          options: [
-            'os.pathfile',
-            'pathlib',
-            'filesystem',
-            'filetools'
+          "title": "16. Useful Built-in Functions for Iteration",
+          "duration": "1h 30m",
+          "introduction": "Part 3 of Iterators, Generators, Yield, Lazy Evaluation & Memory-Efficient Data Processing: 16. Useful Built-in Functions for Iteration.",
+          "objectives": [
+            "Master 16. Useful Built-in Functions for Iteration",
+            "Apply Python best practices with clean, readable examples"
           ],
-          correctAnswer: 1
+          "notes": "## 16. Useful Built-in Functions for Iteration\n\n### enumerate()\n\nenumerate() provides both an index and an item.\n\n    students = [\"Ali\", \"Ayesha\", \"Hamza\"]\n\n    for index, student in enumerate(students, start=1):\n        print(index, student)\n\n### zip()\n\nzip() combines corresponding values from multiple iterables.\n\n    names = [\"Ali\", \"Ayesha\"]\n    scores = [85, 92]\n\n    for name, score in zip(names, scores):\n        print(name, score)\n\nBy default, zip stops when the shortest iterable is exhausted. If you need to detect unequal lengths, consider strict=True where supported by your Python version.\n\n### map()\n\nmap() applies a function to each item lazily.\n\n    numbers = [1, 2, 3, 4]\n\n    squares = map(lambda number: number * number, numbers)\n\n    print(list(squares))\n\n### filter()\n\nfilter() lazily selects items for which a function returns a truthy result.\n\n    numbers = [1, 2, 3, 4, 5, 6]\n\n    even_numbers = filter(\n        lambda number: number % 2 == 0,\n        numbers\n    )\n\n    print(list(even_numbers))\n\nmap() and filter() are useful tools, although generator expressions and comprehensions may be clearer for many straightforward transformations.\n\n## 17. Infinite Generators\n\nGenerators can produce values indefinitely.\n\n    def natural_numbers():\n        number = 1\n\n        while True:\n            yield number\n            number += 1\n\n    numbers = natural_numbers()\n\n    for _ in range(5):\n        print(next(numbers))\n\nOutput:\n\n    1\n    2\n    3\n    4\n    5\n\nThis generator has no natural stopping condition. The consumer controls how many values it requests.\n\nInfinite generators are useful for simulations, sequences, and streams, but consumers must avoid accidentally converting an infinite generator into a list.\n\n## 18. Sending Values into a Generator\n\nGenerators can receive values through the send() method.\n\n    def running_total():\n        total = 0\n\n        while True:\n            value = yield total\n            total += value\n\n    totals = running_total()\n\n    print(next(totals))\n    print(totals.send(10))\n    print(totals.send(5))\n\nOutput:\n\n    0\n    10\n    15\n\nThe initial next() advances the generator to its first yield. Subsequent send(value) calls resume it and make value available as the result of the yield expression.\n\nCalling send() with a non-None value before the generator has started raises TypeError.\n\nThis is an advanced feature. Most data-processing generators only need ordinary yield.\n\n## 19. Generator Cleanup\n\nA generator can use try and finally to release resources when it is closed or its execution finishes.\n\n    def read_lines(file_path):\n        file = open(file_path, encoding=\"utf-8\")\n\n        try:\n            for line in file:\n                yield line.rstrip()\n        finally:\n            file.close()\n\nA generator may not finish if its consumer stops early. If it owns an external resource, make sure it is closed reliably.\n\nA simpler option is often to keep the file context manager outside the generator:\n\n    def read_lines(file_path):\n        with open(file_path, encoding=\"utf-8\") as file:\n            for line in file:\n                yield line.rstrip()\n\nIn this design, the file remains open while the generator is being consumed. If iteration ends early, close the generator explicitly when immediate cleanup matters, or use a context-managed design that clearly owns the resource lifetime.\n\n## 20. Common Mistakes\n\n### Mistake 1: Consuming a Generator Twice\n\n    numbers = (number for number in range(3))\n\n    print(list(numbers))\n    print(list(numbers))\n\nThe second list is empty because the generator has already been exhausted.\n\n### Mistake 2: Expecting a Generator to Store All Results\n\n    values = (number * 2 for number in range(5))\n\n    print(values)\n\nThis displays a generator object representation, not all its values.\n\nUse list(values) when you intentionally want to materialize the complete sequence.\n\n### Mistake 3: Accidentally Creating an Infinite Loop\n\nAn infinite generator is safe when consumption is bounded. Converting it directly to a list can never finish under ordinary conditions.\n\n### Mistake 4: Modifying a Collection During Iteration\n\nChanging a collection while iterating over it can cause skipped values or unpredictable application behavior.\n\nPrefer constructing a new collection, or use an approach explicitly designed for the mutation.\n\n### Mistake 5: Assuming Every Iterable Is Reusable\n\nA list can usually provide a fresh iterator repeatedly. A generator object is normally a one-pass iterator.\n\nUnderstand whether your data source can be restarted or whether it represents a one-time stream.\n\n## 21. Practical Project: Memory-Efficient Student Record Processor\n\nBuild an application that processes student records without creating unnecessary intermediate lists.\n\nRequired features:\n\n1. Generate sample student records.\n2. Filter students by minimum score.\n3. Convert scores into letter grades.\n4. Format selected records for display.\n5. Calculate aggregate statistics.\n6. Process a large CSV file one row at a time.\n7. Support early termination when a target student is found.\n8. Demonstrate that generators are generally consumed once.\n9. Handle malformed records appropriately.\n10. Compare a list-based approach with a generator-based approach.\n\nSuggested processing pipeline:\n\n    CSV file\n        -> Read rows\n        -> Validate records\n        -> Filter by score\n        -> Calculate grades\n        -> Format output\n\nEach stage should have a single responsibility. Keep the data lazy until the application actually needs a complete collection.\n\n## 22. Module Summary\n\nYou have learned the difference between iterables and iterators, how next() and StopIteration work, and how Python's for loop consumes iterators.\n\nYou have also learned how generator functions, yield, generator expressions, lazy evaluation, and pipeline composition can reduce unnecessary memory use.\n\nThe main principle is to choose the right tool for the amount and lifecycle of your data. Lists are convenient when you need a complete collection; generators are valuable when you want to produce and process values incrementally.\n\nIn the next module, you will learn decorators, closures, higher-order functions, and advanced function behavior.",
+          "codeExample": "\nimport csv\nfrom pathlib import Path\n\n\ndef generate_students(count):\n    \"\"\"Generate sample student records one at a time.\"\"\"\n    names = [\"Ali\", \"Ayesha\", \"Hamza\", \"Sara\", \"Usman\"]\n\n    for index in range(count):\n        yield {\n            \"id\": index + 1,\n            \"name\": names[index % len(names)],\n            \"score\": (index * 7 + 53) % 101\n        }\n\n\ndef validate_student(student):\n    if not isinstance(student, dict):\n        raise ValueError(\"Student record must be a dictionary.\")\n\n    student_id = student.get(\"id\")\n    name = student.get(\"name\")\n    score = student.get(\"score\")\n\n    if isinstance(student_id, bool) or not isinstance(student_id, int):\n        raise ValueError(\"Student ID must be an integer.\")\n\n    if not isinstance(name, str) or not name.strip():\n        raise ValueError(\"Student name cannot be empty.\")\n\n    if isinstance(score, bool) or not isinstance(score, (int, float)):\n        raise ValueError(\"Student score must be numeric.\")\n\n    if not 0 <= score <= 100:\n        raise ValueError(\"Student score must be between 0 and 100.\")\n\n    return {\n        \"id\": student_id,\n        \"name\": name.strip(),\n        \"score\": score\n    }\n\n\ndef filter_students(students, minimum_score):\n    for student in students:\n        valid_student = validate_student(student)\n\n        if valid_student[\"score\"] >= minimum_score:\n            yield valid_student\n\n\ndef add_grades(students):\n    for student in students:\n        score = student[\"score\"]\n\n        if score >= 90:\n            grade = \"A\"\n        elif score >= 80:\n            grade = \"B\"\n        elif score >= 70:\n            grade = \"C\"\n        elif score >= 60:\n            grade = \"D\"\n        else:\n            grade = \"F\"\n\n        yield {**student, \"grade\": grade}\n\n\ndef format_students(students):\n    for student in students:\n        yield (\n            f\"ID: {student['id']} | \"\n            f\"Name: {student['name']} | \"\n            f\"Score: {student['score']} | \"\n            f\"Grade: {student['grade']}\"\n        )\n\n\ndef read_students_csv(file_path):\n    \"\"\"Read CSV rows incrementally rather than loading the whole file.\"\"\"\n    path = Path(file_path)\n\n    with path.open(\"r\", newline=\"\", encoding=\"utf-8\") as file:\n        reader = csv.DictReader(file)\n\n        required_columns = {\"id\", \"name\", \"score\"}\n\n        if not required_columns.issubset(set(reader.fieldnames or [])):\n            raise ValueError(\"CSV must contain id, name, and score columns.\")\n\n        for row in reader:\n            try:\n                student = {\n                    \"id\": int(row[\"id\"]),\n                    \"name\": row[\"name\"],\n                    \"score\": float(row[\"score\"])\n                }\n\n                yield validate_student(student)\n\n            except (ValueError, TypeError) as error:\n                raise ValueError(\n                    f\"Invalid student record near CSV line {reader.line_num}: {error}\"\n                ) from error\n\n\ndef calculate_average(students):\n    total = 0\n    count = 0\n\n    for student in students:\n        total += student[\"score\"]\n        count += 1\n\n    if count == 0:\n        return None\n\n    return total / count\n\n\ndef find_student(students, target_id):\n    for student in students:\n        if student[\"id\"] == target_id:\n            return student\n\n    return None\n\n\ndef main():\n    print(\"=== Student Record Processor ===\")\n\n    # A generator produces records only as they are requested.\n    students = generate_students(20)\n\n    selected = filter_students(students, 70)\n    graded = add_grades(selected)\n    formatted = format_students(graded)\n\n    print(\"\\nStudents scoring at least 70:\")\n\n    for line in formatted:\n        print(line)\n\n    # Create a fresh generator because the previous one was consumed.\n    average = calculate_average(\n        generate_students(20)\n    )\n\n    if average is not None:\n        print(f\"\\nAverage score: {average:.2f}\")\n\n    # Demonstrate early termination.\n    target = find_student(generate_students(100), 5)\n    print(\"\\nStudent with ID 5:\", target)\n\n\nif __name__ == \"__main__\":\n    main()\n",
+          "codeExplanation": "1. generate_students(count) uses `yield` to produce student dictionaries lazily one record at a time instead of allocating a giant list in RAM.\n2. Streams records cleanly through csv/pathlib pipelines using constant memory even for large counts.\n\nHow to Run & Expected Output:\nSave as `stream_students.py` and run `python stream_students.py`. Streams generated student records without building a full in-memory list.",
+          "practiceExercise": "Guided Exercise:\n1. Run `stream_students.py` with `count=1000` and chain a generator expression filtering `student[\"id\"] % 2 == 0`.\n\nExpected Result:\nStreams matching student records lazily without creating intermediate lists.",
+          "keyTakeaways": [
+            "Understand and apply 16. Useful Built-in Functions for Iteration",
+            "Write clean, readable Python following PEP 8 conventions"
+          ]
         }
+      ],
+      "objectives": [
+        "Master Module 12: Iterators, Generators & Lazy Evaluation",
+        "Apply Python best practices with clean, readable examples",
+        "Master 8. Dictionaries and Iteration",
+        "Master 16. Useful Built-in Functions for Iteration"
       ]
-    },
-    {
-      title: '14. Object-Oriented Programming Fundamentals',
-      duration: '1h 30m',
-      notes: `
-# Object-Oriented Programming Fundamentals
-
-## 1. What is OOP?
-
-Object-Oriented Programming (OOP) organizes code around objects that combine data and behavior.
-
-The four commonly discussed OOP principles are:
-- Encapsulation: keeping data and related behavior together.
-- Inheritance: deriving a class from another class.
-- Polymorphism: using a common interface for different implementations.
-- Abstraction: exposing essential behavior while hiding implementation details.
-
-## 2. Classes and objects
-
-A class defines the structure and behavior of objects. An object is an instance of a class.
-
-\`\`\`python
-class Student:
-    def introduce(self):
-        print("Hello, I am a student.")
-
-student1 = Student()
-student1.introduce()
-\`\`\`
-
-Output:
-
-\`\`\`text
-Hello, I am a student.
-\`\`\`
-
-## 3. The __init__ method
-
-The \`__init__\` method initializes a newly created instance.
-
-\`\`\`python
-class Student:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-    def introduce(self):
-        print(f"My name is {self.name} and I am {self.age}.")
-
-student = Student("Ali", 19)
-student.introduce()
-\`\`\`
-
-Here:
-- \`self\` refers to the current instance.
-- \`name\` and \`age\` are parameters.
-- \`self.name\` and \`self.age\` are instance attributes.
-
-## 4. Instance attributes and methods
-
-Attributes store information; methods define behavior.
-
-\`\`\`python
-class BankAccount:
-    def __init__(self, owner, balance=0):
-        self.owner = owner
-        self.balance = balance
-
-    def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("Amount must be positive.")
-        self.balance += amount
-
-    def get_balance(self):
-        return self.balance
-
-account = BankAccount("Sara", 1000)
-account.deposit(500)
-print(account.get_balance())
-\`\`\`
-
-Output:
-
-\`\`\`text
-1500
-\`\`\`
-
-## 5. Class attributes
-
-Class attributes are shared through the class unless an instance overrides them.
-
-\`\`\`python
-class Student:
-    university = "IUB"
-
-    def __init__(self, name):
-        self.name = name
-
-first = Student("Ali")
-second = Student("Sara")
-
-print(first.university)
-print(second.university)
-\`\`\`
-
-Use class attributes for information that belongs to the class as a whole. Use instance attributes for data that differs between objects.
-
-## 6. Encapsulation and properties
-
-Python does not enforce strict private attributes in the same way as some languages. A leading underscore conventionally indicates an internal attribute.
-
-Properties let you control how an attribute is accessed.
-
-\`\`\`python
-class Product:
-    def __init__(self, price):
-        self.price = price
-
-    @property
-    def price(self):
-        return self._price
-
-    @price.setter
-    def price(self, value):
-        if value < 0:
-            raise ValueError("Price cannot be negative.")
-        self._price = value
-
-product = Product(100)
-product.price = 150
-print(product.price)
-\`\`\`
-
-## 7. Composition
-
-Composition means building an object using other objects.
-
-\`\`\`python
-class Engine:
-    def start(self):
-        print("Engine started")
-
-class Car:
-    def __init__(self):
-        self.engine = Engine()
-
-    def start(self):
-        self.engine.start()
-        print("Car is ready")
-
-car = Car()
-car.start()
-\`\`\`
-
-Composition is often preferable when objects have a relationship such as "has a" rather than "is a."
-
-## 8. When should you use OOP?
-
-OOP is helpful when a program has related entities with state and behavior, such as students, products, orders, or bank accounts. Small scripts do not always need classes.
-
-## Summary
-
-Classes define objects, instances hold their own state, methods implement behavior, and encapsulation and composition help organize maintainable programs.
-`,
-      codeExample: `class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = marks
-
-    def result(self):
-        status = "Pass" if self.marks >= 50 else "Fail"
-        return f"{self.name}: {status}"
-
-student = Student("Ali", 82)
-print(student.result())
-
-# Output:
-# Ali: Pass`,
-      quiz: [
-        {
-          question: 'What is a class in Python?',
-          options: [
-            'A blueprint for creating objects',
-            'A loop that repeats forever',
-            'A file-reading mode',
-            'A type of exception'
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: 'What does self usually refer to in an instance method?',
-          options: [
-            'The parent class only',
-            'The current instance',
-            'The Python interpreter',
-            'A global variable'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'Which OOP concept combines related data and behavior?',
-          options: [
-            'Iteration',
-            'Compilation',
-            'Encapsulation',
-            'String formatting'
-          ],
-          correctAnswer: 2
-        }
-      ]
-    },
-    {
-      title: '15. Inheritance, Polymorphism, and Data Classes',
-      duration: '1h 35m',
-      notes: `
-# Inheritance, Polymorphism, and Data Classes
-
-## 1. What is inheritance?
-
-Inheritance allows a class to extend or specialize another class.
-
-\`\`\`python
-class Animal:
-    def speak(self):
-        print("An animal makes a sound.")
-
-class Dog(Animal):
-    def bark(self):
-        print("Woof!")
-
-dog = Dog()
-dog.speak()
-dog.bark()
-\`\`\`
-
-The \`Dog\` class inherits the \`speak()\` method from \`Animal\`.
-
-## 2. Overriding methods
-
-A child class can provide its own implementation of an inherited method.
-
-\`\`\`python
-class Animal:
-    def speak(self):
-        return "Some sound"
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow"
-
-for animal in [Dog(), Cat()]:
-    print(animal.speak())
-\`\`\`
-
-Output:
-
-\`\`\`text
-Woof
-Meow
-\`\`\`
-
-This demonstrates polymorphism: different object types respond to the same method call in their own ways.
-
-## 3. Using super()
-
-Use \`super()\` to call behavior from a parent class.
-
-\`\`\`python
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-class Student(Person):
-    def __init__(self, name, student_id):
-        super().__init__(name)
-        self.student_id = student_id
-
-student = Student("Sara", "SE101")
-print(student.name, student.student_id)
-\`\`\`
-
-Output:
-
-\`\`\`text
-Sara SE101
-\`\`\`
-
-## 4. isinstance and method design
-
-Use \`isinstance()\` when checking whether an object belongs to a class or its subclasses.
-
-\`\`\`python
-class Animal:
-    pass
-
-class Dog(Animal):
-    pass
-
-dog = Dog()
-print(isinstance(dog, Dog))
-print(isinstance(dog, Animal))
-\`\`\`
-
-Both expressions print \`True\`.
-
-In Python, polymorphism often works without explicitly checking types. If an object supports the operation you need, your function can often use it directly.
-
-## 5. Abstract base classes
-
-The \`abc\` module lets you define abstract interfaces that subclasses must implement.
-
-\`\`\`python
-from abc import ABC, abstractmethod
-
-class PaymentMethod(ABC):
-    @abstractmethod
-    def pay(self, amount):
-        pass
-
-class CardPayment(PaymentMethod):
-    def pay(self, amount):
-        return f"Paid {amount} by card"
-
-payment = CardPayment()
-print(payment.pay(500))
-\`\`\`
-
-A class that has not implemented all required abstract methods cannot be instantiated.
-
-## 6. Data classes
-
-A data class is useful for objects mainly intended to store data. Python can automatically generate methods such as \`__init__\` and \`__repr__\`.
-
-\`\`\`python
-from dataclasses import dataclass
-
-@dataclass
-class Course:
-    title: str
-    duration_hours: int
-    published: bool = False
-
-course = Course("Python Basics", 12)
-print(course)
-\`\`\`
-
-Example output:
-
-\`\`\`text
-Course(title='Python Basics', duration_hours=12, published=False)
-\`\`\`
-
-## 7. Inheritance versus composition
-
-Inheritance expresses an "is a" relationship, such as a Dog being an Animal. Composition expresses a "has a" relationship, such as a Car having an Engine.
-
-Do not build long inheritance chains without a clear reason. Composition can be easier to maintain when behaviors need to be combined flexibly.
-
-## 8. Professional design guidelines
-
-- Give each class a clear responsibility.
-- Avoid duplicating behavior across subclasses.
-- Prefer clear method names and small methods.
-- Use abstract classes when a shared interface needs enforcement.
-- Use data classes for straightforward data containers.
-- Add tests for important class behavior.
-
-## Summary
-
-Inheritance reuses and specializes behavior, polymorphism enables common interfaces, abstract base classes define contracts, and data classes simplify data-focused objects.
-`,
-      codeExample: `from dataclasses import dataclass
-
-@dataclass
-class Employee:
-    name: str
-    salary: int
-
-class Manager(Employee):
-    def describe(self):
-        return f"{self.name} manages a team."
-
-manager = Manager("Ayesha", 80000)
-print(manager.describe())
-print(manager.salary)
-
-# Output:
-# Ayesha manages a team.
-# 80000`,
-      quiz: [
-        {
-          question: 'Which function calls a method implementation from a parent class?',
-          options: [
-            'parent()',
-            'super()',
-            'inherit()',
-            'base()'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What is polymorphism?',
-          options: [
-            'Converting every value into a string',
-            'Preventing classes from having methods',
-            'Different types responding to a common operation',
-            'A way to delete Python packages'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'What does @dataclass commonly generate automatically?',
-          options: [
-            'Methods such as __init__ and __repr__',
-            'A web server',
-            'A database connection',
-            'A virtual environment'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '16. Iterators, Generators, and Decorators',
-      duration: '1h 40m',
-      notes: `
-# Iterators, Generators, and Decorators
-
-## 1. Iterables and iterators
-
-An iterable is an object you can loop over, such as a list, tuple, or string. An iterator produces values one at a time.
-
-\`\`\`python
-numbers = [10, 20, 30]
-iterator = iter(numbers)
-
-print(next(iterator))
-print(next(iterator))
-print(next(iterator))
-\`\`\`
-
-Output:
-
-\`\`\`text
-10
-20
-30
-\`\`\`
-
-Calling \`next()\` after the iterator is exhausted raises \`StopIteration\`. A normal \`for\` loop handles this process automatically.
-
-## 2. Creating a custom iterator
-
-A custom iterator implements \`__iter__()\` and \`__next__()\`.
-
-\`\`\`python
-class Countdown:
-    def __init__(self, start):
-        self.current = start
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.current <= 0:
-            raise StopIteration
-
-        value = self.current
-        self.current -= 1
-        return value
-
-for number in Countdown(3):
-    print(number)
-\`\`\`
-
-Output:
-
-\`\`\`text
-3
-2
-1
-\`\`\`
-
-## 3. Generators
-
-Generators make iterator creation simpler. A function containing \`yield\` produces values one at a time and preserves its state between yields.
-
-\`\`\`python
-def count_up_to(limit):
-    number = 1
-    while number <= limit:
-        yield number
-        number += 1
-
-for value in count_up_to(3):
-    print(value)
-\`\`\`
-
-A generator can be memory-efficient because it does not need to build a complete list of results in advance.
-
-## 4. Generator expressions
-
-Generator expressions resemble list comprehensions but use parentheses.
-
-\`\`\`python
-squares = (number ** 2 for number in range(1, 6))
-
-for square in squares:
-    print(square)
-\`\`\`
-
-A generator is generally consumed as you iterate over it. If you need to reuse all values multiple times, a list may be more appropriate.
-
-## 5. What is a decorator?
-
-A decorator takes a function or class and returns a replacement or enhanced version. Decorators are often used for logging, timing, validation, and authorization.
-
-\`\`\`python
-def announce(function):
-    def wrapper():
-        print("Starting function")
-        function()
-        print("Function finished")
-    return wrapper
-
-@announce
-def greet():
-    print("Hello!")
-
-greet()
-\`\`\`
-
-Output:
-
-\`\`\`text
-Starting function
-Hello!
-Function finished
-\`\`\`
-
-The syntax \`@announce\` is equivalent to assigning the decorated function using \`greet = announce(greet)\`.
-
-## 6. Preserving function metadata
-
-Use \`functools.wraps\` to preserve useful metadata such as the wrapped function's name and docstring.
-
-\`\`\`python
-from functools import wraps
-
-def announce(function):
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        print("Calling:", function.__name__)
-        return function(*args, **kwargs)
-    return wrapper
-
-@announce
-def add(a, b):
-    return a + b
-
-print(add(3, 4))
-\`\`\`
-
-The wrapper accepts arbitrary positional and keyword arguments and returns the original function's result.
-
-## 7. Decorators with arguments
-
-A decorator can accept configuration by using an outer function.
-
-\`\`\`python
-from functools import wraps
-
-def repeat(times):
-    def decorator(function):
-        @wraps(function)
-        def wrapper(*args, **kwargs):
-            result = None
-            for _ in range(times):
-                result = function(*args, **kwargs)
-            return result
-        return wrapper
-    return decorator
-
-@repeat(3)
-def greet():
-    print("Hello")
-
-greet()
-\`\`\`
-
-This calls \`greet()\` three times. The returned result is from the final call.
-
-## 8. Practical considerations
-
-- Use generators when producing a stream of values.
-- Avoid consuming large iterables repeatedly without considering performance.
-- Keep decorators focused on one responsibility.
-- Preserve return values and function metadata.
-- Be careful with exceptions inside wrappers; unexpected errors should not be silently swallowed.
-
-## Summary
-
-Iterators produce values one at a time, generators make lazy iteration easier, and decorators extend functions without changing their main implementation.
-`,
-      codeExample: `from functools import wraps
-
-def log_call(function):
-    @wraps(function)
-    def wrapper(*args, **kwargs):
-        print(f"Calling {function.__name__}")
-        return function(*args, **kwargs)
-    return wrapper
-
-@log_call
-def multiply(a, b):
-    return a * b
-
-print(multiply(6, 7))
-
-# Output:
-# Calling multiply
-# 42`,
-      quiz: [
-        {
-          question: 'Which keyword is used to produce values from a generator function?',
-          options: [
-            'yield',
-            'emit',
-            'generate',
-            'pause'
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: 'What does next(iterator) do?',
-          options: [
-            'Deletes the iterator',
-            'Returns the next available value',
-            'Sorts every value',
-            'Restarts iteration from the beginning'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What is a common purpose of a decorator?',
-          options: [
-            'To install Python',
-            'To replace every loop with recursion',
-            'To enhance or wrap a function',
-            'To automatically create a database'
-          ],
-          correctAnswer: 2
-        }
-      ]
-    },
-      {
-      title: '17. Type Hints and Modern Python',
-      duration: '1h 30m',
-      notes: `
-# Type Hints and Modern Python
-
-## 1. What are type hints?
-
-Type hints describe the kinds of values a function expects and returns. They improve readability and help editors and static type checkers detect potential mistakes.
-
-\`\`\`python
-def add(a: int, b: int) -> int:
-    return a + b
-
-print(add(5, 3))
-\`\`\`
-
-Output:
-
-\`\`\`text
-8
-\`\`\`
-
-Python does not automatically enforce these annotations at runtime. They are primarily documentation and tooling aids.
-
-## 2. Common type annotations
-
-\`\`\`python
-name: str = "Anas"
-age: int = 18
-price: float = 99.5
-is_active: bool = True
-\`\`\`
-
-Function examples:
-
-\`\`\`python
-def greet(name: str) -> str:
-    return f"Hello, {name}"
-
-def calculate_total(price: float, quantity: int) -> float:
-    return price * quantity
-\`\`\`
-
-## 3. Typing collections
-
-Modern Python supports built-in generic types.
-
-\`\`\`python
-def average(numbers: list[float]) -> float:
-    return sum(numbers) / len(numbers)
-
-scores: list[int] = [75, 80, 92]
-student: dict[str, int] = {
-    "Ali": 80,
-    "Sara": 95
-}
-\`\`\`
-
-For Python 3.9 and later, forms such as \`list[int]\` and \`dict[str, int]\` are supported.
-
-## 4. Optional values and unions
-
-Use a union when a value can have more than one type.
-
-\`\`\`python
-def find_user(user_id: int) -> str | None:
-    if user_id == 1:
-        return "Ali"
-    return None
-
-print(find_user(1))
-print(find_user(99))
-\`\`\`
-
-The return type \`str | None\` means the function can return a string or \`None\`. This syntax requires Python 3.10 or later.
-
-## 5. Type aliases
-
-A type alias gives a reusable name to a type.
-
-\`\`\`python
-type StudentRecord = dict[str, str | int]
-
-student: StudentRecord = {
-    "name": "Sara",
-    "marks": 92
-}
-\`\`\`
-
-The \`type\` statement for aliases was introduced in Python 3.12. On older Python versions, you can use \`StudentRecord = dict[str, str | int]\` where the underlying type syntax is supported.
-
-## 6. Typed data classes
-
-Combine type hints with data classes for structured records.
-
-\`\`\`python
-from dataclasses import dataclass
-
-@dataclass
-class Product:
-    name: str
-    price: float
-    in_stock: bool = True
-
-product = Product("Keyboard", 2500.0)
-print(product)
-\`\`\`
-
-Type hints do not automatically validate that a supplied price is positive. Add explicit validation if your application requires it.
-
-## 7. Protocols and structural typing
-
-A protocol describes the methods or attributes an object should provide, without requiring it to inherit from a particular base class.
-
-\`\`\`python
-from typing import Protocol
-
-class Printable(Protocol):
-    def display(self) -> str:
-        ...
-
-def show(item: Printable) -> None:
-    print(item.display())
-
-class Report:
-    def display(self) -> str:
-        return "Monthly report"
-
-show(Report())
-\`\`\`
-
-Static type checkers can use this protocol to check whether an object supports the expected interface.
-
-## 8. Modern Python practices
-
-- Add type hints to public functions and important data structures.
-- Keep annotations accurate when changing function behavior.
-- Use \`None\` explicitly when a value may be absent.
-- Consider tools such as mypy or Pyright for static checking.
-- Do not assume type hints replace runtime validation of untrusted input.
-
-## Summary
-
-Type hints communicate intent, improve editor support, and help static analysis tools find mistakes. They are particularly useful as projects grow.
-`,
-      codeExample: `def calculate_average(scores: list[int]) -> float | None:
-    if not scores:
-        return None
-
-    return sum(scores) / len(scores)
-
-marks = [80, 90, 70]
-average = calculate_average(marks)
-
-print(average)
-
-# Output:
-# 80.0`,
-      quiz: [
-        {
-          question: 'What does -> int usually indicate in a function definition?',
-          options: [
-            'The function must be called with an integer name',
-            'The function is expected to return an integer',
-            'The function cannot return a value',
-            'Python automatically converts every result to an integer'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What does str | None represent in modern Python type hints?',
-          options: [
-            'A string containing the word None',
-            'A list of strings',
-            'Either a string or None',
-            'An integer or a float'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'Do type hints automatically enforce all types at runtime?',
-          options: [
-            'No, not by themselves',
-            'Yes, in every Python program',
-            'Only when using print()',
-            'Only inside loops'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '18. Testing and Code Quality',
-      duration: '1h 40m',
-      notes: `
-# Testing and Code Quality
-
-## 1. Why test software?
-
-Testing checks whether a program behaves as expected. It helps detect regressions when code changes.
-
-Common testing levels include:
-- Unit testing: checks a small function or component.
-- Integration testing: checks how components work together.
-- End-to-end testing: checks a complete user workflow.
-
-## 2. Assertions
-
-An assertion checks a condition and raises AssertionError if the condition is false.
-
-\`\`\`python
-def add(a, b):
-    return a + b
-
-assert add(2, 3) == 5
-assert add(-1, 1) == 0
-\`\`\`
-
-Assertions are useful in tests, but they should not be used as the only validation for important production input because Python can disable assertions with optimization settings.
-
-## 3. Unit testing with unittest
-
-Python includes a testing framework called \`unittest\`.
-
-Create a file named \`test_calculator.py\`:
-
-\`\`\`python
-import unittest
-
-def add(a, b):
-    return a + b
-
-class TestCalculator(unittest.TestCase):
-    def test_add_positive_numbers(self):
-        self.assertEqual(add(2, 3), 5)
-
-    def test_add_negative_number(self):
-        self.assertEqual(add(-2, 2), 0)
-
-if __name__ == "__main__":
-    unittest.main()
-\`\`\`
-
-Run the tests:
-
-\`\`\`bash
-python -m unittest test_calculator.py
-\`\`\`
-
-If all tests pass, the framework reports success. If one fails, it displays information about the failure.
-
-## 4. Testing exceptions
-
-Test that invalid operations raise the expected exception.
-
-\`\`\`python
-import unittest
-
-def withdraw(balance, amount):
-    if amount < 0:
-        raise ValueError("Amount cannot be negative")
-    return balance - amount
-
-class TestWithdraw(unittest.TestCase):
-    def test_negative_amount(self):
-        with self.assertRaises(ValueError):
-            withdraw(100, -5)
-\`\`\`
-
-Testing error conditions is as important as testing normal behavior.
-
-## 5. Test-driven development
-
-Test-driven development (TDD) commonly follows this cycle:
-
-1. Write a test describing the desired behavior.
-2. Run it and confirm that it fails for the expected reason.
-3. Implement the smallest change that makes it pass.
-4. Refactor while keeping the tests passing.
-
-This is often called Red, Green, Refactor.
-
-## 6. Code quality and formatting
-
-Readable code is easier to maintain.
-
-Prefer:
-
-\`\`\`python
-def calculate_total(price, quantity):
-    return price * quantity
-\`\`\`
-
-over a compressed, unclear expression.
-
-Helpful tools include:
-- \`ruff\`: linting and many code-quality checks.
-- \`black\`: automatic code formatting.
-- \`mypy\`: static type checking.
-- \`pytest\`: a popular third-party testing framework.
-
-Install tools in a project virtual environment:
-
-\`\`\`bash
-python -m pip install pytest ruff
-\`\`\`
-
-Run them:
-
-\`\`\`bash
-python -m pytest
-python -m ruff check .
-\`\`\`
-
-## 7. Test edge cases
-
-A good test suite covers more than one ordinary input.
-
-For a function that calculates an average, consider:
-- A normal list of values.
-- A list containing one value.
-- Negative values, if permitted.
-- An empty list.
-- Unexpected input types, when relevant.
-
-The expected behavior for every edge case should be clearly defined.
-
-## 8. Maintainable projects
-
-- Keep tests separate from application code when appropriate.
-- Use descriptive test names.
-- Make tests repeatable and independent.
-- Avoid relying on live services for every unit test.
-- Never include real passwords or API keys in test files.
-- Run tests before pushing important changes.
-
-## Summary
-
-Testing verifies behavior, catches regressions, and supports confident refactoring. Formatting, linting, and meaningful tests are essential parts of professional development.
-`,
-      codeExample: `import unittest
-
-def multiply(a, b):
-    return a * b
-
-class TestMultiply(unittest.TestCase):
-    def test_positive_numbers(self):
-        self.assertEqual(multiply(3, 4), 12)
-
-    def test_zero(self):
-        self.assertEqual(multiply(9, 0), 0)
-
-if __name__ == "__main__":
-    unittest.main()
-
-# Run:
-# python -m unittest test_calculator.py`,
-      quiz: [
-        {
-          question: 'What is the main purpose of a unit test?',
-          options: [
-            'To publish an application',
-            'To check a small unit of behavior',
-            'To install a database',
-            'To design a website layout'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'Which command runs Python unittest tests in a file named test_calculator.py?',
-          options: [
-            'python test --all',
-            'pip unittest test_calculator.py',
-            'python -m unittest test_calculator.py',
-            'python --run-tests-only'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'What does TDD stand for?',
-          options: [
-            'Test-Driven Development',
-            'Technical Data Deployment',
-            'Type-Defined Design',
-            'Test Database Directory'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '19. Algorithms and Big-O Basics',
-      duration: '1h 45m',
-      notes: `
-# Algorithms and Big-O Basics
-
-## 1. What is an algorithm?
-
-An algorithm is a sequence of steps used to solve a problem.
-
-Examples include:
-- Finding a value in a list.
-- Sorting records by score.
-- Finding the shortest path in a graph.
-- Searching a database for matching records.
-
-Good algorithms aim to produce correct results while using reasonable time and memory.
-
-## 2. Time complexity
-
-Big-O notation describes how an algorithm's resource usage grows as input size increases. It commonly expresses an upper-bound growth rate while ignoring constants and lower-order terms.
-
-Common complexities include:
-
-| Complexity | Name | Example |
-| --- | --- | --- |
-| O(1) | Constant | Accessing a list element by index |
-| O(log n) | Logarithmic | Binary search on sorted data |
-| O(n) | Linear | Scanning a list |
-| O(n log n) | Linearithmic | Typical efficient comparison sorting |
-| O(n²) | Quadratic | Comparing every pair in a simple nested loop |
-
-These are simplified examples; actual complexity depends on the operation and its assumptions.
-
-## 3. Linear search
-
-Linear search checks elements one at a time.
-
-\`\`\`python
-def linear_search(items, target):
-    for index, item in enumerate(items):
-        if item == target:
-            return index
-    return -1
-
-print(linear_search([4, 8, 12, 16], 12))
-\`\`\`
-
-Output:
-
-\`\`\`text
-2
-\`\`\`
-
-In the worst case, linear search examines every element, so its time complexity is O(n).
-
-## 4. Binary search
-
-Binary search repeatedly halves a sorted search range.
-
-\`\`\`python
-def binary_search(items, target):
-    left = 0
-    right = len(items) - 1
-
-    while left <= right:
-        middle = (left + right) // 2
-
-        if items[middle] == target:
-            return middle
-        if items[middle] < target:
-            left = middle + 1
-        else:
-            right = middle - 1
-
-    return -1
-
-print(binary_search([2, 4, 6, 8, 10, 12], 8))
-\`\`\`
-
-Output:
-
-\`\`\`text
-3
-\`\`\`
-
-Binary search requires sorted input. Its time complexity is O(log n), and this iterative implementation uses O(1) auxiliary space.
-
-## 5. Sorting
-
-Python provides the built-in \`sorted()\` function, which returns a new sorted list.
-
-\`\`\`python
-scores = [75, 92, 60, 88]
-
-print(sorted(scores))
-print(sorted(scores, reverse=True))
-\`\`\`
-
-Output:
-
-\`\`\`text
-[60, 75, 88, 92]
-[92, 88, 75, 60]
-\`\`\`
-
-The list method \`sort()\` sorts a list in place and returns \`None\`.
-
-Python's sorting algorithm, Timsort, has O(n log n) worst-case time complexity and can perform especially well on partially ordered data.
-
-## 6. Space complexity
-
-Space complexity describes how additional memory requirements grow with input size.
-
-For example:
-
-\`\`\`python
-def total(numbers):
-    result = 0
-    for number in numbers:
-        result += number
-    return result
-\`\`\`
-
-This function uses a constant amount of extra storage, so its auxiliary space complexity is O(1), excluding the input.
-
-A function that creates a second list containing every input element may require O(n) additional space.
-
-## 7. Nested loops
-
-Consider:
-
-\`\`\`python
-def print_pairs(items):
-    for first in items:
-        for second in items:
-            print(first, second)
-\`\`\`
-
-For n elements, the body runs n multiplied by n times, giving O(n²) time complexity.
-
-Nested loops are not automatically quadratic in every program; the number of iterations of each loop determines the analysis.
-
-## 8. Choosing the right data structure
-
-- Lists provide ordered collections and efficient indexed access.
-- Dictionaries provide average-case O(1) key lookup under typical hashing assumptions.
-- Sets provide efficient average-case membership tests.
-- Heaps help manage priorities.
-- Queues support first-in, first-out processing.
-
-Choose structures based on the operations your program performs most often.
-
-## 9. Practical algorithm analysis
-
-When evaluating an algorithm:
-1. Define the input size.
-2. Count the operations that grow with that size.
-3. Identify the dominant growth term.
-4. Consider both time and auxiliary space.
-5. Check whether the algorithm's assumptions are satisfied.
-
-## Summary
-
-Algorithm analysis helps predict how software scales. Learn to compare growth rates, select suitable data structures, and choose algorithms that meet your performance requirements.
-`,
-      codeExample: `def binary_search(items, target):
-    left = 0
-    right = len(items) - 1
-
-    while left <= right:
-        middle = (left + right) // 2
-
-        if items[middle] == target:
-            return middle
-        elif items[middle] < target:
-            left = middle + 1
-        else:
-            right = middle - 1
-
-    return -1
-
-numbers = [10, 20, 30, 40, 50]
-print(binary_search(numbers, 40))
-
-# Output:
-# 3`,
-      quiz: [
-        {
-          question: 'What is the worst-case time complexity of linear search?',
-          options: [
-            'O(1)',
-            'O(log n)',
-            'O(n)',
-            'O(n²)'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'What condition must be satisfied before using ordinary binary search?',
-          options: [
-            'The input must contain only strings',
-            'The input must be sorted',
-            'The input must have an even length',
-            'The input must contain no duplicate values'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What does list.sort() do?',
-          options: [
-            'Sorts the list in place and returns None',
-            'Always returns a new sorted list',
-            'Deletes all duplicate values',
-            'Sorts a dictionary by default'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '20. Regular Expressions and Text Processing',
-      duration: '1h 30m',
-      notes: `
-# Regular Expressions and Text Processing
-
-## 1. What are regular expressions?
-
-Regular expressions (regex) are patterns used to search, validate, extract, and replace text. Python provides the built-in \`re\` module.
-
-\`\`\`python
-import re
-
-text = "Learn Python in 2026"
-match = re.search(r"Python", text)
-
-if match:
-    print("Found:", match.group())
-\`\`\`
-
-Output:
-
-\`\`\`text
-Found: Python
-\`\`\`
-
-## 2. Common regex functions
-
-- \`re.search()\`: finds the first match anywhere in the text.
-- \`re.match()\`: checks for a match at the beginning.
-- \`re.fullmatch()\`: checks whether the entire string matches.
-- \`re.findall()\`: returns all non-overlapping matches.
-- \`re.sub()\`: replaces matching text.
-- \`re.split()\`: splits text using a pattern.
-
-## 3. Pattern characters
-
-| Pattern | Meaning |
-| --- | --- |
-| \`\\d\` | A digit |
-| \`\\w\` | A word character |
-| \`\\s\` | Whitespace |
-| \`.\` | Any character except newline by default |
-| \`^\` | Start of string or line, depending on flags |
-| \`$\` | End of string or line, depending on flags |
-| \`+\` | One or more repetitions |
-| \`*\` | Zero or more repetitions |
-| \`?\` | Zero or one repetition |
-| \`{3}\` | Exactly three repetitions |
-| \`[abc]\` | One character from the set |
-
-Use raw strings such as \`r"\\d+"\` so Python does not interpret backslashes as ordinary string escapes.
-
-## 4. Extracting numbers
-
-\`\`\`python
-import re
-
-text = "Order 104 costs 250 rupees"
-numbers = re.findall(r"\\d+", text)
-
-print(numbers)
-\`\`\`
-
-Output:
-
-\`\`\`text
-['104', '250']
-\`\`\`
-
-The matches are strings. Convert them to integers if numeric calculations are required.
-
-## 5. Replacing text
-
-\`\`\`python
-import re
-
-message = "Python is difficult. Python is powerful."
-updated = re.sub(r"Python", "Programming", message)
-
-print(updated)
-\`\`\`
-
-Output:
-
-\`\`\`text
-Programming is difficult. Programming is powerful.
-\`\`\`
-
-You can use a replacement count to limit the number of substitutions.
-
-## 6. Validating input
-
-A simple pattern can validate a basic format.
-
-\`\`\`python
-import re
-
-def valid_code(value):
-    return re.fullmatch(r"[A-Z]{2}\\d{4}", value) is not None
-
-print(valid_code("SE1234"))
-print(valid_code("se1234"))
-\`\`\`
-
-Output:
-
-\`\`\`text
-True
-False
-\`\`\`
-
-This pattern requires two uppercase letters followed by four digits.
-
-Regex can check format, but it cannot prove that an email address exists or that a phone number is active. For complex formats, use appropriate validation libraries and business rules.
-
-## 7. Groups and named groups
-
-Parentheses capture parts of a match.
-
-\`\`\`python
-import re
-
-text = "Student: Ali, ID: SE1234"
-match = re.search(
-    r"Student: (?P<name>\\w+), ID: (?P<id>\\w+)",
-    text
-)
-
-if match:
-    print(match.group("name"))
-    print(match.group("id"))
-\`\`\`
-
-Named groups make extracted data easier to understand.
-
-## 8. Cleaning text
-
-\`\`\`python
-import re
-
-def normalize_text(text):
-    text = text.lower().strip()
-    text = re.sub(r"\\s+", " ", text)
-    return text
-
-print(normalize_text("  Learn   PYTHON   today  "))
-\`\`\`
-
-Output:
-
-\`\`\`text
-learn python today
-\`\`\`
-
-## 9. Regex safety and performance
-
-- Prefer raw strings for regex patterns.
-- Test patterns against both valid and invalid examples.
-- Avoid unnecessarily complicated expressions.
-- Be careful with patterns that can cause excessive backtracking on untrusted input.
-- Use ordinary string methods when they are simpler than regex.
-
-## Summary
-
-Regular expressions provide powerful text-search and transformation tools. Learn common pattern symbols, matching functions, groups, and safe input validation.
-`,
-      codeExample: `import re
-
-text = "Ali scored 85 marks and Sara scored 92 marks"
-
-names = re.findall(r"[A-Z][a-z]+", text)
-scores = re.findall(r"\\d+", text)
-
-print("Names:", names)
-print("Scores:", scores)
-
-# Output:
-# Names: ['Ali', 'Sara']
-# Scores: ['85', '92']`,
-      quiz: [
-        {
-          question: 'Which function returns all non-overlapping matches of a regex pattern?',
-          options: [
-            're.findall()',
-            're.replace_all()',
-            're.match_all()',
-            're.collect()'
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: 'What does the regex pattern \\\\d+ match?',
-          options: [
-            'One or more whitespace characters',
-            'One or more digits',
-            'Exactly one letter',
-            'Only punctuation marks'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What does re.sub() commonly do?',
-          options: [
-            'Sorts a list',
-            'Opens a file',
-            'Replaces text matching a pattern',
-            'Creates a virtual environment'
-          ],
-          correctAnswer: 2
-        }
-      ]
-    },
-    {
-      title: '21. Dates, Times, and Logging',
-      duration: '1h 35m',
-      notes: `
-# Dates, Times, and Logging
-
-## 1. Working with dates
-
-Python's \`datetime\` module provides classes for dates, times, and durations.
-
-\`\`\`python
-from datetime import date
-
-today = date.today()
-print(today)
-print(today.year)
-print(today.month)
-print(today.day)
-\`\`\`
-
-The displayed date depends on the computer's local date.
-
-## 2. Creating dates and times
-
-\`\`\`python
-from datetime import date, datetime, time
-
-birthday = date(2008, 5, 15)
-meeting = time(14, 30)
-moment = datetime(2026, 10, 28, 14, 30)
-
-print(birthday)
-print(meeting)
-print(moment)
-\`\`\`
-
-Date components use numeric values, and invalid dates raise an exception.
-
-## 3. Formatting dates
-
-Use \`strftime()\` to format date and time values.
-
-\`\`\`python
-from datetime import datetime
-
-now = datetime.now()
-formatted = now.strftime("%d-%m-%Y %H:%M")
-
-print(formatted)
-\`\`\`
-
-Common formatting codes:
-
-- \`%Y\`: four-digit year.
-- \`%m\`: month number.
-- \`%d\`: day of month.
-- \`%H\`: hour in 24-hour format.
-- \`%M\`: minute.
-- \`%S\`: second.
-
-Use \`strptime()\` to parse text that follows a known format.
-
-\`\`\`python
-from datetime import datetime
-
-value = datetime.strptime("28-10-2026", "%d-%m-%Y")
-print(value.date())
-\`\`\`
-
-## 4. Time differences
-
-A \`timedelta\` represents a duration.
-
-\`\`\`python
-from datetime import date
-
-start = date(2026, 1, 1)
-end = date(2026, 12, 31)
-
-difference = end - start
-print(difference.days)
-\`\`\`
-
-This calculates the number of days between the two dates.
-
-## 5. Time zones
-
-Use timezone-aware datetimes when working with timestamps across regions.
-
-\`\`\`python
-from datetime import datetime, timezone
-
-now_utc = datetime.now(timezone.utc)
-print(now_utc.isoformat())
-\`\`\`
-
-For named time zones and daylight-saving rules, use \`zoneinfo\` where available.
-
-\`\`\`python
-from datetime import datetime
-from zoneinfo import ZoneInfo
-
-lahore_time = datetime.now(ZoneInfo("Asia/Karachi"))
-print(lahore_time.isoformat())
-\`\`\`
-
-Avoid comparing naive and timezone-aware datetimes directly; Python generally rejects that comparison.
-
-## 6. Why logging matters
-
-Logging records events that help you understand application behavior and diagnose problems.
-
-\`\`\`python
-import logging
-
-logging.basicConfig(level=logging.INFO)
-
-logging.debug("Detailed diagnostic information")
-logging.info("Application started")
-logging.warning("Unexpected input received")
-logging.error("Operation failed")
-logging.critical("A critical failure occurred")
-\`\`\`
-
-By default, the root logger usually displays messages at WARNING level or higher unless configured otherwise. Setting INFO makes INFO and more severe messages visible.
-
-## 7. Logging to a file
-
-\`\`\`python
-import logging
-
-logging.basicConfig(
-    filename="app.log",
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s: %(message)s"
-)
-
-logging.info("Application started")
-logging.warning("Configuration value is missing")
-\`\`\`
-
-The log file can help diagnose problems after the program has finished.
-
-## 8. Logging exceptions
-
-Use \`logging.exception()\` inside an exception handler to include traceback information.
-
-\`\`\`python
-import logging
-
-try:
-    result = 10 / 0
-except ZeroDivisionError:
-    logging.exception("Calculation failed")
-\`\`\`
-
-Do not log passwords, authentication tokens, or other sensitive information.
-
-## Summary
-
-The datetime tools support date calculations and time-zone-aware timestamps. Logging provides configurable records of application events and failures.
-`,
-      codeExample: `from datetime import datetime, timedelta
-import logging
-
-logging.basicConfig(level=logging.INFO)
-
-now = datetime.now()
-tomorrow = now + timedelta(days=1)
-
-print("Now:", now.strftime("%Y-%m-%d %H:%M"))
-print("Tomorrow:", tomorrow.date())
-
-logging.info("Date calculation completed")
-
-# Output format:
-# Now: current date and time
-# Tomorrow: next calendar date`,
-      quiz: [
-        {
-          question: 'Which method formats a datetime object as a string?',
-          options: [
-            'strptime()',
-            'strftime()',
-            'timeformat()',
-            'dateprint()'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'Which object represents a duration between dates or times?',
-          options: [
-            'timezone',
-            'calendar',
-            'timedelta',
-            'timestamp_file'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'Which logging method includes exception traceback information when called inside an exception handler?',
-          options: [
-            'logging.exception()',
-            'logging.date()',
-            'logging.format()',
-            'logging.close()'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '22. JSON, CSV, and Data Processing',
-      duration: '1h 40m',
-      notes: `
-# JSON, CSV, and Data Processing
-
-## 1. What is JSON?
-
-JSON stands for JavaScript Object Notation. It is a common format for exchanging structured data between applications and APIs.
-
-Python's built-in \`json\` module converts between JSON text and Python objects.
-
-## 2. Converting Python objects to JSON
-
-\`\`\`python
-import json
-
-student = {
-    "name": "Ali",
-    "marks": 88,
-    "passed": True
-}
-
-json_text = json.dumps(student, indent=2)
-print(json_text)
-\`\`\`
-
-The resulting JSON uses lowercase \`true\` and \`false\` for Boolean values.
-
-## 3. Reading JSON
-
-\`\`\`python
-import json
-
-json_text = '{"name": "Sara", "marks": 95}'
-student = json.loads(json_text)
-
-print(student["name"])
-print(student["marks"])
-\`\`\`
-
-Important methods:
-- \`json.dumps()\`: Python object to JSON string.
-- \`json.loads()\`: JSON string to Python object.
-- \`json.dump()\`: write JSON to a file-like object.
-- \`json.load()\`: read JSON from a file-like object.
-
-## 4. Saving JSON to a file
-
-\`\`\`python
-import json
-
-settings = {
-    "theme": "dark",
-    "notifications": True
-}
-
-with open("settings.json", "w", encoding="utf-8") as file:
-    json.dump(settings, file, indent=2)
-
-with open("settings.json", "r", encoding="utf-8") as file:
-    loaded_settings = json.load(file)
-
-print(loaded_settings["theme"])
-\`\`\`
-
-JSON is useful for configuration files and structured data, but it is not a substitute for a database when you need concurrent updates, queries, and transactions.
-
-## 5. Working with CSV
-
-CSV stands for Comma-Separated Values. Python's built-in \`csv\` module handles quoted fields and delimiters more reliably than manually splitting strings.
-
-Write a CSV file:
-
-\`\`\`python
-import csv
-
-students = [
-    ["Name", "Marks"],
-    ["Ali", 85],
-    ["Sara", 92]
-]
-
-with open("students.csv", "w", newline="", encoding="utf-8") as file:
-    writer = csv.writer(file)
-    writer.writerows(students)
-\`\`\`
-
-Read the file:
-
-\`\`\`python
-import csv
-
-with open("students.csv", "r", newline="", encoding="utf-8") as file:
-    reader = csv.reader(file)
-    for row in reader:
-        print(row)
-\`\`\`
-
-The CSV reader returns field values as strings.
-
-## 6. Dictionary-based CSV files
-
-\`\`\`python
-import csv
-
-records = [
-    {"name": "Ali", "marks": 85},
-    {"name": "Sara", "marks": 92}
-]
-
-with open("results.csv", "w", newline="", encoding="utf-8") as file:
-    writer = csv.DictWriter(
-        file,
-        fieldnames=["name", "marks"]
-    )
-    writer.writeheader()
-    writer.writerows(records)
-\`\`\`
-
-Read dictionary rows with \`csv.DictReader\`:
-
-\`\`\`python
-import csv
-
-with open("results.csv", newline="", encoding="utf-8") as file:
-    for row in csv.DictReader(file):
-        print(row["name"], row["marks"])
-\`\`\`
-
-## 7. Data validation
-
-External files may contain missing or invalid values. Validate data before calculations.
-
-\`\`\`python
-def parse_marks(value):
-    try:
-        marks = int(value)
-    except ValueError:
-        raise ValueError("Marks must be a whole number.")
-
-    if not 0 <= marks <= 100:
-        raise ValueError("Marks must be between 0 and 100.")
-
-    return marks
-
-print(parse_marks("85"))
-\`\`\`
-
-## 8. Handling malformed JSON
-
-Invalid JSON raises \`json.JSONDecodeError\`.
-
-\`\`\`python
-import json
-
-try:
-    data = json.loads('{"name": }')
-except json.JSONDecodeError:
-    print("The JSON document is invalid.")
-\`\`\`
-
-Handle malformed data explicitly instead of assuming every input file is valid.
-
-## 9. Data-processing workflow
-
-A reliable data workflow usually involves:
-1. Reading the input.
-2. Validating required fields.
-3. Converting values to appropriate types.
-4. Cleaning or transforming the records.
-5. Computing results.
-6. Saving the output.
-7. Reporting invalid records clearly.
-
-## 10. Security considerations
-
-- Treat imported files as untrusted input.
-- Avoid loading untrusted Python pickle files; deserialization can execute code.
-- Validate data before using it in business logic.
-- Avoid putting secrets into exported files.
-- When exporting user-controlled values to CSV, consider spreadsheet formula injection risks.
-
-## Summary
-
-JSON is useful for structured objects and configuration, while CSV is common for tabular data. The built-in modules help read and write both formats safely and consistently.
-`,
-      codeExample: `import json
-from pathlib import Path
-
-student = {
-    "name": "Anas",
-    "course": "Python",
-    "completed_modules": 22
-}
-
-path = Path("student.json")
-path.write_text(
-    json.dumps(student, indent=2),
-    encoding="utf-8"
-)
-
-loaded = json.loads(path.read_text(encoding="utf-8"))
-print(loaded["name"])
-print(loaded["completed_modules"])
-
-# Output:
-# Anas
-# 22`,
-      quiz: [
-        {
-          question: 'Which function converts a Python object into a JSON string?',
-          options: [
-            'json.loads()',
-            'json.dumps()',
-            'json.readfile()',
-            'json.convert_text()'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'Which module is designed to read and write CSV files?',
-          options: [
-            'table',
-            'spreadsheet',
-            'csv',
-            'rows'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'What exception is raised when json.loads() receives malformed JSON?',
-          options: [
-            'json.JSONDecodeError',
-            'CSVError',
-            'FileExistsError',
-            'StopIteration'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '23. HTTP Requests and Working with APIs',
-      duration: '1h 45m',
-      notes: `
-# HTTP Requests and Working with APIs
-
-## 1. What is an API?
-
-An Application Programming Interface (API) allows software systems to communicate. A web API commonly sends and receives data over HTTP.
-
-For example, a weather application can request weather information from a remote service instead of collecting all weather data itself.
-
-## 2. HTTP fundamentals
-
-Common HTTP methods include:
-
-- GET: retrieve a resource.
-- POST: submit data or create a resource.
-- PUT: replace a resource.
-- PATCH: partially update a resource.
-- DELETE: delete a resource.
-
-Common status codes:
-
-- 200: request succeeded.
-- 201: resource created.
-- 400: bad request.
-- 401: authentication required or invalid.
-- 403: access forbidden.
-- 404: resource not found.
-- 429: too many requests.
-- 500: server error.
-
-The meaning of a status code can depend on the API's documented behavior.
-
-## 3. Install the requests library
-
-The \`requests\` package is not part of Python's standard library.
-
-Install it inside your virtual environment:
-
-\`\`\`bash
-python -m pip install requests
-\`\`\`
-
-## 4. Making a GET request
-
-\`\`\`python
-import requests
-
-url = "https://jsonplaceholder.typicode.com/posts/1"
-
-response = requests.get(url, timeout=10)
-response.raise_for_status()
-
-post = response.json()
-
-print(post["title"])
-\`\`\`
-
-This example calls a public demonstration API. The response is converted from JSON into Python data.
-
-## 5. Handling HTTP errors
-
-Network requests can fail because of timeouts, connection problems, or unsuccessful HTTP status codes.
-
-\`\`\`python
-import requests
-
-try:
-    response = requests.get(
-        "https://jsonplaceholder.typicode.com/posts/1",
-        timeout=10
-    )
-    response.raise_for_status()
-    data = response.json()
-    print(data)
-except requests.Timeout:
-    print("The request timed out.")
-except requests.ConnectionError:
-    print("Could not connect to the server.")
-except requests.HTTPError as error:
-    print("HTTP request failed:", error)
-except requests.RequestException as error:
-    print("Request failed:", error)
-\`\`\`
-
-Use timeouts so your program does not wait indefinitely for a response.
-
-## 6. Sending query parameters
-
-Query parameters are commonly used for searching and filtering.
-
-\`\`\`python
-import requests
-
-response = requests.get(
-    "https://jsonplaceholder.typicode.com/posts",
-    params={"userId": 1},
-    timeout=10
-)
-response.raise_for_status()
-
-posts = response.json()
-print("Posts found:", len(posts))
-\`\`\`
-
-Using the \`params\` argument lets Requests encode the query string correctly.
-
-## 7. Sending JSON with POST
-
-\`\`\`python
-import requests
-
-payload = {
-    "title": "Learning Python",
-    "body": "Practicing HTTP APIs",
-    "userId": 1
-}
-
-response = requests.post(
-    "https://jsonplaceholder.typicode.com/posts",
-    json=payload,
-    timeout=10
-)
-response.raise_for_status()
-
-print(response.status_code)
-print(response.json())
-\`\`\`
-
-The demonstration API may simulate creation rather than permanently storing the new resource.
-
-## 8. Authentication and API keys
-
-Some services require an API key or access token.
-
-\`\`\`python
-import os
-import requests
-
-api_key = os.getenv("MY_API_KEY")
-
-if not api_key:
-    raise RuntimeError("MY_API_KEY is not configured.")
-
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
-
-# Replace this with the documented URL of your authorized API.
-url = "https://api.example.com/profile"
-
-response = requests.get(
-    url,
-    headers=headers,
-    timeout=10
-)
-response.raise_for_status()
-\`\`\`
-
-This is a template, not a working public endpoint. Set the environment variable before using it.
-
-Never commit API keys or access tokens to a public GitHub repository.
-
-## 9. Sessions and repeated requests
-
-A session can reuse configuration and connections across multiple requests.
-
-\`\`\`python
-import requests
-
-with requests.Session() as session:
-    response = session.get(
-        "https://jsonplaceholder.typicode.com/posts/1",
-        timeout=10
-    )
-    response.raise_for_status()
-    print(response.json()["id"])
-\`\`\`
-
-## 10. API best practices
-
-- Read the API documentation first.
-- Set timeouts.
-- Handle HTTP and connection errors.
-- Respect rate limits and usage terms.
-- Validate response data before using it.
-- Avoid sending private information to untrusted services.
-- Keep credentials in environment variables or a secrets manager.
-
-## Summary
-
-HTTP APIs let Python programs communicate with remote services. Requests makes HTTP calls easier, while timeouts, error handling, authentication, and input validation make integrations more reliable.
-`,
-      codeExample: `import requests
-
-def get_post(post_id):
-    url = f"https://jsonplaceholder.typicode.com/posts/{post_id}"
-
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        return response.json()
-    except requests.RequestException as error:
-        print("API request failed:", error)
-        return None
-
-post = get_post(1)
-
-if post is not None:
-    print("Title:", post["title"])
-
-# Requires:
-# python -m pip install requests`,
-      quiz: [
-        {
-          question: 'Which HTTP method is commonly used to retrieve a resource?',
-          options: ['POST', 'DELETE', 'GET', 'PATCH'],
-          correctAnswer: 2
-        },
-        {
-          question: 'Why should an HTTP request use a timeout?',
-          options: [
-            'To prevent waiting indefinitely for a response',
-            'To automatically create an API key',
-            'To convert JSON into CSV',
-            'To disable all server errors'
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: 'Which Requests method raises an exception for unsuccessful HTTP status codes?',
-          options: [
-            'response.json()',
-            'response.raise_for_status()',
-            'response.get_status()',
-            'requests.check_all()'
-          ],
-          correctAnswer: 1
-        }
-      ]
-    },
-    {
-      title: '24. SQLite and Database Fundamentals',
-      duration: '1h 50m',
-      notes: `
-# SQLite and Database Fundamentals
-
-## 1. What is a database?
-
-A database stores information in a structured form so an application can retrieve and update it.
-
-A relational database organizes information into tables containing rows and columns.
-
-SQLite is a lightweight relational database. Python includes the \`sqlite3\` module, so you do not need to install a separate database server to begin using it.
-
-## 2. Creating a database connection
-
-\`\`\`python
-import sqlite3
-
-connection = sqlite3.connect("students.db")
-print("Database connected")
-connection.close()
-\`\`\`
-
-SQLite creates the database file when it does not already exist.
-
-For larger programs, use a context manager to manage transactions carefully and close connections when they are no longer needed.
-
-## 3. Creating a table
-
-\`\`\`python
-import sqlite3
-
-with sqlite3.connect("students.db") as connection:
-    connection.execute("""
-        CREATE TABLE IF NOT EXISTS students (
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            marks INTEGER NOT NULL
-        )
-    """)
-\`\`\`
-
-The table defines:
-- \`id\`: a unique identifier.
-- \`name\`: required text.
-- \`marks\`: required integer data.
-
-## 4. Inserting records safely
-
-Use parameterized queries instead of joining user input into SQL strings.
-
-\`\`\`python
-import sqlite3
-
-with sqlite3.connect("students.db") as connection:
-    connection.execute(
-        "INSERT INTO students (name, marks) VALUES (?, ?)",
-        ("Ali", 85)
-    )
-\`\`\`
-
-The question-mark placeholders let SQLite bind values safely.
-
-Never build SQL statements by directly concatenating untrusted input.
-
-## 5. Reading records
-
-\`\`\`python
-import sqlite3
-
-with sqlite3.connect("students.db") as connection:
-    rows = connection.execute(
-        "SELECT id, name, marks FROM students"
-    ).fetchall()
-
-for row in rows:
-    print(row)
-\`\`\`
-
-Useful SQL clauses include:
-- \`WHERE\`: filters rows.
-- \`ORDER BY\`: sorts results.
-- \`LIMIT\`: restricts the number of rows returned.
-- \`GROUP BY\`: groups rows for aggregate calculations.
-
-## 6. Updating and deleting records
-
-\`\`\`python
-import sqlite3
-
-with sqlite3.connect("students.db") as connection:
-    connection.execute(
-        "UPDATE students SET marks = ? WHERE name = ?",
-        (90, "Ali")
-    )
-\`\`\`
-
-Delete a record using a specific condition:
-
-\`\`\`python
-with sqlite3.connect("students.db") as connection:
-    connection.execute(
-        "DELETE FROM students WHERE name = ?",
-        ("Ali",)
-    )
-\`\`\`
-
-Be careful with UPDATE or DELETE statements without a WHERE clause because they can affect every row.
-
-## 7. Transactions
-
-A transaction groups related database changes into a unit of work.
-
-SQLite connections used as context managers commit successful transactions and roll back a transaction when an exception escapes the block. The connection itself should still be closed when you finish using it.
-
-\`\`\`python
-import sqlite3
-
-connection = sqlite3.connect("bank.db")
-
-try:
-    with connection:
-        connection.execute(
-            "CREATE TABLE IF NOT EXISTS accounts "
-            "(id INTEGER PRIMARY KEY, balance INTEGER NOT NULL)"
-        )
-finally:
-    connection.close()
-\`\`\`
-
-Transactions are especially important when multiple changes must succeed or fail together.
-
-## 8. Database relationships
-
-Relational databases often connect tables using keys.
-
-For example, an \`orders\` table may contain a \`customer_id\` that refers to a customer record. A foreign key expresses this relationship.
-
-SQLite foreign-key enforcement should be enabled for connections when required:
-
-\`\`\`python
-import sqlite3
-
-connection = sqlite3.connect("shop.db")
-connection.execute("PRAGMA foreign_keys = ON")
-connection.close()
-\`\`\`
-
-## 9. SQL aggregation
-
-\`\`\`python
-import sqlite3
-
-with sqlite3.connect("students.db") as connection:
-    result = connection.execute(
-        "SELECT COUNT(*), AVG(marks) FROM students"
-    ).fetchone()
-
-print("Student count:", result[0])
-print("Average marks:", result[1])
-\`\`\`
-
-Aggregate functions such as COUNT, SUM, AVG, MIN, and MAX summarize records.
-
-## 10. Professional database practices
-
-- Use parameterized SQL queries.
-- Add constraints to protect data integrity.
-- Use transactions for related updates.
-- Back up important data.
-- Do not store plaintext passwords.
-- Close database connections when finished.
-- Consider PostgreSQL or another server database for applications requiring concurrent access, remote connections, or advanced deployment features.
-
-## Summary
-
-SQLite introduces relational database concepts without requiring a database server. Tables, SQL queries, parameter binding, transactions, and constraints are foundational skills for backend development.
-`,
-      codeExample: `import sqlite3
-
-with sqlite3.connect("tasks.db") as connection:
-    connection.execute("""
-        CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY,
-            title TEXT NOT NULL,
-            completed INTEGER NOT NULL DEFAULT 0
-        )
-    """)
-
-    connection.execute(
-        "INSERT INTO tasks (title) VALUES (?)",
-        ("Learn SQLite",)
-    )
-
-    tasks = connection.execute(
-        "SELECT id, title, completed FROM tasks"
-    ).fetchall()
-
-for task in tasks:
-    print(task)
-
-# Run the program more than once to observe
-# how records persist in tasks.db.`,
-      quiz: [
-        {
-          question: 'Which Python module provides built-in SQLite support?',
-          options: ['sqlite3', 'databasekit', 'sqlserver', 'dbbrowser'],
-          correctAnswer: 0
-        },
-        {
-          question: 'Why are parameterized SQL queries important?',
-          options: [
-            'They automatically create a website',
-            'They make every query run instantly',
-            'They safely bind values and help prevent SQL injection',
-            'They remove the need for database tables'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'What is the purpose of a database transaction?',
-          options: [
-            'To convert SQL into HTML',
-            'To group changes into a unit of work',
-            'To replace every table',
-            'To disable data validation'
-          ],
-          correctAnswer: 1
-        }
-      ]
-    },
-    {
-      title: '25. Asynchronous Programming and Concurrency',
-      duration: '2h',
-      notes: `
-# Asynchronous Programming and Concurrency
-
-## 1. What is concurrency?
-
-Concurrency allows a program to make progress on multiple tasks during overlapping periods.
-
-It is especially useful for I/O-bound work such as:
-- Waiting for HTTP responses.
-- Reading from network services.
-- Handling many connections.
-- Waiting for asynchronous database operations.
-
-Concurrency is different from parallelism. Parallelism means multiple operations actually execute at the same time, often on different CPU cores.
-
-## 2. Synchronous execution
-
-In synchronous code, a task generally waits for the current operation to finish before moving to the next one.
-
-\`\`\`python
-import time
-
-def task(name):
-    print("Starting", name)
-    time.sleep(1)
-    print("Finished", name)
-
-task("A")
-task("B")
-\`\`\`
-
-The second task starts after the first finishes.
-
-## 3. Creating an async function
-
-Use \`async def\` to define a coroutine function.
-
-\`\`\`python
-import asyncio
-
-async def greet():
-    print("Hello from async Python")
-
-asyncio.run(greet())
-\`\`\`
-
-Calling an async function creates a coroutine object. It does not execute the coroutine to completion until it is awaited or scheduled by an event loop.
-
-## 4. Awaiting asynchronous operations
-
-\`\`\`python
-import asyncio
-
-async def task(name):
-    print("Starting", name)
-    await asyncio.sleep(1)
-    print("Finished", name)
-
-async def main():
-    await task("A")
-    await task("B")
-
-asyncio.run(main())
-\`\`\`
-
-Here the two tasks still run sequentially because each one is awaited before the next begins.
-
-Use \`asyncio.sleep()\` rather than \`time.sleep()\` inside async code when you want to wait without blocking the event loop.
-
-## 5. Running tasks concurrently
-
-\`\`\`python
-import asyncio
-
-async def task(name):
-    print("Starting", name)
-    await asyncio.sleep(1)
-    print("Finished", name)
-
-async def main():
-    await asyncio.gather(
-        task("A"),
-        task("B"),
-        task("C")
-    )
-
-asyncio.run(main())
-\`\`\`
-
-The tasks can overlap while awaiting asynchronous operations, reducing total waiting time compared with sequential execution.
-
-## 6. Using create_task
-
-\`\`\`python
-import asyncio
-
-async def fetch_data():
-    await asyncio.sleep(1)
-    return {"status": "complete"}
-
-async def main():
-    task = asyncio.create_task(fetch_data())
-    print("Task scheduled")
-
-    result = await task
-    print(result)
-
-asyncio.run(main())
-\`\`\`
-
-Tasks schedule coroutines to run within the event loop. Keep references to important tasks and handle their exceptions.
-
-## 7. Async context managers and iterators
-
-Some network clients, database libraries, and streams provide asynchronous interfaces.
-
-An asynchronous context manager uses \`async with\`, while asynchronous iteration uses \`async for\`.
-
-These features are useful when the underlying resource supports asynchronous operations; they do not automatically make ordinary synchronous libraries asynchronous.
-
-## 8. When to use threads or processes
-
-- Asyncio: useful for many I/O-bound tasks when libraries support async operations.
-- Threading: useful for concurrent I/O when working with synchronous libraries.
-- Multiprocessing: useful for CPU-heavy work that benefits from multiple processes.
-
-Python's Global Interpreter Lock affects CPU-bound threads in standard CPython builds, although implementation details can vary by Python version and build.
-
-## 9. Common mistakes
-
-- Forgetting to await a coroutine.
-- Calling blocking functions such as \`time.sleep()\` in an async event loop.
-- Assuming async code automatically runs on multiple CPU cores.
-- Creating tasks without managing their lifecycle.
-- Ignoring exceptions raised by background tasks.
-
-## 10. Professional use cases
-
-Asynchronous programming can help build chat services, API clients, network applications, and services that wait on many independent resources.
-
-Use it only when its concurrency benefits justify the added complexity.
-
-## Summary
-
-Asyncio supports cooperative concurrency using coroutines, await, tasks, and an event loop. It is especially effective for I/O-bound applications when their libraries support asynchronous operations.
-`,
-      codeExample: `import asyncio
-
-async def download_file(name, delay):
-    print("Starting:", name)
-    await asyncio.sleep(delay)
-    print("Finished:", name)
-    return name
-
-async def main():
-    results = await asyncio.gather(
-        download_file("file_a", 2),
-        download_file("file_b", 1),
-        download_file("file_c", 1)
-    )
-
-    print("Completed:", results)
-
-asyncio.run(main())
-
-# The waiting periods overlap, so the tasks
-# can finish sooner than sequential waiting.`,
-      quiz: [
-        {
-          question: 'Which keyword pauses a coroutine until an awaitable completes?',
-          options: ['yield', 'wait', 'await', 'pause'],
-          correctAnswer: 2
-        },
-        {
-          question: 'Which function is commonly used to run an async entry point?',
-          options: [
-            'asyncio.run()',
-            'asyncio.start_program()',
-            'asyncio.compile()',
-            'asyncio.open_loop_file()'
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: 'Which workload often benefits from asyncio?',
-          options: [
-            'A purely mathematical loop that uses every CPU core',
-            'I/O-bound tasks waiting for network responses',
-            'A task that never waits for any operation',
-            'A static text file that needs no processing'
-          ],
-          correctAnswer: 1
-        }
-      ]
-    },
-{
-      title: '26. Memory, Performance, and Profiling',
-      duration: '1h 45m',
-      notes: `
-# Memory, Performance, and Profiling
-
-## 1. Why performance matters
-
-Performance describes how efficiently a program uses time, memory, and other resources.
-
-Before optimizing a program:
-1. Confirm that it produces correct results.
-2. Identify the slow operation.
-3. Measure its performance.
-4. Make a targeted improvement.
-5. Measure again.
-
-Avoid guessing which part of a program is slow.
-
-## 2. Measuring execution time
-
-Python's \`timeit\` module measures short pieces of code.
-
-\`\`\`python
-import timeit
-
-elapsed = timeit.timeit(
-    "sum(range(1000))",
-    number=10000
-)
-
-print(f"Total time: {elapsed:.4f} seconds")
-\`\`\`
-
-The measured time depends on your computer, Python version, and system workload.
-
-For a quick elapsed-time measurement:
-
-\`\`\`python
-from time import perf_counter
-
-start = perf_counter()
-
-total = sum(range(1_000_000))
-
-elapsed = perf_counter() - start
-
-print("Total:", total)
-print("Seconds:", elapsed)
-\`\`\`
-
-## 3. Profiling a complete program
-
-Profiling helps identify which functions consume the most execution time.
-
-Run a Python file with:
-
-\`\`\`bash
-python -m cProfile -s cumulative main.py
-\`\`\`
-
-The cumulative column helps identify functions whose total time includes time spent in their calls.
-
-Use profiling results to decide where optimization is worthwhile.
-
-## 4. Big-O and performance
-
-Consider membership checks in a list and a set.
-
-\`\`\`python
-items = list(range(10000))
-item_set = set(items)
-
-print(9999 in items)
-print(9999 in item_set)
-\`\`\`
-
-List membership generally requires a linear scan in the worst case, O(n). Set membership is average-case O(1) under typical hashing assumptions.
-
-Converting a list to a set has a cost, so it is most useful when repeated membership checks justify that initial work.
-
-## 5. Generators and memory
-
-A list stores all its elements at once.
-
-\`\`\`numbers = [number * 2 for number in range(1000000)]
-\`\`\`
-
-A generator produces values as they are requested:
-
-\`\`\`python
-numbers = (number * 2 for number in range(1000000))
-
-print(next(numbers))
-print(next(numbers))
-\`\`\`
-
-Generators can reduce memory usage when processing large sequences that do not need to be stored completely.
-
-## 6. Understanding object sizes
-
-The \`sys.getsizeof()\` function reports the shallow size of an object.
-
-\`\`\`python
-import sys
-
-values = [1, 2, 3, 4, 5]
-
-print(sys.getsizeof(values))
-\`\`\`
-
-This does not include the complete memory used by all objects referenced by a container.
-
-## 7. Caching repeated calculations
-
-The \`functools.lru_cache\` decorator caches results for hashable arguments.
-
-\`\`\`from functools import lru_cache
-
-@lru_cache(maxsize=128)
-def fibonacci(n):
-    if n < 2:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-print(fibonacci(30))
-print(fibonacci.cache_info())
-\`\`\`
-
-Caching is effective when a function repeatedly receives the same arguments and its results remain valid.
-
-Avoid caching functions whose results depend on changing external state unless you handle invalidation correctly.
-
-## 8. Memory management
-
-Python manages most object memory automatically through reference counting and garbage collection in standard CPython builds.
-
-You should still:
-- Release references to large objects when they are no longer needed.
-- Avoid retaining unnecessary data in long-lived collections.
-- Close files and network connections.
-- Use generators for suitable streaming workloads.
-- Profile memory when diagnosing leaks or excessive usage.
-
-## 9. Practical optimization
-
-- Choose appropriate data structures.
-- Avoid repeated expensive work inside loops.
-- Use built-in operations when they are clearer and efficient.
-- Reduce unnecessary network and database calls.
-- Profile before rewriting code.
-- Keep tests running while optimizing.
-
-## Summary
-
-Performance engineering starts with measurement. Profiling, algorithm analysis, generators, suitable data structures, and caching can improve speed and memory use when applied to the right problems.
-`,
-      codeExample: `from functools import lru_cache
-from time import perf_counter
-
-@lru_cache(maxsize=None)
-def fibonacci(n):
-    if n < 2:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-start = perf_counter()
-result = fibonacci(35)
-elapsed = perf_counter() - start
-
-print("Result:", result)
-print(f"Elapsed: {elapsed:.6f} seconds")
-print("Cache:", fibonacci.cache_info())
-
-# The exact timing depends on your computer.`,
-      quiz: [
-        {
-          question: 'Which module can profile function execution time?',
-          options: ['cProfile', 'csv', 'pathlib', 'calendar'],
-          correctAnswer: 0
-        },
-        {
-          question: 'What is a common benefit of a generator?',
-          options: [
-            'It automatically encrypts data',
-            'It makes every algorithm O(1)',
-            'It can produce values without storing the entire sequence',
-            'It replaces all database tables'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'When should you optimize a slow program?',
-          options: [
-            'Before checking whether it works',
-            'After measuring and identifying a meaningful bottleneck',
-            'Only by adding more loops',
-            'Without running tests'
-          ],
-          correctAnswer: 1
-        }
-      ]
-    },
-    {
-      title: '27. Python Security and Professional Practices',
-      duration: '1h 50m',
-      notes: `
-# Python Security and Professional Practices
-
-## 1. Why application security matters
-
-Applications often process passwords, personal information, uploaded files, and external input. Incorrect handling can expose sensitive data or allow attackers to manipulate the application.
-
-Security should be part of development from the beginning.
-
-## 2. Validate untrusted input
-
-Never assume input from a user, file, or API is safe.
-
-\`\`\`python
-def parse_age(value):
-    try:
-        age = int(value)
-    except (TypeError, ValueError):
-        raise ValueError("Age must be a whole number.")
-
-    if not 0 <= age <= 120:
-        raise ValueError("Age is outside the accepted range.")
-
-    return age
-
-print(parse_age("18"))
-\`\`\`
-
-Validation should match your application's actual business rules.
-
-## 3. Store secrets safely
-
-Do not hardcode API keys, database passwords, or authentication tokens into source code.
-
-Use environment variables:
-
-\`\`\`python
-import os
-
-api_key = os.getenv("MY_API_KEY")
-
-if not api_key:
-    raise RuntimeError("Required API key is missing.")
-\`\`\`
-
-For local development, a tool such as python-dotenv can load values from a local .env file. Keep that file out of Git and provide a safe example file such as .env.example without real secrets.
-
-Environment variables are one way to supply secrets, but production systems may benefit from a dedicated secrets manager.
-
-## 4. Password storage
-
-Never store user passwords as plaintext or use a fast general-purpose hash such as plain SHA-256 as a password-storage solution.
-
-Use a password-hashing algorithm designed for password storage, such as Argon2id, scrypt, or appropriately configured bcrypt.
-
-For example, install a suitable library:
-
-\`\`\`bash
-python -m pip install argon2-cffi
-\`\`\`
-
-Example:
-
-\`\`\`python
-from argon2 import PasswordHasher
-
-hasher = PasswordHasher()
-
-password_hash = hasher.hash("replace-with-user-password")
-
-try:
-    hasher.verify(password_hash, "replace-with-user-password")
-    print("Password verified")
-except Exception:
-    print("Password verification failed")
-\`\`\`
-
-In a real application, handle the library's specific verification exceptions and use secure registration and login flows.
-
-## 5. SQL injection prevention
-
-Never construct SQL statements by directly inserting untrusted values into query strings.
-
-Unsafe pattern:
-
-\`\`\`python
-# Do not use this with untrusted input.
-query = "SELECT * FROM users WHERE name = '" + name + "'"
-\`\`\`
-
-Safe pattern:
-
-\`\`\`python
-cursor.execute(
-    "SELECT * FROM users WHERE name = ?",
-    (name,)
-)
-\`\`\`
-
-The placeholder syntax depends on the database driver. Always use that driver's parameter-binding mechanism.
-
-## 6. Avoid unsafe deserialization
-
-Python's pickle format can execute arbitrary code during deserialization. Do not unpickle data from untrusted users or external sources.
-
-For simple data interchange, JSON is generally a safer option, although JSON data still requires validation.
-
-## 7. Protect file operations
-
-When an application accepts filenames, do not blindly trust user-provided paths.
-
-\`\`\`python
-from pathlib import Path
-
-base_directory = Path("uploads").resolve()
-filename = "report.txt"
-
-target = (base_directory / filename).resolve()
-
-if target != base_directory and base_directory not in target.parents:
-    raise ValueError("Invalid file path")
-
-print(target)
-\`\`\`
-
-This illustrates a path-containment check for a simple case. Production upload handling also needs filename policy, permissions, size limits, content validation, and race-condition considerations.
-
-## 8. Dependency security
-
-Third-party libraries can contain vulnerabilities.
-
-Useful practices:
-- Use a virtual environment for each project.
-- Pin and review dependency versions.
-- Remove unused dependencies.
-- Monitor security advisories.
-- Update vulnerable packages.
-- Use automated dependency scanning when available.
-
-## 9. Logging and error messages
-
-Logs should help diagnose failures without exposing secrets.
-
-Avoid logging:
-- Passwords.
-- Session cookies.
-- Access tokens.
-- Private personal information.
-- Full sensitive request bodies.
-
-Return appropriate, non-sensitive error messages to users while keeping useful diagnostic details in protected server logs.
-
-## 10. Professional security checklist
-
-Before releasing an application:
-- Validate inputs.
-- Authenticate and authorize protected actions.
-- Use secure password hashing.
-- Keep secrets outside source control.
-- Use parameterized database queries.
-- Apply reasonable rate limits to sensitive endpoints.
-- Use HTTPS for network traffic.
-- Keep dependencies updated.
-- Back up important data.
-- Test error-handling and access-control rules.
-
-## Summary
-
-Secure Python development requires safe input handling, secret management, secure password storage, parameterized SQL, careful file operations, and controlled error reporting.
-`,
-      codeExample: `import os
-import sqlite3
-
-def find_user(username):
-    database_url = os.getenv("APP_DATABASE", "users.db")
-
-    with sqlite3.connect(database_url) as connection:
-        return connection.execute(
-            "SELECT id, username FROM users WHERE username = ?",
-            (username,)
-        ).fetchone()
-
-# Before running, create a users table.
-# The parameterized query protects the username value
-# from being interpreted as SQL syntax.`,
-      quiz: [
-        {
-          question: 'How should an application store user passwords?',
-          options: [
-            'As plaintext strings',
-            'Using a password-hashing algorithm designed for password storage',
-            'In a public GitHub repository',
-            'Using reversible Base64 encoding'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'What is the preferred way to insert user values into SQL queries?',
-          options: [
-            'String concatenation',
-            'Manual quote replacement only',
-            'Parameterized queries',
-            'Executing the value as a new SQL statement'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'Why should secrets not be committed to a public repository?',
-          options: [
-            'They may be exposed and misused by others',
-            'Python cannot read Git repositories',
-            'Git automatically encrypts every secret',
-            'Secrets make loops run slowly'
-          ],
-          correctAnswer: 0
-        }
-      ]
-    },
-    {
-      title: '28. Packaging, CLI Tools, and Deployment',
-      duration: '2h',
-      notes: `
-# Packaging, CLI Tools, and Deployment
-
-## 1. Organizing a Python project
-
-A professional project separates application code, tests, configuration, and documentation.
-
-Example structure:
-
-\`\`\`text
-task_manager/
-    pyproject.toml
-    README.md
-    src/
-        task_manager/
-            __init__.py
-            main.py
-    tests/
-        test_main.py
-\`\`\`
-
-This is one possible layout. Small scripts may need less structure.
-
-## 2. The main entry point
-
-Python modules can check whether they are being executed directly.
-
-\`\`\`python
-def main():
-    print("Task Manager started")
-
-if __name__ == "__main__":
-    main()
-\`\`\`
-
-This allows the module to be imported without automatically running the application.
-
-## 3. Command-line arguments
-
-The \`argparse\` module helps create command-line interfaces.
-
-\`\`\`python
-import argparse
-
-parser = argparse.ArgumentParser(
-    description="A simple greeting program"
-)
-parser.add_argument("name", help="Name to greet")
-
-args = parser.parse_args()
-
-print(f"Hello, {args.name}!")
-\`\`\`
-
-Save it as \`greet.py\` and run:
-
-\`\`\`bash
-python greet.py Anas
-\`\`\`
-
-Output:
-
-\`\`\`text
-Hello, Anas!
-\`\`\`
-
-Try \`python greet.py --help\` to view the generated help message.
-
-## 4. Project dependencies
-
-Create a virtual environment:
-
-\`\`\`bash
-python -m venv .venv
-\`\`\`
-
-Activate it on Windows PowerShell:
-
-\`\`\`powershell
-.\\.venv\\Scripts\\Activate.ps1
-\`\`\`
-
-Install project dependencies and record them when appropriate:
-
-\`\`\`bash
-python -m pip install requests
-python -m pip freeze > requirements.txt
-\`\`\`
-
-The project should document which Python versions it supports. For reusable libraries and applications, a pyproject.toml file can define package metadata and dependencies.
-
-## 5. Basic packaging with pyproject.toml
-
-A minimal project configuration for a package can look like this:
-
-\`\`\`toml
-[build-system]
-requires = ["setuptools>=68"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "task-manager-demo"
-version = "0.1.0"
-description = "A beginner Python task manager"
-requires-python = ">=3.10"
-
-[tool.setuptools.packages.find]
-where = ["src"]
-\`\`\`
-
-Package metadata and build settings should match your actual project. The configuration above assumes the package is located under the src directory.
-
-## 6. Git and .gitignore
-
-Use version control to track changes.
-
-A Python project's .gitignore commonly includes:
-
-\`\`\`text
-.venv/
-__pycache__/
-*.py[cod]
-.env
-.pytest_cache/
-dist/
-build/
-\`\`\`
-
-Do not add real secrets or unnecessary generated files to your repository.
-
-Typical commands:
-
-\`\`\`bash
-git init
-git add .
-git commit -m "Initial Python project"
-\`\`\`
-
-Only stage files that are appropriate to share.
-
-## 7. Testing before release
-
-Run your tests before packaging or deploying:
-
-\`\`\`bash
-python -m unittest discover
-\`\`\`
-
-If using pytest:
-
-\`\`\`bash
-python -m pytest
-\`\`\`
-
-Also run a linter if configured:
-
-\`\`\`bash
-python -m ruff check .
-\`\`\`
-
-## 8. Environment configuration
-
-Different environments may require different settings. Read non-secret configuration from environment variables, and supply secrets through a secure configuration mechanism.
-
-Do not rely on the current working directory being the same in every deployment environment. Resolve file paths deliberately when your application depends on files.
-
-## 9. Deploying Python applications
-
-Deployment depends on the type of application:
-- A command-line tool can be packaged and distributed.
-- A web API may use a framework such as Flask, FastAPI, or Django.
-- A scheduled script may run through a scheduler or background job service.
-- A data-processing application may run in a controlled worker environment.
-
-Check your hosting provider's supported Python versions, build process, entry point, environment variables, file-system persistence, and network restrictions.
-
-Some serverless platforms use temporary filesystems, so local files may not persist across invocations. Use managed storage or a database for durable application data.
-
-## 10. Professional release checklist
-
-- Document setup instructions in README.md.
-- Define supported Python versions.
-- Declare dependencies.
-- Exclude secrets and generated files from Git.
-- Run tests and static checks.
-- Configure environment variables.
-- Check logs and health endpoints after deployment.
-- Maintain a rollback plan for important applications.
-
-## Summary
-
-Packaging and deployment turn a local script into software other people can install or run. Project structure, CLI arguments, dependency management, version control, tests, and environment configuration support reliable releases.
-`,
-      codeExample: `import argparse
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="Python course progress tracker"
-    )
-    parser.add_argument(
-        "--completed",
-        type=int,
-        default=0,
-        help="Number of completed modules"
-    )
-    parser.add_argument(
-        "--total",
-        type=int,
-        default=32,
-        help="Total number of modules"
-    )
-
-    args = parser.parse_args()
-
-    if args.total <= 0:
-        parser.error("--total must be greater than zero")
-
-    if not 0 <= args.completed <= args.total:
-        parser.error("--completed must be between 0 and --total")
-
-    percentage = args.completed / args.total * 100
-    print(f"Progress: {percentage:.1f}%")
-
-if __name__ == "__main__":
-    main()
-
-# Example:
-# python progress.py --completed 10 --total 32`,
-      quiz: [
-        {
-          question: 'What is the purpose of argparse?',
-          options: [
-            'To create database tables automatically',
-            'To parse command-line arguments',
-            'To encrypt every file',
-            'To replace Python modules'
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: 'Which file commonly declares Python project metadata and build configuration?',
-          options: [
-            'index.html',
-            'requirements.lock only',
-            'pyproject.toml',
-            'python.exe'
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: 'Why should deployment configuration be tested on the target hosting platform?',
-          options: [
-            'Because Python syntax stops working online',
-            'Because every platform permanently stores local files',
-            'Because Git automatically configures every server',
-            'Because supported runtimes, entry points, and filesystem behavior vary'
-          ],
-          correctAnswer: 3
-        }
-      ]
-    },
-   {
-  title: 'Module 29: Python Expense Tracker',
-  duration: '2 hours',
-  notes: `# Python Expense Tracker
-
-## Learning objectives
-- Work with lists and dictionaries.
-- Save and load JSON data.
-- Validate user input.
-- Calculate total expenses.
-
-## How it works
-The application lets users add expenses, view records, calculate total spending, and save records in a JSON file.
-
-## Example: Save JSON data
-
-    import json
-
-    expenses = [
-        {"category": "Food", "amount": 450},
-        {"category": "Travel", "amount": 200}
-    ]
-
-    with open("expenses.json", "w") as file:
-        json.dump(expenses, file, indent=4)
-
-## Example: Calculate expenses
-
-    total = sum(item["amount"] for item in expenses)
-    print("Total:", total)
-
-## Practice tasks
-1. Add an expense category.
-2. Reject negative amounts.
-3. Display all saved expenses.
-4. Calculate total spending.
-5. Handle a missing JSON file.
-
-## Challenge
-Add a budget limit and warn the user when spending exceeds it.`,
-  codeExample: 'import json\nfrom pathlib import Path\n\nFILE = Path("expenses.json")\n\ndef load_expenses():\n    try:\n        return json.loads(FILE.read_text(encoding="utf-8"))\n    except FileNotFoundError:\n        return []\n    except json.JSONDecodeError:\n        print("Invalid expense file.")\n        return []\n\ndef save_expenses(expenses):\n    FILE.write_text(json.dumps(expenses, indent=4), encoding="utf-8")\n\ndef main():\n    expenses = load_expenses()\n    while True:\n        print("\\n1. Add  2. View  3. Total  4. Exit")\n        choice = input("Choose: ").strip()\n        if choice == "1":\n            try:\n                amount = float(input("Amount: "))\n                if amount <= 0:\n                    print("Amount must be positive.")\n                    continue\n            except ValueError:\n                print("Enter a valid number.")\n                continue\n            category = input("Category: ").strip() or "Other"\n            expenses.append({"amount": amount, "category": category})\n            save_expenses(expenses)\n            print("Expense saved.")\n        elif choice == "2":\n            for expense in expenses:\n                print(expense)\n        elif choice == "3":\n            total = sum(item["amount"] for item in expenses)\n            print(f"Total: Rs. {total:.2f}")\n        elif choice == "4":\n            break\n        else:\n            print("Invalid choice.")\n\nif __name__ == "__main__":\n    main()',
-  quiz: [
-    {
-      question: 'Which module handles JSON data?',
-      options: ['random', 'json', 'math', 'time'],
-      correctAnswer: 1
-    },
-    {
-      question: 'Which function calculates a total?',
-      options: ['sum()', 'input()', 'type()', 'open()'],
-      correctAnswer: 0
-    },
-    {
-      question: 'What does FileNotFoundError indicate?',
-      options: ['Invalid number', 'Missing file', 'Invalid class', 'Network failure'],
-      correctAnswer: 1
     }
   ]
-},
-{
-  title: 'Module 30: API Data Dashboard',
-  duration: '2 hours 30 minutes',
-  notes: `# API Data Dashboard
-
-## Learning objectives
-- Understand HTTP requests and APIs.
-- Read JSON responses.
-- Filter and display data.
-- Handle request errors.
-
-## Install the requests package
-
-    python -m pip install requests
-
-## Request data from an API
-
-    import requests
-
-    response = requests.get(
-        "https://jsonplaceholder.typicode.com/posts",
-        timeout=10
-    )
-    response.raise_for_status()
-    posts = response.json()
-
-## Display posts
-
-    for post in posts[:5]:
-        print(post["id"], post["title"])
-
-## Important concepts
-- A timeout limits how long a request waits.
-- JSON responses can become Python lists and dictionaries.
-- HTTP errors should be handled.
-- APIs may be unavailable or return unexpected data.
-
-## Practice tasks
-1. Search posts by title.
-2. Filter posts by user ID.
-3. Display the number of results.
-4. Export results to JSON.
-
-## Challenge
-Build a small web dashboard that displays the retrieved posts.`,
-  codeExample: 'import requests\n\ndef main():\n    url = "https://jsonplaceholder.typicode.com/posts"\n    try:\n        response = requests.get(url, timeout=10)\n        response.raise_for_status()\n        posts = response.json()\n        if not isinstance(posts, list):\n            print("Unexpected API response.")\n            return\n        query = input("Search title: ").strip().lower()\n        results = [\n            post for post in posts\n            if query in post.get("title", "").lower()\n        ]\n        print(f"Found {len(results)} posts.")\n        for post in results[:10]:\n            print(post.get("id"), post.get("title"))\n    except requests.RequestException as error:\n        print("Request failed:", error)\n    except ValueError:\n        print("Invalid JSON response.")\n\nif __name__ == "__main__":\n    main()',
-  quiz: [
-    {
-      question: 'Which method reads JSON from a response?',
-      options: ['response.json()', 'response.read_json_file()', 'response.python()', 'response.convert()'],
-      correctAnswer: 0
-    },
-    {
-      question: 'Why use a request timeout?',
-      options: ['To sort data', 'To avoid waiting indefinitely', 'To create a database', 'To guarantee success'],
-      correctAnswer: 1
-    },
-    {
-      question: 'What does raise_for_status() do?',
-      options: ['Sorts results', 'Deletes errors', 'Raises an exception for unsuccessful HTTP responses', 'Creates JSON'],
-      correctAnswer: 2
-    }
-  ]
-},
-{
-  title: 'Module 31: Object-Oriented Library Manager',
-  duration: '2 hours 30 minutes',
-  notes: `# Object-Oriented Library Manager
-
-## Learning objectives
-- Create classes and objects.
-- Use constructors and instance attributes.
-- Define methods.
-- Apply business rules.
-
-## Book class
-
-    class Book:
-        def __init__(self, book_id, title, author):
-            self.book_id = book_id
-            self.title = title
-            self.author = author
-            self.is_borrowed = False
-
-## Library class
-The library stores books and supports adding, listing, borrowing, and returning them.
-
-## Example: Create an object
-
-    book = Book(1, "Python Basics", "Alex Smith")
-    print(book.title)
-
-## Business rules
-- A borrowed book cannot be borrowed again.
-- An available book cannot be returned again.
-- Book IDs must be unique.
-- Missing book IDs should be handled safely.
-
-## Practice tasks
-1. Add a book.
-2. List all books.
-3. Borrow a book by ID.
-4. Return a book by ID.
-5. Reject duplicate IDs.
-
-## Challenge
-Add a Member class and limit each member to three borrowed books.`,
-  codeExample: 'class Book:\n    def __init__(self, book_id, title, author):\n        self.book_id = book_id\n        self.title = title\n        self.author = author\n        self.is_borrowed = False\n\n    def __str__(self):\n        status = "Borrowed" if self.is_borrowed else "Available"\n        return f"{self.book_id}: {self.title} by {self.author} ({status})"\n\nclass Library:\n    def __init__(self):\n        self.books = {}\n\n    def add_book(self, book):\n        if book.book_id in self.books:\n            raise ValueError("Duplicate book ID.")\n        self.books[book.book_id] = book\n\n    def borrow(self, book_id):\n        book = self.books.get(book_id)\n        if book is None:\n            print("Book not found.")\n        elif book.is_borrowed:\n            print("Already borrowed.")\n        else:\n            book.is_borrowed = True\n            print("Borrowed successfully.")\n\n    def return_book(self, book_id):\n        book = self.books.get(book_id)\n        if book is None:\n            print("Book not found.")\n        elif not book.is_borrowed:\n            print("Book is already available.")\n        else:\n            book.is_borrowed = False\n            print("Returned successfully.")\n\n    def list_books(self):\n        for book in self.books.values():\n            print(book)\n\nif __name__ == "__main__":\n    library = Library()\n    library.add_book(Book(1, "Python Basics", "Alex Smith"))\n    library.add_book(Book(2, "Clean Code", "Robert Martin"))\n    library.list_books()\n    library.borrow(1)\n    library.return_book(1)\n    library.list_books()',
-  quiz: [
-    {
-      question: 'What is the purpose of __init__?',
-      options: ['Initialize an object', 'Delete a class', 'Install a package', 'Open a website'],
-      correctAnswer: 0
-    },
-    {
-      question: 'Why prevent borrowing an already borrowed book?',
-      options: ['To rename it', 'To enforce business rules', 'To remove the class', 'To stop Python'],
-      correctAnswer: 1
-    },
-    {
-      question: 'Where does this Library class store books?',
-      options: ['Automatically in SQLite', 'In a remote API', 'In an in-memory dictionary', 'In a CSV file'],
-      correctAnswer: 2
-    }
-  ]
-},
-{
-  title: 'Module 32: Professional Workflow, Testing, and Final Assessment',
-  duration: '3 hours',
-  notes: `# Module 32: Professional Python Development
-
-## 1. Think like a professional developer
-
-Professional development is more than writing code that works. Good software should be readable, maintainable, testable, secure, and documented.
-
-A professional workflow usually follows these steps:
-
-1. Understand the requirements.
-2. Break the problem into small tasks.
-3. Design the program structure.
-4. Implement one feature at a time.
-5. Test normal cases and edge cases.
-6. Fix bugs and review the code.
-7. Document the project.
-8. Track changes with Git.
-9. Deploy or distribute the finished project.
-
-## 2. Write clean Python code
-
-Use meaningful names, small functions, consistent formatting, and clear error messages.
-
-\\\`\\\`\\\`python
-def calculate_average(scores):
-    if not scores:
-        raise ValueError("Scores cannot be empty.")
-
-    return sum(scores) / len(scores)
-
-
-marks = [80, 75, 90]
-print(f"Average: {calculate_average(marks):.2f}")
-\\\`\\\`\\\`
-
-Good practices:
-- Use snake_case for functions and variables.
-- Use PascalCase for class names.
-- Avoid unnecessary global variables.
-- Keep functions focused on one responsibility.
-- Remove unused code and debug print statements.
-- Avoid duplicating the same logic in multiple places.
-
-## 3. Automated testing with unittest
-
-Testing checks whether your code behaves as expected.
-
-Create a file named test_calculator.py:
-
-\\\`\\\`\\\`python
-import unittest
-
-
-def add(a, b):
-    return a + b
-
-
-def divide(a, b):
-    if b == 0:
-        raise ValueError("Cannot divide by zero.")
-    return a / b
-
-
-class CalculatorTests(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(add(2, 3), 5)
-
-    def test_divide(self):
-        self.assertEqual(divide(10, 2), 5)
-
-    def test_division_by_zero(self):
-        with self.assertRaises(ValueError):
-            divide(10, 0)
-
-
-if __name__ == "__main__":
-    unittest.main()
-\\\`\\\`\\\`
-
-Run the tests from your terminal:
-
-\\\`\\\`\\\`bash
-python -m unittest -v
-\\\`\\\`\\\`
-
-Test different types of situations:
-- Normal inputs
-- Empty inputs
-- Invalid inputs
-- Boundary values
-- Missing files or network failures
-- Unexpected errors
-
-A passing test suite increases confidence, but it does not prove that every possible bug is absent.
-
-## 4. Debugging and error handling
-
-When a program fails:
-
-1. Read the full traceback.
-2. Identify the line where the failure occurred.
-3. Understand the exception type.
-4. Reproduce the problem with a small example.
-5. Fix the underlying cause.
-6. Add a test to prevent the same bug from returning.
-
-Example:
-
-\\\`\\\`\\\`python
-def convert_to_integer(value):
-    try:
-        return int(value)
-    except ValueError:
-        print("Please enter a valid whole number.")
-        return None
-
-
-result = convert_to_integer("abc")
-print(result)
-\\\`\\\`\\\`
-
-Catch specific exceptions whenever possible. Avoid using a broad except clause that hides programming errors.
-
-## 5. Git and GitHub workflow
-
-Git records changes to your project. GitHub hosts Git repositories online.
-
-From your project directory, initialize and commit your work:
-
-\\\`\\\`\\\`bash
-git init
-git add .
-git commit -m "Complete Python masterclass project"
-\\\`\\\`\\\`
-
-After creating an empty repository on GitHub, connect it and push:
-
-\\\`\\\`\\\`bash
-git branch -M main
-git remote add origin YOUR_REPOSITORY_URL
-git push -u origin main
-\\\`\\\`\\\`
-
-Replace YOUR_REPOSITORY_URL with your actual repository URL. If a remote already exists, inspect it with git remote -v before adding another.
-
-Useful commands:
-
-\\\`\\\`\\\`bash
-git status
-git log --oneline
-git add .
-git commit -m "Describe your changes"
-git push
-\\\`\\\`\\\`
-
-## 6. Protect secrets and private data
-
-Never commit passwords, database connection strings, API keys, email app passwords, or private credentials.
-
-Use environment variables for secrets, keep local .env files out of Git, and provide a safe .env.example containing placeholder values only.
-
-Example .gitignore:
-
-\\\`\\\`\\\`text
-.env
-.venv/
-__pycache__/
-*.pyc
-\\\`\\\`\\\`
-
-If a secret is accidentally pushed, removing it from the latest file is not enough. Revoke or rotate the exposed credential immediately.
-
-## 7. Virtual environments and dependencies
-
-Create an isolated environment for each Python project:
-
-\\\`\\\`\\\`bash
-python -m venv .venv
-\\\`\\\`\\\`
-
-Activate it on Windows Command Prompt:
-
-\\\`\\\`\\\`bat
-.venv\\Scripts\\activate.bat
-\\\`\\\`\\\`
-
-Activate it on Windows PowerShell:
-
-\\\`\\\`\\\`powershell
-.\\.venv\\Scripts\\Activate.ps1
-\\\`\\\`\\\`
-
-Install project dependencies when needed and record them:
-
-\\\`\\\`\\\`bash
-python -m pip install requests
-python -m pip freeze > requirements.txt
-\\\`\\\`\\\`
-
-A teammate can install the recorded dependencies with:
-
-\\\`\\\`\\\`bash
-python -m pip install -r requirements.txt
-\\\`\\\`\\\`
-
-## 8. Write a useful README
-
-Every portfolio project should explain:
-- What the project does
-- Main features
-- Technologies used
-- Installation steps
-- How to run the program
-- How to run tests
-- Example usage or screenshots
-- Known limitations and future improvements
-
-Keep the README accurate. Do not claim a feature works unless you have tested it.
-
-## 9. Final assessment project
-
-Build a Personal Finance Manager that combines skills from the course.
-
-Required features:
-- Add, list, and delete transactions.
-- Validate amounts and transaction categories.
-- Calculate total income, expenses, and balance.
-- Save and load transactions.
-- Handle missing or corrupted data files.
-- Use classes or well-structured functions.
-- Include automated unit tests.
-- Document installation and usage.
-- Publish the source code in a Git repository without secrets.
-
-Suggested structure:
-
-\\\`\\\`\\\`text
-finance_manager/
-    main.py
-    models.py
-    storage.py
-    reports.py
-    tests/
-        test_reports.py
-    README.md
-    requirements.txt
-    .gitignore
-\\\`\\\`\\\`
-
-Start with a simple working version. Add features gradually and test each one before moving forward.
-
-## 10. Final completion checklist
-
-- [ ] I understand variables, data types, operators, and control flow.
-- [ ] I can work with strings, lists, tuples, dictionaries, and sets.
-- [ ] I can write functions and use comprehensions.
-- [ ] I understand classes, exceptions, files, and JSON.
-- [ ] I can work with APIs and basic databases.
-- [ ] I understand asynchronous programming at a basic level.
-- [ ] I can test, debug, and document a Python program.
-- [ ] I can use Git and push a project to GitHub.
-- [ ] I can protect credentials and manage dependencies.
-- [ ] I have completed and tested a practical project.
-
-## Congratulations
-
-You have reached the end of this A-to-Z Python course.
-
-Finishing the lessons is the beginning, not the end. Build projects independently, read documentation, test your assumptions, and improve your code through feedback. Python proficiency comes from consistent practice.`,
-  codeExample: 'import unittest\\n\\ndef calculate_average(scores):\\n    if not scores:\\n        raise ValueError("Scores cannot be empty.")\\n    return sum(scores) / len(scores)\\n\\nclass AverageTests(unittest.TestCase):\\n    def test_average(self):\\n        self.assertEqual(calculate_average([80, 70, 90]), 80)\\n\\n    def test_empty_scores(self):\\n        with self.assertRaises(ValueError):\\n            calculate_average([])\\n\\nif __name__ == "__main__":\\n    unittest.main()',
-  quiz: [
-    {
-      question: 'Which command runs Python unit tests using the unittest module?',
-      options: ['python -m unittest', 'python --delete-tests', 'git test all', 'pip run unittest'],
-      correctAnswer: 0
-    },
-    {
-      question: 'What should you do if an API key is accidentally published in a public repository?',
-      options: ['Only rename the variable', 'Ignore it if the project works', 'Revoke or rotate the exposed key and remove the secret from the project', 'Add another copy of the key'],
-      correctAnswer: 2
-    },
-    {
-      question: 'What is the primary purpose of Git?',
-      options: ['To replace Python', 'To track changes to files and support version control', 'To automatically fix every bug', 'To host databases only'],
-      correctAnswer: 1
-    },
-    {
-      question: 'Why should software be tested with invalid and boundary inputs?',
-      options: ['To make the code longer', 'To avoid writing documentation', 'To ensure errors never happen anywhere', 'To discover incorrect behavior in edge cases'],
-      correctAnswer: 3
-    },
-    {
-      question: 'What is the purpose of a README file?',
-      options: ['To explain the project and how to install, run, and test it', 'To store passwords', 'To replace all source code', 'To automatically deploy every project'],
-      correctAnswer: 0
-    }
-  ]
-}
-  ]
-
 };

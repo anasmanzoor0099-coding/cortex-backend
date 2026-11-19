@@ -1,21 +1,32 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
 import {
   register,
   verifyEmailAndSetPassword,
   login,
   forgotPassword,
   resetPassword,
-  becomeInstructor // <-- IMPORT THIS
+  becomeInstructor,
+  getMe,
 } from '../controllers/authController.js';
-import { protect } from '../middleware/authMiddleware.js'; // <-- IMPORT PROTECT
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/register', register);
-router.post('/verify-email', verifyEmailAndSetPassword);
-router.post('/login', login);
-router.post('/forgot-password', forgotPassword);
-router.post('/reset-password', resetPassword);
-router.put('/become-instructor', protect, becomeInstructor); // <-- ADD ROUTE
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 25,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Too many authentication attempts. Please try again in 15 minutes.' },
+});
+
+router.post('/register', authLimiter, register);
+router.post('/verify-email', authLimiter, verifyEmailAndSetPassword);
+router.post('/login', authLimiter, login);
+router.post('/forgot-password', authLimiter, forgotPassword);
+router.post('/reset-password', authLimiter, resetPassword);
+router.put('/become-instructor', protect, becomeInstructor);
+router.get('/me', protect, getMe);
 
 export default router;
